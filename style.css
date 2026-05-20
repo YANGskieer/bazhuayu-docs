@@ -1,0 +1,8 @@
+/* Replace "On this page" heading text */
+h2.m-0.font-normal button span {
+  font-size: 0;
+}
+h2.m-0.font-normal button span::after {
+  content: "本页目录";
+  font-size: 0.875rem;
+}
