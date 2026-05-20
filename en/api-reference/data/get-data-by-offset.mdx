@@ -12,6 +12,9 @@ title: 根据指定位置获取任务数据
 https://openapi.bazhuayu.com/data/all
 ```
 
+## 描述
+
+将位置（offset）设置为 0，将从第一条数据的位置开始获取数据，并返回获取后续数据的实际起始位置（offset），您应该通过该返回的位置（offset）来获取下一批数据，以此类推。 例如： 第一次：offset = 0，size = 100， 返回：offset = 1024 第二次：offset = 1024，size = 100， 返回：offset = 1124 第三次：offset = 1124，size = 100 (200条以内单次导出不超过4M，200条以上单次导出不超过8M)
 
 ## 请求头
 
