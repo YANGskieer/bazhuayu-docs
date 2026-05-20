@@ -1,30 +1,30 @@
 ---
-title: Start Task
-description: Trigger a cloud extraction task.
+title: 启动任务
+description: 触发云端提取任务。
 ---
 
-# Start Task
+# 启动任务
 
-> **Required plan:** Professional or Enterprise
+> **所需套餐：** 专业版或企业版
 
-## Endpoint
+## 端点
 
 ```
 POST https://openapi.octoparse.com/cloud-extraction/start-task
 ```
 
-## Request Body
+## 请求体
 
-| Parameter | Type | Required | Description |
+| 参数 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `taskGroupId` | string | Yes | The task group ID to start |
-| `urls` | array | No | Specific URLs to scrape (overrides task URLs) |
+| `taskGroupId` | string | 是 | 要启动的任务组 ID |
+| `urls` | array | 否 | 要采集的特定 URL（覆盖任务 URL） |
 
-## Response
+## 响应
 
-| Field | Type | Description |
+| 字段 | 类型 | 说明 |
 |---|---|---|
-| `runId` | string | The run ID for tracking this extraction |
-| `status` | string | The initial status of the run |
+| `runId` | string | 用于追踪此次提取的运行 ID |
+| `status` | string | 运行的初始状态 |
 
-See also: [Stop Task](/en/api-reference/cloud-extraction/stop-task), [Get Task Status](/en/api-reference/cloud-extraction/get-task-status)
+另请参阅：[停止任务](/en/api-reference/cloud-extraction/stop-task)、[获取任务状态](/en/api-reference/cloud-extraction/get-task-status)

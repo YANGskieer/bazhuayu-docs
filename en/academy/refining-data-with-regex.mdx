@@ -1,33 +1,33 @@
 ---
-title: Refining Data with Regex
-description: How to clean messy scraped data with regex patterns.
+title: 使用正则表达式精炼数据
+description: 如何使用正则表达式模式清洗杂乱的采集数据。
 ---
 
-# Refining Data with Regex
+# 使用正则表达式精炼数据
 
-> Raw scraped values arrive messy - prices with symbols, phones in three formats, dates that vary. The regex patterns that clean them.
+> 原始采集数据往往杂乱无章 — 价格带符号、电话有三种格式、日期各不相同。本文将介绍用于清洗的正则表达式模式。
 
-## Common Regex Patterns
+## 常用正则表达式模式
 
-| Pattern | Use Case |
+| 模式 | 应用场景 |
 |---|---|
-| `\$[\d,]+\.?\d*` | Extract US price like $1,299.99 |
-| `\+?[\d\s\-\(\)]{10,}` | Extract phone number |
-| `[\w.+-]+@[\w-]+\.[\w.-]+` | Extract email address |
-| Replace `\s+` with one space | Clean whitespace |
+| `\$[\d,]+\.?\d*` | 提取美元价格，如 $1,299.99 |
+| `\+?[\d\s\-\(\)]{10,}` | 提取电话号码 |
+| `[\w.+-]+@[\w-]+\.[\w.-]+` | 提取邮箱地址 |
+| 将 `\s+` 替换为一个空格 | 清洗多余空白字符 |
 
-## Octoparse AI Data Refinement
+## Octoparse AI 数据精炼
 
-Octoparse can auto-generate regex patterns using AI:
-1. Select a messy field
-2. Describe the desired clean output
-3. Octoparse AI generates a refinement rule including regex
+Octoparse 可使用 AI 自动生成正则表达式模式：
+1. 选择一个杂乱的字段
+2. 描述期望的清洗后输出
+3. Octoparse AI 会生成包含正则表达式的精炼规则
 
-## Best Practices
+## 最佳实践
 
-- **Validate after cleaning** - Check that cleaned data matches expectations
-- **Handle edge cases** - Empty values, malformed input
-- **Log raw vs. cleaned** - Keep both for debugging
-- **Use libraries when possible** - dateutil for dates, phonenumbers for phone numbers
+- **清洗后验证** — 检查清洗后的数据是否符合预期
+- **处理边缘情况** — 空值、格式错误的输入
+- **记录原始数据与清洗后数据** — 保留两者以便调试
+- **尽可能使用库** — 日期处理用 dateutil，电话处理用 phonenumbers
 
-See also: [XPath and CSS Selectors](/en/academy/xpath-css-selectors), [Anatomy of a Web Scraper](/en/academy/anatomy-of-a-web-scraper)
+另请参阅：[XPath 与 CSS 选择器](/en/academy/xpath-css-selectors)、[网页采集器结构解析](/en/academy/anatomy-of-a-web-scraper)

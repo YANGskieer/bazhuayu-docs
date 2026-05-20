@@ -1,37 +1,37 @@
 ---
-title: Headed vs Headless Browsers
-description: Why the choice between headed and headless browsers matters for web scraping.
+title: 有头浏览器 vs 无头浏览器
+description: 为何有头与无头浏览器的选择对网页采集至关重要。
 ---
 
-# Headed vs Headless Browsers
+# 有头浏览器 vs 无头浏览器
 
-> Headless browsers dominate the scraping ecosystem, but Octoparse runs headed by design. Why the choice matters, and which fits when.
+> 无头浏览器在采集生态中占主导地位，但 Octoparse 专门以有头模式运行。了解此选择为何重要，以及各自适用场景。
 
-## Headless Browsers
+## 无头浏览器
 
-A headless browser runs without a visible UI but provides full browser capabilities.
+无头浏览器无可见 UI，但提供完整的浏览器能力。
 
-**Pros:** Faster, lower resource usage, can run in containers and cloud
-**Cons:** Higher anti-bot detection risk, may behave differently from real browsers
+**优点：** 更快、资源占用更低、可在容器和云端运行
+**缺点：** 反爬检测风险更高、可能与真实浏览器行为不同
 
-## Headed Browsers
+## 有头浏览器
 
-Octoparse runs headed by design.
+Octoparse 专门以有头模式运行。
 
-**Pros:** Exactly what a real user sees, easier visual debugging, required for anti-bot protected sites
-**Cons:** Requires display environment, higher resource usage
+**优点：** 与真实用户看到的内容完全一致、更易于可视化调试、反爬防护网站必需
+**缺点：** 需要显示环境、资源占用更高
 
-## Comparison
+## 对比
 
-| Factor | Headless | Headed |
+| 维度 | 无头 | 有头 |
 |---|---|---|
-| Resource usage | Lower | Higher |
-| Visual debugging | No | Yes |
-| Anti-bot detection | Higher risk | Lower risk |
-| Speed | Faster | Slightly slower |
+| 资源占用 | 较低 | 较高 |
+| 可视化调试 | 否 | 是 |
+| 反爬检测 | 风险较高 | 风险较低 |
+| 速度 | 更快 | 略慢 |
 
 <Note>
-  Octoparse runs headed browsers with behavioral simulation - the accuracy of a headed browser with automation-friendly interaction patterns.
+  Octoparse 以有头浏览器运行，并加入行为模拟 — 既有有头浏览器的准确性，又有适配自动化的交互模式。
 </Note>
 
-See also: [The Browser Runtime Landscape](/en/academy/browser-runtime-landscape), [Browser Fingerprinting](/en/academy/browser-fingerprinting)
+另请参阅：[浏览器运行时全景图](/en/academy/browser-runtime-landscape)、[浏览器指纹](/en/academy/browser-fingerprinting)

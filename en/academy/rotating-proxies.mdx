@@ -1,59 +1,59 @@
 ---
-title: Rotating Proxies for Web Scraping
-description: Why proxy rotation matters, how datacenter, residential, ISP, and mobile proxies differ.
+title: 网页采集中的轮换代理
+description: 为何代理轮换至关重要，数据中心、住宅、ISP 和移动代理有何区别。
 ---
 
-# Rotating Proxies for Web Scraping
+# 网页采集中的轮换代理
 
-> Why scrapers use proxy rotation, how datacenter, residential, ISP, and mobile proxies differ, and how to choose rotation strategies that match the target site.
+> 为何爬虫使用代理轮换、数据中心、住宅、ISP 和移动代理有何区别，以及如何选择与目标网站匹配的轮换策略。
 
-IP-based blocking is the oldest anti-scraping defense. Rotating proxies spread requests across multiple IP addresses, reducing pressure on any single IP and letting a scraper operate closer to normal browsing patterns.
+基于 IP 的封禁是最古老的反爬防御手段。轮换代理将请求分散到多个 IP 地址，减轻单个 IP 的压力，让爬虫以更接近正常浏览模式的方式运行。
 
-## What a Proxy Changes
+## 代理改变了什么
 
-A proxy sits between the scraper and the target website. The website sees the proxy's IP address instead of the operator's direct connection.
+代理位于爬虫和目标网站之间。网站看到的是代理的 IP 地址，而非操作者的直接连接。
 
-- **Rate limits** - Requests can be distributed instead of concentrated
-- **IP bans** - A blocked IP can be removed from the pool
-- **Geo restrictions** - A task can use an IP from the region where the content is available
-- **Operational privacy** - The operator's local IP is not exposed to every target site
-- **Cloud parallelism** - Subtasks can run through separate network paths
+- **速率限制** — 请求可以分散而非集中
+- **IP 封禁** — 被封禁的 IP 可以从池中移除
+- **地理限制** — 任务可以使用内容所在地区的 IP
+- **操作隐私** — 操作者的本地 IP 不会暴露给每个目标网站
+- **云端并行** — 子任务可以通过不同的网络路径运行
 
 <Note>
-  Proxies do not fix bad selectors, broken pagination, or obvious browser automation. They are one layer of the scaling stack, not a complete anti-bot strategy.
+  代理不能修复错误的选择器、损坏的翻页逻辑或明显的浏览器自动化。它是扩展堆栈的一层，而非完整的反爬策略。
 </Note>
 
-## Types of Proxies
+## 代理类型
 
-### Datacenter Proxies
-Fast and cheap. Come from hosting providers and cloud infrastructure. Work well for lightly protected sites and public directories. Perform poorly on sites that block known hosting ranges.
+### 数据中心代理
+快速且便宜。来自托管服务商和云基础设施。适用于轻度防护的网站和公开目录。在封锁已知托管 IP 段的网站上效果较差。
 
-### Residential Proxies
-Route traffic through IPs associated with consumer internet providers. Look more like normal user traffic. More successful on e-commerce, search, and travel sites. Higher cost and ethical sourcing matters.
+### 住宅代理
+通过消费者互联网服务商关联的 IP 路由流量。看起来更像正常用户流量。在电商、搜索和旅行网站上成功率更高。成本较高，且需关注合乎道德的采购方式。
 
-### ISP Proxies
-Hosted like datacenter proxies but registered with internet service providers. More stable than rotating residential IPs and less suspicious than ordinary datacenter ranges. Useful for sticky sessions and stable geography.
+### ISP 代理
+像数据中心代理一样托管，但注册在互联网服务提供商名下。比轮换住宅 IP 更稳定，比普通数据中心 IP 段更不引人怀疑。适用于粘性会话和稳定地理位置。
 
-### Mobile Proxies
-Route through carrier networks. Highly trusted because real mobile users share carrier-grade NAT IPs. Expensive and often overkill - use only when the target site is mobile-first.
+### 移动代理
+通过运营商网络路由。由于真实移动用户共享运营商级 NAT IP，因此高度可信。价格昂贵且通常用力过猛 — 仅在目标网站为移动优先时使用。
 
-## Rotation Strategies
+## 轮换策略
 
-### Per-Request Rotation
-Each request uses a different IP. Works for stateless pages like public search results. Risky for sessions relying on cookies, carts, login state, or region consistency.
+### 按请求轮换
+每个请求使用不同 IP。适用于无状态页面，如公开搜索结果。对于依赖 Cookie、购物车、登录状态或区域一致性的会话存在风险。
 
-### Sticky Sessions
-A worker keeps the same IP for a period of time or for the life of a session. Better for JavaScript-heavy sites, logged-in areas, pagination flows.
+### 粘性会话
+工作线程在一定时间内或整个会话期间保持同一 IP。更适合 JavaScript 密集型网站、登录区域、翻页流程。
 
-### Task-Level Rotation
-Each subtask receives its own proxy pool. Ideal for parallel cloud extraction where each worker needs its own IP identity.
+### 任务级轮换
+每个子任务分配自己的代理池。非常适合每个工作线程需要自己 IP 身份的并行云端提取。
 
-## Choosing the Right Strategy
+## 选择合适的策略
 
-| Target Type | Recommended Proxy | Rotation Strategy |
+| 目标类型 | 推荐代理 | 轮换策略 |
 |---|---|---|
-| Public directories | Datacenter | Per-request |
-| E-commerce | Residential | Sticky sessions |
-| Search engines | Residential or ISP | Per-request |
-| Social media | Residential or Mobile | Sticky sessions |
-| Financial sites | Mobile or premium ISP | Sticky sessions |
+| 公开目录 | 数据中心 | 按请求轮换 |
+| 电商 | 住宅代理 | 粘性会话 |
+| 搜索引擎 | 住宅或 ISP | 按请求轮换 |
+| 社交媒体 | 住宅或移动 | 粘性会话 |
+| 金融网站 | 移动或高级 ISP | 粘性会话 |

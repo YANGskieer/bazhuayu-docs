@@ -1,26 +1,26 @@
 ---
-title: Get Non-Exported Data
-description: Retrieve records that have not yet been marked as exported.
+title: 获取未导出数据
+description: 检索尚未标记为已导出的记录。
 ---
 
-# Get Non-Exported Data
+# 获取未导出数据
 
-> **Required plan:** Standard, Professional, or Enterprise
+> **所需套餐：** 标准版、专业版或企业版
 
-## Endpoint
+## 端点
 
 ```
 GET https://openapi.octoparse.com/data/get-non-exported-data
 ```
 
-## Parameters
+## 参数
 
-| Parameter | Type | Required | Description |
+| 参数 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `taskGroupId` | string | Yes | The task group ID |
+| `taskGroupId` | string | 是 | 任务组 ID |
 
-## Response
+## 响应
 
-Returns records that have not been marked as exported. Use this to retrieve newly extracted data.
+返回尚未标记为已导出的记录。用于获取新提取的数据。
 
-See also: [Get Data by Offset](/en/api-reference/data/get-data-by-offset), [Mark Data as Exported](/en/api-reference/data/mark-data-as-exported)
+另请参阅：[按偏移量获取数据](/en/api-reference/data/get-data-by-offset)、[标记数据为已导出](/en/api-reference/data/mark-data-as-exported)

@@ -1,39 +1,39 @@
 ---
-title: Refresh Token
-description: Refresh your access token when it expires.
+title: 刷新 Token
+description: 在 Access Token 过期时进行刷新。
 ---
 
-# Refresh Token
+# 刷新 Token
 
-> **Required plan:** All users
+> **所需套餐：** 所有用户
 
-## Endpoint
+## 端点
 
 ```
 POST https://openapi.octoparse.com/token/refresh
 ```
 
-## Description
+## 描述
 
-Use a refresh token to obtain a new access token without re-entering your credentials.
+使用 Refresh Token 获取新的 Access Token，无需重新输入凭据。
 
-## Request Body
+## 请求体
 
-| Parameter | Type | Required | Description |
+| 参数 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `refresh_token` | string | Yes | The refresh token obtained during authentication |
+| `refresh_token` | string | 是 | 认证时获得的 Refresh Token |
 
-## Response
+## 响应
 
-| Field | Type | Description |
+| 字段 | 类型 | 说明 |
 |---|---|---|
-| `access_token` | string | A new access token |
-| `refresh_token` | string | A new refresh token |
-| `expires_in` | number | Seconds until the new access token expires |
+| `access_token` | string | 新的 Access Token |
+| `refresh_token` | string | 新的 Refresh Token |
+| `expires_in` | number | 新 Access Token 过期前的秒数 |
 
-## Notes
+## 注意事项
 
-- Refresh tokens also expire. Refresh before your current refresh token expires.
-- If your refresh token has expired, you must obtain a new token via [Obtain a New Token](/en/api-reference/access-token/obtain-a-new-token).
+- Refresh Token 也会过期。请在当前 Refresh Token 过期前进行刷新。
+- 如果 Refresh Token 已过期，必须通过 [获取新 Token](/en/api-reference/access-token/obtain-a-new-token) 重新获取。
 
-See also: [Obtain a New Token](/en/api-reference/access-token/obtain-a-new-token)
+另请参阅：[获取新 Token](/en/api-reference/access-token/obtain-a-new-token)

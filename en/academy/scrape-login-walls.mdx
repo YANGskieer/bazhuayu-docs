@@ -1,29 +1,29 @@
 ---
-title: Scraping Behind Login Walls
-description: How scrapers handle authenticated pages with cookies, session reuse, and browser-based login.
+title: 采集登录墙后的内容
+description: 爬虫如何处理带身份验证的页面：Cookie、会话复用及浏览器登录。
 ---
 
-# Scraping Behind Login Walls
+# 采集登录墙后的内容
 
-> How scrapers handle authenticated pages with cookies, session reuse, browser-based login, MFA limits, and account-safe operating practices.
+> 爬虫如何处理带身份验证的页面：Cookie、会话复用、浏览器登录、MFA 限制及账户安全的操作实践。
 
-## Approaches
+## 方法
 
-### 1. Cookie and Session Reuse
-Log in once, export cookies, reuse them in your scraper.
+### 1. Cookie 与会话复用
+登录一次，导出 Cookie，在爬虫中复用。
 
-### 2. Browser Automation Login
-Use Playwright or Puppeteer to automate the login flow, handle MFA, then extract session cookies.
+### 2. 浏览器自动化登录
+使用 Playwright 或 Puppeteer 自动化登录流程、处理 MFA，然后提取会话 Cookie。
 
-### 3. API Authentication
-OAuth 2.0 flows, API key or token-based auth. Most reliable and sanctioned by the platform.
+### 3. API 认证
+OAuth 2.0 流程、基于 API Key 或 Token 的认证。最可靠且受到平台认可。
 
-## Best Practices
+## 最佳实践
 
-- **Use dedicated accounts** - Do not use personal accounts for scraping
-- **Rotate sessions** - Do not reuse the same session indefinitely
-- **Handle MFA carefully** - Automated MFA is unreliable
-- **Monitor for account issues** - Watch for captchas or login alerts
-- **Respect ToS** - Logging in against ToS may void your account
+- **使用专用账户** — 不要使用个人账户进行采集
+- **轮换会话** — 不要无限期地重复使用同一会话
+- **谨慎处理 MFA** — 自动化 MFA 不可靠
+- **监控账户问题** — 留意验证码或登录告警
+- **遵守服务条款** — 违反服务条款登录可能导致账户被注销
 
-See also: [Is Web Scraping Legal](/en/academy/is-web-scraping-legal), [Human-Like Scraping](/en/academy/human-like-scraping)
+另请参阅：[网页采集是否合法](/en/academy/is-web-scraping-legal)、[类人化采集](/en/academy/human-like-scraping)

@@ -1,41 +1,41 @@
 ---
-title: April 2026 Updates
-description: April 2026 updates and improvements to Octoparse integrations.
+title: 2026 年 4 月更新日志
+description: 2026 年 4 月 Octoparse 集成功能的更新与改进。
 ---
 
-# April 2026 Release Notes
+# 2026 年 4 月发布说明
 
-> New MCP tools, platform documentation, and API reference updates.
+> 新增 MCP 工具、平台文档及 API 参考更新。
 
-## New Features
+## 新功能
 
-### MCP Server - New Tools
+### MCP 服务端 — 新增工具
 
-Three new MCP tools:
-- `redeem_coupon_code` - Redeem promotional coupon codes from your AI agent
-- `search_tasks` - List and search existing Octoparse tasks
-- `start_or_stop_task` - Start or stop a cloud task by ID
+三个全新的 MCP 工具：
+- `redeem_coupon_code` — 通过 AI 智能体兑换促销优惠码
+- `search_tasks` — 列出并搜索已有的 Octoparse 任务
+- `start_or_stop_task` — 通过任务 ID 启动或停止云端任务
 
-### OpenAPI - Task Status V2
+### OpenAPI — 任务状态 V2
 
-New `GET /cloud-extraction/task-status-v2` endpoint with:
-- Improved response structure with step-level progress
-- Subtask breakdown with individual status tracking
-- Estimated time remaining
+全新的 `GET /cloud-extraction/task-status-v2` 端点：
+- 改进的响应结构，包含步骤级别的进度
+- 子任务细分及独立状态追踪
+- 预估剩余时间
 
-### Platform Documentation
+### 平台文档
 
-New pages covering core concepts, task building blocks, local vs. cloud extraction, and export destinations.
+新增页面涵盖核心概念、任务构建模块、本地与云端提取对比，以及数据导出目标。
 
-## Improvements
+## 改进
 
-- MCP server response times reduced by ~40 percent
-- Rate limit handling now includes Retry-After header guidance
-- Template search results include site difficulty ratings
+- MCP 服务端响应时间降低约 40%
+- 速率限制处理现在包含 Retry-After 头部指导
+- 模板搜索结果现在包含网站难度评分
 
-## Bug Fixes
+## Bug 修复
 
-- Fixed authentication token refresh edge case
-- Resolved export data pagination offset bug
+- 修复了认证 Token 刷新的边界情况
+- 解决了数据导出分页偏移量 Bug
 
-For questions or feedback, contact [support@octoparse.com](mailto:support@octoparse.com).
+如有问题或反馈，请联系 [support@octoparse.com](mailto:support@octoparse.com)。

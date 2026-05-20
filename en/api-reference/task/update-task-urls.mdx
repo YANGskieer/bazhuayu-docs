@@ -1,23 +1,23 @@
 ---
-title: Update Task URLs
-description: Change the target URLs for a task.
+title: 更新任务 URL
+description: 更改任务的目标 URL。
 ---
 
-# Update Task URLs
+# 更新任务 URL
 
-> **Required plan:** Professional or Enterprise
+> **所需套餐：** 专业版或企业版
 
-## Endpoint
+## 端点
 
 ```
 POST https://openapi.octoparse.com/task/update-urls
 ```
 
-## Request Body
+## 请求体
 
-| Parameter | Type | Required | Description |
+| 参数 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `taskGroupId` | string | Yes | The task group ID |
-| `urls` | array | Yes | New list of target URLs |
+| `taskGroupId` | string | 是 | 任务组 ID |
+| `urls` | array | 是 | 新的目标 URL 列表 |
 
-See also: [Search Task](/en/api-reference/task/search-task), [Duplicate Task](/en/api-reference/task/duplicate-task)
+另请参阅：[搜索任务](/en/api-reference/task/search-task)、[复制任务](/en/api-reference/task/duplicate-task)

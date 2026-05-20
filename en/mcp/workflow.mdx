@@ -1,41 +1,41 @@
 ---
-title: Example MCP Workflow
-description: A complete example - from finding a template to exporting results.
+title: MCP 工作流程示例
+description: 完整示例 — 从查找模板到导出结果。
 ---
 
-# Example MCP Workflow
+# MCP 工作流程示例
 
-> A complete example - from finding a template to exporting results.
+> 完整示例 — 从查找模板到导出结果。
 
-This guide walks through a complete Octoparse MCP workflow from natural language to extracted data.
+本文档演示从自然语言到提取数据的完整 Octoparse MCP 工作流程。
 
-## Step 1: Discover a Template
+## 第一步：发现模板
 
-**Request:** *"Find me an Octoparse template for scraping Amazon product listings."*
+**请求：** *"帮我找一个采集 Amazon 商品列表的 Octoparse 模板。"*
 
-The agent calls `search_templates` to find relevant pre-built scraping templates.
+智能体调用 `search_templates` 来搜索相关的预置采集模板。
 
-## Step 2: Run the Task
+## 第二步：运行任务
 
-**Request:** *"Run the Amazon Best Sellers template."*
+**请求：** *"运行 Amazon 热销榜模板。"*
 
-The agent calls `execute_task` to run the job. The MCP server starts a cloud extraction using the selected template and returns results once complete.
+智能体调用 `execute_task` 来执行任务。MCP 服务端使用所选模板启动云端提取，完成后返回结果。
 
-## Step 3: Export the Results
+## 第三步：导出结果
 
-**Request:** *"Export the results as CSV."*
+**请求：** *"将结果导出为 CSV 格式。"*
 
-The agent calls `export_data` with format=csv to return the full dataset.
+智能体调用 `export_data`（指定 format=csv）返回完整数据集。
 
-## Available Tools Reference
+## 可用工具参考
 
-| Tool | What it does |
+| 工具 | 功能 |
 |---|---|
-| `search_templates` | Search pre-built scraping templates by keyword |
-| `search_tasks` | List and search your existing Octoparse tasks |
-| `start_or_stop_task` | Start or stop a cloud task by ID |
-| `execute_task` | Run a scraping template and retrieve results |
-| `export_data` | Export completed task data as JSON or CSV |
-| `redeem_coupon_code` | Redeem a promotional coupon code |
+| `search_templates` | 按关键词搜索预置采集模板 |
+| `search_tasks` | 列出并搜索你已有的 Octoparse 任务 |
+| `start_or_stop_task` | 通过 ID 启动或停止云端任务 |
+| `execute_task` | 运行采集模板并获取结果 |
+| `export_data` | 将已完成任务的数据导出为 JSON 或 CSV |
+| `redeem_coupon_code` | 兑换促销优惠码 |
 
-See also: [MCP Overview](/en/mcp/intro), [Rate Limits](/en/mcp/rate-limits)
+另请参阅：[MCP 概览](/en/mcp/intro)、[速率限制](/en/mcp/rate-limits)

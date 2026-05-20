@@ -1,34 +1,34 @@
 ---
-title: How to Scrape Google Maps
-description: How to extract local business listings from Google Maps.
+title: 如何采集 Google Maps 数据
+description: 如何从 Google Maps 提取本地商家信息。
 ---
 
-# How to Scrape Google Maps
+# 如何采集 Google Maps 数据
 
-> How to extract local business listings from Google Maps: search inputs, listing fields, place details, reviews, and lead enrichment.
+> 如何从 Google Maps 提取本地商家信息：搜索输入、列表字段、地点详情、评论及线索补全。
 
-## What to Collect
+## 采集内容
 
-| Data Type | Fields |
+| 数据类型 | 字段 |
 |---|---|
-| Business listings | Name, address, phone, website, category, rating, review count, hours |
-| Reviews | Rating, text, date, reviewer name |
+| 商家列表 | 名称、地址、电话、网站、类别、评分、评论数、营业时间 |
+| 评论 | 评分、正文、日期、评论者名称 |
 
-## Workflow
+## 工作流
 
 <Steps>
-  <Step title="Define search parameters">
-    Use keyword + location combinations: "dentists in Austin TX"
+  <Step title="定义搜索参数">
+    使用关键词+地点组合："Austin TX 牙医"
   </Step>
-  <Step title="Collect listing data">
-    Extract name, rating, review count, address, phone, website from search results.
+  <Step title="采集列表数据">
+    从搜索结果中提取名称、评分、评论数、地址、电话、网站。
   </Step>
-  <Step title="Handle map splitting">
-    For large areas, divide into smaller regions and scrape each separately.
+  <Step title="处理地图区域分割">
+    对于大面积区域，划分成更小的区域分别采集。
   </Step>
-  <Step title="Extract place details">
-    Use Place ID to get full address, website, photos, and reviews.
+  <Step title="提取地点详情">
+    使用 Place ID 获取完整地址、网站、图片和评论。
   </Step>
 </Steps>
 
-See also: [Lead Generation](/en/academy/lead-generation), [Browser Fingerprinting](/en/academy/browser-fingerprinting)
+另请参阅：[线索生成](/en/academy/lead-generation)、[浏览器指纹](/en/academy/browser-fingerprinting)

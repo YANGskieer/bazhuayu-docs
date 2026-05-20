@@ -1,37 +1,37 @@
 ---
-title: Cloud Web Scraping Explained
-description: Why web scrapers move to the cloud - unattended runs, subtask parallelism, scheduling, and infrastructure.
+title: 云端网页采集详解
+description: 为何网页采集器要迁移至云端 — 无人值守运行、子任务并行、定时调度及基础设施。
 ---
 
-# Cloud Web Scraping Explained
+# 云端网页采集详解
 
-> Why web scrapers move to the cloud: unattended runs, subtask parallelism, scheduling, and network infrastructure.
+> 为何网页采集器要迁移至云端：无人值守运行、子任务并行、定时调度及网络基础设施。
 
-## Local vs. Cloud Extraction
+## 本地 vs 云端提取
 
-| | Local | Cloud |
+| | 本地 | 云端 |
 |---|---|---|
-| **Runtime** | Your machine | Octoparse cloud servers |
-| **Availability** | Requires your computer on | 24/7 unattended |
-| **Scalability** | Limited by hardware | Parallel subtask runs |
-| **IP Management** | Your IP address | Rotating residential/datacenter IPs |
-| **Anti-Bot Handling** | Basic | Advanced proxy rotation |
-| **Scheduling** | Manual trigger | Built-in scheduling |
+| **运行环境** | 你的机器 | Octoparse 云端服务器 |
+| **可用性** | 需要你的电脑开机 | 7×24 无人值守 |
+| **可扩展性** | 受硬件限制 | 子任务并行运行 |
+| **IP 管理** | 你的 IP 地址 | 轮换住宅/数据中心 IP |
+| **反爬处理** | 基础 | 高级代理轮换 |
+| **定时调度** | 手动触发 | 内置定时调度 |
 
-## Why Move to the Cloud?
+## 为何迁移至云端？
 
-1. **Unattended Operation** - Schedule runs (hourly, daily, weekly) without your computer on
-2. **Subtask Parallelism** - Divide large jobs into parallel subtasks for faster extraction
-3. **Better Anti-Bot Evasion** - Rotating IP pools make scraping harder to detect
-4. **Resource Efficiency** - Your machine stays free while extraction runs remotely
-5. **Reliability and Monitoring** - Run history, error alerts, retry logic
+1. **无人值守运行** — 无需电脑开机即可定时运行（每小时、每天、每周）
+2. **子任务并行** — 将大型任务分为并行子任务，加速提取
+3. **更优的反爬规避** — 轮换 IP 池使采集更难被检测
+4. **资源释放** — 提取在远程运行时，你的机器保持空闲
+5. **可靠性与监控** — 运行历史、错误告警、重试逻辑
 
-## When to Use Cloud Extraction
+## 何时使用云端提取
 
-- Recurring data collection with scheduling
-- Large-scale extraction (thousands of pages)
-- Sites with strong anti-bot measures
-- Long-running tasks
-- Complex multi-step workflows
+- 需要定时调度的周期性数据采集
+- 大规模提取（数千页面）
+- 具有强力反爬措施的目标网站
+- 长时间运行的任务
+- 复杂的多步骤工作流
 
-See also: [Rotating Proxies](/en/academy/rotating-proxies), [Bypassing CAPTCHA and Cloudflare](/en/academy/captcha-and-cloudflare)
+另请参阅：[轮换代理](/en/academy/rotating-proxies)、[绕过 CAPTCHA 和 Cloudflare](/en/academy/captcha-and-cloudflare)

@@ -1,84 +1,84 @@
 ---
-title: MCP Troubleshooting
-description: Fixes for common connection, authorization, and task-related issues.
+title: MCP 故障排查
+description: 针对常见连接、授权及任务相关问题的修复方案。
 ---
 
-# MCP Troubleshooting
+# MCP 故障排查
 
-> Fixes for common connection, authorization, and task-related issues.
+> 针对常见连接、授权及任务相关问题的修复方案。
 
-## Connection Issues
+## 连接问题
 
-### MCP Server Unreachable
+### MCP 服务端无法访问
 
-**Symptom:** `ECONNREFUSED` or `ETIMEDOUT` when calling MCP tools.
+**症状：** 调用 MCP 工具时出现 `ECONNREFUSED` 或 `ETIMEDOUT`。
 
-**Fixes:**
-- Verify the server URL is correct: `https://mcp.octoparse.com`
-- Check your network connection and firewall rules
-- Ensure the MCP server is not experiencing an outage
+**修复方案：**
+- 确认服务器地址正确：`https://mcp.octoparse.com`
+- 检查你的网络连接和防火墙规则
+- 确认 MCP 服务端未发生故障
 
-### Slow Response Times
+### 响应时间过慢
 
-**Symptom:** Tools take more than 30 seconds to return.
+**症状：** 工具调用超过 30 秒才返回。
 
-**Fixes:**
-- Large task extractions take time; increase timeout settings
-- Check your network latency to the MCP server
-- Consider breaking large extraction jobs into smaller batches
+**修复方案：**
+- 大批量任务提取需要时间；适当增加超时设置
+- 检查你到 MCP 服务端的网络延迟
+- 考虑将大型提取任务拆分为更小的批次
 
-## Authorization Issues
+## 授权问题
 
-### Invalid API Key
+### API Key 无效
 
-**Symptom:** `401 Unauthorized` or `403 Forbidden` response.
+**症状：** `401 Unauthorized` 或 `403 Forbidden` 响应。
 
-**Fixes:**
-- Verify your API key is correct and active
-- Regenerate the key from [Octoparse Account Center](https://www.octoparse.com/console/account-center/api-keys)
-- Ensure the key has not expired
+**修复方案：**
+- 确认你的 API Key 正确且处于激活状态
+- 在 [Octoparse 账户中心](https://www.octoparse.com/console/account-center/api-keys) 重新生成 Key
+- 确认 Key 未过期
 
-### OAuth Not Connected
+### OAuth 未连接
 
-**Symptom:** OAuth-based authentication prompts fail or loop.
+**症状：** OAuth 认证提示失败或循环。
 
-**Fixes:**
-- Ensure you are signed into the correct Octoparse account
-- Clear browser cookies and re-authorize
-- Try using API key authentication instead for headless environments
+**修复方案：**
+- 确认你已登录正确的 Octoparse 账户
+- 清除浏览器 Cookie 后重新授权
+- 在无头环境下尝试使用 API Key 认证替代
 
-## Task Execution Issues
+## 任务执行问题
 
-### Task Not Found
+### 任务未找到
 
-**Symptom:** `Task not found` when calling `start_or_stop_task`.
+**症状：** 调用 `start_or_stop_task` 时返回 `Task not found`。
 
-**Fixes:**
-- Verify the task ID is correct
-- Ensure the task exists in your Octoparse account
-- Check that the task is set up for cloud extraction (not local-only)
+**修复方案：**
+- 确认任务 ID 正确
+- 确认该任务存在于你的 Octoparse 账户中
+- 检查任务是否设置为云端提取（而非仅本地）
 
-### No Data Returned
+### 无数据返回
 
-**Symptom:** `execute_task` completes but returns empty data.
+**症状：** `execute_task` 完成但返回空数据。
 
-**Fixes:**
-- The task may still be running; wait and retry
-- Check that the task has completed successfully in the Octoparse dashboard
-- Verify the target website is accessible from Octoparse cloud servers
+**修复方案：**
+- 任务可能仍在运行中；稍等后重试
+- 在 Octoparse 控制面板中确认任务已成功完成
+- 确认目标网站可从 Octoparse 云端服务器访问
 
-### Export Format Not Supported
+### 导出格式不支持
 
-**Symptom:** Error when calling `export_data` with a specific format.
+**症状：** 调用 `export_data` 指定特定格式时出错。
 
-**Fixes:**
-- Supported formats are `json` and `csv`
-- Verify the format parameter is lowercase
-- Ensure the task has data to export before calling export
+**修复方案：**
+- 支持的格式为 `json` 和 `csv`
+- 确认格式参数为小写
+- 在调用导出前确认任务有数据可供导出
 
-## Getting Help
+## 获取帮助
 
-If the issue persists, contact [Octoparse support](mailto:support@octoparse.com) with:
-- The MCP tool name that failed
-- The full error message and request ID
-- Your Octoparse account email
+如果问题持续存在，请联系 [Octoparse 支持团队](mailto:support@octoparse.com)，并提供：
+- 失败的 MCP 工具名称
+- 完整的错误信息和请求 ID
+- 你的 Octoparse 账户邮箱

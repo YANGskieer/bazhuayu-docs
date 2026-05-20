@@ -1,46 +1,46 @@
 ---
 title: Octoparse CLI
-description: Command-line interface for managing Octoparse workflows from developer environments.
+description: 命令行界面，用于在开发环境中管理 Octoparse 工作流。
 ---
 
 # Octoparse CLI
 
-> Command-line interface for managing Octoparse workflows from developer environments.
+> 命令行界面，用于在开发环境中管理 Octoparse 工作流。
 
-## Installation
+## 安装
 
 ```bash
 npm install -g @octoparse/cli
 ```
 
-## Authentication
+## 认证
 
 ```bash
 octoparse auth login --api-key YOUR_API_KEY
 ```
 
-Get your API key at [Octoparse Account Center](https://www.octoparse.com/console/account-center/api-keys).
+在 [Octoparse 账户中心](https://www.octoparse.com/console/account-center/api-keys) 获取你的 API Key。
 
-## Common Commands
+## 常用命令
 
-| Command | Description |
+| 命令 | 说明 |
 |---|---|
-| `octoparse tasks list` | List all your tasks |
-| `octoparse tasks search <query>` | Search tasks by name |
-| `octoparse run <task-id>` | Start a cloud extraction |
-| `octoparse status <run-id>` | Check extraction status |
-| `octoparse export <run-id>` | Export data from a completed run |
-| `octoparse templates search <query>` | Search template gallery |
+| `octoparse tasks list` | 列出所有任务 |
+| `octoparse tasks search <query>` | 按名称搜索任务 |
+| `octoparse run <task-id>` | 启动云端提取 |
+| `octoparse status <run-id>` | 查看提取状态 |
+| `octoparse export <run-id>` | 从已完成的运行中导出数据 |
+| `octoparse templates search <query>` | 搜索模板库 |
 
-## Examples
+## 示例
 
 ```bash
-# Search for a template
+# 搜索模板
 octoparse templates search amazon
 
-# Run a task and wait for results
+# 运行任务并等待结果
 octoparse run TASK_ID --wait
 
-# Export data as JSON
+# 以 JSON 格式导出数据
 octoparse export RUN_ID --format json --output ./data.json
 ```

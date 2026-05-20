@@ -1,50 +1,50 @@
 ---
-title: Browser Fingerprinting
-description: How anti-bot systems identify scrapers by canvas, WebGL, fonts, and other browser signals.
+title: 浏览器指纹
+description: 反爬系统如何通过 Canvas、WebGL、字体等浏览器信号识别爬虫。
 ---
 
-# Browser Fingerprinting
+# 浏览器指纹
 
-> Anti-bot systems identify scrapers by the combined signature of canvas, WebGL, fonts, UA, and dozens of other signals.
+> 反爬系统通过 Canvas、WebGL、字体、UA 及数十种其他信号的组合签名来识别爬虫。
 
-Every browser session leaks an identifying signature - a combination of user-agent, canvas drawing output, WebGL renderer string, font list, screen resolution, timezone, language headers, and more. Modern anti-bot systems combine these signals into a **browser fingerprint** that identifies a session more reliably than an IP address.
+每个浏览器会话都会泄露一个识别签名 — User-Agent、Canvas 绘制输出、WebGL 渲染器字符串、字体列表、屏幕分辨率、时区、语言头部等信息的组合。现代反爬系统将这些信号合并为一个**浏览器指纹**，其识别会话的可靠性远超 IP 地址。
 
-The fingerprint layer sits underneath behavior: it is what the session *is*, not what it does. A scraper has to pass both layers to stay invisible to a serious anti-bot system.
+指纹层位于行为之下：它描述的是会话"是什么"，而不是"做什么"。爬虫必须通过这两层才能在严格的反爬系统面前保持隐身。
 
-## What Signals Get Tracked
+## 追踪哪些信号
 
-- **User-agent and accept headers** - HeadlessChrome in the UA is a giveaway
-- **Canvas fingerprint** - Hidden canvas rendering output produces a per-machine hash
-- **WebGL fingerprint** - Renderer string, vendor string, supported extensions
-- **Font list** - Which fonts the browser can render, in what order
-- **Screen and viewport** - Resolution, color depth, device pixel ratio
-- **Timezone and language** - From Intl.DateTimeFormat and navigator.languages
-- **Audio context** - Audio rendering produces device-specific output
-- **navigator.webdriver** - The dead giveaway for unmanaged automation
+- **User-Agent 和 Accept 头部** — UA 中出现 HeadlessChrome 是一个明显的暴露标志
+- **Canvas 指纹** — 隐藏的 Canvas 渲染输出为每台机器生成唯一的哈希值
+- **WebGL 指纹** — 渲染器字符串、供应商字符串、支持的扩展
+- **字体列表** — 浏览器可渲染的字体及其顺序
+- **屏幕与视口** — 分辨率、色彩深度、设备像素比
+- **时区与语言** — 来自 Intl.DateTimeFormat 和 navigator.languages
+- **音频上下文** — 音频渲染产生设备特定的输出
+- **navigator.webdriver** — 未管理的自动化操作的致命暴露点
 
-## Why Scrapers Leak Fingerprints
+## 为何爬虫会泄露指纹
 
-Three failure modes dominate:
+三种主要失败模式：
 
-1. **Repeating the same default identity** - A vanilla Puppeteer instance running 10,000 sessions presents the same canvas hash, same WebGL string - 10,000 "different users" with one machine's fingerprint
-2. **Generic values that no real user produces** - Blank navigator.plugins, bit-exact standard Linux/Chrome canvas output
-3. **Mismatch between signals** - en-US and America/New_York paired with a Russian IP
+1. **重复使用相同默认身份** — 一个原生 Puppeteer 实例运行 10,000 个会话，呈现相同的 Canvas 哈希、相同的 WebGL 字符串 — 10,000 个"不同用户"却共享一台机器的指纹
+2. **使用真实用户不会产生的通用值** — 空的 navigator.plugins、精确匹配的标准 Linux/Chrome Canvas 输出
+3. **信号不匹配** — en-US 和 America/New_York 却搭配俄罗斯 IP
 
-## Managing the Fingerprint
+## 管理指纹
 
 <Steps>
-  <Step title="Per-session uniqueness">
-    Each task instance should present a distinct fingerprint - different canvas hash, different WebGL renderer.
+  <Step title="每会话唯一性">
+    每个任务实例应呈现不同的指纹 — 不同的 Canvas 哈希、不同的 WebGL 渲染器。
   </Step>
-  <Step title="Within-session consistency">
-    Inside one session the fingerprint has to stay stable; switching mid-session is itself a tell.
+  <Step title="会话内一致性">
+    在一个会话中，指纹必须保持稳定；中途切换本身就是暴露信号。
   </Step>
-  <Step title="Geographic coherence">
-    A fingerprint's timezone, language, and headers should match the proxy IP's geography.
+  <Step title="地理一致性">
+    指纹的时区、语言和头部应与代理 IP 的地理位置匹配。
   </Step>
-  <Step title="Realistic, not random">
-    Fingerprints assembled from purely random values are anomalous. Draw from distributions of real-world fingerprints.
+  <Step title="真实而非随机">
+    由纯粹随机值拼凑的指纹是异常的。应从真实世界指纹的分布中采样。
   </Step>
 </Steps>
 
-See also: [Rotating Proxies](/en/academy/rotating-proxies), [Human-like Scraping](/en/academy/human-like-scraping)
+另请参阅：[轮换代理](/en/academy/rotating-proxies)、[类人化采集](/en/academy/human-like-scraping)

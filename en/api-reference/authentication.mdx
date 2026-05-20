@@ -1,15 +1,15 @@
 ---
-title: Authentication
-description: How to authenticate with the Octoparse OpenAPI.
+title: 认证
+description: 如何在 Octoparse OpenAPI 中进行认证。
 ---
 
-# Authentication
+# 认证
 
-All Octoparse API requests require authentication using an access token.
+所有 Octoparse API 请求均需使用 Access Token 进行认证。
 
-## Getting a Token
+## 获取 Token
 
-### Step 1: Obtain an Access Token
+### 第一步：获取 Access Token
 
 ```bash
 curl -X POST https://openapi.octoparse.com/token \
@@ -17,15 +17,15 @@ curl -X POST https://openapi.octoparse.com/token \
   -d "{\"username\": \"YOUR_EMAIL\", \"password\": \"YOUR_PASSWORD\"}"
 ```
 
-### Step 2: Include the Token in API Requests
+### 第二步：在 API 请求中携带 Token
 
 ```
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
-## Token Refresh
+## Token 刷新
 
-Access tokens expire. Use your refresh token to get a new one:
+Access Token 会过期。使用 Refresh Token 获取新的：
 
 ```bash
 curl -X POST https://openapi.octoparse.com/token/refresh \
@@ -33,10 +33,10 @@ curl -X POST https://openapi.octoparse.com/token/refresh \
   -d "{\"refresh_token\": \"YOUR_REFRESH_TOKEN\"}"
 ```
 
-## Important Notes
+## 重要提示
 
-- Never hardcode credentials in your code. Use environment variables or a secrets manager.
-- Access tokens are tied to your account. Do not share them.
-- If you suspect your token has been compromised, reset it from your Octoparse account settings.
+- 切勿将凭据硬编码在代码中。请使用环境变量或密钥管理器。
+- Access Token 与你的账户绑定，请勿分享。
+- 如怀疑 Token 已被泄露，请从 Octoparse 账户设置中重置。
 
-See also: [Obtain a New Token](/en/api-reference/access-token/obtain-a-new-token), [Refresh Token](/en/api-reference/access-token/refresh-token)
+另请参阅：[获取新 Token](/en/api-reference/access-token/obtain-a-new-token)、[刷新 Token](/en/api-reference/access-token/refresh-token)

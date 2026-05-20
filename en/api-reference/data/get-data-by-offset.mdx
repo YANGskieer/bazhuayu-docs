@@ -1,28 +1,28 @@
 ---
-title: Get Data by Offset
-description: Retrieve extracted data with pagination using offset.
+title: 按偏移量获取数据
+description: 使用偏移量分页检索提取的数据。
 ---
 
-# Get Data by Offset
+# 按偏移量获取数据
 
-> **Required plan:** Standard, Professional, or Enterprise
+> **所需套餐：** 标准版、专业版或企业版
 
-## Endpoint
+## 端点
 
 ```
 GET https://openapi.octoparse.com/data/get-data-by-offset
 ```
 
-## Parameters
+## 参数
 
-| Parameter | Type | Required | Description |
+| 参数 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `taskGroupId` | string | Yes | The task group ID |
-| `offset` | number | Yes | Number of records to skip |
-| `limit` | number | No | Max records to return (default: 100, max: 1000) |
+| `taskGroupId` | string | 是 | 任务组 ID |
+| `offset` | number | 是 | 跳过的记录数 |
+| `limit` | number | 否 | 最大返回记录数（默认：100，最大：1000） |
 
-## Response
+## 响应
 
-Returns an array of extracted records with pagination metadata.
+返回提取的记录数组，附带分页元数据。
 
-See also: [Get Non-Exported Data](/en/api-reference/data/get-non-exported-data), [Mark Data as Exported](/en/api-reference/data/mark-data-as-exported)
+另请参阅：[获取未导出数据](/en/api-reference/data/get-non-exported-data)、[标记数据为已导出](/en/api-reference/data/mark-data-as-exported)

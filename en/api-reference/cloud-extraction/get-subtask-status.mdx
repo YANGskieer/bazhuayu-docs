@@ -1,33 +1,33 @@
 ---
-title: Get Subtask Status
-description: Check the status of a specific subtask within a cloud extraction run.
+title: 获取子任务状态
+description: 查看云端提取运行中特定子任务的状态。
 ---
 
-# Get Subtask Status
+# 获取子任务状态
 
-> **Required plan:** Professional or Enterprise
+> **所需套餐：** 专业版或企业版
 
-## Endpoint
+## 端点
 
 ```
 GET https://openapi.octoparse.com/cloud-extraction/subtask-status
 ```
 
-## Parameters
+## 参数
 
-| Parameter | Type | Required | Description |
+| 参数 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `taskGroupId` | string | Yes | The task group ID |
-| `subtaskId` | string | Yes | The subtask ID |
+| `taskGroupId` | string | 是 | 任务组 ID |
+| `subtaskId` | string | 是 | 子任务 ID |
 
-## Response
+## 响应
 
-| Field | Type | Description |
+| 字段 | 类型 | 说明 |
 |---|---|---|
-| `subtaskId` | string | The subtask ID |
+| `subtaskId` | string | 子任务 ID |
 | `status` | string | pending / running / completed / failed |
-| `progress` | number | Progress percentage (0-100) |
-| `recordsExtracted` | number | Number of records extracted so far |
-| `errorMessage` | string | Error message if failed |
+| `progress` | number | 进度百分比（0-100） |
+| `recordsExtracted` | number | 目前已提取的记录数 |
+| `errorMessage` | string | 失败时的错误信息 |
 
-See also: [Start Task](/en/api-reference/cloud-extraction/start-task), [Get Task Status](/en/api-reference/cloud-extraction/get-task-status)
+另请参阅：[启动任务](/en/api-reference/cloud-extraction/start-task)、[获取任务状态](/en/api-reference/cloud-extraction/get-task-status)

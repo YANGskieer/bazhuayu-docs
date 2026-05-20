@@ -1,33 +1,33 @@
 ---
-title: Get Task Status
-description: Check the status of a cloud extraction task.
+title: 获取任务状态
+description: 查看云端提取任务的状态。
 ---
 
-# Get Task Status
+# 获取任务状态
 
-> **Required plan:** Professional or Enterprise
+> **所需套餐：** 专业版或企业版
 
-## Endpoint
+## 端点
 
 ```
 GET https://openapi.octoparse.com/cloud-extraction/task-status
 ```
 
-## Parameters
+## 参数
 
-| Parameter | Type | Required | Description |
+| 参数 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `taskGroupId` | string | Yes | The task group ID |
+| `taskGroupId` | string | 是 | 任务组 ID |
 
-## Response
+## 响应
 
-| Field | Type | Description |
+| 字段 | 类型 | 说明 |
 |---|---|---|
-| `taskGroupId` | string | The task group ID |
+| `taskGroupId` | string | 任务组 ID |
 | `status` | string | pending / running / completed / failed |
-| `totalSubtasks` | number | Total number of subtasks |
-| `completedSubtasks` | number | Number of completed subtasks |
-| `failedSubtasks` | number | Number of failed subtasks |
-| `recordsExtracted` | number | Total records extracted |
+| `totalSubtasks` | number | 子任务总数 |
+| `completedSubtasks` | number | 已完成的子任务数 |
+| `failedSubtasks` | number | 失败的子任务数 |
+| `recordsExtracted` | number | 已提取的总记录数 |
 
-See also: [Start Task](/en/api-reference/cloud-extraction/start-task)
+另请参阅：[启动任务](/en/api-reference/cloud-extraction/start-task)

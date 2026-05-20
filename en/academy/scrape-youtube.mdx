@@ -1,50 +1,50 @@
 ---
-title: How to Scrape YouTube
-description: How to extract video metadata, channel data, comments, and search results from YouTube.
+title: 如何采集 YouTube 数据
+description: 如何从 YouTube 提取视频元数据、频道数据、评论和搜索结果。
 ---
 
-# How to Scrape YouTube
+# 如何采集 YouTube 数据
 
-> How to extract video metadata, channel data, comments, and search results from YouTube for competitor analysis, content research, and market intelligence.
+> 如何从 YouTube 提取视频元数据、频道数据、评论和搜索结果，用于竞品分析、内容研究和市场情报。
 
-## What to Collect
+## 采集内容
 
-| Data Type | Fields |
+| 数据类型 | 字段 |
 |---|---|
-| Video metadata | Title, description, view count, like count, published date, duration |
-| Channel data | Channel name, subscriber count, total views, video count |
-| Search results | Video titles, channels, view counts, published dates |
-| Comments | Comment text, author, date, likes, replies |
+| 视频元数据 | 标题、描述、观看数、点赞数、发布日期、时长 |
+| 频道数据 | 频道名称、订阅数、总观看数、视频数 |
+| 搜索结果 | 视频标题、频道、观看数、发布日期 |
+| 评论 | 评论文本、作者、日期、点赞数、回复数 |
 
-## Workflow
+## 工作流
 
 <Steps>
-  <Step title="Start from search or channel pages">
-    Collect video listings from search results or specific channels.
+  <Step title="从搜索或频道页面开始">
+    从搜索结果或指定频道采集视频列表。
   </Step>
-  <Step title="Extract metadata">
-    Gather title, view count, like count, description, and published date.
+  <Step title="提取元数据">
+    收集标题、观看数、点赞数、描述和发布日期。
   </Step>
-  <Step title="Visit video pages for comments">
-    Extract comments and additional metadata from video detail pages.
+  <Step title="访问视频页面获取评论">
+    从视频详情页提取评论和更多元数据。
   </Step>
-  <Step title="Handle pagination">
-    Collect all relevant results across search or channel pages.
+  <Step title="处理翻页">
+    采集搜索或频道页面中所有相关结果。
   </Step>
 </Steps>
 
-## Technical Notes
+## 技术注意事项
 
-- YouTube uses heavy JavaScript rendering; a real browser improves reliability.
-- YouTube Data API v3 is the official, compliant way to access YouTube data.
-- API has quota limits; plan your data collection accordingly.
-- Comment scraping via API requires special permissions.
+- YouTube 使用重度 JavaScript 渲染；真实浏览器可提高可靠性。
+- YouTube Data API v3 是访问 YouTube 数据的官方合规方式。
+- API 有配额限制；相应规划数据采集。
+- 通过 API 采集评论需要特殊权限。
 
-## Common Use Cases
+## 常见应用场景
 
-- **Content research** - Understand what videos perform well in a category
-- **Competitor monitoring** - Track competitor channel performance
-- **Sentiment analysis** - Analyze comment sections for brand perception
-- **SEO research** - Identify popular topics and search patterns
+- **内容研究** — 了解某个品类中哪些视频表现良好
+- **竞品监控** — 追踪竞品频道表现
+- **情感分析** — 分析评论区中的品牌印象
+- **SEO 研究** — 识别热门话题和搜索模式
 
-See also: [Social Media Data Mining](/en/academy/social-media-data), [Refining Data with Regex](/en/academy/refining-data-with-regex)
+另请参阅：[社交媒体数据挖掘](/en/academy/social-media-data)、[使用正则表达式精炼数据](/en/academy/refining-data-with-regex)

@@ -1,52 +1,52 @@
 ---
-title: Human-Like Scraping
-description: The behavioral tells that mark a scraper as a bot and how to remove them.
+title: 类人化采集
+description: 标记爬虫为机器人的行为特征以及如何消除它们。
 ---
 
-# Human-Like Scraping
+# 类人化采集
 
-> Even a clean fingerprint gets a scraper flagged if the mouse moves in straight lines. The behavioral tells that mark a scraper as a bot, and how to remove them.
+> 即使指纹干净，如果鼠标沿直线移动，爬虫也会被标记。深入了解哪些行为特征会暴露爬虫，以及如何消除它们。
 
-A scraper that runs in a real headed browser with a managed fingerprint has handled the "what does this session look like" layer. But modern anti-bot systems also watch what the visitor does once inside: how the mouse moves, where it clicks, how fast it types, whether it scrolls before reading.
+在一个具有受控指纹的真实有头浏览器中运行的爬虫已经解决了"这个会话看起来像什么"这一层问题。但现代反爬系统还会观察访客进入后的行为：鼠标如何移动、点击什么位置、输入速度多快、是否在阅读前滚动页面。
 
-## What Machines Do That Humans Dont
+## 机器与人的行为差异
 
-- **Mouse moves in straight lines** - Real cursors curve, jitter, overshoot, and correct. Bots typically interpolate a straight path.
-- **Clicks land on exact center pixels** - Humans aim at a button, they do not hit dead-center every time.
-- **Timing is constant** - sleep(2) between every action looks like exactly what it is. Real users vary.
-- **No scrolling, no dwell** - A bot fetches what it needs and leaves. A human scrolls, hesitates, sometimes scrolls back.
-- **Navigation is too efficient** - A bot follows the shortest path. A human wanders.
+- **鼠标沿直线移动** — 真实的光标会弯曲、抖动、超出目标后修正。爬虫通常插值出一条直线路径
+- **点击落在精确的中心像素** — 人类瞄着按钮点，并不是每次都命中正中心
+- **时间间隔恒定** — 每次操作间 sleep(2) 看起来正是如此，真实用户会有变化
+- **没有滚动、没有停留** — 爬虫获取所需数据后立即离开。人类会滚动、犹豫，有时还会滚回去
+- **导航过于高效** — 爬虫走最短路径。人类会四处逛逛
 
-## Designing Human-Like Behavior
+## 设计类人化行为
 
 <Steps>
-  <Step title="Mouse trajectories">
-    Replace linear moveTo calls with Bezier or noise-perturbed paths that arc, jitter, and occasionally overshoot.
+  <Step title="鼠标轨迹">
+    用贝塞尔曲线或加入噪声扰动的路径替换线性 moveTo 调用，使其有弧度、抖动，偶尔超出再修正。
   </Step>
-  <Step title="Click offset">
-    Click slightly off-center within the target element bounding box.
+  <Step title="点击偏移">
+    在目标元素边界框内略微偏离中心的位置点击。
   </Step>
-  <Step title="Timing distributions">
-    Replace constant sleeps with samples from a distribution (log-normal works well) so action intervals look organic.
+  <Step title="时间分布">
+    用从分布中采样代替固定等待时间（对数正态分布效果良好），使操作间隔看起来自然的。
   </Step>
-  <Step title="Scroll and dwell">
-    Insert scroll events with pauses; let some time pass on a page even when the data you want is already in the DOM.
+  <Step title="滚动与停留">
+    插入带停顿的滚动事件；即使需要的数据已在 DOM 中，也让页面停留一些时间。
   </Step>
-  <Step title="Imperfect navigation">
-    Occasionally click a non-target link, then back-navigate; visit a few peer pages before the one you came for.
+  <Step title="不完美导航">
+    偶尔点击一个非目标链接然后返回；在目标页面之前浏览几个同级页面。
   </Step>
 </Steps>
 
-## When It Matters, When It Doesnt
+## 何时重要，何时不重要
 
-| Site Defense Level | Approach |
+| 网站防护级别 | 策略 |
 |---|---|
-| Light (static sites) | Skip it. A clean headed browser is enough. |
-| Medium (rate limiting + basic detection) | Do timing distributions, scroll, mouse curves. |
-| Heavy (Cloudflare, DataDome, Akamai) | Required. Without realistic behavior you are paying for rendering and still getting blocked. |
+| 轻度（静态网站） | 跳过。干净的有头浏览器即可。 |
+| 中度（速率限制+基础检测） | 使用时间分布、滚动、鼠标曲线。 |
+| 重度（Cloudflare、DataDome、Akamai） | 必需。没有真实行为则耗尽渲染资源仍遭封禁。 |
 
 <Note>
-  Octoparse simulates curved mouse trajectories, randomized click offsets, and varied timing automatically.
+  Octoparse 自动模拟曲线鼠标轨迹、随机点击偏移和变化的时间间隔。
 </Note>
 
-See also: [Browser Fingerprinting](/en/academy/browser-fingerprinting), [Bypassing CAPTCHA and Cloudflare](/en/academy/captcha-and-cloudflare)
+另请参阅：[浏览器指纹](/en/academy/browser-fingerprinting)、[绕过 CAPTCHA 和 Cloudflare](/en/academy/captcha-and-cloudflare)

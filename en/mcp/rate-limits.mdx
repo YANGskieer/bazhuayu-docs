@@ -1,27 +1,27 @@
 ---
-title: MCP Rate Limits
-description: Understand Octoparse MCP request limits and how to handle retry logic.
+title: MCP 速率限制
+description: 了解 Octoparse MCP 请求限制及如何处理重试逻辑。
 ---
 
-# MCP Rate Limits
+# MCP 速率限制
 
-> Understand request limits and how to handle retry logic with response headers.
+> 了解请求限制及如何利用响应头部处理重试逻辑。
 
-## Rate Limits
+## 速率限制
 
-The Octoparse MCP server has the following limits:
+Octoparse MCP 服务端具有以下限制：
 
-- **Template searches:** Limited by overall MCP request quota
-- **Task executions:** Depends on your Octoparse account plan
-- **Data exports:** Limited by plan and concurrent export limits
+- **模板搜索：** 受整体 MCP 请求配额限制
+- **任务执行：** 取决于你的 Octoparse 账户套餐
+- **数据导出：** 受套餐及并发导出数量限制
 
 <Note>
-  Free and Basic users receive 2,000 free records per week for MCP extraction.
+  免费和基础版用户每周通过 MCP 提取可获得 2,000 条免费记录。
 </Note>
 
-## Retry Logic
+## 重试逻辑
 
-When a request fails due to rate limiting, the MCP server returns a `429 Too Many Requests` response. Implement exponential backoff:
+当请求因速率限制失败时，MCP 服务端返回 `429 Too Many Requests` 响应。请实现指数退避重试：
 
 ```javascript
 async function callWithRetry(fn, maxRetries = 3) {
@@ -40,11 +40,11 @@ async function callWithRetry(fn, maxRetries = 3) {
 }
 ```
 
-## Best Practices
+## 最佳实践
 
-- **Batch when possible** - Combine multiple operations into fewer requests
-- **Cache template results** - `search_templates` results rarely change; cache them
-- **Use webhooks for long tasks** - For large extractions, use the async pattern and poll
-- **Monitor your usage** - Track records extracted per week to stay within limits
+- **尽量批量操作** — 将多个操作合并为更少的请求
+- **缓存模板结果** — `search_templates` 的结果很少变化，可以缓存
+- **长任务使用 Webhook** — 对于大批量提取，使用异步模式并轮询
+- **监控用量** — 追踪每周提取的记录数，保持在限制范围内
 
-See also: [MCP Overview](/en/mcp/intro), [Troubleshooting](/en/mcp/troubleshooting)
+另请参阅：[MCP 概览](/en/mcp/intro)、[故障排查](/en/mcp/troubleshooting)

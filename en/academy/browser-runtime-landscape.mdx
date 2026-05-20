@@ -1,42 +1,42 @@
 ---
-title: The Browser Runtime Landscape
-description: A field guide to the browser runtimes used for scraping.
+title: 浏览器运行时全景图
+description: 用于网页采集的浏览器运行时实地指南。
 ---
 
-# The Browser Runtime Landscape
+# 浏览器运行时全景图
 
-> A field guide to the browser runtimes used for scraping: Puppeteer, Playwright, Selenium, cloud APIs, and Octoparse.
+> 用于网页采集的浏览器运行时实地指南：Puppeteer、Playwright、Selenium、云端 API 及 Octoparse。
 
-## Browser Automation Runtimes
+## 浏览器自动化运行时
 
 ### Puppeteer
-Googles official Node.js library for Chrome/Chromium control.
-- **Best for:** Chrome-specific automation
-- **Pros:** Excellent Chrome support, active development
-- **Cons:** Chrome only
+Google 官方的 Chrome/Chromium 控制 Node.js 库。
+- **最适合：** Chrome 专属自动化
+- **优点：** 出色的 Chrome 支持，活跃开发
+- **缺点：** 仅限 Chrome
 
 ### Playwright
-Microsoft cross-browser automation library (Chrome, Firefox, WebKit).
-- **Best for:** Cross-browser testing, modern scraping needs
-- **Pros:** Multi-browser, auto-wait mechanisms
-- **Cons:** Larger footprint for single-browser use
+Microsoft 的跨浏览器自动化库（Chrome、Firefox、WebKit）。
+- **最适合：** 跨浏览器测试、现代采集需求
+- **优点：** 多浏览器支持，自动等待机制
+- **缺点：** 单浏览器使用时体积较大
 
 ### Selenium
-The oldest and most widely-used browser automation framework.
-- **Best for:** Legacy projects, Java-heavy environments
-- **Pros:** Language-agnostic, huge community
-- **Cons:** Slower, more complex setup
+最古老且使用最广泛的浏览器自动化框架。
+- **最适合：** 遗留项目、Java 为主的环境
+- **优点：** 语言无关，庞大社区
+- **缺点：** 较慢，设置更复杂
 
-### Cloud Scraping APIs
-Bright Data, ScraperAPI, Oxylabs provide browser-based scraping through an API.
-- **Best for:** Avoiding infrastructure management
-- **Pros:** No infra to manage, built-in proxy rotation
-- **Cons:** Per-request cost
+### 云端采集 API
+Bright Data、ScraperAPI、Oxylabs 通过 API 提供基于浏览器的采集。
+- **最适合：** 避免基础设施管理
+- **优点：** 无需管理基础设施，内置代理轮换
+- **缺点：** 按请求计费
 
-| Factor | Puppeteer | Playwright | Selenium | Cloud API | Octoparse |
+| 维度 | Puppeteer | Playwright | Selenium | 云端 API | Octoparse |
 |---|---|---|---|---|---|
-| Coding required | Yes | Yes | Yes | Minimal | No |
-| Anti-bot resilience | Medium | Medium | Medium | High | High |
-| Cost | Free | Free | Free | Per-request | Subscription |
+| 需要编码 | 是 | 是 | 是 | 最低 | 否 |
+| 反爬适应力 | 中 | 中 | 中 | 高 | 高 |
+| 成本 | 免费 | 免费 | 免费 | 按请求 | 订阅制 |
 
-See also: [Headed vs Headless Browsers](/en/academy/headed-vs-headless), [Browser Fingerprinting](/en/academy/browser-fingerprinting)
+另请参阅：[有头浏览器 vs 无头浏览器](/en/academy/headed-vs-headless)、[浏览器指纹](/en/academy/browser-fingerprinting)

@@ -1,60 +1,60 @@
 ---
 title: Octoparse OpenAPI
-description: Octoparse OpenAPI reference for authentication, task management, cloud extraction, and data export.
+description: Octoparse OpenAPI 参考 — 涵盖认证、任务管理、云端提取及数据导出。
 ---
 
 # Octoparse OpenAPI
 
-> Octoparse OpenAPI reference for authentication, task management, cloud extraction, and data export.
+> Octoparse OpenAPI 参考 — 涵盖认证、任务管理、云端提取及数据导出。
 
-Use the Octoparse OpenAPI to manage tasks, run cloud extractions, and retrieve scraped data programmatically.
+使用 Octoparse OpenAPI 以编程方式管理任务、运行云端提取并获取采集数据。
 
-## Before You Start
+## 开始之前
 
-Requires a **Standard, Professional, or Enterprise** account with at least one working task.
+需要一个**标准版、专业版或企业版**账户，且账户中至少有一个可运行的任务。
 
-## Base URL
+## 基础 URL
 
 ```
 https://openapi.octoparse.com
 ```
 
-## Rate Limits
+## 速率限制
 
-**20 requests per second**. If you receive a `429` status code, slow your request rate.
+**每秒 20 个请求**。如果收到 `429` 状态码，请降低请求频率。
 
-## Authentication
+## 认证
 
-- [Obtain a New Token](/en/api-reference/access-token/obtain-a-new-token) - All users
-- [Refresh Token](/en/api-reference/access-token/refresh-token) - All users
+- [获取新 Token](/en/api-reference/access-token/obtain-a-new-token) — 所有用户
+- [刷新 Token](/en/api-reference/access-token/refresh-token) — 所有用户
 
-## API Endpoints
+## API 端点
 
-### Cloud Extraction (Professional+)
-| Endpoint | Description |
+### 云端提取（专业版及以上）
+| 端点 | 说明 |
 |---|---|
-| Start Task | Trigger cloud extraction |
-| Stop Task | Cancel running extraction |
-| Get Task Status | Check extraction progress |
-| Get Task Status V2 | Improved progress tracking |
-| Start/Stop Subtasks | Manage batch sub-tasks |
+| 启动任务 | 触发云端提取 |
+| 停止任务 | 取消正在运行的提取 |
+| 获取任务状态 | 查看提取进度 |
+| 获取任务状态 V2 | 改进版进度追踪 |
+| 启动/停止子任务 | 管理批量子任务 |
 
-### Task Management (Standard+)
-| Endpoint | Description |
+### 任务管理（标准版及以上）
+| 端点 | 说明 |
 |---|---|
-| Search Task | Find tasks by criteria |
-| Duplicate Task | Clone an existing task |
-| Move Task | Relocate a task |
-| Update Task Parameters | Modify task settings |
+| 搜索任务 | 按条件查找任务 |
+| 复制任务 | 克隆已有任务 |
+| 移动任务 | 迁移任务位置 |
+| 更新任务参数 | 修改任务设置 |
 
-### Data Export (Standard+)
-| Endpoint | Description |
+### 数据导出（标准版及以上）
+| 端点 | 说明 |
 |---|---|
-| Get Non-Exported Data | Retrieve unexported records |
-| Get Data by Offset | Paginated data retrieval |
-| Mark Data as Exported | Flag records as exported |
-| Remove Data | Delete scraped records |
+| 获取未导出数据 | 检索未导出的记录 |
+| 按偏移量获取数据 | 分页数据检索 |
+| 标记数据为已导出 | 将记录标记为已导出 |
+| 删除数据 | 删除已采集记录 |
 
-## Troubleshooting
+## 故障排查
 
-Every response includes a `requestId`. If a request fails, share it with [Octoparse support](mailto:support@octoparse.com).
+每次响应均包含 `requestId`。如请求失败，请将其提供给 [Octoparse 支持团队](mailto:support@octoparse.com)。

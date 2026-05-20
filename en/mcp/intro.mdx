@@ -1,42 +1,42 @@
 ---
-title: Octoparse MCP Server
-description: Connect Octoparse to AI agents - ChatGPT, Claude, Cursor, Gemini.
+title: Octoparse MCP 服务端
+description: 将 Octoparse 接入 AI 智能体 — ChatGPT、Claude、Cursor、Gemini。
 ---
 
-# Octoparse MCP Server
+# Octoparse MCP 服务端
 
-> Connect Octoparse to any MCP-compatible AI agent. Search templates, run cloud tasks, and retrieve data - all from natural language.
+> 将 Octoparse 接入任何兼容 MCP 的 AI 智能体。用自然语言搜索模板、运行云端任务并获取数据。
 
-## Prerequisites
+## 前置条件
 
-- **An Octoparse Account** - Free users get 2,000 free records/week via MCP
-- **An MCP-Compatible Client** - ChatGPT, Claude, OpenClaw, Cursor, VS Code, or Gemini CLI
+- **Octoparse 账户** — 免费用户每周通过 MCP 可获得 2,000 条免费记录
+- **兼容 MCP 的客户端** — ChatGPT、Claude、OpenClaw、Cursor、VS Code 或 Gemini CLI
 
-## Server URL
+## 服务器地址
 
 ```
 https://mcp.octoparse.com
 ```
 
-## Authentication
+## 认证方式
 
-<Card title="OAuth 2.1 (Recommended)">
-  Browser-based login. No API key needed. Sign in to Octoparse when prompted.
+<Card title="OAuth 2.1（推荐）">
+  基于浏览器的登录方式。无需 API Key。按提示登录 Octoparse 即可。
 </Card>
 
 <Card title="API Key">
-  Direct authentication for headless environments. Get your key at [Octoparse Account Center](https://www.octoparse.com/console/account-center/api-keys).
+  适用于无头环境的直接认证。在 [Octoparse 账户中心](https://www.octoparse.com/console/account-center/api-keys) 获取你的 Key。
 </Card>
 
-## Available MCP Tools
+## 可用 MCP 工具
 
-| Tool | Description |
+| 工具 | 说明 |
 |---|---|
-| `search_templates` | Search pre-built scraping templates |
-| `search_tasks` | List and search existing tasks |
-| `start_or_stop_task` | Start or stop a cloud task by ID |
-| `execute_task` | Run a scraping template and retrieve results |
-| `export_data` | Export completed task data (JSON / CSV) |
-| `redeem_coupon_code` | Redeem a promotional coupon code |
+| `search_templates` | 搜索预置采集模板 |
+| `search_tasks` | 列出并搜索已有任务 |
+| `start_or_stop_task` | 通过任务 ID 启动或停止云端任务 |
+| `execute_task` | 运行采集模板并获取结果 |
+| `export_data` | 导出已完成任务的数据（JSON / CSV） |
+| `redeem_coupon_code` | 兑换促销优惠码 |
 
-See [Rate Limits](/en/mcp/rate-limits) and [Troubleshooting](/en/mcp/troubleshooting).
+详见 [速率限制](/en/mcp/rate-limits) 和 [故障排查](/en/mcp/troubleshooting)。

@@ -1,34 +1,34 @@
 ---
-title: How to Handle Pagination
-description: How scrapers move beyond page one.
+title: 如何处理翻页
+description: 爬虫如何超越第一页。
 ---
 
-# How to Handle Pagination
+# 如何处理翻页
 
-> Learn how scrapers move beyond page one: numbered pages, next links, infinite scroll, load-more buttons, API offsets, and cursor-based pagination.
+> 了解爬虫如何超越第一页：页码翻页、下一页链接、无限滚动、加载更多按钮、API 偏移量及游标分页。
 
-## Start with the Request, Not the UI
+## 从请求入手，而非 UI
 
-Before writing pagination logic, open DevTools and watch what changes:
-1. Open Network tab, filter to Fetch/XHR
-2. Click the next page, scroll, or press load-more
-3. Inspect the request URL and response
-4. Decide whether to follow links, interact with the page, or call an API directly
+在编写翻页逻辑之前，打开 DevTools 观察什么发生了变化：
+1. 打开 Network 标签，筛选 Fetch/XHR
+2. 点击下一页、滚动或按下加载更多
+3. 检查请求 URL 和响应
+4. 决定是跟随链接、与页面交互还是直接调用 API
 
-## Common Patterns
+## 常见模式
 
-| What changes | What to try first |
+| 变化内容 | 首先尝试的方法 |
 |---|---|
-| URL includes page=2 | Loop through numbered URLs |
-| An anchor link points to the next page | Follow href until it disappears |
-| Content appears after scrolling | Find the XHR request |
-| Content appears after clicking a button | Reuse the API request |
-| JSON includes next_cursor or has_more | Paginate through the API response |
+| URL 包含 page=2 | 循环遍历编号的 URL |
+| 锚链接指向下一页 | 跟随 href 直到其消失 |
+| 内容在滚动后出现 | 找到 XHR 请求 |
+| 内容在点击按钮后出现 | 复用 API 请求 |
+| JSON 包含 next_cursor 或 has_more | 通过 API 响应进行分页 |
 
-## Common Pitfalls
+## 常见陷阱
 
-- **Repeated first page** - Some sites return the first page when out of range, creating silent duplicates
-- **Missing boundary detection** - The scraper loops forever on an empty last page
-- **Session-aware pagination** - Changing IP mid-session can reset the page count
+- **重复第一页** — 某些网站在超出范围时返回第一页，造成无声重复
+- **缺少边界检测** — 爬虫在空的最后一页上无限循环
+- **会话感知分页** — 会话中途更换 IP 可能重置页数
 
-See also: [Anatomy of a Web Scraper](/en/academy/anatomy-of-a-web-scraper), [Scraping JavaScript-Rendered Pages](/en/academy/scrape-javascript-pages)
+另请参阅：[网页采集器结构解析](/en/academy/anatomy-of-a-web-scraper)、[采集 JavaScript 渲染页面](/en/academy/scrape-javascript-pages)

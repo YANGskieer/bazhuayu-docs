@@ -1,23 +1,23 @@
 ---
-title: Mark Data as Exported
-description: Flag records as exported to prevent duplicate retrieval.
+title: 标记数据为已导出
+description: 将记录标记为已导出，防止重复获取。
 ---
 
-# Mark Data as Exported
+# 标记数据为已导出
 
-> **Required plan:** Standard, Professional, or Enterprise
+> **所需套餐：** 标准版、专业版或企业版
 
-## Endpoint
+## 端点
 
 ```
 POST https://openapi.octoparse.com/data/mark-exported
 ```
 
-## Request Body
+## 请求体
 
-| Parameter | Type | Required | Description |
+| 参数 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `taskGroupId` | string | Yes | The task group ID |
-| `recordIds` | array | Yes | IDs of records to mark as exported |
+| `taskGroupId` | string | 是 | 任务组 ID |
+| `recordIds` | array | 是 | 要标记为已导出的记录 ID |
 
-See also: [Get Non-Exported Data](/en/api-reference/data/get-non-exported-data)
+另请参阅：[获取未导出数据](/en/api-reference/data/get-non-exported-data)

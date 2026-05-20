@@ -1,23 +1,23 @@
 ---
 title: export_data
-description: Export completed task data as JSON or CSV.
+description: 将已完成任务的数据导出为 JSON 或 CSV。
 ---
 
 # export_data
 
-Export data from a completed Octoparse task run.
+从已完成的 Octoparse 任务运行中导出数据。
 
-## Parameters
+## 参数
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 说明 |
 |---|---|---|
-| `taskId` | string | Task ID |
-| `runId` | string | Run ID (optional if task has recent run) |
-| `format` | string | Export format: json or csv |
-| `limit` | number | Maximum records to return |
+| `taskId` | string | 任务 ID |
+| `runId` | string | 运行 ID（如任务有最近运行则可不填） |
+| `format` | string | 导出格式：json 或 csv |
+| `limit` | number | 最大返回记录数 |
 
-## Response
+## 响应
 
-Returns the extracted data in the requested format.
+以请求的格式返回提取的数据。
 
-See also: [MCP Overview](/en/mcp/intro), [MCP Workflow](/en/mcp/workflow)
+另请参阅：[MCP 概览](/en/mcp/intro)、[MCP 工作流程](/en/mcp/workflow)

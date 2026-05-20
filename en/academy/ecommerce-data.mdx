@@ -1,39 +1,39 @@
 ---
-title: E-Commerce Data Collection
-description: How teams collect product catalogs, prices, reviews, ratings, and inventory signals from e-commerce sites.
+title: 电商数据采集
+description: 团队如何从电商网站和平台采集产品目录、价格、评论、评分及库存信号。
 ---
 
-# E-Commerce Data Collection
+# 电商数据采集
 
-> How teams collect product catalogs, prices, reviews, ratings, seller data, and inventory signals from e-commerce sites and marketplaces.
+> 团队如何从电商网站和平台采集产品目录、价格、评论、评分、卖家数据及库存信号。
 
-## What to Collect
+## 采集内容
 
-| Data Type | Use Case | Typical Fields |
+| 数据类型 | 应用场景 | 典型字段 |
 |---|---|---|
-| Product listings | Category and assortment analysis | Title, price, rating, review count, images, URL, category |
-| Product details | Deep product intelligence | Description, specs, variants, seller, fulfillment type, BSR |
-| Reviews | Sentiment analysis and QA | Rating, title, text, date, verified purchase, helpful votes |
+| 产品列表 | 品类分析 | 标题、价格、评分、评论数、图片、URL、分类 |
+| 产品详情 | 深度产品情报 | 描述、规格、变体、卖家、配送类型、畅销排名 |
+| 评论 | 情感分析与质量保证 | 评分、标题、正文、日期、已验证购买、有用投票 |
 
-## Workflow Patterns
+## 工作流模式
 
 <Steps>
-  <Step title="Collect listing data">
-    Start with category and search result pages to build a broad product catalog.
+  <Step title="采集列表数据">
+    从分类和搜索结果页面开始，构建广泛的产品目录。
   </Step>
-  <Step title="Visit detail pages">
-    For products that matter, extract deeper fields from product detail pages.
+  <Step title="访问详情页">
+    对重要产品从详情页提取更深层字段。
   </Step>
-  <Step title="Monitor over time">
-    Re-scrape key products on a schedule to track price changes and stock status.
+  <Step title="周期性监控">
+    按计划重新采集关键产品，追踪价格变化和库存状态。
   </Step>
 </Steps>
 
-## Common E-Commerce Targets
+## 常见电商目标平台
 
-- **Amazon** - Product catalog, prices, reviews, BSR tracking
-- **eBay** - Product listings, seller performance
-- **Walmart** - Price monitoring, product availability
-- **Shopify stores** - Individual brand monitoring
+- **Amazon** — 产品目录、价格、评论、畅销排行追踪
+- **eBay** — 产品列表、卖家表现
+- **Walmart** — 价格监控、产品库存
+- **Shopify 店铺** — 独立品牌监控
 
-See also: [How to Scrape Amazon](/en/academy/scrape-amazon), [Price Monitoring](/en/academy/price-monitoring)
+另请参阅：[如何采集 Amazon 数据](/en/academy/scrape-amazon)、[价格监控](/en/academy/price-monitoring)

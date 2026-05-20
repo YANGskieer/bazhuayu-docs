@@ -1,54 +1,54 @@
 ---
-title: Scraping JavaScript-Rendered Pages
-description: Why basic HTTP scrapers fail on modern sites and how to handle JavaScript rendering.
+title: 采集 JavaScript 渲染页面
+description: 为何基础 HTTP 爬虫在现代网站上会失败，以及如何处理 JavaScript 渲染。
 ---
 
-# Scraping JavaScript-Rendered Pages
+# 采集 JavaScript 渲染页面
 
-> Modern sites render content client-side with React, Vue, or vanilla JS. Why basic HTTP scrapers fail, and three fixes: rendering in a real browser, API interception, and SSR detection.
+> 现代网站使用 React、Vue 或原生 JS 在客户端渲染内容。为何基础 HTTP 爬虫会失败，以及三种解决方案：真实浏览器渲染、API 拦截和 SSR 检测。
 
-## Why Basic Scrapers Fail
+## 为何基础爬虫会失败
 
-Traditional web scrapers send an HTTP request and parse the HTML response. This approach works on static sites where the server returns complete HTML. But modern sites built with React, Vue, Angular, or vanilla JavaScript often return an almost-empty HTML shell. The actual content is added by JavaScript running in the browser.
+传统网页采集器发送 HTTP 请求并解析 HTML 响应。这种方式在服务器返回完整 HTML 的静态网站上可行。但现代使用 React、Vue、Angular 或原生 JavaScript 构建的网站通常只返回一个几乎为空的 HTML 壳。实际内容由浏览器中运行的 JavaScript 添加。
 
-The page you see in your browser is the result of:
-1. Browser fetches initial HTML
-2. JavaScript executes and makes additional API calls
-3. DOM is updated with fetched data
-4. Page becomes visible
+你在浏览器中看到的页面是以下过程的结果：
+1. 浏览器获取初始 HTML
+2. JavaScript 执行并发送额外的 API 调用
+3. 用获取的数据更新 DOM
+4. 页面变为可见
 
-A basic HTTP scraper only sees step 1 - the empty shell.
+基础 HTTP 爬虫只能看到步骤 1 — 空壳。
 
-## Three Fixes
+## 三种解决方案
 
-### 1. Render with a Real Browser
+### 1. 使用真实浏览器渲染
 
-Use a headless or headed browser (Puppeteer, Playwright, Selenium) that executes JavaScript before extracting. The scraper waits for the page to fully load, then extracts the rendered HTML.
+使用无头或有头浏览器（Puppeteer、Playwright、Selenium）在提取前执行 JavaScript。爬虫等待页面完全加载，然后提取渲染后的 HTML。
 
-**Pros:** Works for all JavaScript sites, no API reverse-engineering needed
-**Cons:** Slower, higher resource usage, still needs fingerprint and behavior management
+**优点：** 适用于所有 JavaScript 网站，无需逆向工程 API
+**缺点：** 速度较慢，资源占用更高，仍需管理指纹和行为
 
-### 2. Intercept API Calls
+### 2. 拦截 API 调用
 
-Instead of rendering the full page, find the API endpoints that the JavaScript calls to fetch data. Reverse-engineer these requests and call them directly.
+不再渲染整个页面，而是找到 JavaScript 用于获取数据的 API 端点。逆向工程这些请求并直接调用。
 
-**Pros:** Much faster than full browser rendering, smaller payload
-**Cons:** Requires research to find and understand APIs, may need authentication tokens
+**优点：** 远快于完整浏览器渲染，载荷更小
+**缺点：** 需要研究找到并理解 API，可能需要认证 Token
 
-### 3. Detect Server-Side Rendering
+### 3. 检测服务端渲染
 
-Some sites are SSR-first - they render content on the server and send complete HTML. These are detectable by checking whether a basic HTTP fetch returns meaningful content or just an empty shell.
+某些网站是 SSR 优先的 — 它们在服务端渲染内容并发送完整 HTML。可以通过检查基础 HTTP 请求是否返回有意义的内容还是空壳来检测。
 
-**Pros:** Fast, reliable, no browser overhead
-**Cons:** Only works on SSR sites, content may differ from client-rendered version
+**优点：** 快速、可靠、无浏览器开销
+**缺点：** 仅对 SSR 网站有效，内容可能与客户端渲染版本不同
 
-## Which Approach to Use
+## 各方案适用场景
 
-| Situation | Best approach |
+| 场景 | 最佳方案 |
 |---|---|
-| Unknown site, need reliable extraction | Real browser rendering |
-| Known API structure, speed critical | API interception |
-| High-volume scraping on SSR site | Direct HTTP fetch |
-| JavaScript-heavy SPA | Real browser rendering |
+| 未知网站，需要可靠提取 | 真实浏览器渲染 |
+| 已知 API 结构，速度优先 | API 拦截 |
+| SSR 网站上的大规模采集 | 直接 HTTP 请求 |
+| JavaScript 重型 SPA | 真实浏览器渲染 |
 
-See also: [The Browser Runtime Landscape](/en/academy/browser-runtime-landscape), [Anatomy of a Web Scraper](/en/academy/anatomy-of-a-web-scraper)
+另请参阅：[浏览器运行时全景图](/en/academy/browser-runtime-landscape)、[网页采集器结构解析](/en/academy/anatomy-of-a-web-scraper)

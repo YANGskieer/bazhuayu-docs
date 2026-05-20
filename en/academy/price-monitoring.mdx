@@ -1,62 +1,62 @@
 ---
-title: Price Monitoring with Web Scraping
-description: How retailers, brands, and marketplaces use web scraping to track competitor prices and detect changes.
+title: 利用网页采集进行价格监控
+description: 零售商、品牌方和电商平台如何利用网页采集追踪竞品价格并发现变化。
 ---
 
-# Price Monitoring with Web Scraping
+# 利用网页采集进行价格监控
 
-> How retailers, brands, and marketplaces use web scraping to track competitor prices, normalize SKUs, detect changes, and trigger alerts.
+> 零售商、品牌方和电商平台如何利用网页采集追踪竞品价格、规范化 SKU、发现价格变化并触发告警。
 
-Price monitoring turns web scraping into an operating system for retail decisions. A scraper collects product prices, availability, promotions, shipping terms, seller information, and ratings across competitors or marketplaces.
+价格监控将网页采集转变为零售决策的操作系统。采集器收集竞品或平台上的产品价格、库存状态、促销活动、运费、卖家信息和评分。
 
-## Who Uses Price Monitoring
+## 谁在使用价格监控
 
-- **Retailers** - tracking competitor prices and assortment
-- **Brands** - checking marketplace sellers, unauthorized resellers, and MAP compliance
-- **Marketplaces** - monitoring sellers, inventory, and category-level dynamics
-- **Investment teams** - using price movement as a demand or inflation signal
-- **Procurement teams** - watching supplier catalog changes
+- **零售商** — 追踪竞品价格和商品品类
+- **品牌方** — 检查平台卖家、非授权经销商和最低广告价格（MAP）合规性
+- **电商平台** — 监控卖家、库存和品类层面的动态
+- **投资团队** — 将价格变动作为需求或通胀的信号
+- **采购团队** — 关注供应商目录变化
 
-## What to Collect
+## 需要采集什么
 
-A strong price record should include more than the visible price.
+一条优质的价格记录应包含比可见价格更多的信息。
 
-| Field | Why it matters |
+| 字段 | 为何重要 |
 |---|---|
-| Product title | Human-readable reference and matching clue |
-| Product URL | Source provenance and refresh target |
-| SKU, ASIN, GTIN, UPC, MPN | Product matching across sites |
-| Current price | Core monitoring value |
-| List price or original price | Discount and promotion analysis |
-| Shipping price | Total landed cost |
-| Availability or stock status | Price is meaningless if unavailable |
-| Seller name | Marketplace and reseller analysis |
-| Rating and review count | Demand and trust context |
-| Collected timestamp | Change history and alerting |
+| 产品标题 | 可读参考和匹配线索 |
+| 产品 URL | 来源追溯和刷新目标 |
+| SKU、ASIN、GTIN、UPC、MPN | 跨站点产品匹配 |
+| 当前价格 | 核心监控值 |
+| 标价或原价 | 折扣和促销分析 |
+| 运费 | 总到岸成本 |
+| 库存状态 | 若无库存则价格无意义 |
+| 卖家名称 | 平台和经销商分析 |
+| 评分和评论数 | 需求和信任背景 |
+| 采集时间戳 | 历史变化和告警 |
 
-## SKU Matching
+## SKU 匹配
 
-Product matching is the hardest part of price monitoring. Different sites describe the same item differently.
+产品匹配是价格监控中最困难的部分。不同网站对同一商品的描述各不相同。
 
-**Use exact identifiers when possible:**
-- ASIN for Amazon-specific workflows
-- UPC, EAN, or GTIN for packaged goods
-- MPN for manufacturer parts
-- SKU for your own catalog
+**尽可能使用精确标识符：**
+- ASIN — 针对 Amazon 流程
+- UPC、EAN 或 GTIN — 针对包装商品
+- MPN — 针对制造零件
+- SKU — 针对你自有目录
 
-**When identifiers are missing, combine fuzzy signals:**
-- Normalized title
-- Brand and model number
-- Pack count and size
-- Image similarity
-- Category path
+**当标识符缺失时，组合模糊信号：**
+- 规范化标题
+- 品牌和型号
+- 包装数量和尺寸
+- 图片相似度
+- 分类路径
 
-## Scrape Cadence
+## 采集频率
 
-| Scenario | Typical cadence |
+| 场景 | 典型频率 |
 |---|---|
-| High-volume marketplace prices | Hourly or several times per day |
-| Brand MAP monitoring | Daily |
-| Long-tail category research | Weekly |
+| 高流量平台价格 | 每小时或每天多次 |
+| 品牌 MAP 监控 | 每天 |
+| 长尾品类研究 | 每周 |
 
-See also: [How to Scrape Amazon](/en/academy/scrape-amazon), [Lead Generation](/en/academy/lead-generation)
+另请参阅：[如何采集 Amazon 数据](/en/academy/scrape-amazon)、[线索生成](/en/academy/lead-generation)

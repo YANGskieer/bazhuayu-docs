@@ -1,76 +1,76 @@
 ---
-title: XPath and CSS Selectors
-description: How to locate elements on a page using CSS selectors and XPath.
+title: XPath 与 CSS 选择器
+description: 如何使用 CSS 选择器和 XPath 在页面上定位元素。
 ---
 
-# XPath and CSS Selectors
+# XPath 与 CSS 选择器
 
-> CSS selectors and XPath both locate elements on a page, but they break differently. How each works, when to pick which, and how to write selectors that hold up.
+> CSS 选择器和 XPath 都能在页面上定位元素，但它们的失效方式不同。了解各自的原理、何时选用哪种，以及如何编写持久可靠的选择器。
 
-## CSS Selectors
+## CSS 选择器
 
-CSS selectors are the primary way to locate elements. They are widely supported and readable.
+CSS 选择器是定位元素的主要方式。它们被广泛支持且可读性好。
 
-**Common CSS selectors:**
+**常用 CSS 选择器：**
 ```
-/* By tag */
+/* 按标签 */
 div
 
-/* By class (prefix with .) */
+/* 按 class（前缀 .） */
 .product-card
 
-/* By ID (prefix with #) */
+/* 按 ID（前缀 #） */
 #main-content
 
-/* By attribute */
+/* 按属性 */
 [data-product-id="123"]
 
-/* Descendant */
+/* 后代选择器 */
 .container .product-title
 
-/* Direct child */
+/* 直接子元素 */
 ul > li
 
-/* Multiple classes */
-item-price.sale.final
+/* 多 class */
+.item-price.sale.final
 ```
 
 ## XPath
 
-XPath offers more power than CSS selectors, especially for navigating upward, selecting by text content, and building complex conditions.
+XPath 比 CSS 选择器功能更强大，尤其适用于向上导航、按文本内容选择和构建复杂条件。
 
-**Common XPath expressions:**
+**常用 XPath 表达式：**
 ```
-//div[@class="product"]                    # div with class="product"
-//a[contains(@href, "category")]           # link containing "category"
-//h1[text()="Product Name"]                # h1 with exact text
-//section[starts-with(@id, "section")]    # section starting with "section"
-//..                                       # parent element
+//div[@class="product"]                     # class 为 "product" 的 div
+//a[contains(@href, "category")]           # href 中含 "category" 的链接
+//h1[text()="产品名称"]                     # 精确文本匹配的 h1
+//section[starts-with(@id, "section")]     # id 以 "section" 开头的 section
+//..                                        # 父元素
 ```
 
 ## CSS vs XPath
 
-| Feature | CSS Selectors | XPath |
+| 特性 | CSS 选择器 | XPath |
 |---|---|---|
-| Syntax | Simple and readable | More verbose |
-| Upward traversal | Not supported | Supported (.., ancestor::) |
-| Text matching | Limited | Full text() support |
-| Positional selection | :nth-child() | [position()] |
-| Browser support | Universal | Universal |
-| Use in Octoparse | Preferred | Available |
+| 语法 | 简洁易读 | 较为冗长 |
+| 向上遍历 | 不支持 | 支持（.., ancestor::） |
+| 文本匹配 | 有限 | 完整 text() 支持 |
+| 位置选择 | :nth-child() | [position()] |
+| 浏览器支持 | 通用 | 通用 |
+| Octoparse 中使用 | 推荐 | 可用 |
 
-## Writing Durable Selectors
+## 编写持久选择器
 
-Selectors break when websites change their structure. Tips for durability:
+网站结构变化时选择器会失效。提高持久性的技巧：
 
-1. **Use semantic attributes** - data-*, aria-*, or meaningful IDs when available
-2. **Avoid position-dependent selectors** - nth-child breaks when new elements are added
-3. **Use the shortest unique path** - Too long = fragile, too short = ambiguous
-4. **Prefer class and ID** - Structural selectors like div:nth-child(3) > span break easily
-5. **Test on multiple pages** - A selector that works on one page may fail on another
+1. **使用语义化属性** — 优先使用 data-*、aria-* 或有意义的 ID
+2. **避免位置相关的选择器** — nth-child 在添加新元素时会失效
+3. **使用最短的唯一路径** — 过长则脆弱，过短则歧义
+4. **优先使用 class 和 ID** — 结构选择器如 div:nth-child(3) > span 极易失效
+5. **在多个页面上测试** — 在一个页面上有效的选择器可能在另一个页面上失效
 
 <Note>
-  Octoparse AI mode can automatically detect and generate selectors, reducing the maintenance burden on manually written expressions.
+  Octoparse AI 模式可以自动检测并生成选择器，减少手动编写表达式的维护负担。
 </Note>
 
-See also: [Anatomy of a Web Scraper](/en/academy/anatomy-of-a-web-scraper), [Refining Data with Regex](/en/academy/refining-data-with-regex)
+另请参阅：[网页采集器结构解析](/en/academy/anatomy-of-a-web-scraper)、[使用正则表达式精炼数据](/en/academy/refining-data-with-regex)

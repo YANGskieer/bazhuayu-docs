@@ -1,30 +1,30 @@
 ---
-title: Obtain a New Token
-description: Obtain a new access token from the Octoparse API.
+title: 获取新 Token
+description: 从 Octoparse API 获取新的 Access Token。
 ---
 
-# Obtain a New Token
+# 获取新 Token
 
-> **Required plan:** All users
+> **所需套餐：** 所有用户
 
-## Endpoint
+## 端点
 
 ```
 POST https://openapi.octoparse.com/token
 ```
 
-## Description
+## 描述
 
-Obtain a new access token using your Octoparse username and password. The access token is required for all subsequent API calls.
+使用 Octoparse 用户名和密码获取新的 Access Token。该 Token 是所有后续 API 调用的必要凭证。
 
-## Request Body
+## 请求体
 
-| Parameter | Type | Required | Description |
+| 参数 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| `username` | string | Yes | Your Octoparse account email |
-| `password` | string | Yes | Your Octoparse account password |
+| `username` | string | 是 | 你的 Octoparse 账户邮箱 |
+| `password` | string | 是 | 你的 Octoparse 账户密码 |
 
-## Example Request
+## 请求示例
 
 ```bash
 curl -X POST https://openapi.octoparse.com/token \
@@ -32,15 +32,15 @@ curl -X POST https://openapi.octoparse.com/token \
   -d "{\"username\": \"user@example.com\", \"password\": \"your_password\"}"
 ```
 
-## Response
+## 响应
 
-| Field | Type | Description |
+| 字段 | 类型 | 说明 |
 |---|---|---|
-| `access_token` | string | The access token to use for API requests |
-| `refresh_token` | string | Token used to refresh the access token when it expires |
-| `expires_in` | number | Seconds until the access token expires |
+| `access_token` | string | 用于 API 请求的 Access Token |
+| `refresh_token` | string | 用于在 Access Token 过期时刷新的 Token |
+| `expires_in` | number | Access Token 过期前的秒数 |
 
-## Response Example
+## 响应示例
 
 ```json
 {
@@ -50,10 +50,10 @@ curl -X POST https://openapi.octoparse.com/token \
 }
 ```
 
-## Notes
+## 注意事项
 
-- Store your access token securely. Do not share it publicly.
-- Access tokens expire. Use the refresh token to obtain a new access token.
-- See [Refresh Token](/en/api-reference/access-token/refresh-token) to learn how to refresh your token.
+- 请安全存储 Access Token，切勿公开发布。
+- Access Token 会过期。请使用 Refresh Token 获取新的 Access Token。
+- 参见 [刷新 Token](/en/api-reference/access-token/refresh-token) 了解如何刷新 Token。
 
-See also: [OpenAPI Overview](/en/api-reference/intro)
+另请参阅：[OpenAPI 概览](/en/api-reference/intro)
