@@ -13,13 +13,16 @@
     "dark": "/assets/logo.png"
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Platform",
-        "pages": ["en/overview", "en/platform/intro"]
+        "tab": "平台概览",
+        "pages": [
+          "en/overview",
+          "en/platform/intro"
+        ]
       },
       {
-        "group": "MCP Server",
+        "tab": "MCP 服务端",
         "pages": [
           "en/mcp/intro",
           "en/mcp/workflow",
@@ -34,10 +37,15 @@
         ]
       },
       {
-        "group": "OpenAPI",
-        "pages": [
-          "en/api-reference/intro",
-          "en/api-reference/authentication",
+        "tab": "OpenAPI",
+        "groups": [
+          {
+            "group": "",
+            "pages": [
+              "en/api-reference/intro",
+              "en/api-reference/authentication"
+            ]
+          },
           {
             "group": "Access Token",
             "pages": [
@@ -79,12 +87,16 @@
         ]
       },
       {
-        "group": "CLI",
-        "pages": ["en/cli/intro"]
+        "tab": "CLI",
+        "pages": [
+          "en/cli/intro"
+        ]
       },
       {
-        "group": "Changelog",
-        "pages": ["en/changelog/april-2026"]
+        "tab": "更新日志",
+        "pages": [
+          "en/changelog/april-2026"
+        ]
       }
     ]
   },
