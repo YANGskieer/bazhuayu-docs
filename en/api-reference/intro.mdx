@@ -1,60 +1,85 @@
 ---
-title: Octoparse OpenAPI
-description: Octoparse OpenAPI 参考 — 涵盖认证、任务管理、云端提取及数据导出。
+title: 八爪鱼 开放接口文档
+description: 八爪鱼开放API文档 — 涵盖认证、任务管理、云端采集及数据获取。
 ---
 
-# Octoparse OpenAPI
+# 八爪鱼 开放接口文档
 
-> Octoparse OpenAPI 参考 — 涵盖认证、任务管理、云端提取及数据导出。
+八爪鱼采集器提供开放 API 接口，支持以编程方式管理采集任务、运行云端采集、获取采集数据，方便开发者进行系统集成与自动化。
 
-使用 Octoparse OpenAPI 以编程方式管理任务、运行云端提取并获取采集数据。
+## 文档版本
 
-## 开始之前
+当前版本：**1.0.0**
 
-需要一个**标准版、专业版或企业版**账户，且账户中至少有一个可运行的任务。
+## URI 规范
 
-## 基础 URL
+基础 URL：
 
 ```
-https://openapi.octoparse.com
+https://openapi.bazhuayu.com
 ```
 
-## 速率限制
+## 接口说明
 
-**每秒 20 个请求**。如果收到 `429` 状态码，请降低请求频率。
+- 所有接口均使用 HTTPS 协议
+- 请求体与返回体均为 JSON 格式
+- **Content-Type**: `application/json`
+- 每次请求必须携带认证令牌（详见 [接口调用凭证](/en/api-reference/access-token/obtain-a-new-token)）
 
-## 认证
+## 权限描述
 
-- [获取新 Token](/en/api-reference/access-token/obtain-a-new-token) — 所有用户
-- [刷新 Token](/en/api-reference/access-token/refresh-token) — 所有用户
+| 服务 | 接口 | 权限 |
+|------|------|------|
+| 接口调用凭证 | 获取全新Token、刷新Token | 全部 |
+| 任务组 | 获取用户的任务组信息 | 旗舰版、旗舰+、企业版、团队版 |
+| 任务组 | 批量删除任务组 | 旗舰版、旗舰+、企业版、团队版 |
+| 任务 | 搜索任务、复制任务 | 旗舰版、旗舰+、企业版、团队版 |
+| 任务 | 移动任务、批量删除任务、批量复制任务到多个任务组 | 旗舰+、企业版、团队版 |
+| 任务 | 批量获取任务步骤信息 | 旗舰+、企业版、团队版 |
+| 任务 | 更新任务参数、更新步骤配置、更新循环步骤的内容、更新采集Urls | 旗舰+、企业版、团队版 |
+| 云采集 | 全部 | 旗舰版、旗舰+、企业版、团队版 |
+| 数据 | 全部 | 旗舰版、旗舰+、企业版、团队版 |
 
-## API 端点
+## 公共错误码
 
-### 云端提取（专业版及以上）
-| 端点 | 说明 |
-|---|---|
-| 启动任务 | 触发云端提取 |
-| 停止任务 | 取消正在运行的提取 |
-| 获取任务状态 | 查看提取进度 |
-| 获取任务状态 V2 | 改进版进度追踪 |
-| 启动/停止子任务 | 管理批量子任务 |
+| 状态码 | 错误码 | 错误信息 |
+|--------|--------|----------|
+| 400 | `InvalidParameter` | 字段错误 |
+| 400 | `InvalidTaskId` | taskId 不能为空 |
+| 400 | `InvalidSize` | size 应该在 1 和 1000 之间 |
+| 400 | `InvalidActions` | actions 必须大于 0 |
+| 400 | `InvalidTasks` | tasks 不能超过 100 |
+| 400 | `LimitTraffic` | 超出流量限制，将size参数设置小一些再请求 |
+| 400 | `RequestModelNull` | 请求参数不能为空 |
+| 401 | `Unauthorized` | access_token 无效 |
+| 403 | `PermissionDenied` | 没有接口访问权限 |
+| 429 | `TooManyRequests` | 调用频率过快 |
+| 500 | `ServerError` | 服务内部错误 |
+| 503 | `ServiceUnavailable` | 服务器繁忙 |
 
-### 任务管理（标准版及以上）
-| 端点 | 说明 |
-|---|---|
-| 搜索任务 | 按条件查找任务 |
-| 复制任务 | 克隆已有任务 |
-| 移动任务 | 迁移任务位置 |
-| 更新任务参数 | 修改任务设置 |
+## 遇到问题
 
-### 数据导出（标准版及以上）
-| 端点 | 说明 |
-|---|---|
-| 获取未导出数据 | 检索未导出的记录 |
-| 按偏移量获取数据 | 分页数据检索 |
-| 标记数据为已导出 | 将记录标记为已导出 |
-| 删除数据 | 删除已采集记录 |
+每次响应均包含 `requestId`。如请求失败，请将其提供给 [八爪鱼支持团队](mailto:support@octoparse.com)。
 
-## 故障排查
+## 参考
 
-每次响应均包含 `requestId`。如请求失败，请将其提供给 [Octoparse 支持团队](mailto:support@octoparse.com)。
+<CardGroup cols={2}>
+  <Card title="接口调用凭证" icon="key" href="/en/api-reference/access-token/obtain-a-new-token">
+    获取及刷新 Access Token。
+  </Card>
+  <Card title="任务组" icon="folder" href="/en/api-reference/task-group/get-task-group-information">
+    管理任务分组信息。
+  </Card>
+  <Card title="任务" icon="file-text" href="/en/api-reference/task/search-task">
+    搜索、复制、移动、更新采集任务。
+  </Card>
+  <Card title="云采集" icon="cloud" href="/en/api-reference/cloud-extraction/start-task">
+    启动、停止云端采集，查询任务状态。
+  </Card>
+  <Card title="数据" icon="database" href="/en/api-reference/data/get-non-exported-data">
+    获取、导出采集数据。
+  </Card>
+  <Card title="示例代码" icon="code" href="/en/api-reference/code-examples/python">
+    Python 示例代码。
+  </Card>
+</CardGroup>

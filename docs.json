@@ -40,21 +40,35 @@
         "tab": "OpenAPI",
         "groups": [
           {
-            "group": "",
+            "group": "综述",
             "pages": [
               "en/api-reference/intro",
               "en/api-reference/authentication"
             ]
           },
           {
-            "group": "Access Token",
+            "group": "接口调用凭证",
             "pages": [
               "en/api-reference/access-token/obtain-a-new-token",
               "en/api-reference/access-token/refresh-token"
             ]
           },
           {
-            "group": "Cloud Extraction",
+            "group": "任务组",
+            "pages": [
+              "en/api-reference/task-group/get-task-group-information"
+            ]
+          },
+          {
+            "group": "任务",
+            "pages": [
+              "en/api-reference/task/search-task",
+              "en/api-reference/task/duplicate-task",
+              "en/api-reference/task/update-task-urls"
+            ]
+          },
+          {
+            "group": "云采集",
             "pages": [
               "en/api-reference/cloud-extraction/start-task",
               "en/api-reference/cloud-extraction/stop-task",
@@ -63,7 +77,7 @@
             ]
           },
           {
-            "group": "Data",
+            "group": "数据",
             "pages": [
               "en/api-reference/data/get-non-exported-data",
               "en/api-reference/data/get-data-by-offset",
@@ -71,17 +85,9 @@
             ]
           },
           {
-            "group": "Task",
+            "group": "示例代码",
             "pages": [
-              "en/api-reference/task/search-task",
-              "en/api-reference/task/duplicate-task",
-              "en/api-reference/task/update-task-urls"
-            ]
-          },
-          {
-            "group": "Task Group",
-            "pages": [
-              "en/api-reference/task-group/get-task-group-information"
+              "en/code-examples/python"
             ]
           }
         ]
