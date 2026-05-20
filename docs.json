@@ -42,8 +42,7 @@
           {
             "group": "综述",
             "pages": [
-              "en/api-reference/intro",
-              "en/api-reference/authentication"
+              "en/api-reference/intro"
             ]
           },
           {
@@ -56,7 +55,8 @@
           {
             "group": "任务组",
             "pages": [
-              "en/api-reference/task-group/get-task-group-information"
+              "en/api-reference/task-group/get-task-group-information",
+              "en/api-reference/task-group/delete-groups"
             ]
           },
           {
@@ -64,6 +64,13 @@
             "pages": [
               "en/api-reference/task/search-task",
               "en/api-reference/task/duplicate-task",
+              "en/api-reference/task/copy-tasks",
+              "en/api-reference/task/move-task",
+              "en/api-reference/task/delete-tasks",
+              "en/api-reference/task/get-actions",
+              "en/api-reference/task/update-task-parameters",
+              "en/api-reference/task/update-loop-items",
+              "en/api-reference/task/update-action-properties",
               "en/api-reference/task/update-task-urls"
             ]
           },
@@ -72,7 +79,12 @@
             "pages": [
               "en/api-reference/cloud-extraction/start-task",
               "en/api-reference/cloud-extraction/stop-task",
+              "en/api-reference/cloud-extraction/start-subtasks",
+              "en/api-reference/cloud-extraction/stop-subtasks",
+              "en/api-reference/cloud-extraction/get-task-stats",
               "en/api-reference/cloud-extraction/get-task-status",
+              "en/api-reference/cloud-extraction/get-statuses",
+              "en/api-reference/cloud-extraction/get-statuses-v2",
               "en/api-reference/cloud-extraction/get-subtask-status"
             ]
           },
@@ -80,8 +92,10 @@
             "group": "数据",
             "pages": [
               "en/api-reference/data/get-non-exported-data",
+              "en/api-reference/data/mark-data-as-exported",
               "en/api-reference/data/get-data-by-offset",
-              "en/api-reference/data/mark-data-as-exported"
+              "en/api-reference/data/remove-data",
+              "en/api-reference/data/get-batch-data"
             ]
           },
           {
