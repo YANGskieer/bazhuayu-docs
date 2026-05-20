@@ -30,6 +30,16 @@ POST https://openapi.bazhuayu.com/task/updateLoopItems
 }
 ```
 
+## 请求体
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `taskId` | String | 是 | 任务Id |
+| `actionId` | String | 是 | 步骤的唯一标识，您可以在客户端点击相应的步骤的"Api 调用名称"获取，也可以通过【批量获取任务步骤信息】接口获取。 |
+| `loopType` | String | 是 | 循环方式，目前支持：TextList(文本列表)、UrlList(网址列表) |
+| `loopItems` | String[] | 是 | 需要更新的值 |
+| `isAppend` | bool | 是 | 是否是追加流程值，如果是追加，则不清除旧值，默认清除旧值 |
+
 **请求体示例**
 
 ```json

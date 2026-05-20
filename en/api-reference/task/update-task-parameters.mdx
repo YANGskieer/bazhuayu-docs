@@ -30,6 +30,23 @@ POST https://openapi.bazhuayu.com/task/updateTaskParameters
 }
 ```
 
+## 请求体
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `taskId` | String | 是 | 任务Id |
+| `actions` | Object[] | 是 | 需要更新的步骤参数，具体参考：步骤属性 |
+| `actionType` | String | 是 | 步骤类型，目前支持：NavigateAction（打开网页类型）、EnterTextAction（输入文本类型）、LoopAction（循环列表类型） |
+| `actionId` | String | 是 | 步骤的唯一标识，您可以在客户端点击相应的步骤的"Api 调用名称"获取，也可以通过【批量获取任务步骤信息】接口获取。 |
+| `properties` | Object[] | 是 | 属性，目前支持更新的属性参考：步骤属性 |
+| `name` | String | 是 | 属性名，目前支持更新的属性参考：步骤属性 |
+| `value` | String | 是 | 属性值 |
+| `loopItems` | Object[] | 是 | 需要更新的循环项参数 |
+| `actionId` | String | 是 | 步骤的唯一标识，您可以在客户端点击相应的步骤的"Api 调用名称"获取，也可以通过【批量获取任务步骤信息】接口获取。 |
+| `loopType` | String | 是 | 循环类型，目前支持：URLList（网址列表）、TextList（文本列表） |
+| `loopItems` | String[] | 是 | 循环项内容 |
+| `isAppend` | Boolean | 是 | 是否是追加流程值，只针对List型流程值，如果是追加，则不清除旧值，默认清除旧值 |
+
 **请求体示例**
 
 ```json

@@ -28,6 +28,13 @@ POST https://openapi.bazhuayu.com/task/moveToGroup
 }
 ```
 
+## 请求体
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `taskGroupId` | int | 是 | 任务组Id |
+| `taskId` | string | 是 | 任务Id |
+
 **请求体示例**
 
 ```json
@@ -46,11 +53,11 @@ https://openapi.bazhuayu.com/task/copy?taskId=a2de44e9-092c-453c-bfe3-fe9e71dff1
 
 ```json
 {
-      "data":{
-              "moved":true,
-              
-          },
-      "requestId": "0HMCVDHG1V3E6:00000002"
+ "data":{
+ "moved":true,
+ 
+ },
+ "requestId": "0HMCVDHG1V3E6:00000002"
 }
 ```
 

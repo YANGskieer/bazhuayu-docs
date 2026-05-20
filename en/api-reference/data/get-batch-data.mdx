@@ -28,6 +28,15 @@ GET https://openapi.bazhuayu.com/data/lotno/all
 }
 ```
 
+## 请求体
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `taskId` | String | 是 | 任务Id |
+| `lotno` | String | 是 | 任务批次 |
+| `offset` | Number | 是 | 数据偏移量，当offset小等于0时，则从起始位置读取任务数据 |
+| `size` | Number | 是 | 获取的数据量，范围：1~1000 |
+
 **请求体示例**
 
 ```json

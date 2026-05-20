@@ -28,6 +28,13 @@ POST https://openapi.bazhuayu.com/task/copy
 }
 ```
 
+## 请求体
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `taskGroupId` | int | 是 | 任务组Id(不传则复制到当前任务的任务组) |
+| `taskId` | string | 是 | 任务Id |
+
 **请求体示例**
 
 ```json

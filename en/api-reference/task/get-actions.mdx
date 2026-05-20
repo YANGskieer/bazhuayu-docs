@@ -30,6 +30,13 @@ POST https://openapi.bazhuayu.com/task/getActions
 }
 ```
 
+## 请求体
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `taskIds` | String[] | 是 | 任务Id列表 |
+| `actionTypes` | String[] | 是 | 步骤类型，目前支持：LoopAction(循环列表)、NavigateAction(打开网页)、EnterTextAction(输入文本) |
+
 **请求体示例**
 
 ```json
