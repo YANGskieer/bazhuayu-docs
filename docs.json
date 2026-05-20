@@ -15,7 +15,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "平台概览",
+        "tab": "首页",
         "pages": [
           "en/overview",
           "en/platform/intro"
