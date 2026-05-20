@@ -9,58 +9,14 @@
   },
   "favicon": "/assets/favicon.svg",
   "logo": {
-    "light": "/assets/logo-light.svg",
-    "dark": "/assets/logo-dark.svg",
-    "href": "https://octoparse.com"
+    "light": "/assets/logo.png",
+    "dark": "/assets/logo.png"
   },
   "navigation": {
     "groups": [
       {
         "group": "Platform",
         "pages": ["en/overview", "en/platform/intro"]
-      },
-      {
-        "group": "Academy",
-        "pages": [
-          "en/academy/intro",
-          "en/academy/what-is-web-scraping",
-          "en/academy/anatomy-of-a-web-scraper",
-          "en/academy/ai-vs-traditional-scraping",
-          "en/academy/is-web-scraping-legal",
-          "en/academy/cloud-web-scraping",
-          "en/academy/lead-generation",
-          "en/academy/browser-fingerprinting",
-          "en/academy/rotating-proxies",
-          "en/academy/scrape-amazon",
-          "en/academy/price-monitoring",
-          "en/academy/scrape-javascript-pages",
-          "en/academy/xpath-css-selectors",
-          "en/academy/human-like-scraping",
-          "en/academy/captcha-and-cloudflare",
-          "en/academy/handle-pagination",
-          "en/academy/headed-vs-headless",
-          "en/academy/ecommerce-data",
-          "en/academy/what-is-ai-web-scraping",
-          "en/academy/what-is-no-code-web-scraping",
-          "en/academy/real-estate-data",
-          "en/academy/social-media-data",
-          "en/academy/web-scraping-vs-crawling",
-          "en/academy/refining-data-with-regex",
-          "en/academy/scrape-linkedin",
-          "en/academy/scrape-google-maps",
-          "en/academy/scrape-yelp",
-          "en/academy/scrape-login-walls",
-          "en/academy/browser-runtime-landscape",
-          "en/academy/scrape-ebay",
-          "en/academy/scrape-walmart",
-          "en/academy/scrape-facebook-marketplace",
-          "en/academy/scrape-instagram",
-          "en/academy/scrape-twitter",
-          "en/academy/scrape-youtube",
-          "en/academy/open-source-vs-cloud-scraping",
-          "en/academy/web-scraping-for-seo",
-          "en/academy/web-scraping-glossary"
-        ]
       },
       {
         "group": "MCP Server",
@@ -78,7 +34,7 @@
         ]
       },
       {
-        "group": "OpenAPI & CLI",
+        "group": "OpenAPI",
         "pages": [
           "en/api-reference/intro",
           "en/api-reference/authentication",
@@ -119,32 +75,18 @@
             "pages": [
               "en/api-reference/task-group/get-task-group-information"
             ]
-          },
-          "en/cli/intro"
+          }
         ]
+      },
+      {
+        "group": "CLI",
+        "pages": ["en/cli/intro"]
       },
       {
         "group": "Changelog",
         "pages": ["en/changelog/april-2026"]
       }
     ]
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "API Reference",
-        "href": "https://openapi.octoparse.com"
-      },
-      {
-        "label": "Blog",
-        "href": "https://octoparse.com/blog"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Download",
-      "href": "https://octoparse.com/download"
-    }
   },
   "footer": {
     "socials": {
