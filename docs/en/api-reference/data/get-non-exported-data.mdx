@@ -1,0 +1,26 @@
+---
+title: Get Non-Exported Data
+description: Retrieve records that have not yet been marked as exported.
+---
+
+# Get Non-Exported Data
+
+> **Required plan:** Standard, Professional, or Enterprise
+
+## Endpoint
+
+```
+GET https://openapi.octoparse.com/data/get-non-exported-data
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `taskGroupId` | string | Yes | The task group ID |
+
+## Response
+
+Returns records that have not been marked as exported. Use this to retrieve newly extracted data.
+
+See also: [Get Data by Offset](/en/api-reference/data/get-data-by-offset), [Mark Data as Exported](/en/api-reference/data/mark-data-as-exported)

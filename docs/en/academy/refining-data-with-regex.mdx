@@ -1,0 +1,33 @@
+---
+title: Refining Data with Regex
+description: How to clean messy scraped data with regex patterns.
+---
+
+# Refining Data with Regex
+
+> Raw scraped values arrive messy - prices with symbols, phones in three formats, dates that vary. The regex patterns that clean them.
+
+## Common Regex Patterns
+
+| Pattern | Use Case |
+|---|---|
+| `\$[\d,]+\.?\d*` | Extract US price like $1,299.99 |
+| `\+?[\d\s\-\(\)]{10,}` | Extract phone number |
+| `[\w.+-]+@[\w-]+\.[\w.-]+` | Extract email address |
+| Replace `\s+` with one space | Clean whitespace |
+
+## Octoparse AI Data Refinement
+
+Octoparse can auto-generate regex patterns using AI:
+1. Select a messy field
+2. Describe the desired clean output
+3. Octoparse AI generates a refinement rule including regex
+
+## Best Practices
+
+- **Validate after cleaning** - Check that cleaned data matches expectations
+- **Handle edge cases** - Empty values, malformed input
+- **Log raw vs. cleaned** - Keep both for debugging
+- **Use libraries when possible** - dateutil for dates, phonenumbers for phone numbers
+
+See also: [XPath and CSS Selectors](/en/academy/xpath-css-selectors), [Anatomy of a Web Scraper](/en/academy/anatomy-of-a-web-scraper)

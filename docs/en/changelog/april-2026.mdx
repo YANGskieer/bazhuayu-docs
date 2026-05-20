@@ -1,0 +1,41 @@
+---
+title: April 2026 Updates
+description: April 2026 updates and improvements to Octoparse integrations.
+---
+
+# April 2026 Release Notes
+
+> New MCP tools, platform documentation, and API reference updates.
+
+## New Features
+
+### MCP Server - New Tools
+
+Three new MCP tools:
+- `redeem_coupon_code` - Redeem promotional coupon codes from your AI agent
+- `search_tasks` - List and search existing Octoparse tasks
+- `start_or_stop_task` - Start or stop a cloud task by ID
+
+### OpenAPI - Task Status V2
+
+New `GET /cloud-extraction/task-status-v2` endpoint with:
+- Improved response structure with step-level progress
+- Subtask breakdown with individual status tracking
+- Estimated time remaining
+
+### Platform Documentation
+
+New pages covering core concepts, task building blocks, local vs. cloud extraction, and export destinations.
+
+## Improvements
+
+- MCP server response times reduced by ~40 percent
+- Rate limit handling now includes Retry-After header guidance
+- Template search results include site difficulty ratings
+
+## Bug Fixes
+
+- Fixed authentication token refresh edge case
+- Resolved export data pagination offset bug
+
+For questions or feedback, contact [support@octoparse.com](mailto:support@octoparse.com).

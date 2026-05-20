@@ -1,0 +1,48 @@
+---
+title: Bypassing CAPTCHA and Cloudflare
+description: How CAPTCHA challenges and Cloudflare-style bot defenses work and how to handle them.
+---
+
+# Bypassing CAPTCHA and Cloudflare
+
+> How CAPTCHA challenges and Cloudflare-style bot defenses work, why they appear during scraping, and which layers help reduce or resolve them.
+
+CAPTCHAs and Cloudflare challenges are signals that the site no longer trusts the session. The trigger may be the IP address, the browser fingerprint, the request rate, or a combination.
+
+## What CAPTCHA Is Testing
+
+CAPTCHA is a challenge-response layer. The site asks the visitor to do something easier for a human than a bot:
+- **Image challenges** - Select traffic lights, buses, storefronts
+- **Checkbox challenges** - Evaluates browser and interaction signals
+- **Invisible risk scoring** - Challenge appears only when the session looks suspicious
+- **Turnstile verification** - Browser-based verification with less friction
+
+<Note>
+  In scraping, CAPTCHA usually means some earlier layer looked suspicious. Solving the visible challenge does not fix a bad IP or inconsistent fingerprint.
+</Note>
+
+## What Cloudflare Adds
+
+Cloudflare applies several layers: JavaScript integrity checks, managed challenges, rate limiting, Turnstile verification, and access rules based on region and IP reputation.
+
+## The Layered Response
+
+<Steps>
+  <Step title="Use a real browser when the site expects one">
+    If the target page depends on JavaScript or Cloudflare browser checks, a raw HTTP request is the wrong tool.
+  </Step>
+  <Step title="Keep the fingerprint coherent">
+    The IP region, timezone, language, user-agent, and viewport should tell a consistent story.
+  </Step>
+  <Step title="Match request volume to user patterns">
+    Even with good proxies, 10,000 requests per hour from one IP range looks like an attack.
+  </Step>
+  <Step title="Add human-like behavior">
+    Mouse curves, randomized click offsets, variable timing, and scroll behavior.
+  </Step>
+  <Step title="Use CAPTCHA solving only as a fallback">
+    Automated solving does not fix the underlying cause. Use sparingly and address the root cause first.
+  </Step>
+</Steps>
+
+See also: [Browser Fingerprinting](/en/academy/browser-fingerprinting), [Rotating Proxies](/en/academy/rotating-proxies), [Human-Like Scraping](/en/academy/human-like-scraping)

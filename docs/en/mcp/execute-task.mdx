@@ -1,0 +1,23 @@
+---
+title: execute_task
+description: Run a scraping template and retrieve results.
+---
+
+# execute_task
+
+Run a scraping template and retrieve the results. The task runs on Octoparse cloud servers.
+
+## Parameters
+
+| Parameter | Type | Description |
+|---|---|---|
+| `templateId` | string | The template to run |
+| `inputs` | object | Template-specific input parameters |
+| `waitForCompletion` | boolean | Wait for results (default: true) |
+| `timeout` | number | Max wait time in milliseconds |
+
+## Response
+
+Returns extracted data as JSON array or CSV string.
+
+See also: [MCP Overview](/en/mcp/intro), [MCP Workflow](/en/mcp/workflow)

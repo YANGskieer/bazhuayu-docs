@@ -1,0 +1,59 @@
+---
+title: Rotating Proxies for Web Scraping
+description: Why proxy rotation matters, how datacenter, residential, ISP, and mobile proxies differ.
+---
+
+# Rotating Proxies for Web Scraping
+
+> Why scrapers use proxy rotation, how datacenter, residential, ISP, and mobile proxies differ, and how to choose rotation strategies that match the target site.
+
+IP-based blocking is the oldest anti-scraping defense. Rotating proxies spread requests across multiple IP addresses, reducing pressure on any single IP and letting a scraper operate closer to normal browsing patterns.
+
+## What a Proxy Changes
+
+A proxy sits between the scraper and the target website. The website sees the proxy's IP address instead of the operator's direct connection.
+
+- **Rate limits** - Requests can be distributed instead of concentrated
+- **IP bans** - A blocked IP can be removed from the pool
+- **Geo restrictions** - A task can use an IP from the region where the content is available
+- **Operational privacy** - The operator's local IP is not exposed to every target site
+- **Cloud parallelism** - Subtasks can run through separate network paths
+
+<Note>
+  Proxies do not fix bad selectors, broken pagination, or obvious browser automation. They are one layer of the scaling stack, not a complete anti-bot strategy.
+</Note>
+
+## Types of Proxies
+
+### Datacenter Proxies
+Fast and cheap. Come from hosting providers and cloud infrastructure. Work well for lightly protected sites and public directories. Perform poorly on sites that block known hosting ranges.
+
+### Residential Proxies
+Route traffic through IPs associated with consumer internet providers. Look more like normal user traffic. More successful on e-commerce, search, and travel sites. Higher cost and ethical sourcing matters.
+
+### ISP Proxies
+Hosted like datacenter proxies but registered with internet service providers. More stable than rotating residential IPs and less suspicious than ordinary datacenter ranges. Useful for sticky sessions and stable geography.
+
+### Mobile Proxies
+Route through carrier networks. Highly trusted because real mobile users share carrier-grade NAT IPs. Expensive and often overkill - use only when the target site is mobile-first.
+
+## Rotation Strategies
+
+### Per-Request Rotation
+Each request uses a different IP. Works for stateless pages like public search results. Risky for sessions relying on cookies, carts, login state, or region consistency.
+
+### Sticky Sessions
+A worker keeps the same IP for a period of time or for the life of a session. Better for JavaScript-heavy sites, logged-in areas, pagination flows.
+
+### Task-Level Rotation
+Each subtask receives its own proxy pool. Ideal for parallel cloud extraction where each worker needs its own IP identity.
+
+## Choosing the Right Strategy
+
+| Target Type | Recommended Proxy | Rotation Strategy |
+|---|---|---|
+| Public directories | Datacenter | Per-request |
+| E-commerce | Residential | Sticky sessions |
+| Search engines | Residential or ISP | Per-request |
+| Social media | Residential or Mobile | Sticky sessions |
+| Financial sites | Mobile or premium ISP | Sticky sessions |

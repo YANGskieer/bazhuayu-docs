@@ -1,0 +1,30 @@
+---
+title: Start Task
+description: Trigger a cloud extraction task.
+---
+
+# Start Task
+
+> **Required plan:** Professional or Enterprise
+
+## Endpoint
+
+```
+POST https://openapi.octoparse.com/cloud-extraction/start-task
+```
+
+## Request Body
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `taskGroupId` | string | Yes | The task group ID to start |
+| `urls` | array | No | Specific URLs to scrape (overrides task URLs) |
+
+## Response
+
+| Field | Type | Description |
+|---|---|---|
+| `runId` | string | The run ID for tracking this extraction |
+| `status` | string | The initial status of the run |
+
+See also: [Stop Task](/en/api-reference/cloud-extraction/stop-task), [Get Task Status](/en/api-reference/cloud-extraction/get-task-status)

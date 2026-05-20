@@ -1,0 +1,27 @@
+---
+title: Duplicate Task
+description: Clone an existing task to create a new one.
+---
+
+# Duplicate Task
+
+> **Required plan:** Standard, Professional, or Enterprise
+
+## Endpoint
+
+```
+POST https://openapi.octoparse.com/task/duplicate
+```
+
+## Request Body
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `taskGroupId` | string | Yes | The task group ID to duplicate |
+| `newName` | string | No | Name for the new task |
+
+## Response
+
+Returns the ID and name of the newly created task.
+
+See also: [Search Task](/en/api-reference/task/search-task), [Update Task URLs](/en/api-reference/task/update-task-urls)

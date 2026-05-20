@@ -1,0 +1,76 @@
+---
+title: XPath and CSS Selectors
+description: How to locate elements on a page using CSS selectors and XPath.
+---
+
+# XPath and CSS Selectors
+
+> CSS selectors and XPath both locate elements on a page, but they break differently. How each works, when to pick which, and how to write selectors that hold up.
+
+## CSS Selectors
+
+CSS selectors are the primary way to locate elements. They are widely supported and readable.
+
+**Common CSS selectors:**
+```
+/* By tag */
+div
+
+/* By class (prefix with .) */
+.product-card
+
+/* By ID (prefix with #) */
+#main-content
+
+/* By attribute */
+[data-product-id="123"]
+
+/* Descendant */
+.container .product-title
+
+/* Direct child */
+ul > li
+
+/* Multiple classes */
+item-price.sale.final
+```
+
+## XPath
+
+XPath offers more power than CSS selectors, especially for navigating upward, selecting by text content, and building complex conditions.
+
+**Common XPath expressions:**
+```
+//div[@class="product"]                    # div with class="product"
+//a[contains(@href, "category")]           # link containing "category"
+//h1[text()="Product Name"]                # h1 with exact text
+//section[starts-with(@id, "section")]    # section starting with "section"
+//..                                       # parent element
+```
+
+## CSS vs XPath
+
+| Feature | CSS Selectors | XPath |
+|---|---|---|
+| Syntax | Simple and readable | More verbose |
+| Upward traversal | Not supported | Supported (.., ancestor::) |
+| Text matching | Limited | Full text() support |
+| Positional selection | :nth-child() | [position()] |
+| Browser support | Universal | Universal |
+| Use in Octoparse | Preferred | Available |
+
+## Writing Durable Selectors
+
+Selectors break when websites change their structure. Tips for durability:
+
+1. **Use semantic attributes** - data-*, aria-*, or meaningful IDs when available
+2. **Avoid position-dependent selectors** - nth-child breaks when new elements are added
+3. **Use the shortest unique path** - Too long = fragile, too short = ambiguous
+4. **Prefer class and ID** - Structural selectors like div:nth-child(3) > span break easily
+5. **Test on multiple pages** - A selector that works on one page may fail on another
+
+<Note>
+  Octoparse AI mode can automatically detect and generate selectors, reducing the maintenance burden on manually written expressions.
+</Note>
+
+See also: [Anatomy of a Web Scraper](/en/academy/anatomy-of-a-web-scraper), [Refining Data with Regex](/en/academy/refining-data-with-regex)

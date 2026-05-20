@@ -1,0 +1,55 @@
+---
+title: AI vs Traditional Web Scraping
+description: When AI-driven scraping beats selector-based scraping and how to combine the two.
+---
+
+# AI vs Traditional Web Scraping
+
+> When AI-driven scraping beats selector-based scraping, when it does not, and how to combine the two.
+
+## Two Approaches
+
+**Traditional (Selector-Based) Scraping** relies on manually defined XPath or CSS selectors. You inspect a page, write a selector, and hope the page structure stays the same.
+
+**AI-Powered Scraping** uses machine learning to understand page structure semantically. Instead of saying "click the third div with class product-title", you say "extract the product name".
+
+## Comparison
+
+| Factor | Traditional | AI Scraping |
+|---|---|---|
+| Setup Time | Minutes to hours | Seconds to minutes |
+| Maintenance | High - selectors break | Lower - AI adapts |
+| Cost | Low | Higher (ML inference) |
+| Complex Layouts | Requires expert writing | Easier |
+| Batch Speed | Very fast | Moderate |
+
+## When AI Scraping Wins
+
+- Rapid prototyping - get data in minutes, not hours
+- High-variance layouts - pages that differ across categories
+- Low-maintenance needs - when you cannot monitor selectors
+- Non-technical users - no XPath/CSS knowledge required
+
+## When Traditional Scraping Wins
+
+- Stable, predictable pages - government or academic sites
+- Massive scale - millions of pages where speed matters
+- Exact field requirements - precise control over what is extracted
+- Cost-sensitive projects - no per-page inference cost
+
+## Best Practice: Combine Both
+
+<Steps>
+  <Step title="Use AI to bootstrap">
+    Let Octoparse AI detect the page structure and generate initial extraction rules.
+  </Step>
+  <Step title="Validate and refine">
+    Check the extracted data and handle edge cases.
+  </Step>
+  <Step title="Switch to selector mode">
+    Once stable, switch to traditional selector mode for maximum speed.
+  </Step>
+  <Step title="Monitor and update">
+    Watch for layout changes and update selectors as needed.
+  </Step>
+</Steps>

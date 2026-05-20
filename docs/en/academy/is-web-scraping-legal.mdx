@@ -1,0 +1,59 @@
+---
+title: Is Web Scraping Legal?
+description: Web scraping legality depends on what you scrape, how, and where.
+---
+
+# Is Web Scraping Legal?
+
+> Web scraping legality depends on what you scrape, how, and where. An overview of public data, ToS, copyright, GDPR/CCPA, and how to scrape compliantly.
+
+## Key Legal Considerations
+
+### 1. Public vs. Private Data
+
+**Public data** (visible without login) is generally less risky. Private data (behind login or paywall) introduces additional legal concerns.
+
+### 2. Terms of Service
+
+Most websites prohibit scraping in their ToS. Courts have reached different conclusions depending on jurisdiction.
+
+### 3. Copyright
+
+The structure and creative expression of a website may be copyrighted. Facts are not copyrightable - scraping prices and contact info is generally safer.
+
+### 4. GDPR and CCPA
+
+Scraping personal data of EU or California residents may make you a data controller with associated obligations.
+
+## Practical Risk Mitigation
+
+<Steps>
+  <Step title="Scrape public data when possible">
+    Prioritize publicly accessible pages over authenticated ones.
+  </Step>
+  <Step title="Read the ToS carefully">
+    Understand what you are agreeing to before scraping.
+  </Step>
+  <Step title="Respect robots.txt">
+    Demonstrates good faith even if not legally binding everywhere.
+  </Step>
+  <Step title="Rate limit your requests">
+    Do not overload the target server.
+  </Step>
+  <Step title="Minimize data collection">
+    Only collect the data you actually need.
+  </Step>
+  <Step title="Consult a lawyer">
+    For commercial or high-risk projects, get legal advice.
+  </Step>
+</Steps>
+
+| Factor | Risk Level |
+|---|---|
+| Public factual data | Low |
+| Public content (large scale) | Medium |
+| ToS-prohibited scraping | Medium-High |
+| Private/authenticated data | High |
+| Personal data (GDPR/CCPA) | High |
+
+_This is general legal information, not legal advice. Consult a qualified attorney._

@@ -1,0 +1,50 @@
+---
+title: MCP Rate Limits
+description: Understand Octoparse MCP request limits and how to handle retry logic.
+---
+
+# MCP Rate Limits
+
+> Understand request limits and how to handle retry logic with response headers.
+
+## Rate Limits
+
+The Octoparse MCP server has the following limits:
+
+- **Template searches:** Limited by overall MCP request quota
+- **Task executions:** Depends on your Octoparse account plan
+- **Data exports:** Limited by plan and concurrent export limits
+
+<Note>
+  Free and Basic users receive 2,000 free records per week for MCP extraction.
+</Note>
+
+## Retry Logic
+
+When a request fails due to rate limiting, the MCP server returns a `429 Too Many Requests` response. Implement exponential backoff:
+
+```javascript
+async function callWithRetry(fn, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      if (err.status === 429 && i < maxRetries - 1) {
+        const delay = Math.pow(2, i) * 1000; // 1s, 2s, 4s
+        await new Promise(r => setTimeout(r, delay));
+      } else {
+        throw err;
+      }
+    }
+  }
+}
+```
+
+## Best Practices
+
+- **Batch when possible** - Combine multiple operations into fewer requests
+- **Cache template results** - `search_templates` results rarely change; cache them
+- **Use webhooks for long tasks** - For large extractions, use the async pattern and poll
+- **Monitor your usage** - Track records extracted per week to stay within limits
+
+See also: [MCP Overview](/en/mcp/intro), [Troubleshooting](/en/mcp/troubleshooting)

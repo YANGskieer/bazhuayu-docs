@@ -1,0 +1,50 @@
+---
+title: How to Scrape YouTube
+description: How to extract video metadata, channel data, comments, and search results from YouTube.
+---
+
+# How to Scrape YouTube
+
+> How to extract video metadata, channel data, comments, and search results from YouTube for competitor analysis, content research, and market intelligence.
+
+## What to Collect
+
+| Data Type | Fields |
+|---|---|
+| Video metadata | Title, description, view count, like count, published date, duration |
+| Channel data | Channel name, subscriber count, total views, video count |
+| Search results | Video titles, channels, view counts, published dates |
+| Comments | Comment text, author, date, likes, replies |
+
+## Workflow
+
+<Steps>
+  <Step title="Start from search or channel pages">
+    Collect video listings from search results or specific channels.
+  </Step>
+  <Step title="Extract metadata">
+    Gather title, view count, like count, description, and published date.
+  </Step>
+  <Step title="Visit video pages for comments">
+    Extract comments and additional metadata from video detail pages.
+  </Step>
+  <Step title="Handle pagination">
+    Collect all relevant results across search or channel pages.
+  </Step>
+</Steps>
+
+## Technical Notes
+
+- YouTube uses heavy JavaScript rendering; a real browser improves reliability.
+- YouTube Data API v3 is the official, compliant way to access YouTube data.
+- API has quota limits; plan your data collection accordingly.
+- Comment scraping via API requires special permissions.
+
+## Common Use Cases
+
+- **Content research** - Understand what videos perform well in a category
+- **Competitor monitoring** - Track competitor channel performance
+- **Sentiment analysis** - Analyze comment sections for brand perception
+- **SEO research** - Identify popular topics and search patterns
+
+See also: [Social Media Data Mining](/en/academy/social-media-data), [Refining Data with Regex](/en/academy/refining-data-with-regex)

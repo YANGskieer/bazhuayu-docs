@@ -1,0 +1,39 @@
+---
+title: E-Commerce Data Collection
+description: How teams collect product catalogs, prices, reviews, ratings, and inventory signals from e-commerce sites.
+---
+
+# E-Commerce Data Collection
+
+> How teams collect product catalogs, prices, reviews, ratings, seller data, and inventory signals from e-commerce sites and marketplaces.
+
+## What to Collect
+
+| Data Type | Use Case | Typical Fields |
+|---|---|---|
+| Product listings | Category and assortment analysis | Title, price, rating, review count, images, URL, category |
+| Product details | Deep product intelligence | Description, specs, variants, seller, fulfillment type, BSR |
+| Reviews | Sentiment analysis and QA | Rating, title, text, date, verified purchase, helpful votes |
+
+## Workflow Patterns
+
+<Steps>
+  <Step title="Collect listing data">
+    Start with category and search result pages to build a broad product catalog.
+  </Step>
+  <Step title="Visit detail pages">
+    For products that matter, extract deeper fields from product detail pages.
+  </Step>
+  <Step title="Monitor over time">
+    Re-scrape key products on a schedule to track price changes and stock status.
+  </Step>
+</Steps>
+
+## Common E-Commerce Targets
+
+- **Amazon** - Product catalog, prices, reviews, BSR tracking
+- **eBay** - Product listings, seller performance
+- **Walmart** - Price monitoring, product availability
+- **Shopify stores** - Individual brand monitoring
+
+See also: [How to Scrape Amazon](/en/academy/scrape-amazon), [Price Monitoring](/en/academy/price-monitoring)

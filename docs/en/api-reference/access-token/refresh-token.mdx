@@ -1,0 +1,39 @@
+---
+title: Refresh Token
+description: Refresh your access token when it expires.
+---
+
+# Refresh Token
+
+> **Required plan:** All users
+
+## Endpoint
+
+```
+POST https://openapi.octoparse.com/token/refresh
+```
+
+## Description
+
+Use a refresh token to obtain a new access token without re-entering your credentials.
+
+## Request Body
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `refresh_token` | string | Yes | The refresh token obtained during authentication |
+
+## Response
+
+| Field | Type | Description |
+|---|---|---|
+| `access_token` | string | A new access token |
+| `refresh_token` | string | A new refresh token |
+| `expires_in` | number | Seconds until the new access token expires |
+
+## Notes
+
+- Refresh tokens also expire. Refresh before your current refresh token expires.
+- If your refresh token has expired, you must obtain a new token via [Obtain a New Token](/en/api-reference/access-token/obtain-a-new-token).
+
+See also: [Obtain a New Token](/en/api-reference/access-token/obtain-a-new-token)

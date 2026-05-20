@@ -1,0 +1,84 @@
+---
+title: MCP Troubleshooting
+description: Fixes for common connection, authorization, and task-related issues.
+---
+
+# MCP Troubleshooting
+
+> Fixes for common connection, authorization, and task-related issues.
+
+## Connection Issues
+
+### MCP Server Unreachable
+
+**Symptom:** `ECONNREFUSED` or `ETIMEDOUT` when calling MCP tools.
+
+**Fixes:**
+- Verify the server URL is correct: `https://mcp.octoparse.com`
+- Check your network connection and firewall rules
+- Ensure the MCP server is not experiencing an outage
+
+### Slow Response Times
+
+**Symptom:** Tools take more than 30 seconds to return.
+
+**Fixes:**
+- Large task extractions take time; increase timeout settings
+- Check your network latency to the MCP server
+- Consider breaking large extraction jobs into smaller batches
+
+## Authorization Issues
+
+### Invalid API Key
+
+**Symptom:** `401 Unauthorized` or `403 Forbidden` response.
+
+**Fixes:**
+- Verify your API key is correct and active
+- Regenerate the key from [Octoparse Account Center](https://www.octoparse.com/console/account-center/api-keys)
+- Ensure the key has not expired
+
+### OAuth Not Connected
+
+**Symptom:** OAuth-based authentication prompts fail or loop.
+
+**Fixes:**
+- Ensure you are signed into the correct Octoparse account
+- Clear browser cookies and re-authorize
+- Try using API key authentication instead for headless environments
+
+## Task Execution Issues
+
+### Task Not Found
+
+**Symptom:** `Task not found` when calling `start_or_stop_task`.
+
+**Fixes:**
+- Verify the task ID is correct
+- Ensure the task exists in your Octoparse account
+- Check that the task is set up for cloud extraction (not local-only)
+
+### No Data Returned
+
+**Symptom:** `execute_task` completes but returns empty data.
+
+**Fixes:**
+- The task may still be running; wait and retry
+- Check that the task has completed successfully in the Octoparse dashboard
+- Verify the target website is accessible from Octoparse cloud servers
+
+### Export Format Not Supported
+
+**Symptom:** Error when calling `export_data` with a specific format.
+
+**Fixes:**
+- Supported formats are `json` and `csv`
+- Verify the format parameter is lowercase
+- Ensure the task has data to export before calling export
+
+## Getting Help
+
+If the issue persists, contact [Octoparse support](mailto:support@octoparse.com) with:
+- The MCP tool name that failed
+- The full error message and request ID
+- Your Octoparse account email

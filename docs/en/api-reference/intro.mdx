@@ -1,0 +1,60 @@
+---
+title: Octoparse OpenAPI
+description: Octoparse OpenAPI reference for authentication, task management, cloud extraction, and data export.
+---
+
+# Octoparse OpenAPI
+
+> Octoparse OpenAPI reference for authentication, task management, cloud extraction, and data export.
+
+Use the Octoparse OpenAPI to manage tasks, run cloud extractions, and retrieve scraped data programmatically.
+
+## Before You Start
+
+Requires a **Standard, Professional, or Enterprise** account with at least one working task.
+
+## Base URL
+
+```
+https://openapi.octoparse.com
+```
+
+## Rate Limits
+
+**20 requests per second**. If you receive a `429` status code, slow your request rate.
+
+## Authentication
+
+- [Obtain a New Token](/en/api-reference/access-token/obtain-a-new-token) - All users
+- [Refresh Token](/en/api-reference/access-token/refresh-token) - All users
+
+## API Endpoints
+
+### Cloud Extraction (Professional+)
+| Endpoint | Description |
+|---|---|
+| Start Task | Trigger cloud extraction |
+| Stop Task | Cancel running extraction |
+| Get Task Status | Check extraction progress |
+| Get Task Status V2 | Improved progress tracking |
+| Start/Stop Subtasks | Manage batch sub-tasks |
+
+### Task Management (Standard+)
+| Endpoint | Description |
+|---|---|
+| Search Task | Find tasks by criteria |
+| Duplicate Task | Clone an existing task |
+| Move Task | Relocate a task |
+| Update Task Parameters | Modify task settings |
+
+### Data Export (Standard+)
+| Endpoint | Description |
+|---|---|
+| Get Non-Exported Data | Retrieve unexported records |
+| Get Data by Offset | Paginated data retrieval |
+| Mark Data as Exported | Flag records as exported |
+| Remove Data | Delete scraped records |
+
+## Troubleshooting
+
+Every response includes a `requestId`. If a request fails, share it with [Octoparse support](mailto:support@octoparse.com).

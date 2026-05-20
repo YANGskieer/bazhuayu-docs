@@ -1,0 +1,62 @@
+---
+title: Price Monitoring with Web Scraping
+description: How retailers, brands, and marketplaces use web scraping to track competitor prices and detect changes.
+---
+
+# Price Monitoring with Web Scraping
+
+> How retailers, brands, and marketplaces use web scraping to track competitor prices, normalize SKUs, detect changes, and trigger alerts.
+
+Price monitoring turns web scraping into an operating system for retail decisions. A scraper collects product prices, availability, promotions, shipping terms, seller information, and ratings across competitors or marketplaces.
+
+## Who Uses Price Monitoring
+
+- **Retailers** - tracking competitor prices and assortment
+- **Brands** - checking marketplace sellers, unauthorized resellers, and MAP compliance
+- **Marketplaces** - monitoring sellers, inventory, and category-level dynamics
+- **Investment teams** - using price movement as a demand or inflation signal
+- **Procurement teams** - watching supplier catalog changes
+
+## What to Collect
+
+A strong price record should include more than the visible price.
+
+| Field | Why it matters |
+|---|---|
+| Product title | Human-readable reference and matching clue |
+| Product URL | Source provenance and refresh target |
+| SKU, ASIN, GTIN, UPC, MPN | Product matching across sites |
+| Current price | Core monitoring value |
+| List price or original price | Discount and promotion analysis |
+| Shipping price | Total landed cost |
+| Availability or stock status | Price is meaningless if unavailable |
+| Seller name | Marketplace and reseller analysis |
+| Rating and review count | Demand and trust context |
+| Collected timestamp | Change history and alerting |
+
+## SKU Matching
+
+Product matching is the hardest part of price monitoring. Different sites describe the same item differently.
+
+**Use exact identifiers when possible:**
+- ASIN for Amazon-specific workflows
+- UPC, EAN, or GTIN for packaged goods
+- MPN for manufacturer parts
+- SKU for your own catalog
+
+**When identifiers are missing, combine fuzzy signals:**
+- Normalized title
+- Brand and model number
+- Pack count and size
+- Image similarity
+- Category path
+
+## Scrape Cadence
+
+| Scenario | Typical cadence |
+|---|---|
+| High-volume marketplace prices | Hourly or several times per day |
+| Brand MAP monitoring | Daily |
+| Long-tail category research | Weekly |
+
+See also: [How to Scrape Amazon](/en/academy/scrape-amazon), [Lead Generation](/en/academy/lead-generation)

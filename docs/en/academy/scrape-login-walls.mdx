@@ -1,0 +1,29 @@
+---
+title: Scraping Behind Login Walls
+description: How scrapers handle authenticated pages with cookies, session reuse, and browser-based login.
+---
+
+# Scraping Behind Login Walls
+
+> How scrapers handle authenticated pages with cookies, session reuse, browser-based login, MFA limits, and account-safe operating practices.
+
+## Approaches
+
+### 1. Cookie and Session Reuse
+Log in once, export cookies, reuse them in your scraper.
+
+### 2. Browser Automation Login
+Use Playwright or Puppeteer to automate the login flow, handle MFA, then extract session cookies.
+
+### 3. API Authentication
+OAuth 2.0 flows, API key or token-based auth. Most reliable and sanctioned by the platform.
+
+## Best Practices
+
+- **Use dedicated accounts** - Do not use personal accounts for scraping
+- **Rotate sessions** - Do not reuse the same session indefinitely
+- **Handle MFA carefully** - Automated MFA is unreliable
+- **Monitor for account issues** - Watch for captchas or login alerts
+- **Respect ToS** - Logging in against ToS may void your account
+
+See also: [Is Web Scraping Legal](/en/academy/is-web-scraping-legal), [Human-Like Scraping](/en/academy/human-like-scraping)

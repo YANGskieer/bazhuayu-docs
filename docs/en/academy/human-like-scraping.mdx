@@ -1,0 +1,52 @@
+---
+title: Human-Like Scraping
+description: The behavioral tells that mark a scraper as a bot and how to remove them.
+---
+
+# Human-Like Scraping
+
+> Even a clean fingerprint gets a scraper flagged if the mouse moves in straight lines. The behavioral tells that mark a scraper as a bot, and how to remove them.
+
+A scraper that runs in a real headed browser with a managed fingerprint has handled the "what does this session look like" layer. But modern anti-bot systems also watch what the visitor does once inside: how the mouse moves, where it clicks, how fast it types, whether it scrolls before reading.
+
+## What Machines Do That Humans Dont
+
+- **Mouse moves in straight lines** - Real cursors curve, jitter, overshoot, and correct. Bots typically interpolate a straight path.
+- **Clicks land on exact center pixels** - Humans aim at a button, they do not hit dead-center every time.
+- **Timing is constant** - sleep(2) between every action looks like exactly what it is. Real users vary.
+- **No scrolling, no dwell** - A bot fetches what it needs and leaves. A human scrolls, hesitates, sometimes scrolls back.
+- **Navigation is too efficient** - A bot follows the shortest path. A human wanders.
+
+## Designing Human-Like Behavior
+
+<Steps>
+  <Step title="Mouse trajectories">
+    Replace linear moveTo calls with Bezier or noise-perturbed paths that arc, jitter, and occasionally overshoot.
+  </Step>
+  <Step title="Click offset">
+    Click slightly off-center within the target element bounding box.
+  </Step>
+  <Step title="Timing distributions">
+    Replace constant sleeps with samples from a distribution (log-normal works well) so action intervals look organic.
+  </Step>
+  <Step title="Scroll and dwell">
+    Insert scroll events with pauses; let some time pass on a page even when the data you want is already in the DOM.
+  </Step>
+  <Step title="Imperfect navigation">
+    Occasionally click a non-target link, then back-navigate; visit a few peer pages before the one you came for.
+  </Step>
+</Steps>
+
+## When It Matters, When It Doesnt
+
+| Site Defense Level | Approach |
+|---|---|
+| Light (static sites) | Skip it. A clean headed browser is enough. |
+| Medium (rate limiting + basic detection) | Do timing distributions, scroll, mouse curves. |
+| Heavy (Cloudflare, DataDome, Akamai) | Required. Without realistic behavior you are paying for rendering and still getting blocked. |
+
+<Note>
+  Octoparse simulates curved mouse trajectories, randomized click offsets, and varied timing automatically.
+</Note>
+
+See also: [Browser Fingerprinting](/en/academy/browser-fingerprinting), [Bypassing CAPTCHA and Cloudflare](/en/academy/captcha-and-cloudflare)

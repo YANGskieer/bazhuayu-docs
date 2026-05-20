@@ -1,0 +1,27 @@
+---
+title: Search Task
+description: Search for tasks by name or criteria.
+---
+
+# Search Task
+
+> **Required plan:** Standard, Professional, or Enterprise
+
+## Endpoint
+
+```
+GET https://openapi.octoparse.com/task/search
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `taskGroupId` | string | No | Filter by task group ID |
+| `keyword` | string | No | Search by task name |
+
+## Response
+
+Returns a list of matching tasks with their IDs, names, and statuses.
+
+See also: [Duplicate Task](/en/api-reference/task/duplicate-task), [Update Task URLs](/en/api-reference/task/update-task-urls)

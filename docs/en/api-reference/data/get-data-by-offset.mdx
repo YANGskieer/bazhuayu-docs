@@ -1,0 +1,28 @@
+---
+title: Get Data by Offset
+description: Retrieve extracted data with pagination using offset.
+---
+
+# Get Data by Offset
+
+> **Required plan:** Standard, Professional, or Enterprise
+
+## Endpoint
+
+```
+GET https://openapi.octoparse.com/data/get-data-by-offset
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `taskGroupId` | string | Yes | The task group ID |
+| `offset` | number | Yes | Number of records to skip |
+| `limit` | number | No | Max records to return (default: 100, max: 1000) |
+
+## Response
+
+Returns an array of extracted records with pagination metadata.
+
+See also: [Get Non-Exported Data](/en/api-reference/data/get-non-exported-data), [Mark Data as Exported](/en/api-reference/data/mark-data-as-exported)

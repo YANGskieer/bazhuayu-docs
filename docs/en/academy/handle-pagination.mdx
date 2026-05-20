@@ -1,0 +1,34 @@
+---
+title: How to Handle Pagination
+description: How scrapers move beyond page one.
+---
+
+# How to Handle Pagination
+
+> Learn how scrapers move beyond page one: numbered pages, next links, infinite scroll, load-more buttons, API offsets, and cursor-based pagination.
+
+## Start with the Request, Not the UI
+
+Before writing pagination logic, open DevTools and watch what changes:
+1. Open Network tab, filter to Fetch/XHR
+2. Click the next page, scroll, or press load-more
+3. Inspect the request URL and response
+4. Decide whether to follow links, interact with the page, or call an API directly
+
+## Common Patterns
+
+| What changes | What to try first |
+|---|---|
+| URL includes page=2 | Loop through numbered URLs |
+| An anchor link points to the next page | Follow href until it disappears |
+| Content appears after scrolling | Find the XHR request |
+| Content appears after clicking a button | Reuse the API request |
+| JSON includes next_cursor or has_more | Paginate through the API response |
+
+## Common Pitfalls
+
+- **Repeated first page** - Some sites return the first page when out of range, creating silent duplicates
+- **Missing boundary detection** - The scraper loops forever on an empty last page
+- **Session-aware pagination** - Changing IP mid-session can reset the page count
+
+See also: [Anatomy of a Web Scraper](/en/academy/anatomy-of-a-web-scraper), [Scraping JavaScript-Rendered Pages](/en/academy/scrape-javascript-pages)

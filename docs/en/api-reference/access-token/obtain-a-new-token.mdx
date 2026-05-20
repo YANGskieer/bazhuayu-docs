@@ -1,0 +1,59 @@
+---
+title: Obtain a New Token
+description: Obtain a new access token from the Octoparse API.
+---
+
+# Obtain a New Token
+
+> **Required plan:** All users
+
+## Endpoint
+
+```
+POST https://openapi.octoparse.com/token
+```
+
+## Description
+
+Obtain a new access token using your Octoparse username and password. The access token is required for all subsequent API calls.
+
+## Request Body
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `username` | string | Yes | Your Octoparse account email |
+| `password` | string | Yes | Your Octoparse account password |
+
+## Example Request
+
+```bash
+curl -X POST https://openapi.octoparse.com/token \
+  -H "Content-Type: application/json" \
+  -d "{\"username\": \"user@example.com\", \"password\": \"your_password\"}"
+```
+
+## Response
+
+| Field | Type | Description |
+|---|---|---|
+| `access_token` | string | The access token to use for API requests |
+| `refresh_token` | string | Token used to refresh the access token when it expires |
+| `expires_in` | number | Seconds until the access token expires |
+
+## Response Example
+
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "refresh_token": "dGhpcyBpcyBhIHJlZnJlc2ggdG9rZW4...",
+  "expires_in": 86400
+}
+```
+
+## Notes
+
+- Store your access token securely. Do not share it publicly.
+- Access tokens expire. Use the refresh token to obtain a new access token.
+- See [Refresh Token](/en/api-reference/access-token/refresh-token) to learn how to refresh your token.
+
+See also: [OpenAPI Overview](/en/api-reference/intro)

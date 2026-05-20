@@ -1,0 +1,33 @@
+---
+title: Get Task Status
+description: Check the status of a cloud extraction task.
+---
+
+# Get Task Status
+
+> **Required plan:** Professional or Enterprise
+
+## Endpoint
+
+```
+GET https://openapi.octoparse.com/cloud-extraction/task-status
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `taskGroupId` | string | Yes | The task group ID |
+
+## Response
+
+| Field | Type | Description |
+|---|---|---|
+| `taskGroupId` | string | The task group ID |
+| `status` | string | pending / running / completed / failed |
+| `totalSubtasks` | number | Total number of subtasks |
+| `completedSubtasks` | number | Number of completed subtasks |
+| `failedSubtasks` | number | Number of failed subtasks |
+| `recordsExtracted` | number | Total records extracted |
+
+See also: [Start Task](/en/api-reference/cloud-extraction/start-task)

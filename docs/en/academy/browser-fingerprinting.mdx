@@ -1,0 +1,50 @@
+---
+title: Browser Fingerprinting
+description: How anti-bot systems identify scrapers by canvas, WebGL, fonts, and other browser signals.
+---
+
+# Browser Fingerprinting
+
+> Anti-bot systems identify scrapers by the combined signature of canvas, WebGL, fonts, UA, and dozens of other signals.
+
+Every browser session leaks an identifying signature - a combination of user-agent, canvas drawing output, WebGL renderer string, font list, screen resolution, timezone, language headers, and more. Modern anti-bot systems combine these signals into a **browser fingerprint** that identifies a session more reliably than an IP address.
+
+The fingerprint layer sits underneath behavior: it is what the session *is*, not what it does. A scraper has to pass both layers to stay invisible to a serious anti-bot system.
+
+## What Signals Get Tracked
+
+- **User-agent and accept headers** - HeadlessChrome in the UA is a giveaway
+- **Canvas fingerprint** - Hidden canvas rendering output produces a per-machine hash
+- **WebGL fingerprint** - Renderer string, vendor string, supported extensions
+- **Font list** - Which fonts the browser can render, in what order
+- **Screen and viewport** - Resolution, color depth, device pixel ratio
+- **Timezone and language** - From Intl.DateTimeFormat and navigator.languages
+- **Audio context** - Audio rendering produces device-specific output
+- **navigator.webdriver** - The dead giveaway for unmanaged automation
+
+## Why Scrapers Leak Fingerprints
+
+Three failure modes dominate:
+
+1. **Repeating the same default identity** - A vanilla Puppeteer instance running 10,000 sessions presents the same canvas hash, same WebGL string - 10,000 "different users" with one machine's fingerprint
+2. **Generic values that no real user produces** - Blank navigator.plugins, bit-exact standard Linux/Chrome canvas output
+3. **Mismatch between signals** - en-US and America/New_York paired with a Russian IP
+
+## Managing the Fingerprint
+
+<Steps>
+  <Step title="Per-session uniqueness">
+    Each task instance should present a distinct fingerprint - different canvas hash, different WebGL renderer.
+  </Step>
+  <Step title="Within-session consistency">
+    Inside one session the fingerprint has to stay stable; switching mid-session is itself a tell.
+  </Step>
+  <Step title="Geographic coherence">
+    A fingerprint's timezone, language, and headers should match the proxy IP's geography.
+  </Step>
+  <Step title="Realistic, not random">
+    Fingerprints assembled from purely random values are anomalous. Draw from distributions of real-world fingerprints.
+  </Step>
+</Steps>
+
+See also: [Rotating Proxies](/en/academy/rotating-proxies), [Human-like Scraping](/en/academy/human-like-scraping)

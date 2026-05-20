@@ -1,0 +1,38 @@
+---
+title: Anatomy of a Web Scraper
+description: Every web scraper runs the same pipeline - fetch, render, locate, extract, navigate, and store.
+---
+
+# Anatomy of a Web Scraper
+
+> Every web scraper runs the same pipeline: fetch, render, locate, extract, navigate, and store.
+
+## The Pipeline
+
+<Steps>
+  <Step title="Fetch">
+    Send an HTTP request to the target URL and receive the page HTML. Key decisions: standard HTTP client vs. real browser, appropriate headers, timeout handling.
+  </Step>
+  <Step title="Render">
+    Execute JavaScript to display dynamic content. Options: headless browser, API interception, SSR detection.
+  </Step>
+  <Step title="Locate">
+    Identify which HTML elements contain the target data. Methods: CSS selectors, XPath, AI-powered element detection, regex.
+  </Step>
+  <Step title="Extract">
+    Pull the actual data - text content, attributes, tables, prices, dates.
+  </Step>
+  <Step title="Navigate">
+    Handle pagination (numbered pages, next buttons, infinite scroll), click-through to detail pages, form submission, item loops.
+  </Step>
+  <Step title="Store">
+    Save to CSV/Excel, JSON, Google Sheets, database (MySQL, PostgreSQL, MongoDB), or cloud storage.
+  </Step>
+</Steps>
+
+## Key Concepts
+
+- [XPath and CSS Selectors](/en/academy/xpath-css-selectors) - How to locate elements
+- [Scraping JavaScript-Rendered Pages](/en/academy/scrape-javascript-pages) - Rendering challenges
+- [Headed vs Headless Browsers](/en/academy/headed-vs-headless) - Browser runtime choices
+- [Cloud Web Scraping](/en/academy/cloud-web-scraping) - Running at scale in the cloud

@@ -1,0 +1,37 @@
+---
+title: Cloud Web Scraping Explained
+description: Why web scrapers move to the cloud - unattended runs, subtask parallelism, scheduling, and infrastructure.
+---
+
+# Cloud Web Scraping Explained
+
+> Why web scrapers move to the cloud: unattended runs, subtask parallelism, scheduling, and network infrastructure.
+
+## Local vs. Cloud Extraction
+
+| | Local | Cloud |
+|---|---|---|
+| **Runtime** | Your machine | Octoparse cloud servers |
+| **Availability** | Requires your computer on | 24/7 unattended |
+| **Scalability** | Limited by hardware | Parallel subtask runs |
+| **IP Management** | Your IP address | Rotating residential/datacenter IPs |
+| **Anti-Bot Handling** | Basic | Advanced proxy rotation |
+| **Scheduling** | Manual trigger | Built-in scheduling |
+
+## Why Move to the Cloud?
+
+1. **Unattended Operation** - Schedule runs (hourly, daily, weekly) without your computer on
+2. **Subtask Parallelism** - Divide large jobs into parallel subtasks for faster extraction
+3. **Better Anti-Bot Evasion** - Rotating IP pools make scraping harder to detect
+4. **Resource Efficiency** - Your machine stays free while extraction runs remotely
+5. **Reliability and Monitoring** - Run history, error alerts, retry logic
+
+## When to Use Cloud Extraction
+
+- Recurring data collection with scheduling
+- Large-scale extraction (thousands of pages)
+- Sites with strong anti-bot measures
+- Long-running tasks
+- Complex multi-step workflows
+
+See also: [Rotating Proxies](/en/academy/rotating-proxies), [Bypassing CAPTCHA and Cloudflare](/en/academy/captcha-and-cloudflare)

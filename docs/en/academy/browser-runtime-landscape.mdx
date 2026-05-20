@@ -1,0 +1,42 @@
+---
+title: The Browser Runtime Landscape
+description: A field guide to the browser runtimes used for scraping.
+---
+
+# The Browser Runtime Landscape
+
+> A field guide to the browser runtimes used for scraping: Puppeteer, Playwright, Selenium, cloud APIs, and Octoparse.
+
+## Browser Automation Runtimes
+
+### Puppeteer
+Googles official Node.js library for Chrome/Chromium control.
+- **Best for:** Chrome-specific automation
+- **Pros:** Excellent Chrome support, active development
+- **Cons:** Chrome only
+
+### Playwright
+Microsoft cross-browser automation library (Chrome, Firefox, WebKit).
+- **Best for:** Cross-browser testing, modern scraping needs
+- **Pros:** Multi-browser, auto-wait mechanisms
+- **Cons:** Larger footprint for single-browser use
+
+### Selenium
+The oldest and most widely-used browser automation framework.
+- **Best for:** Legacy projects, Java-heavy environments
+- **Pros:** Language-agnostic, huge community
+- **Cons:** Slower, more complex setup
+
+### Cloud Scraping APIs
+Bright Data, ScraperAPI, Oxylabs provide browser-based scraping through an API.
+- **Best for:** Avoiding infrastructure management
+- **Pros:** No infra to manage, built-in proxy rotation
+- **Cons:** Per-request cost
+
+| Factor | Puppeteer | Playwright | Selenium | Cloud API | Octoparse |
+|---|---|---|---|---|---|
+| Coding required | Yes | Yes | Yes | Minimal | No |
+| Anti-bot resilience | Medium | Medium | Medium | High | High |
+| Cost | Free | Free | Free | Per-request | Subscription |
+
+See also: [Headed vs Headless Browsers](/en/academy/headed-vs-headless), [Browser Fingerprinting](/en/academy/browser-fingerprinting)

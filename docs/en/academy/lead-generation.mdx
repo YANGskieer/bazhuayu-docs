@@ -1,0 +1,79 @@
+---
+title: Lead Generation with Web Scraping
+description: How sales and marketing teams use web scraping to build targeted lead lists.
+---
+
+# Lead Generation with Web Scraping
+
+> How sales and marketing teams use web scraping to build targeted lead lists: sources, fields, enrichment, validation, and compliance safeguards.
+
+Lead generation is one of the most practical uses of web scraping. Instead of buying a static contact list, teams collect fresh public business signals from directories, maps, marketplaces, search results, and review platforms.
+
+## Common Sources
+
+| Source | What it is good for | Typical fields |
+|---|---|---|
+| Local directories and maps | Local businesses by category and geography | Business name, address, phone, website, category, rating, hours |
+| Industry directories | Niche B2B targeting | Company name, specialty, location, certifications |
+| Marketplaces | Sellers, agencies, vendors | Seller name, profile URL, offer category, reviews |
+| Company websites | Direct contact enrichment | Email, phone, social links, office locations |
+| Job boards | Buying intent and growth signals | Hiring role, department, location, tech stack |
+| Social networks | Public profile and company context | Name, title, company, location, public posts |
+
+## Field Design
+
+Do not collect every visible field by default. Start with the decision the lead list must support.
+
+**Core company fields:**
+- Company or business name
+- Website
+- Category or industry
+- Address, city, region, country
+- Phone number
+- Source URL
+- Date collected
+
+**Useful qualification fields:**
+- Rating and review count
+- Employee count or location count
+- Job openings or hiring department
+- Technology signals from the website
+- Social profile URLs
+- Recent activity or last review date
+
+**Useful outreach fields:**
+- Public email address
+- Contact page URL
+- LinkedIn company URL
+- Decision-maker public profile URL
+
+## Enrichment Workflow
+
+Lead scraping often works best as a chain:
+
+<Steps>
+  <Step title="Discover companies">
+    Use maps, directories, search results, or marketplaces to build the initial list.
+  </Step>
+  <Step title="Normalize company records">
+    Clean names, addresses, phone formats, categories, and URLs.
+  </Step>
+  <Step title="Enrich from websites">
+    Visit the company website to collect public emails, contact pages, and social links.
+  </Step>
+  <Step title="Add intent signals">
+    Jobs, reviews, recent posts, new locations, or product listings can indicate timing.
+  </Step>
+  <Step title="Score and segment">
+    Rank leads by fit, completeness, recency, geography, or buying signal.
+  </Step>
+  <Step title="Export to the CRM">
+    Push qualified leads to your CRM or outreach tool.
+  </Step>
+</Steps>
+
+## Compliance Safeguards
+
+Keep provenance. Every row should include where it came from and when it was collected. That makes deduplication, opt-out handling, and data refresh much easier.
+
+See also: [Is Web Scraping Legal?](/en/academy/is-web-scraping-legal)

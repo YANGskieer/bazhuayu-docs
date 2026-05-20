@@ -1,0 +1,49 @@
+---
+title: How to Scrape Facebook Marketplace
+description: How to extract listings, prices, seller data, and location signals from Facebook Marketplace.
+---
+
+# How to Scrape Facebook Marketplace
+
+> How to extract listings, prices, seller data, and location signals from Facebook Marketplace for local market research, lead generation, and competitive analysis.
+
+## What to Collect
+
+| Data Type | Fields |
+|---|---|
+| Listings | Title, price, category, condition, description |
+| Location | City, neighborhood, distance from search center |
+| Seller data | Seller name, profile link, listing count, response rate |
+| Images | Listing photos (for product identification) |
+
+## Workflow
+
+<Steps>
+  <Step title="Set location parameters">
+    Define the search area using city, ZIP code, or radius.
+  </Step>
+  <Step title="Collect listing data">
+    Extract title, price, category, condition, and location from search results.
+  </Step>
+  <Step title="Visit listing detail pages">
+    Extract full descriptions, seller information, and additional photos.
+  </Step>
+  <Step title="Handle category and search pagination">
+    Collect listings across multiple categories or search queries.
+  </Step>
+</Steps>
+
+## Technical Notes
+
+- Facebook Marketplace uses heavy JavaScript rendering; a real browser is required.
+- Login may be required for some content or to see full seller profiles.
+- Facebook has active anti-bot measures; use appropriate rate limiting and session management.
+- Location data is approximate (city/neighborhood level rather than precise address).
+
+## Common Use Cases
+
+- **Real estate market research** - Monitor rental and for-sale listings
+- **Vehicle market analysis** - Track vehicle prices by make/model/year
+- **Local product research** - Understand pricing for specific product categories by geography
+
+See also: [Lead Generation](/en/academy/lead-generation), [Real Estate Data Extraction](/en/academy/real-estate-data), [Social Media Data Mining](/en/academy/social-media-data)

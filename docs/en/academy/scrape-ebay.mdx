@@ -1,0 +1,50 @@
+---
+title: How to Scrape eBay
+description: How to extract product listings, seller data, prices, and reviews from eBay.
+---
+
+# How to Scrape eBay
+
+> How to extract product listings, seller data, prices, reviews, and auction data from eBay for competitive intelligence, price monitoring, and market research.
+
+## What to Collect
+
+| Data Type | Fields |
+|---|---|
+| Product listings | Title, price, condition, format (auction/buy-it-now), location |
+| Seller data | Username, feedback score, location, member since |
+| Auction data | Current bid, bid count, time left, buy-it-now price |
+| Search results | All matching items with prices and seller info |
+
+## Workflow
+
+<Steps>
+  <Step title="Start from search results">
+    Begin with category or keyword search URLs to collect broad listings.
+  </Step>
+  <Step title="Extract listing data">
+    Collect title, current price, condition, format, and seller information.
+  </Step>
+  <Step title="Visit detail pages">
+    Extract full descriptions, specifications, shipping options, and review data.
+  </Step>
+  <Step title="Handle pagination">
+    eBay search results paginate; collect all listings relevant to your research.
+  </Step>
+</Steps>
+
+## Technical Notes
+
+- eBay uses JavaScript rendering; a real browser is required for reliable extraction.
+- Pagination uses URL parameters like `?_pgn=` or follows "Next" links.
+- Seller feedback scores can be extracted from listing pages or seller profile pages.
+- Monitor for rate limits on high-volume collection.
+
+## Common Use Cases
+
+- **Price monitoring** - Track sold and current prices across categories
+- **Competitor research** - Monitor what sellers are offering and at what price
+- **Auction intelligence** - Track bid patterns and sell-through rates
+- **Product research** - Validate demand for products before sourcing
+
+See also: [How to Scrape Amazon](/en/academy/scrape-amazon), [Price Monitoring](/en/academy/price-monitoring)

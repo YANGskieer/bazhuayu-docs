@@ -1,0 +1,26 @@
+---
+title: Get Task Group Information
+description: Retrieve details about a task group.
+---
+
+# Get Task Group Information
+
+> **Required plan:** Standard, Professional, or Enterprise
+
+## Endpoint
+
+```
+GET https://openapi.octoparse.com/task-group/get-information
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `taskGroupId` | string | Yes | The task group ID |
+
+## Response
+
+Returns task group details including name, creation date, status, and configuration.
+
+See also: [Search Task](/en/api-reference/task/search-task)

@@ -1,0 +1,23 @@
+---
+title: Update Task URLs
+description: Change the target URLs for a task.
+---
+
+# Update Task URLs
+
+> **Required plan:** Professional or Enterprise
+
+## Endpoint
+
+```
+POST https://openapi.octoparse.com/task/update-urls
+```
+
+## Request Body
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `taskGroupId` | string | Yes | The task group ID |
+| `urls` | array | Yes | New list of target URLs |
+
+See also: [Search Task](/en/api-reference/task/search-task), [Duplicate Task](/en/api-reference/task/duplicate-task)

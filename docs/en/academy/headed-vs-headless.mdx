@@ -1,0 +1,37 @@
+---
+title: Headed vs Headless Browsers
+description: Why the choice between headed and headless browsers matters for web scraping.
+---
+
+# Headed vs Headless Browsers
+
+> Headless browsers dominate the scraping ecosystem, but Octoparse runs headed by design. Why the choice matters, and which fits when.
+
+## Headless Browsers
+
+A headless browser runs without a visible UI but provides full browser capabilities.
+
+**Pros:** Faster, lower resource usage, can run in containers and cloud
+**Cons:** Higher anti-bot detection risk, may behave differently from real browsers
+
+## Headed Browsers
+
+Octoparse runs headed by design.
+
+**Pros:** Exactly what a real user sees, easier visual debugging, required for anti-bot protected sites
+**Cons:** Requires display environment, higher resource usage
+
+## Comparison
+
+| Factor | Headless | Headed |
+|---|---|---|
+| Resource usage | Lower | Higher |
+| Visual debugging | No | Yes |
+| Anti-bot detection | Higher risk | Lower risk |
+| Speed | Faster | Slightly slower |
+
+<Note>
+  Octoparse runs headed browsers with behavioral simulation - the accuracy of a headed browser with automation-friendly interaction patterns.
+</Note>
+
+See also: [The Browser Runtime Landscape](/en/academy/browser-runtime-landscape), [Browser Fingerprinting](/en/academy/browser-fingerprinting)

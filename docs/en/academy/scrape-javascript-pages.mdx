@@ -1,0 +1,54 @@
+---
+title: Scraping JavaScript-Rendered Pages
+description: Why basic HTTP scrapers fail on modern sites and how to handle JavaScript rendering.
+---
+
+# Scraping JavaScript-Rendered Pages
+
+> Modern sites render content client-side with React, Vue, or vanilla JS. Why basic HTTP scrapers fail, and three fixes: rendering in a real browser, API interception, and SSR detection.
+
+## Why Basic Scrapers Fail
+
+Traditional web scrapers send an HTTP request and parse the HTML response. This approach works on static sites where the server returns complete HTML. But modern sites built with React, Vue, Angular, or vanilla JavaScript often return an almost-empty HTML shell. The actual content is added by JavaScript running in the browser.
+
+The page you see in your browser is the result of:
+1. Browser fetches initial HTML
+2. JavaScript executes and makes additional API calls
+3. DOM is updated with fetched data
+4. Page becomes visible
+
+A basic HTTP scraper only sees step 1 - the empty shell.
+
+## Three Fixes
+
+### 1. Render with a Real Browser
+
+Use a headless or headed browser (Puppeteer, Playwright, Selenium) that executes JavaScript before extracting. The scraper waits for the page to fully load, then extracts the rendered HTML.
+
+**Pros:** Works for all JavaScript sites, no API reverse-engineering needed
+**Cons:** Slower, higher resource usage, still needs fingerprint and behavior management
+
+### 2. Intercept API Calls
+
+Instead of rendering the full page, find the API endpoints that the JavaScript calls to fetch data. Reverse-engineer these requests and call them directly.
+
+**Pros:** Much faster than full browser rendering, smaller payload
+**Cons:** Requires research to find and understand APIs, may need authentication tokens
+
+### 3. Detect Server-Side Rendering
+
+Some sites are SSR-first - they render content on the server and send complete HTML. These are detectable by checking whether a basic HTTP fetch returns meaningful content or just an empty shell.
+
+**Pros:** Fast, reliable, no browser overhead
+**Cons:** Only works on SSR sites, content may differ from client-rendered version
+
+## Which Approach to Use
+
+| Situation | Best approach |
+|---|---|
+| Unknown site, need reliable extraction | Real browser rendering |
+| Known API structure, speed critical | API interception |
+| High-volume scraping on SSR site | Direct HTTP fetch |
+| JavaScript-heavy SPA | Real browser rendering |
+
+See also: [The Browser Runtime Landscape](/en/academy/browser-runtime-landscape), [Anatomy of a Web Scraper](/en/academy/anatomy-of-a-web-scraper)

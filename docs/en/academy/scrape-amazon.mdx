@@ -1,0 +1,81 @@
+---
+title: How to Scrape Amazon
+description: A practical guide to extracting Amazon product data - search results, product pages, reviews, variants, prices, and anti-bot considerations.
+---
+
+# How to Scrape Amazon
+
+> A practical guide to extracting Amazon product data: search results, product pages, reviews, variants, prices, seller data, and anti-bot considerations.
+
+Amazon is one of the most valuable and most difficult e-commerce sources to scrape. Product pages contain price, seller, reviews, variants, rankings, images, and specifications, but the site is dynamic, heavily monitored, and different marketplaces can expose different layouts.
+
+## Page Types
+
+| Page type | Best for | Typical fields |
+|---|---|---|
+| Search results | Product discovery and ranking | Title, URL, image, price, rating, review count, ASIN |
+| Category pages | Category research | Product cards, rank position, category URL |
+| Product detail pages | Deep product intelligence | Brand, ASIN, price, seller, bullets, description, specs, variants |
+| Review pages | Sentiment and quality analysis | Review title, rating, text, date, reviewer, verified purchase |
+| Seller pages | Marketplace monitoring | Seller name, storefront URL, seller rating |
+
+## Step 1: Pick the Input
+
+Use **keywords** when you need discovery:
+```
+wireless keyboard
+protein powder
+kids winter boots
+```
+
+Use **product URLs or ASINs** when you already know the catalog:
+```
+https://www.amazon.com/dp/B08...
+B08...
+```
+
+For price monitoring, ASINs or product URLs are usually better than repeating keyword searches.
+
+## Step 2: Collect Listing Data
+
+Search and category pages are useful for breadth. Capture:
+- Product title
+- Product URL and ASIN
+- Price
+- Rating and review count
+- Image URL
+- Sponsored/organic signal
+- Result position
+- Timestamp
+
+<Note>
+  The result position matters. A product's rank for a keyword can be as important as its price.
+</Note>
+
+## Step 3: Visit Product Detail Pages
+
+Detail pages provide fields needed for serious analysis:
+- Brand and feature bullets
+- Product description and specifications
+- Variants
+- Seller and fulfillment signals
+- Best Sellers Rank
+- Full image set
+- Coupon or promotion signals
+
+## Step 4: Scrape Reviews Separately
+
+Review extraction is its own workflow. Sort order, pagination, language, star filters, and region can change the output.
+
+Useful review fields: rating, review title, review text, date, reviewer name, verified purchase flag, helpful vote count, product variant.
+
+## Technical Challenges
+
+Amazon scraping commonly runs into:
+- Dynamic layouts and A/B tests
+- Regional price and availability differences
+- CAPTCHA and bot-detection challenges
+- Variant-specific fields
+- Missing or hidden data
+
+See also: [Price Monitoring](/en/academy/price-monitoring), [Browser Fingerprinting](/en/academy/browser-fingerprinting)

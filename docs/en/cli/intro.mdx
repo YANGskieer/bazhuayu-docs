@@ -1,0 +1,46 @@
+---
+title: Octoparse CLI
+description: Command-line interface for managing Octoparse workflows from developer environments.
+---
+
+# Octoparse CLI
+
+> Command-line interface for managing Octoparse workflows from developer environments.
+
+## Installation
+
+```bash
+npm install -g @octoparse/cli
+```
+
+## Authentication
+
+```bash
+octoparse auth login --api-key YOUR_API_KEY
+```
+
+Get your API key at [Octoparse Account Center](https://www.octoparse.com/console/account-center/api-keys).
+
+## Common Commands
+
+| Command | Description |
+|---|---|
+| `octoparse tasks list` | List all your tasks |
+| `octoparse tasks search <query>` | Search tasks by name |
+| `octoparse run <task-id>` | Start a cloud extraction |
+| `octoparse status <run-id>` | Check extraction status |
+| `octoparse export <run-id>` | Export data from a completed run |
+| `octoparse templates search <query>` | Search template gallery |
+
+## Examples
+
+```bash
+# Search for a template
+octoparse templates search amazon
+
+# Run a task and wait for results
+octoparse run TASK_ID --wait
+
+# Export data as JSON
+octoparse export RUN_ID --format json --output ./data.json
+```

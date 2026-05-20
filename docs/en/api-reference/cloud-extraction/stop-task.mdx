@@ -1,0 +1,22 @@
+---
+title: Stop Task
+description: Cancel a running cloud extraction task.
+---
+
+# Stop Task
+
+> **Required plan:** Professional or Enterprise
+
+## Endpoint
+
+```
+POST https://openapi.octoparse.com/cloud-extraction/stop-task
+```
+
+## Request Body
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `taskGroupId` | string | Yes | The task group ID to stop |
+
+See also: [Start Task](/en/api-reference/cloud-extraction/start-task)

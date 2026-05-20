@@ -1,0 +1,41 @@
+---
+title: How to Scrape Twitter/X
+description: How to extract public tweets, profiles, trends, and engagement data from Twitter/X.
+---
+
+# How to Scrape Twitter/X
+
+> How to extract public tweets, profiles, trends, and engagement data from Twitter/X while respecting platform policies and API alternatives.
+
+## What to Collect
+
+| Data Type | Fields |
+|---|---|
+| Tweets | Text, author, date, likes, retweets, replies, URL |
+| Profiles | Username, display name, bio, followers, following, location |
+| Trends | Trend name, volume, location |
+| Hashtags | Hashtag, usage count, recent tweets |
+
+## Legal and Ethical Considerations
+
+<Warning>
+  Twitter/X has strict ToS and aggressive enforcement. The official API is the recommended approach. Unauthorized scraping may result in legal action or IP blocking. Review Twitter's automation rules before proceeding.
+</Warning>
+
+## API vs. Scraping
+
+Twitter offers an official API with various access levels. The free tier is limited; paid tiers provide more data. For most use cases, the official API is the right choice:
+- **Free tier** - 1,500 tweets/month with user context
+- **Basic tier** - $100/month for higher limits
+- **Pro tier** - Higher limits and full-archive search
+
+For cases where the API is insufficient, scraping with a real browser can provide additional data access, but carries significant compliance risk.
+
+## Common Use Cases
+
+- **Brand monitoring** - Track mentions and sentiment around brands and products
+- **Competitor analysis** - Monitor competitor social activity
+- **Trend analysis** - Identify emerging topics and conversation patterns
+- **Lead generation** - Find users discussing specific topics or needs
+
+See also: [Social Media Data Mining](/en/academy/social-media-data), [Is Web Scraping Legal](/en/academy/is-web-scraping-legal)

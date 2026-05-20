@@ -1,0 +1,33 @@
+---
+title: Get Subtask Status
+description: Check the status of a specific subtask within a cloud extraction run.
+---
+
+# Get Subtask Status
+
+> **Required plan:** Professional or Enterprise
+
+## Endpoint
+
+```
+GET https://openapi.octoparse.com/cloud-extraction/subtask-status
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `taskGroupId` | string | Yes | The task group ID |
+| `subtaskId` | string | Yes | The subtask ID |
+
+## Response
+
+| Field | Type | Description |
+|---|---|---|
+| `subtaskId` | string | The subtask ID |
+| `status` | string | pending / running / completed / failed |
+| `progress` | number | Progress percentage (0-100) |
+| `recordsExtracted` | number | Number of records extracted so far |
+| `errorMessage` | string | Error message if failed |
+
+See also: [Start Task](/en/api-reference/cloud-extraction/start-task), [Get Task Status](/en/api-reference/cloud-extraction/get-task-status)

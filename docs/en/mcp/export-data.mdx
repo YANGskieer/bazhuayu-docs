@@ -1,0 +1,23 @@
+---
+title: export_data
+description: Export completed task data as JSON or CSV.
+---
+
+# export_data
+
+Export data from a completed Octoparse task run.
+
+## Parameters
+
+| Parameter | Type | Description |
+|---|---|---|
+| `taskId` | string | Task ID |
+| `runId` | string | Run ID (optional if task has recent run) |
+| `format` | string | Export format: json or csv |
+| `limit` | number | Maximum records to return |
+
+## Response
+
+Returns the extracted data in the requested format.
+
+See also: [MCP Overview](/en/mcp/intro), [MCP Workflow](/en/mcp/workflow)

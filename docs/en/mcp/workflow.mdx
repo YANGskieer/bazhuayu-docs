@@ -1,0 +1,41 @@
+---
+title: Example MCP Workflow
+description: A complete example - from finding a template to exporting results.
+---
+
+# Example MCP Workflow
+
+> A complete example - from finding a template to exporting results.
+
+This guide walks through a complete Octoparse MCP workflow from natural language to extracted data.
+
+## Step 1: Discover a Template
+
+**Request:** *"Find me an Octoparse template for scraping Amazon product listings."*
+
+The agent calls `search_templates` to find relevant pre-built scraping templates.
+
+## Step 2: Run the Task
+
+**Request:** *"Run the Amazon Best Sellers template."*
+
+The agent calls `execute_task` to run the job. The MCP server starts a cloud extraction using the selected template and returns results once complete.
+
+## Step 3: Export the Results
+
+**Request:** *"Export the results as CSV."*
+
+The agent calls `export_data` with format=csv to return the full dataset.
+
+## Available Tools Reference
+
+| Tool | What it does |
+|---|---|
+| `search_templates` | Search pre-built scraping templates by keyword |
+| `search_tasks` | List and search your existing Octoparse tasks |
+| `start_or_stop_task` | Start or stop a cloud task by ID |
+| `execute_task` | Run a scraping template and retrieve results |
+| `export_data` | Export completed task data as JSON or CSV |
+| `redeem_coupon_code` | Redeem a promotional coupon code |
+
+See also: [MCP Overview](/en/mcp/intro), [Rate Limits](/en/mcp/rate-limits)

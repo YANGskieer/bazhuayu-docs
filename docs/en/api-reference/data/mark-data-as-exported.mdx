@@ -1,0 +1,23 @@
+---
+title: Mark Data as Exported
+description: Flag records as exported to prevent duplicate retrieval.
+---
+
+# Mark Data as Exported
+
+> **Required plan:** Standard, Professional, or Enterprise
+
+## Endpoint
+
+```
+POST https://openapi.octoparse.com/data/mark-exported
+```
+
+## Request Body
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `taskGroupId` | string | Yes | The task group ID |
+| `recordIds` | array | Yes | IDs of records to mark as exported |
+
+See also: [Get Non-Exported Data](/en/api-reference/data/get-non-exported-data)

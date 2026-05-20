@@ -1,0 +1,34 @@
+---
+title: How to Scrape Google Maps
+description: How to extract local business listings from Google Maps.
+---
+
+# How to Scrape Google Maps
+
+> How to extract local business listings from Google Maps: search inputs, listing fields, place details, reviews, and lead enrichment.
+
+## What to Collect
+
+| Data Type | Fields |
+|---|---|
+| Business listings | Name, address, phone, website, category, rating, review count, hours |
+| Reviews | Rating, text, date, reviewer name |
+
+## Workflow
+
+<Steps>
+  <Step title="Define search parameters">
+    Use keyword + location combinations: "dentists in Austin TX"
+  </Step>
+  <Step title="Collect listing data">
+    Extract name, rating, review count, address, phone, website from search results.
+  </Step>
+  <Step title="Handle map splitting">
+    For large areas, divide into smaller regions and scrape each separately.
+  </Step>
+  <Step title="Extract place details">
+    Use Place ID to get full address, website, photos, and reviews.
+  </Step>
+</Steps>
+
+See also: [Lead Generation](/en/academy/lead-generation), [Browser Fingerprinting](/en/academy/browser-fingerprinting)

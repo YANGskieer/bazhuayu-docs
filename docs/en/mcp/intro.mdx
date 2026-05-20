@@ -1,0 +1,42 @@
+---
+title: Octoparse MCP Server
+description: Connect Octoparse to AI agents - ChatGPT, Claude, Cursor, Gemini.
+---
+
+# Octoparse MCP Server
+
+> Connect Octoparse to any MCP-compatible AI agent. Search templates, run cloud tasks, and retrieve data - all from natural language.
+
+## Prerequisites
+
+- **An Octoparse Account** - Free users get 2,000 free records/week via MCP
+- **An MCP-Compatible Client** - ChatGPT, Claude, OpenClaw, Cursor, VS Code, or Gemini CLI
+
+## Server URL
+
+```
+https://mcp.octoparse.com
+```
+
+## Authentication
+
+<Card title="OAuth 2.1 (Recommended)">
+  Browser-based login. No API key needed. Sign in to Octoparse when prompted.
+</Card>
+
+<Card title="API Key">
+  Direct authentication for headless environments. Get your key at [Octoparse Account Center](https://www.octoparse.com/console/account-center/api-keys).
+</Card>
+
+## Available MCP Tools
+
+| Tool | Description |
+|---|---|
+| `search_templates` | Search pre-built scraping templates |
+| `search_tasks` | List and search existing tasks |
+| `start_or_stop_task` | Start or stop a cloud task by ID |
+| `execute_task` | Run a scraping template and retrieve results |
+| `export_data` | Export completed task data (JSON / CSV) |
+| `redeem_coupon_code` | Redeem a promotional coupon code |
+
+See [Rate Limits](/en/mcp/rate-limits) and [Troubleshooting](/en/mcp/troubleshooting).

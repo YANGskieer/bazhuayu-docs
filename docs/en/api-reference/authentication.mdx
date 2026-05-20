@@ -1,0 +1,42 @@
+---
+title: Authentication
+description: How to authenticate with the Octoparse OpenAPI.
+---
+
+# Authentication
+
+All Octoparse API requests require authentication using an access token.
+
+## Getting a Token
+
+### Step 1: Obtain an Access Token
+
+```bash
+curl -X POST https://openapi.octoparse.com/token \
+  -H "Content-Type: application/json" \
+  -d "{\"username\": \"YOUR_EMAIL\", \"password\": \"YOUR_PASSWORD\"}"
+```
+
+### Step 2: Include the Token in API Requests
+
+```
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+## Token Refresh
+
+Access tokens expire. Use your refresh token to get a new one:
+
+```bash
+curl -X POST https://openapi.octoparse.com/token/refresh \
+  -H "Content-Type: application/json" \
+  -d "{\"refresh_token\": \"YOUR_REFRESH_TOKEN\"}"
+```
+
+## Important Notes
+
+- Never hardcode credentials in your code. Use environment variables or a secrets manager.
+- Access tokens are tied to your account. Do not share them.
+- If you suspect your token has been compromised, reset it from your Octoparse account settings.
+
+See also: [Obtain a New Token](/en/api-reference/access-token/obtain-a-new-token), [Refresh Token](/en/api-reference/access-token/refresh-token)
