@@ -1,6 +1,6 @@
 ---
 title: 清空任务数据
-description: 更多的功能请升级账户。 遇到问题 文档中的任意接口将会返回requestId，如您调用接口发现任何错误或者结果不符合预期，请提供该值以供我们工作人员能够更加快速为您排查。 接口调用凭证 获取全新Token 你需要提供一次八爪鱼平台的登录账号和密码来获取全新【Access Token】。
+description: 清空任务数据
 ---
 
 # 清空任务数据
@@ -15,70 +15,21 @@ https://openapi.bazhuayu.com/data/remove
 
 ## 描述
 
-更多的功能请升级账户。 遇到问题 文档中的任意接口将会返回requestId，如您调用接口发现任何错误或者结果不符合预期，请提供该值以供我们工作人员能够更加快速为您排查。 接口调用凭证 获取全新Token 你需要提供一次八爪鱼平台的登录账号和密码来获取全新【Access Token】。
+清空任务数据
 
 ## 请求头
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
+| `Authorization` | String | 是 | 身份令牌 |
 | `Content-Type` | String | 是 | application/json |
 
 ## 响应
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
+| `requestId` | String | 是 | 请求Id |
 | `data` | Object[] | 是 | 响应数据 |
-| `access_token` | String | 是 | 访问令牌 |
-| `expires_in` | Date | 是 | access_token有效时间（秒）（推荐在有效期间内推荐重复使用），有效期为1天 |
-| `token_type` | String | 是 | 令牌类型 |
-| `refresh_token` | String | 是 | 刷新access_token的凭证 |
-| `requestId` | String | 是 | 请求Id |
-
-## 错误响应
-
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `requestId` | String | 是 | 请求Id |
-| `error` | Object | 是 | 错误信息，参考错误码 |
-| `code` | String | 是 | 错误码 |
-| `message` | String | 是 | 错误描述 |
-
-## 响应
-
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `data` | Object[] | 是 | 响应数据 |
-| `access_token` | String | 是 | 访问令牌 |
-| `expires_in` | Date | 是 | access_token有效时间（秒）（推荐在有效期间内推荐重复使用），有效期为1天 |
-| `token_type` | String | 是 | 令牌类型 |
-| `refresh_token` | String | 是 | 刷新access_token的凭证 |
-| `requestId` | String | 是 | 请求Id |
-
-## 错误响应
-
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `requestId` | String | 是 | 请求Id |
-| `error` | Object | 是 | 错误信息，参考错误码 |
-| `code` | String | 是 | 错误码 |
-| `message` | String | 是 | 错误描述 |
-
-## 请求头
-
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `Content-Type` | String | 是 | application/json |
-
-## 响应
-
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `data` | Object[] | 是 | 响应数据 |
-| `access_token` | String | 是 | 访问令牌 |
-| `expires_in` | Date | 是 | access_token有效时间（秒）（推荐在有效期间内推荐重复使用），有效期为1天 |
-| `token_type` | String | 是 | 令牌类型 |
-| `refresh_token` | String | 是 | 刷新access_token的凭证 |
-| `requestId` | String | 是 | 请求Id |
 
 ## 错误响应
 

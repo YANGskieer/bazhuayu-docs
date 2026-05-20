@@ -24,3 +24,19 @@ https://openapi.bazhuayu.com/task/urls:file
 | `Authorization` | String | 是 | 身份令牌 |
 | `Content-Type` | String | 是 | 内容类型 |
 
+## 响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` | String | 是 | 请求Id |
+| `data` | Object | 是 | 响应数据 |
+
+## 错误响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` | String | 是 | 请求Id |
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误描述 |
+

@@ -1,19 +1,45 @@
 ---
-title: 获取全新Token
-description: 接口调用凭证
+title: 获取全新 Token
+description: 你需要提供一次八爪鱼平台的登录账号和密码来获取全新【Access Token】。
 ---
 
-# 获取全新Token
+# 获取全新 Token
 
 > **所需套餐：** 全部
 
 ## 端点
 
 ```
-https://openapi.bazhuayu.com/token?grant_type=client_credentials
+https://openapi.bazhuayu.com/token
 ```
 
 ## 描述
 
-接口调用凭证
+你需要提供一次八爪鱼平台的登录账号和密码来获取全新【Access Token】。
+
+## 请求头
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `Content-Type` | String | 是 | application/json |
+
+## 响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `data` | Object[] | 是 | 响应数据 |
+| `access_token` | String | 是 | 访问令牌 |
+| `expires_in` | Date | 是 | access_token有效时间（秒）（推荐在有效期间内推荐重复使用），有效期为1天 |
+| `token_type` | String | 是 | 令牌类型 |
+| `refresh_token` | String | 是 | 刷新access_token的凭证 |
+| `requestId` | String | 是 | 请求Id |
+
+## 错误响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` | String | 是 | 请求Id |
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误描述 |
 

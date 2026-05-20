@@ -1,6 +1,6 @@
 ---
 title: 获取任务状态
-description: 获取云采集任务状态
+description: 此接口接收用户传入的一批任务ID，返回相应的任务状态列表。调用频率：5秒1次请求。
 ---
 
 # 获取任务状态
@@ -15,12 +15,31 @@ https://openapi.bazhuayu.com/cloudextraction/statuses
 
 ## 描述
 
-获取云采集任务状态
+此接口接收用户传入的一批任务ID，返回相应的任务状态列表。调用频率：5秒1次请求。
 
 ## 请求头
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `Authorization` | String | 是 | 身份令牌 Content-Type |
-| `required` | String | 否 | application/json |
+| `Authorization` | String | 是 | 身份令牌 |
+| `Content-Type` | String | 是 | application/json |
+
+## 响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `data` | Object[] | 是 | 响应数据 |
+| `taskId` | String | 是 | 任务Id |
+| `taskName` | String | 是 | 任务名 |
+| `status` | String | 是 | 任务状态：Unexecuted - 未执行，Waiting - 等待分配，Extracting - 采集中，Stopped - 已停止，Finished - 已完成 |
+| `requestId` | String | 是 | 请求Id |
+
+## 错误响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` | String | 是 | 请求Id |
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误描述 |
 
