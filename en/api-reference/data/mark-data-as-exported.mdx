@@ -1,6 +1,6 @@
 ---
 title: 标记数据为已导出状态
-description: 标记数据为已导出状态
+description: 
 ---
 
 # 标记数据为已导出状态
@@ -15,342 +15,101 @@ https://openapi.bazhuayu.com/data/markexported
 
 ## 描述
 
-标记数据为已导出状态
+
 
 ## 请求头
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `Authorization` |  | 否 |  |
-| `required` |  | 是 |  |
-| `身份令牌  字段` | 描述 | 否 |  |
-| `Authorization` |  | 否 |  |
-| `required` |  | 是 |  |
-| `身份令牌   Content-Type` |  | 否 |  |
-| `required` | application/json  字段 | 是 | 描述 |
-| `Authorization` |  | 否 |  |
-| `required` |  | 是 |  |
-| `身份令牌  字段` | 描述 | 否 |  |
-| `Authorization` |  | 否 |  |
-| `required` |  | 是 |  |
-| `身份令牌   Content-Type` |  | 否 |  |
-| `required` | application/json | 是 |  |
-
-
-**请求头示例**
-
-```json
-{
-    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"
-}
-字段	类型	描述
-taskId  
-required
-	String	
-
-任务Id
-
-
-size  
-required
-	String	
-
-数据条数，范围：1~1000
-
-请求示例
-https://openapi.bazhuayu.com/data/notexported?taskId=a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f&size=4
-{
-    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw",
-    "Content-Type": "application/json"
-}
-字段	类型	描述
-taskId
-required
-	String	
-
-任务Id
-
-{
-    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"
-}
-字段	类型	描述
-taskId  
-required
-	String	
-
-任务Id
-
-
-offset  
-required
-	Number	
-
-数据偏移量，当offset小等于0时，则从起始位置读取任务数据
-
-
-size  
-required
-	Number	
-
-获取的数据量，范围：1~1000
-
-请求示例
-https://openapi.bazhuayu.com/data/all?taskId=a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f&offset=0&size=4
-{
-    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw",
-    "Content-Type": "application/json"
-}
-字段	类型	描述
-taskId
-required
-	String	
-
-任务Id
-```
-
-**请求体示例**
-
-```json
-{
-    "taskId": "6bb3b0c8-1e1d-432f-bc42-7206567219b"
-}
-{
-    "taskId": "6bb3b0c8-1e1d-432f-bc42-7206567219b"
-}
-```
+| `Authorization` | String | 是 | 身份令牌 |
 
 ## 响应
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `data` |  | 否 |  |
-| `required` |  | 是 |  |
-| `响应数据` |  | 否 |  |
-| `data` |  | 否 |  |
-| `required` |  | 是 |  |
-| `任务数据` |  | 否 |  |
-| `total` |  | 否 |  |
-| `required` |  | 是 |  |
-| `数据总量` |  | 否 |  |
-| `current` |  | 否 |  |
-| `required` |  | 是 |  |
-| `该次导出的数据数量  字段` | 描述 | 否 |  |
-| `data` |  | 否 |  |
-| `required` |  | 是 |  |
-| `响应数据` |  | 否 |  |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id  字段` | 描述 | 否 |  |
-| `data` |  | 否 |  |
-| `required` |  | 是 |  |
-| `响应数据` |  | 否 |  |
-| `data` |  | 否 |  |
-| `required` |  | 是 |  |
-| `任务数据` |  | 否 |  |
-| `total` |  | 否 |  |
-| `required` |  | 是 |  |
-| `数据总量` |  | 否 |  |
-| `restTotal` |  | 否 |  |
-| `required` |  | 是 |  |
-| `剩余数据` |  | 否 |  |
-| `offset` |  | 否 |  |
-| `required` | 数据偏移量，当offset小等于0时，则从起始位置读取任务数据 | 是 |  |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id  字段` | 描述 | 否 |  |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `data` |  | 否 |  |
-| `required` |  | 是 |  |
-| `响应数据` |  | 否 |  |
-
-
-**响应示例**
-
-```json
-{
-    "data": {
-        "total": 100000,
-        "current": 4,
-        "data": [
-            {
-                "词条": "深圳视界",
-                "简介": "领先的信息化解决方案提供商，致力于企业级数据整合，网页数据采集，整理，分析和挖掘。"
-            },
-            {
-                "词条": "八爪鱼",
-                "简介": "它彻底改变了大家对爬虫和采集器的认知，让网页数据采集变得前所未有的简单。"
-            },
-            {
-                "词条": "数多多",
-                "简介": "致力于打造大数据共享与交易平台。"
-            },
-            {
-                "词条": "微图",
-                "简介": "一款简单易用的数据分析及可视化工具，支持自然语言分析及文本挖掘。"
-            }
-        ]
-    },
-    "requestId": "0HMD469L0I8Q1:00000001"
-}
-{
-    "data": null,
-    "requestId": "0HMD469L0I8Q1:00000001"
-}
-{
-    "data": {
-        "offset": 4,
-        "total": 100000,
-        "restTotal": 99996,
-        "data": [
-            {
-                "词条": "深圳视界",
-                "简介": "领先的信息化解决方案提供商，致力于企业级数据整合，网页数据采集，整理，分析和挖掘。"
-            },
-            {
-                "词条": "八爪鱼",
-                "简介": "它彻底改变了大家对爬虫和采集器的认知，让网页数据采集变得前所未有的简单。"
-            },
-            {
-                "词条": "数多多",
-                "简介": "致力于打造大数据共享与交易平台。"
-            },
-            {
-                "词条": "微图",
-                "简介": "一款简单易用的数据分析及可视化工具，支持自然语言分析及文本挖掘。"
-            }
-        ]
-    },
-    "requestId": "0HMD469L0I8Q1:00000001"
-}
-{
-    "data": null,
-    "requestId": "0HMD469L0I8Q1:00000001"
-}
-```
+| `data` | Object[] | 是 | 响应数据 |
+| `data` | Object | 是 | 任务数据 |
+| `total` | Int | 是 | 数据总量 |
+| `current` | Int | 是 | 该次导出的数据数量 |
 
 ## 错误响应
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `error` |  | 否 |  |
-| `required` | 错误信息，参考错误码 | 是 |  |
-| `code` |  | 否 |  |
-| `required` | 字段 | 是 | 描述 |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `error` |  | 否 |  |
-| `required` | 错误信息，参考错误码 | 是 |  |
-| `code` |  | 否 |  |
-| `required` | 字段 | 是 | 描述 |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `error` |  | 否 |  |
-| `required` | 错误信息，参考错误码 | 是 |  |
-| `code` |  | 否 |  |
-| `required` | 字段 | 是 | 描述 |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `error` |  | 否 |  |
-| `required` | 错误信息，参考错误码 | 是 |  |
-| `code` |  | 否 |  |
-| `required` |  | 是 |  |
+| `requestId` | String | 是 | 请求Id |
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误描述 |
 
+## 请求头
 
-**错误示例**
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `Authorization` | String | 是 | 身份令牌 |
 
-```json
-message
-required
-	String	
+## 响应
 
-错误描述
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `data` | Object[] | 是 | 响应数据 |
+| `data` | Object | 是 | 任务数据 |
+| `total` | Int | 是 | 数据总量 |
+| `current` | Int | 是 | 该次导出的数据数量 |
 
-{
-    "error": {
-        "code": "ServerError",
-        "message": "Internal Server Error"
-    },
-    "requestId": "0HMD469L0I8R0:00000001"
-}
-标记数据为已导出状态
-1.0.0 
+## 错误响应
 
-确认数据已导出，否则数据仍属于未导出。
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` | String | 是 | 请求Id |
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误描述 |
 
-https://openapi.bazhuayu.com/data/markexported
+## 请求头
 
-权限: 旗舰版，旗舰+，企业版，团队版
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `Authorization` | String | 是 | 身份令牌 |
 
+## 响应
 
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `data` | Object[] | 是 | 响应数据 |
+| `data` | Object | 是 | 任务数据 |
+| `total` | Int | 是 | 数据总量 |
+| `current` | Int | 是 | 该次导出的数据数量 |
 
-message
-required
-	String	
+## 错误响应
 
-错误描述
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` | String | 是 | 请求Id |
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误描述 |
 
-{
-    "error": {
-        "code": "ServerError",
-        "message": "Internal Server Error"
-    },
-    "requestId": "0HMD469L0I8R0:00000001"
-}
-根据指定位置获取任务数据
-1.0.0 
+## 请求头
 
-将位置（offset）设置为 0，将从第一条数据的位置开始获取数据，并返回获取后续数据的实际起始位置（offset），您应该通过该返回的位置（offset）来获取下一批数据，以此类推。 例如： 第一次：offset = 0，size = 100， 返回：offset = 1024 第二次：offset = 1024，size = 100， 返回：offset = 1124 第三次：offset = 1124，size = 100 (200条以内单次导出不超过4M，200条以上单次导出不超过8M)
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `Authorization` | String | 是 | 身份令牌 |
 
-https://openapi.bazhuayu.com/data/all
+## 响应
 
-权限: 旗舰版，旗舰+，企业版，团队版
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `data` | Object[] | 是 | 响应数据 |
+| `data` | Object | 是 | 任务数据 |
+| `total` | Int | 是 | 数据总量 |
+| `current` | Int | 是 | 该次导出的数据数量 |
 
+## 错误响应
 
-
-message
-required
-	String	
-
-错误描述
-
-{
-    "error": {
-        "code": "ServerError",
-        "message": "Internal Server Error"
-    },
-    "requestId": "0HMD469L0I8R0:00000001"
-}
-清空任务数据
-1.0.0 
-
-清空任务数据
-
-https://openapi.bazhuayu.com/data/remove
-
-权限: 旗舰版，旗舰+，企业版，团队版
-
-
-
-message
-required
-	String	
-
-错误描述
-
-{
-    "error": {
-        "code": "ServerError",
-        "message": "Internal Server Error"
-    },
-    "requestId": "0HMD469L0I8R0:00000001"
-}
-```
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` | String | 是 | 请求Id |
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误描述 |
 

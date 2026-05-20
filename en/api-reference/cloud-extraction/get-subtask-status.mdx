@@ -21,101 +21,25 @@ https://openapi.bazhuayu.com/cloudextraction/task/subtasks
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `Authorization` |  | 否 |  |
-| `required` |  | 是 |  |
-| `身份令牌   Content-Type` |  | 否 |  |
-| `required` | application/json | 是 |  |
-
-
-**请求头示例**
-
-```json
-{
-    "Authorization":"Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"
-    "Content-Type":"application/json"
-}
-字段	类型	描述
-taskId  
-required
-	String	
-
-任务Id
-
-
-page  
-required
-	Int	
-
-页数
-
-
-size  
-required
-	Int	
-
-每页条数
-```
+| `Authorization` | String | 是 | 身份令牌 |
+| `Content-Type` | String | 是 | application/json |
+| `请求体示例` | https://openapi.bazhuayu.com/cloudextraction/task/subtasks?taskId=11d18cb2-6209-4b35-9243-c33a07be45b0&page=1&size=20 | 否 |  |
 
 ## 响应
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `data` |  | 否 |  |
-| `required` |  | 是 |  |
-| `响应数据` |  | 否 |  |
-| `subTaskId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `子任务Id` |  | 否 |  |
-| `status` |  | 否 |  |
-| `required` | 任务状态：Waiting - 等待分配，Sent- 已分配, Extracting - 采集中，Stopped - 已停止，Finished - 已完成 | 是 |  |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-
-
-**响应示例**
-
-```json
-{
-    "data": [
-        {
-            "subTaskId": "1ea88321-6627-43db-896b-851dba5d69ec",
-            "status": "Extracting"
-        }
-    ],
-    "requestId": "0HMD469L0I8R0:00000001"
-}
-```
+| `data` | Object[] | 是 | 响应数据 |
+| `subTaskId` | String | 是 | 子任务Id |
+| `status` | String | 是 | 任务状态：Waiting - 等待分配，Sent- 已分配, Extracting - 采集中，Stopped - 已停止，Finished - 已完成 |
+| `requestId` | String | 是 | 请求Id |
 
 ## 错误响应
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `error` |  | 否 |  |
-| `required` | 错误信息，参考错误码 | 是 |  |
-| `code` |  | 否 |  |
-| `required` |  | 是 |  |
-
-
-**错误示例**
-
-```json
-message
-required
-	String	
-
-错误描述
-
-{
-    "error": {
-        "code": "ServerError",
-        "message": "Internal Server Error"
-    },
-    "requestId": "0HMD469L0I8R0:00000001"
-}
-数据
-```
+| `requestId` | String | 是 | 请求Id |
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误描述 |
 

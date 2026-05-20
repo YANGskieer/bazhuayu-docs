@@ -21,220 +21,65 @@ https://openapi.bazhuayu.com/taskGroup/deleteGroups
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `Authorization` |  | 否 |  |
-| `required` |  | 是 |  |
-| `身份令牌  字段` | 描述 | 否 |  |
-| `Authorization` |  | 否 |  |
-| `required` |  | 是 |  |
-| `身份令牌  字段` | 描述 | 否 |  |
-| `Authorization` |  | 否 |  |
-| `required` |  | 是 |  |
-| `身份令牌` |  | 否 |  |
-
-
-**请求头示例**
-
-```json
-{
-    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"
-}
-字段	类型	描述
-groupIds
-required
-	int[]	
-
-需要删除的数组id
-
-{
-    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"
-}
-字段	类型	描述
-taskGroupId  
-required
-	int	
-
-任务组Id
-
-请求示例
-https://openapi.bazhuayu.com/task/search?taskGroupId=23894
-{
-    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"
-}
-字段	类型	描述
-taskGroupId  
-required
-	int	
-
-任务组Id(不传则复制到当前任务的任务组)
-
-
-taskId  
-required
-	string	
-
-任务Id
-
-请求示例
-https://openapi.bazhuayu.com/task/copy?taskId=a2de44e9-092c-453c-bfe3-fe9e71dff12345&taskGroupId=100
-```
+| `Authorization` | String | 是 | 身份令牌 |
 
 ## 响应
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `data` |  | 否 |  |
-| `required` |  | 是 |  |
-| `响应数据` |  | 否 |  |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id  字段` | 描述 | 否 |  |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `data` |  | 否 |  |
-| `required` |  | 是 |  |
-| `响应数据` |  | 否 |  |
-| `taskId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `任务Id` |  | 否 |  |
-| `taskName` |  | 否 |  |
-| `required` |  | 是 |  |
-| `任务名  字段` | 描述 | 否 |  |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `data` |  | 否 |  |
-| `required` |  | 是 |  |
-| `响应数据` |  | 否 |  |
-| `taskId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `新任务Id` |  | 否 |  |
-
-
-**响应示例**
-
-```json
-{
-    "data": [],
-    "requestId": "0HMCVDHG1V3E6:00000002"
-}
-{
-    "data": [
-        {
-            "taskId": "a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f",
-            "taskName": "八爪鱼采集"
-        },
-        {
-            "taskId": "86b9bdf7-9aaa-22236-9ccf-b3279469df01",
-            "taskName": "八爪鱼采集2"
-        }
-    ],
-    "requestId": "0HMCVDHG1V3E6:00000002"
-}
-{
-    "data": {
-        "taskId": "a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f",
-        "taskName": "八爪鱼采集"
-    },
-    "requestId": "0HMCVDHG1V3E6:00000002"
-}
-```
+| `data` | Object[] | 是 | 响应数据 |
+| `requestId` | String | 是 | 请求Id |
 
 ## 错误响应
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `error` |  | 否 |  |
-| `required` | 错误信息，参考错误码 | 是 |  |
-| `code` |  | 否 |  |
-| `required` | 字段 | 是 | 描述 |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `error` |  | 否 |  |
-| `required` | 错误信息，参考错误码 | 是 |  |
-| `code` |  | 否 |  |
-| `required` | 字段 | 是 | 描述 |
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `error` |  | 否 |  |
-| `required` | 错误信息，参考错误码 | 是 |  |
-| `code` |  | 否 |  |
-| `required` |  | 是 |  |
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误描述 |
+| `requestId` | String | 是 | 请求Id |
 
+## 请求头
 
-**错误示例**
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `Authorization` | String | 是 | 身份令牌 |
 
-```json
-message
-required
-	String	
+## 响应
 
-错误描述
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `data` | Object[] | 是 | 响应数据 |
+| `requestId` | String | 是 | 请求Id |
 
+## 错误响应
 
-requestId
-required
-	String	
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误描述 |
+| `requestId` | String | 是 | 请求Id |
 
-请求Id
+## 请求头
 
-{
-    "error": {
-        "code": "ServerError",
-        "message": "Internal Server Error"
-    },
-    "requestId": "0HMD469L0I8R0:00000001"
-}
-任务
-搜索任务
-1.0.0 
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `Authorization` | String | 是 | 身份令牌 |
 
-根据条件搜索任务，目前支持按任务组搜索。
+## 响应
 
-https://openapi.bazhuayu.com/task/search
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `data` | Object[] | 是 | 响应数据 |
+| `requestId` | String | 是 | 请求Id |
 
-权限: 旗舰版，旗舰+，企业版，团队版
+## 错误响应
 
-
-
-message
-required
-	String	
-
-错误描述
-
-{
-    "error": {
-        "code": "GroupNotFound",
-        "message": "不存在此任务组"
-    },
-    "requestId": "0HMCVDHG1V3E6:00000002"
-}
-复制任务
-1.0.0 
-
-复制任务到指定组
-
-https://openapi.bazhuayu.com/task/copy
-
-权限: 旗舰+，企业版，团队版
-
-
-
-message
-required
-	String	
-
-错误描述
-
-{
-    "error": {
-        "code": "InvalidTaskId",
-        "message": "无效的任务Id"
-    },
-    "requestId": "0HMCVDHG1V3E6:00000002"
-}
-```
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误描述 |
+| `requestId` | String | 是 | 请求Id |
 

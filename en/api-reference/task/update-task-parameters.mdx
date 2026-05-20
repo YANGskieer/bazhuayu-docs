@@ -21,219 +21,26 @@ https://openapi.bazhuayu.com/task/updateTaskParameters
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `Authorization` |  | 否 |  |
-| `required` |  | 是 |  |
-| `身份令牌   Content-Type` |  | 否 |  |
-| `required` | application/json | 是 |  |
-
-
-**请求头示例**
-
-```json
-{
-    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw",
-    "Content-Type": "application/json"
-}
-字段	类型	描述
-taskId
-required
-	String	
-
-任务Id
-
-
-actions
-required
-	Object[]	
-
-需要更新的步骤参数，具体参考：步骤属性
-
-
-actionType
-required
-	String	
-
-步骤类型，目前支持：NavigateAction（打开网页类型）、EnterTextAction（输入文本类型）、LoopAction（循环列表类型）
-
-
-actionId
-required
-	String	
-
-步骤的唯一标识，您可以在客户端点击相应的步骤的"Api 调用名称"获取，也可以通过【批量获取任务步骤信息】接口获取。
-
-
-properties
-required
-	Object[]	
-
-属性，目前支持更新的属性参考：步骤属性
-
-
-name
-required
-	String	
-
-属性名，目前支持更新的属性参考：步骤属性
-
-
-value
-required
-	String	
-
-属性值
-
-
-loopItems
-required
-	Object[]	
-
-需要更新的循环项参数
-
-
-actionId
-required
-	String	
-
-步骤的唯一标识，您可以在客户端点击相应的步骤的"Api 调用名称"获取，也可以通过【批量获取任务步骤信息】接口获取。
-
-
-loopType
-required
-	String	
-
-循环类型，目前支持：URLList（网址列表）、TextList（文本列表）
-
-
-loopItems
-required
-	String[]	
-
-循环项内容
-
-
-isAppend
-required
-	Boolean	
-
-是否是追加流程值，只针对List型流程值，如果是追加，则不清除旧值，默认清除旧值
-
-请求体示例（同时更新动作和循环参数）
-{
-    "taskId": "a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f",
-    "actions": [
-        {
-            "actionType": "EnterTextAction",
-            "actionId": "ce1wg4nytr",
-            "properties": [
-                {
-                    "name": "TextToSet",
-                    "value": "4k显示器123"
-                }
-            ]
-        }
-    ],
-    "loopItems": [
-        {
-            "actionId": "loop1",
-            "loopType": "URLList",
-            "loopItems": [
-                "http://www.example1.com",
-                "http://www.example2.com"
-            ],
-            "isAppend": false
-        }
-    ]
-}
-```
+| `Authorization` | String | 是 | 身份令牌 |
+| `Content-Type` | String | 是 | application/json |
 
 ## 响应
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `data` |  | 否 |  |
-| `required` |  | 是 |  |
-| `响应数据` |  | 否 |  |
-| `taskId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `任务Id` |  | 否 |  |
-| `updatedParameters` |  | 否 |  |
-| `required` |  | 是 |  |
-| `更新的参数信息` |  | 否 |  |
-| `actions` |  | 否 |  |
-| `required` |  | 是 |  |
-| `更新的动作参数` |  | 否 |  |
-| `loopItems` |  | 否 |  |
-| `required` |  | 是 |  |
-| `更新的循环项参数` |  | 否 |  |
-
-
-**响应示例**
-
-```json
-{
-    "data": {
-        "taskId": "a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f",
-        "updatedParameters": {
-            "actions": [
-                {
-                    "actionId": "ce1wg4nytr",
-                    "actionType": "EnterTextAction",
-                    "properties": [
-                        {
-                            "name": "TextToSet",
-                            "value": "4k显示器123"
-                        }
-                    ]
-                }
-            ],
-            "loopItems": [
-                {
-                    "actionId": "loop1",
-                    "loopType": "URLList",
-                    "loopItems": [
-                        "http://www.example1.com",
-                        "http://www.example2.com"
-                    ]
-                }
-            ]
-        }
-    },
-    "requestId": "0HMCVDHG1V3E6:00000002"
-}
-```
+| `requestId` | String | 是 | 请求Id |
+| `data` | Object | 是 | 响应数据 |
+| `taskId` | String | 是 | 任务Id |
+| `updatedParameters` | Object | 是 | 更新的参数信息 |
+| `actions` | Object[] | 是 | 更新的动作参数 |
+| `loopItems` | Object[] | 是 | 更新的循环项参数 |
 
 ## 错误响应
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `requestId` |  | 否 |  |
-| `required` |  | 是 |  |
-| `请求Id` |  | 否 |  |
-| `error` |  | 否 |  |
-| `required` | 错误信息，参考错误码 | 是 |  |
-| `code` |  | 否 |  |
-| `required` |  | 是 |  |
-
-
-**错误示例**
-
-```json
-message
-required
-	String	
-
-错误详情
-
-{
-    "error": {
-        "code": "RequestModelNull",
-        "message": "请求参数不能为空"
-    },
-    "requestId": "0HMCVDHG1V3E6:00000002"
-}
-```
+| `requestId` | String | 是 | 请求Id |
+| `error` | Object | 是 | 错误信息，参考错误码 |
+| `code` | String | 是 | 错误码 |
+| `message` | String | 是 | 错误详情 |
 

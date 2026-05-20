@@ -1,59 +1,19 @@
 ---
-title: 获取新 Token
-description: 从 Octoparse API 获取新的 Access Token。
+title: 获取全新Token
+description: 接口调用凭证
 ---
 
-# 获取新 Token
+# 获取全新Token
 
-> **所需套餐：** 所有用户
+> **所需套餐：** 全部
 
 ## 端点
 
 ```
-POST https://openapi.octoparse.com/token
+https://openapi.bazhuayu.com/token?grant_type=client_credentials
 ```
 
 ## 描述
 
-使用 Octoparse 用户名和密码获取新的 Access Token。该 Token 是所有后续 API 调用的必要凭证。
+接口调用凭证
 
-## 请求体
-
-| 参数 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `username` | string | 是 | 你的 Octoparse 账户邮箱 |
-| `password` | string | 是 | 你的 Octoparse 账户密码 |
-
-## 请求示例
-
-```bash
-curl -X POST https://openapi.octoparse.com/token \
-  -H "Content-Type: application/json" \
-  -d "{\"username\": \"user@example.com\", \"password\": \"your_password\"}"
-```
-
-## 响应
-
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `access_token` | string | 用于 API 请求的 Access Token |
-| `refresh_token` | string | 用于在 Access Token 过期时刷新的 Token |
-| `expires_in` | number | Access Token 过期前的秒数 |
-
-## 响应示例
-
-```json
-{
-  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "refresh_token": "dGhpcyBpcyBhIHJlZnJlc2ggdG9rZW4...",
-  "expires_in": 86400
-}
-```
-
-## 注意事项
-
-- 请安全存储 Access Token，切勿公开发布。
-- Access Token 会过期。请使用 Refresh Token 获取新的 Access Token。
-- 参见 [刷新 Token](/en/api-reference/access-token/refresh-token) 了解如何刷新 Token。
-
-另请参阅：[OpenAPI 概览](/en/api-reference/intro)
