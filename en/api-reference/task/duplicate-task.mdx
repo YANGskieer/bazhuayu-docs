@@ -1,27 +1,19 @@
 ---
 title: 复制任务
-description: 克隆已有任务以创建新任务。
+description: 任务
 ---
 
 # 复制任务
 
-> **所需套餐：** 标准版、专业版或企业版
+> **所需套餐：** 旗舰+、企业版、团队版
 
 ## 端点
 
 ```
-POST https://openapi.octoparse.com/task/duplicate
+https://openapi.bazhuayu.com/task/copy
 ```
 
-## 请求体
+## 描述
 
-| 参数 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `taskGroupId` | string | 是 | 要复制的任务组 ID |
-| `newName` | string | 否 | 新任务的名称 |
+任务
 
-## 响应
-
-返回新创建任务的 ID 和名称。
-
-另请参阅：[搜索任务](/en/api-reference/task/search-task)、[更新任务 URL](/en/api-reference/task/update-task-urls)

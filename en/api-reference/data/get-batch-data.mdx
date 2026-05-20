@@ -1,18 +1,207 @@
 ---
 title: 根据指定位置获取任务批次数据
-description: 将位置（offset）设置为 0，将从第一条数据的位置开始获取数据，并返回获取后续数据的实际起始位置（offset），您应该通过该返回的位置（offset）来获取下一批数据，以此类推。 例如： 第一次
+description: 将位置（offset）设置为 0，将从第一条数据的位置开始获取数据，并返回获取后续数据的实际起始位置（offset），您应该通过该返回的位置（offset）来获取下一批数据，以此类推。 例如： 第一次：offset = 0，size = 100， 返回：offset = 1024 第二次：offset = 1024，size = 100， 返回：offset = 1124 第三次：offset =
 ---
 
+# 根据指定位置获取任务批次数据
+
+> **所需套餐：** 旗舰版、旗舰+、企业版、团队版
+
+## 端点
+
+```
 https://openapi.bazhuayu.com/data/lotno/all
-**权限**: 旗舰版，旗舰+，企业版，团队版
-## 请求头字段	类型	描述AuthorizationrequiredString身份令牌
+```
+
+## 描述
+
+将位置（offset）设置为 0，将从第一条数据的位置开始获取数据，并返回获取后续数据的实际起始位置（offset），您应该通过该返回的位置（offset）来获取下一批数据，以此类推。 例如： 第一次：offset = 0，size = 100， 返回：offset = 1024 第二次：offset = 1024，size = 100， 返回：offset = 1124 第三次：offset =
+
+## 请求头
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `Authorization` |  | 否 |  |
+| `required` |  | 是 |  |
+| `身份令牌` |  | 否 |  |
+
+
 **请求头示例**
 
-```json{"Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"}```
-字段	类型	描述taskIdrequiredString任务IdlotnorequiredString任务批次offsetrequiredNumber数据偏移量，当offset小等于0时，则从起始位置读取任务数据sizerequiredNumber获取的数据量，范围：1~1000请求示例https://openapi.bazhuayu.com/data/lotno/all?taskId=a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f&lotno=638590565765988670&offset=0&size=4
-## 成功响应字段	类型	描述datarequiredObject响应数据datarequiredObject任务数据totalrequiredInt数据总量restTotalrequiredInt剩余数据offsetrequiredInt数据偏移量，当offset小等于0时，则从起始位置读取任务数据requestIdrequiredString请求Id
-**成功示例**
+```json
+{
+    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"
+}
+字段	类型	描述
+taskId  
+required
+	String	
 
-```json{"data": {"offset": 4,"total": 100000,"restTotal": 99996,"data": [{"词条": "深圳视界","简介": "领先的信息化解决方案提供商，致力于企业级数据整合，网页数据采集，整理，分析和挖掘。"},{"词条": "八爪鱼","简介": "它彻底改变了大家对爬虫和采集器的认知，让网页数据采集变得前所未有的简单。"},{"词条": "数多多","简介": "致力于打造大数据共享与交易平台。"},{"词条": "微图","简介": "一款简单易用的数据分析及可视化工具，支持自然语言分析及文本挖掘。"}]},"requestId": "0HMD469L0I8Q1:00000001"}
-## 错误响应```
-字段	类型	描述requestIdrequiredString请求IderrorrequiredObject错误信息，
+任务Id
+
+
+lotno  
+required
+	String	
+
+任务批次
+
+
+offset  
+required
+	Number	
+
+数据偏移量，当offset小等于0时，则从起始位置读取任务数据
+
+
+size  
+required
+	Number	
+
+获取的数据量，范围：1~1000
+
+请求示例
+https://openapi.bazhuayu.com/data/lotno/all?taskId=a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f&lotno=638590565765988670&offset=0&size=4
+```
+
+## 响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `data` |  | 否 |  |
+| `required` |  | 是 |  |
+| `响应数据` |  | 否 |  |
+| `data` |  | 否 |  |
+| `required` |  | 是 |  |
+| `任务数据` |  | 否 |  |
+| `total` |  | 否 |  |
+| `required` |  | 是 |  |
+| `数据总量` |  | 否 |  |
+| `restTotal` |  | 否 |  |
+| `required` |  | 是 |  |
+| `剩余数据` |  | 否 |  |
+| `offset` |  | 否 |  |
+| `required` | 数据偏移量，当offset小等于0时，则从起始位置读取任务数据 | 是 |  |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+
+
+**响应示例**
+
+```json
+{
+    "data": {
+        "offset": 4,
+        "total": 100000,
+        "restTotal": 99996,
+        "data": [
+            {
+                "词条": "深圳视界",
+                "简介": "领先的信息化解决方案提供商，致力于企业级数据整合，网页数据采集，整理，分析和挖掘。"
+            },
+            {
+                "词条": "八爪鱼",
+                "简介": "它彻底改变了大家对爬虫和采集器的认知，让网页数据采集变得前所未有的简单。"
+            },
+            {
+                "词条": "数多多",
+                "简介": "致力于打造大数据共享与交易平台。"
+            },
+            {
+                "词条": "微图",
+                "简介": "一款简单易用的数据分析及可视化工具，支持自然语言分析及文本挖掘。"
+            }
+        ]
+    },
+    "requestId": "0HMD469L0I8Q1:00000001"
+}
+```
+
+## 错误响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+| `error` |  | 否 |  |
+| `required` | 错误信息，参考错误码 | 是 |  |
+| `code` |  | 否 |  |
+| `required` |  | 是 |  |
+
+
+**错误示例**
+
+```json
+message
+required
+	String	
+
+错误描述
+
+{
+    "error": {
+        "code": "ServerError",
+        "message": "Internal Server Error"
+    },
+    "requestId": "0HMD469L0I8R0:00000001"
+}
+示例代码
+Python代码示例
+1.0.0 
+
+Python代码 (其他语言将会陆续推出.)
+
+https://openapi.bazhuayu.com/Sample
+参考
+状态码	错误码	错误信息
+400	InvalidParameter	字段错误
+400	InvalidTaskId	taskId 不能为空
+400	InvalidSize	size 应该在 1 和 1000 之间
+400	InvalidActions	actions 必须大于 0
+400	InvalidTasks	tasks 不能超过 100
+401	Unauthorized	access_token 无效
+403	PermissionDenied	没有接口访问权限
+429	TooManyRequests	调用频率过快
+500	ServerError	服务内部错误
+503	ServiceUnavailable	服务器繁忙
+400	InvalidGrant	授权异常具体见错误详情
+400	GroupNotFound	不存在此任务组
+400	TemplateNotFound	模板不存在
+400	LimitTraffic	超出流量限制，将size参数设置小一些再请求
+400	TemplateNotOpen	该模板不对您开放
+400	UseTemplatePermissionDenied	该任务模板仅适用于 {level} 或更高级别的版本
+400	CannotCreateTaskForOthers	无法为其他用户创建任务
+400	TaskNotFound	TaskId:{taskId} 任务不存在
+400	TaskNotBelongToYou	该任务不属于您
+400	TaskSettingsNotFound	任务更新失败，步骤设置无效或无法找到对应的步骤
+400	RequestModelNull	请求参数不能为空
+400	TaskNotFoundForUpdate	任务不存在
+400	UnsupportedTaskContentType	不支持的任务内容类型
+500	UpdateTaskParametersUnexpectedError	更新任务参数时发生未预期的错误
+步骤属性
+循环步骤（LoopAction）
+属性名	类型	描述	支持更新
+actionId	String	步骤唯一标识	否
+actionType	String	LoopAction	否
+loopType	String	目前支持：
+- UrlList - 网页列表
+- TextList - 文本列表	否
+loopItems	object[]	循环列表内容	是
+打开网页（NavigateAction）
+属性名	类型	描述	支持更新
+actionId	String	步骤唯一标识	否
+actionType	String	NavigateAction	否
+name	String	步骤显示名称
+- 目前支持：Url	否
+url	String	网址	是
+输入文本（EnterTextAction）
+属性名	类型	描述	支持更新
+actionId	String	步骤唯一标识	否
+actionType	String	EnterTextAction	否
+name	String	步骤显示名称
+-目前支持：TextToSet	否
+text	String	文本内容	是
+```
+

@@ -1,6 +1,278 @@
 ---
 title: 清空任务数据
-description: 更多的功能请升级账户。
+description: 更多的功能请升级账户。 遇到问题 文档中的任意接口将会返回requestId，如您调用接口发现任何错误或者结果不符合预期，请提供该值以供我们工作人员能够更加快速为您排查。 接口调用凭证 获取全新Token 你需要提供一次八爪鱼平台的登录账号和密码来获取全新【Access Token】。
 ---
 
-遇到问题文档中的任意接口将会返回requestId，如您调用接口发现任何错误或者结果不符合预期，请提供该值以供我们工作人员能够更加快速为您排查。接口调用凭证
+# 清空任务数据
+
+> **所需套餐：** 旗舰版、旗舰+、企业版、团队版
+
+## 端点
+
+```
+https://openapi.bazhuayu.com/data/remove
+```
+
+## 描述
+
+更多的功能请升级账户。 遇到问题 文档中的任意接口将会返回requestId，如您调用接口发现任何错误或者结果不符合预期，请提供该值以供我们工作人员能够更加快速为您排查。 接口调用凭证 获取全新Token 你需要提供一次八爪鱼平台的登录账号和密码来获取全新【Access Token】。
+
+## 请求头
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `required` | application/json  字段 | 是 | 描述 |
+| `Authorization` |  | 否 |  |
+| `required` |  | 是 |  |
+| `身份令牌` |  | 否 |  |
+
+
+**请求头示例**
+
+```json
+{
+    "Content-Type": "application/json"
+}
+字段	类型	描述
+username
+required
+	String	
+
+用户名(支持用户名,邮箱,手机号)
+
+
+password
+required
+	String	
+
+密码
+
+
+grant_type
+required
+	String	
+
+固定值填写password
+
+{
+    "Content-Type": "application/json"
+}
+字段	类型	描述
+refresh_token
+required
+	String	
+
+刷新access_token的凭证
+
+
+grant_type
+required
+	String	
+
+refresh_token
+
+{
+    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"
+}
+```
+
+**请求体示例**
+
+```json
+{
+    "username": "username",
+    "password": "password",
+    "grant_type": "password"
+}
+{
+    "refresh_token": "5p6RhlU0A9AYPLpzfdYG-pyK97uqffrRDG4fgrFv4eo",
+    "grant_type": "refresh_token"
+}
+```
+
+## 响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `data` |  | 否 |  |
+| `required` |  | 是 |  |
+| `响应数据` |  | 否 |  |
+| `access_token` |  | 否 |  |
+| `required` |  | 是 |  |
+| `访问令牌` |  | 否 |  |
+| `expires_in` |  | 否 |  |
+| `required` | access_token有效时间（秒）（推荐在有效期间内推荐重复使用），有效期为1天 | 是 |  |
+| `token_type` |  | 否 |  |
+| `required` |  | 是 |  |
+| `令牌类型` |  | 否 |  |
+| `refresh_token` |  | 否 |  |
+| `required` |  | 是 |  |
+| `刷新access_token的凭证` |  | 否 |  |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id  字段` | 描述 | 否 |  |
+| `data` |  | 否 |  |
+| `required` |  | 是 |  |
+| `响应数据` |  | 否 |  |
+| `access_token` |  | 否 |  |
+| `required` |  | 是 |  |
+| `访问令牌` |  | 否 |  |
+| `expires_in` |  | 否 |  |
+| `required` | access_token有效时间（秒）（推荐在有效期间内推荐重复使用），有效期为1天 | 是 |  |
+| `token_type` |  | 否 |  |
+| `required` |  | 是 |  |
+| `令牌类型` |  | 否 |  |
+| `refresh_token` |  | 否 |  |
+| `required` |  | 是 |  |
+| `刷新access_token的凭证` |  | 否 |  |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id  字段` | 描述 | 否 |  |
+| `data` |  | 否 |  |
+| `required` |  | 是 |  |
+| `响应数据` |  | 否 |  |
+| `taskGroupId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `任务组Id` |  | 否 |  |
+| `taskGroupName` |  | 否 |  |
+| `required` |  | 是 |  |
+| `任务组名` |  | 否 |  |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+
+
+**响应示例**
+
+```json
+{
+    "data": {
+        "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw",
+        "expires_in": "86399",
+        "token_type": "Bearer",
+        "refresh_token": "SSc1Uf56BRfNfSewsZ0FJCHjfqI5FwGW3k2QfiRplN8",
+    },
+    "requestId": "0HMD3FSLHJRVO:00000002"
+}
+{
+    "data": {
+        "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw",
+        "expires_in": "86399",
+        "token_type": "Bearer",
+        "refresh_token": "SSc1Uf56BRfNfSewsZ0FJCHjfqI5FwGW3k2QfiRplN8",
+    },
+    "requestId": "0HMD3FSLHJRVO:00000002"
+}
+{
+    "data": [
+        {
+            "taskGroupId": 23894,
+            "taskGroupName": "默认任务组1"
+        },
+        {
+            "taskGroupId": 35489,
+            "taskGroupName": "默认任务组2"
+        }
+    ],
+    "requestId": "0HMCVDHG1V3E6:00000002"
+}
+```
+
+## 错误响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+| `error` |  | 否 |  |
+| `required` | 错误信息，参考错误码 | 是 |  |
+| `code` |  | 否 |  |
+| `required` | 字段 | 是 | 描述 |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+| `error` |  | 否 |  |
+| `required` | 错误信息，参考错误码 | 是 |  |
+| `code` |  | 否 |  |
+| `required` | 字段 | 是 | 描述 |
+| `error` |  | 否 |  |
+| `required` | 错误信息，参考错误码 | 是 |  |
+| `code` |  | 否 |  |
+| `required` |  | 是 |  |
+
+
+**错误示例**
+
+```json
+message
+required
+	String	
+
+错误描述
+
+{
+    "error": {
+        "code": "Invalid.Grant",
+        "message": "用户名或密码错误"
+    },
+    "requestId": "0HMD43G9J9JV9:00000001"
+}
+刷新Token
+1.0.0 
+
+token 过期后，允许根据上一次获取 token 时的 refreshToken 刷新获取新的 token。
+
+https://openapi.bazhuayu.com/token
+
+权限: 全部
+
+
+
+message
+required
+	String	
+
+错误描述
+
+{
+    "error": {
+        "code": "ServerError",
+        "message": "Internal Server Error"
+    },
+    "requestId": "0HMD469L0I8R0:00000001"
+}
+任务组
+获取用户的任务组信息
+1.0.0 
+
+此接口用于获取用户所有任务组信息。
+
+https://openapi.bazhuayu.com/taskGroup
+
+权限: 旗舰版，旗舰+，企业版，团队版
+
+
+
+message
+required
+	String	
+
+错误描述
+
+
+requestId
+required
+	String	
+
+请求Id
+
+{
+    "error": {
+        "code": "ServerError",
+        "message": "Internal Server Error"
+    },
+    "requestId": "0HMD469L0I8R0:00000001"
+}
+```
+

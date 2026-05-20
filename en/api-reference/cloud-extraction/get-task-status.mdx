@@ -1,33 +1,19 @@
 ---
 title: 获取任务状态
-description: 查看云端提取任务的状态。
+description: 获取任务状态
 ---
 
 # 获取任务状态
 
-> **所需套餐：** 专业版或企业版
+> **所需套餐：** 旗舰+、企业版、团队版
 
 ## 端点
 
 ```
-GET https://openapi.octoparse.com/cloud-extraction/task-status
+https://openapi.bazhuayu.com/cloudextraction/statuses
 ```
 
-## 参数
+## 描述
 
-| 参数 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `taskGroupId` | string | 是 | 任务组 ID |
+获取任务状态
 
-## 响应
-
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `taskGroupId` | string | 任务组 ID |
-| `status` | string | pending / running / completed / failed |
-| `totalSubtasks` | number | 子任务总数 |
-| `completedSubtasks` | number | 已完成的子任务数 |
-| `failedSubtasks` | number | 失败的子任务数 |
-| `recordsExtracted` | number | 已提取的总记录数 |
-
-另请参阅：[启动任务](/en/api-reference/cloud-extraction/start-task)

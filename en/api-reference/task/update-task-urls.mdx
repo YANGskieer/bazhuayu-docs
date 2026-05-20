@@ -1,23 +1,19 @@
 ---
-title: 更新任务 URL
-description: 更改任务的目标 URL。
+title: 更新采集 URLs
+description: 更新采集 URLs
 ---
 
-# 更新任务 URL
+# 更新采集 URLs
 
-> **所需套餐：** 专业版或企业版
+> **所需套餐：** 旗舰+、企业版、团队版
 
 ## 端点
 
 ```
-POST https://openapi.octoparse.com/task/update-urls
+https://openapi.bazhuayu.com/task/urls:file
 ```
 
-## 请求体
+## 描述
 
-| 参数 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `taskGroupId` | string | 是 | 任务组 ID |
-| `urls` | array | 是 | 新的目标 URL 列表 |
+更新采集 URLs
 
-另请参阅：[搜索任务](/en/api-reference/task/search-task)、[复制任务](/en/api-reference/task/duplicate-task)

@@ -3,10 +3,223 @@ title: 更新步骤配置
 description: 此接口用于更新任务中指定步骤配置。
 ---
 
+# 更新步骤配置
+
+> **所需套餐：** 旗舰+、企业版、团队版
+
+## 端点
+
+```
 https://openapi.bazhuayu.com/task/updateActionProperties
-**权限**: 旗舰+，企业版，团队版
-## 请求头字段	类型	描述AuthorizationrequiredString身份令牌Content-TyperequiredStringapplication/json
+```
+
+## 描述
+
+此接口用于更新任务中指定步骤配置。
+
+## 请求头
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `Authorization` |  | 否 |  |
+| `required` |  | 是 |  |
+| `身份令牌   Content-Type` |  | 否 |  |
+| `required` | application/json  字段 | 是 | 描述 |
+| `Authorization` |  | 否 |  |
+| `required` |  | 是 |  |
+| `身份令牌   Content-Type` |  | 否 |  |
+| `required` |  | 是 |  |
+| `内容类型` |  | 否 |  |
+
+
 **请求头示例**
 
-```json{"Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw","Content-Type": "application/json"}```
-字段	类型	描述taskIdrequiredString任务IdactionsrequiredObject[]需要更新的步骤参数，具体
+```json
+{
+    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw",
+    "Content-Type": "application/json"
+}
+字段	类型	描述
+taskId
+required
+	String	
+
+任务Id
+
+
+actions
+required
+	Object[]	
+
+需要更新的步骤参数，具体参考：步骤属性
+
+
+actionType
+required
+	String	
+
+步骤类型，目前支持：NavigateAction（打开网页类型）、EnterTextAction（输入文本类型）、LoopAction（循环列表类型）
+
+
+actionId
+required
+	String	
+
+步骤的唯一标识，您可以在客户端点击相应的步骤的"Api 调用名称"获取，也可以通过【批量获取任务步骤信息】接口获取。
+
+
+properties
+required
+	Object[]	
+
+属性，目前支持更新的属性参考：步骤属性
+
+
+name
+required
+	String	
+
+属性名，目前支持更新的属性参考：步骤属性
+
+
+value
+required
+	String	
+
+属性值
+
+请求体示例（EnterTextAction）
+请求体示例（NavigateAction）
+{
+    "taskId": "a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f",
+    "actions": [
+        {
+            "actionType": "EnterTextAction",
+            "actionId": "ce1wg4nytr",
+            "properties": [
+                {
+                    "name": "TextToSet",
+                    "value": "4k显示器123"
+                }
+            ]
+        }
+    ]
+}
+{
+    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw",
+    "Content-Type": "multipart/form-data"
+}
+字段	类型	描述
+taskId  
+required
+	string	
+
+任务Id
+
+字段	类型	描述
+file
+required
+	File	
+
+urls文件
+```
+
+## 响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+| `data` |  | 否 |  |
+| `required` |  | 是 |  |
+| `响应数据` |  | 否 |  |
+| `message` |  | 否 |  |
+| `required` |  | 是 |  |
+| `更新结果  字段` | 描述 | 否 |  |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+| `data` |  | 否 |  |
+| `required` |  | 是 |  |
+| `响应数据` |  | 否 |  |
+
+
+**响应示例**
+
+```json
+{
+    "data": {
+        "message": "success"
+    },
+    "requestId": "0HMCVDHG1V3E6:00000002"
+}
+{
+    "data": null,
+    "requestId": "0HMCVDHG1V3E6:00000002"
+}
+```
+
+## 错误响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+| `error` |  | 否 |  |
+| `required` | 错误信息，参考错误码 | 是 |  |
+| `code` |  | 否 |  |
+| `required` | 字段 | 是 | 描述 |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+| `error` |  | 否 |  |
+| `required` | 错误信息，参考错误码 | 是 |  |
+| `code` |  | 否 |  |
+| `required` |  | 是 |  |
+
+
+**错误示例**
+
+```json
+message
+required
+	String	
+
+错误详情
+
+{
+    "error": {
+        "code": "InvalidTaskId",
+        "message": "taskId不能为空"
+    },
+    "requestId": "0HMCVDHG1V3E6:00000002"
+}
+更新采集Urls
+1.0.0 
+
+将采集的网址替换
+
+https://openapi.bazhuayu.com/task/urls:file
+
+权限: 旗舰+，企业版，团队版
+
+
+
+message
+required
+	String	
+
+错误描述
+
+{
+    "error": {
+        "code": "InvalidTaskId",
+        "message": "无效的任务Id"
+    },
+    "requestId": "0HMCVDHG1V3E6:00000002"
+}
+云采集
+```
+

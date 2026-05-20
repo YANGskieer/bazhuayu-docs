@@ -1,26 +1,19 @@
 ---
-title: 获取未导出数据
-description: 检索尚未标记为已导出的记录。
+title: 获取未导出的数据
+description: 此接口可获取未导出的数据，当您获取成功后可调用【
 ---
 
-# 获取未导出数据
+# 获取未导出的数据
 
-> **所需套餐：** 标准版、专业版或企业版
+> **所需套餐：** 旗舰版、旗舰+、企业版、团队版
 
 ## 端点
 
 ```
-GET https://openapi.octoparse.com/data/get-non-exported-data
+https://openapi.bazhuayu.com/data/notexported
 ```
 
-## 参数
+## 描述
 
-| 参数 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `taskGroupId` | string | 是 | 任务组 ID |
+此接口可获取未导出的数据，当您获取成功后可调用【
 
-## 响应
-
-返回尚未标记为已导出的记录。用于获取新提取的数据。
-
-另请参阅：[按偏移量获取数据](/en/api-reference/data/get-data-by-offset)、[标记数据为已导出](/en/api-reference/data/mark-data-as-exported)

@@ -3,19 +3,297 @@ title: 任务运行情况
 description: 此接口用于获取云采集监控平台中任务和子任务运行数量情况。
 ---
 
+# 任务运行情况
+
+> **所需套餐：** 企业版
+
+## 端点
+
+```
 https://openapi.bazhuayu.com/cloudextraction/task/stats
-**权限**: 企业版
-## 请求头字段	类型	描述AuthorizationrequiredString身份令牌Content-TyperequiredStringapplication/json
+```
+
+## 描述
+
+此接口用于获取云采集监控平台中任务和子任务运行数量情况。
+
+## 请求头
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `Authorization` |  | 否 |  |
+| `required` |  | 是 |  |
+| `身份令牌   Content-Type` |  | 否 |  |
+| `required` | application/json  字段 | 是 | 描述 |
+| `Authorization` |  | 否 |  |
+| `required` |  | 是 |  |
+| `身份令牌   Content-Type` |  | 否 |  |
+| `required` | application/json  字段 | 是 | 描述 |
+| `Authorization` |  | 否 |  |
+| `required` |  | 是 |  |
+| `身份令牌   Content-Type` |  | 否 |  |
+| `required` | application/json | 是 |  |
+
+
 **请求头示例**
 
-```json{"Authorization":"Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw""Content-Type":"application/json"}
+```json
+{
+    "Authorization":"Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"
+    "Content-Type":"application/json"
+}
+{
+    "Authorization":"Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"
+    "Content-Type":"application/json"
+}
+字段	类型	描述
+taskIds
+required
+	String[]	
+
+任务Id列表
+
+{
+    "Authorization":"Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MzY0NjIyNzAsImV4cCI6MTYzNjU0ODY2OSwiaXNzIjoiaHR0cDovL3Rlc3QuaWRlbnRpdHkuYmF6aHVheXUuY29tIiwiY2xpZW50X2lkIjoiT2N0b3B1cyIsInN1YiI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImF1dGhfdGltZSI6MTYzNjQ2MjI3MCwiaWRwIjoibG9jYWwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjllOGJiM2VhLWUwMWQtNGFlZC05ODM3LTVhMWUyODg0NWI5ZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJ0ZXN0d2VuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGVzdHdlbiIsInVuaXF1ZV9uYW1lIjoidGVzdHdlbiIsInJlZ2lzdGVyX2RhdGUiOiIxMS8wNC8yMDE2IDA4OjM4OjE2ICswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjA0LzIyLzIwMTkgMDk6MDE6MDIgKzA4OjAwIiwibGFzdF9wYXNzd29yZF9jaGFuZ2VkX2RhdGUiOiIwMS8yMy8yMDE5IDA4OjMwOjMxICswODowMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbCI6IndlbmRpQHNraWVlci5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwic2NvcGUiOlsiZW1haWwiLCJvcGVuaWQiLCJyb2xlcyIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.ARhbBfzI1xS6yo-Ue1CFHzMaUIfzw4gJlubNBOkUT4SSTlhuS4bVQ4t4UHuYGbE9VX6XgNVgkcDnx6XapqcPohSy7vPv9TIAsjtbrQSA3mj13SnVVAPWwfAVJ-I7g9HDnyPEEOVSvmZUJhiz-irH5L0ojbnt3ck2rQ9tIFuSd7j2eh5BS4ItjNoHY00rh_QPZltk66a9q-fNE33GrxOaXUdHH47WMlsENnh1gybB7QtGtd6bZ982Qa9JljpFnZWSdEf4VfkN4JmhkUTTC908DqS3stT-LD-9tpztFwB54sd0D4CyOBnESkKrUwjxchYYZo4l1O7auiZVGV48YhZYMw"
+    "Content-Type":"application/json"
+}
+字段	类型	描述
+taskIds
+required
+	String[]	
+
+任务Id列表
+```
+
 **请求体示例**
 
-```jsonhttps://openapi.bazhuayu.com/cloudextraction/task/stats
-## 成功响应```
-字段	类型	描述datarequiredObject[]响应数据ExtractingCountrequiredString采集中任务数WaitingCountrequiredString等待中任务数FinishedCountrequiredString已完成任务数WaitingSubTaskCountrequiredString采集中子任务数ExecutingSubTaskCountrequiredString等待中子任务数requestIdrequiredString请求Id
-**成功示例**
+```json
+https://openapi.bazhuayu.com/cloudextraction/task/stats
+{
+    "taskIds": [
+        "a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f",
+        "86b9bdf7-9aaa-22236-9ccf-b3279469df01"
+    ]
+}
+{
+    "taskIds": [
+        "a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f",
+        "86b9bdf7-9aaa-22236-9ccf-b3279469df01"
+    ]
+}
+```
 
-```json{"data": {"extractingCount": 0,"waitingCount": 0,"finishedCount": 0,"waitingSubTaskCount": 0,"executingSubTaskCount": 6},"requestId": "0HNDERFQAC2G9:00000001"}
-## 错误响应```
-字段	类型	描述requestIdrequiredString请求IderrorrequiredObject错误信息，
+## 响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `data` |  | 否 |  |
+| `required` |  | 是 |  |
+| `响应数据` |  | 否 |  |
+| `ExtractingCount` |  | 否 |  |
+| `required` |  | 是 |  |
+| `采集中任务数` |  | 否 |  |
+| `WaitingCount` |  | 否 |  |
+| `required` |  | 是 |  |
+| `等待中任务数` |  | 否 |  |
+| `FinishedCount` |  | 否 |  |
+| `required` |  | 是 |  |
+| `已完成任务数` |  | 否 |  |
+| `WaitingSubTaskCount` |  | 否 |  |
+| `required` |  | 是 |  |
+| `采集中子任务数` |  | 否 |  |
+| `ExecutingSubTaskCount` |  | 否 |  |
+| `required` |  | 是 |  |
+| `等待中子任务数` |  | 否 |  |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id  字段` | 描述 | 否 |  |
+| `data` |  | 否 |  |
+| `required` |  | 是 |  |
+| `响应数据` |  | 否 |  |
+| `taskId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `任务Id` |  | 否 |  |
+| `taskName` |  | 否 |  |
+| `required` |  | 是 |  |
+| `任务名` |  | 否 |  |
+| `status` |  | 否 |  |
+| `required` | 任务状态：Unexecuted - 未执行，Waiting - 等待分配，Extracting - 采集中，Stopped - 已停止，Finished - 已完成 | 是 |  |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id  字段` | 描述 | 否 |  |
+| `data` |  | 否 |  |
+| `required` |  | 是 |  |
+| `响应数据` |  | 否 |  |
+| `taskId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `任务Id` |  | 否 |  |
+| `status` |  | 否 |  |
+| `required` | 任务状态：Unexecuted - 未执行，Waiting - 等待分配，Extracting - 采集中，Stopped - 已停止，Finished - 已完成 | 是 |  |
+| `currentTotalExtractCount` |  | 否 |  |
+| `required` |  | 是 |  |
+| `此次采集数据量` |  | 否 |  |
+| `executedTimes` |  | 否 |  |
+| `required` |  | 是 |  |
+| `执行次数` |  | 否 |  |
+| `subTaskCount` |  | 否 |  |
+| `required` |  | 是 |  |
+| `子任务数` |  | 否 |  |
+| `nextExecuteTime` |  | 否 |  |
+| `required` |  | 是 |  |
+| `下次执行时间` |  | 否 |  |
+| `startExecuteTime` |  | 否 |  |
+| `required` |  | 是 |  |
+| `任务启动时间` |  | 否 |  |
+| `ExecutingTime` |  | 否 |  |
+| `required` |  | 是 |  |
+| `任务开始执行时间` |  | 否 |  |
+| `endExecuteTime` |  | 否 |  |
+| `required` |  | 是 |  |
+| `任务结束时间` |  | 否 |  |
+| `startExecuteTimeSeconds` |  | 否 |  |
+| `required` | 任务采集花费时间(秒) | 是 |  |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+
+
+**响应示例**
+
+```json
+{
+    "data": {
+        "extractingCount": 0,
+        "waitingCount": 0,
+        "finishedCount": 0,
+        "waitingSubTaskCount": 0,
+        "executingSubTaskCount": 6
+    },
+    "requestId": "0HNDERFQAC2G9:00000001"
+}
+{
+    "data": [
+        {
+            "taskId": "a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f",
+            "taskName": "八爪鱼采集",
+            "status": "Extracting"
+        },
+        {
+            "taskId": "86b9bdf7-9aaa-22236-9ccf-b3279469df01",
+            "taskName": "八爪鱼采集2",
+            "status": "Stopped"
+        }
+    ],
+    "requestId": "0HMD469L0I8R0:00000001"
+}
+{
+    "data": [
+        {
+            "taskId": "a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f",
+            "status": "Extracting",
+            "currentTotalExtractCount": 0,
+            "executedTimes": 1,
+            "subTaskCount": 1,
+            "nextExecuteTime": "2018-04-04T20:34:20.973",
+            "endExecuteTime": "2018-04-04T18:34:20.973",
+            "startExecuteTime": "2018-04-04T18:34:20.973"
+        }
+    ],
+    "requestId": "0HMD469L0I8R0:00000001"
+}
+```
+
+## 错误响应
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+| `error` |  | 否 |  |
+| `required` | 错误信息，参考错误码 | 是 |  |
+| `code` |  | 否 |  |
+| `required` | 字段 | 是 | 描述 |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+| `error` |  | 否 |  |
+| `required` | 错误信息，参考错误码 | 是 |  |
+| `code` |  | 否 |  |
+| `required` | 字段 | 是 | 描述 |
+| `requestId` |  | 否 |  |
+| `required` |  | 是 |  |
+| `请求Id` |  | 否 |  |
+| `error` |  | 否 |  |
+| `required` | 错误信息，参考错误码 | 是 |  |
+| `code` |  | 否 |  |
+| `required` |  | 是 |  |
+
+
+**错误示例**
+
+```json
+message
+required
+	String	
+
+错误描述
+
+{
+    "error": {
+        "code": "ServerError",
+        "message": "Internal Server Error"
+    },
+    "requestId": "0HMD469L0I8R0:00000001"
+}
+批量获取任务状态
+1.0.0 
+
+此接口接收用户传入的一批任务ID，返回相应的任务状态列表。调用频率：5秒1次请求。
+
+https://openapi.bazhuayu.com/cloudextraction/statuses
+
+权限: 旗舰+，企业版，团队版
+
+
+
+message
+required
+	String	
+
+错误描述
+
+{
+    "error": {
+        "code": "ServerError",
+        "message": "Internal Server Error"
+    },
+    "requestId": "0HMD469L0I8R0:00000001"
+}
+批量获取任务状态V2
+1.0.0 
+
+此接口接收用户传入的一批任务ID，返回相应的任务状态列表。调用频率：1秒5次请求。
+
+https://openapi.bazhuayu.com/cloudextraction/statuses/v2
+
+权限: 旗舰+，企业版，团队版
+
+
+
+message
+required
+	String	
+
+错误描述
+
+{
+    "error": {
+        "code": "ServerError",
+        "message": "Internal Server Error"
+    },
+    "requestId": "0HMD469L0I8R0:00000001"
+}
+批量
+```
+

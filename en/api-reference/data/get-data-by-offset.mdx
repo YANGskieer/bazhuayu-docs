@@ -1,28 +1,19 @@
 ---
-title: 按偏移量获取数据
-description: 使用偏移量分页检索提取的数据。
+title: 根据指定位置获取任务数据
+description: 数据
 ---
 
-# 按偏移量获取数据
+# 根据指定位置获取任务数据
 
-> **所需套餐：** 标准版、专业版或企业版
+> **所需套餐：** 旗舰版、旗舰+、企业版、团队版
 
 ## 端点
 
 ```
-GET https://openapi.octoparse.com/data/get-data-by-offset
+https://openapi.bazhuayu.com/data/all
 ```
 
-## 参数
+## 描述
 
-| 参数 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `taskGroupId` | string | 是 | 任务组 ID |
-| `offset` | number | 是 | 跳过的记录数 |
-| `limit` | number | 否 | 最大返回记录数（默认：100，最大：1000） |
+数据
 
-## 响应
-
-返回提取的记录数组，附带分页元数据。
-
-另请参阅：[获取未导出数据](/en/api-reference/data/get-non-exported-data)、[标记数据为已导出](/en/api-reference/data/mark-data-as-exported)
