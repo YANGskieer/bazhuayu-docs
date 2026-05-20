@@ -107,6 +107,9 @@
       "linkedin": "https://linkedin.com/company/octoparse"
     }
   },
+  "anchors": {
+    "label": "本页目录"
+  },
   "seo": {
     "metatags": {
       "og:image": "https://www.octoparse.com/docs/og-image.png",
