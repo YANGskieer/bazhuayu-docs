@@ -17,7 +17,8 @@
       {
         "tab": "首页",
         "pages": [
-          "en/overview"
+          "en/overview",
+          "en/platform/intro"
         ]
       },
       {
