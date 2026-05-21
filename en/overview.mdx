@@ -31,18 +31,218 @@ description: "无代码、云端运行、OpenAPI接入以及AI集成的实用化
 
 <style>
   {`
-      .dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-      @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
-      .dl-card { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
-      .dark .dl-card { background: #1e1e1e; border-color: #374151; }
-      .dl-card h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
-      .dl-card p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
-      .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
-      .dl-btn-win { background-color: #0078D4; color: #fff !important; }
-      .dl-btn-win:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
-      .dl-btn-mac { background-color: #444; color: #fff !important; }
-      .dl-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
-      `}
+                      .dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+                      @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
+                      .dl-card { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+                      .dark .dl-card { background: #1e1e1e; border-color: #374151; }
+                      .dl-card h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
+                      .dl-card p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
+                      .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
+                      .dl-btn-win { background-color: #0078D4; color: #fff !important; }
+                      .dl-btn-win:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
+                      .dl-btn-mac { background-color: #444; color: #fff !important; }
+                      .dl-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
+                    `}
+</style>
+
+---
+
+## 开放接口
+
+<CardGroup cols={3}>
+  <Card title="OpenAPI" color="#10B981" icon="webhook" href="/en/api-reference/intro">
+    八爪鱼 OpenAPI —— 程序化管理采集任务、执行云端抽取、获取采集数据。
+  </Card>
+
+  <Card title="MCP服务" icon="/assets/mcp-icon.svg" href="/en/mcp/intro">
+    将八爪鱼采集器能力连接到AI智能体上（ChatGPT、openclow、Claude、Cursor、coze、Dify等）
+  </Card>
+
+  <Card title="CLI" icon="terminal" href="/en/cli/intro">
+    八爪鱼 CLI —— 命令行方式管理采集任务、启动本地、云采集、导出采集数据，适合开发者集成与自动化场景。
+  </Card>
+</CardGroup>
+
+---
+
+## 联系我们
+
+<CardGroup cols={2}>
+  <Card title="业务咨询" icon="envelope">
+    [sales@skieer.com](mailto:sales@skieer.com)
+  </Card>
+
+  <Card title="联系电话" icon="phone">
+    0755-86702246
+
+    周一至周五 9:00–12:00 / 14:00–18:00
+  </Card>
+
+  <Card title="公司地址" icon="location-dot">
+    深圳市南山区西丽街道深圳国际创新谷1栋A座2001
+  </Card>
+
+  <Card title="联系帮助" icon="circle-question" href="https://www.bazhuayu.com/contactus">
+    [前往联系页面 →](https://www.bazhuayu.com/contactus)
+  </Card>
+</CardGroup>
+
+CUTFILEHERE\_END\_V2
+
+<div className="dl-grid">
+  <div className="dl-card">
+    <h3>🪟 Windows 客户端</h3>
+    <p>当前最新版本：<strong>V10.0.0</strong>（2026年04月21日更新）<br />支持 Windows 10 / 11（64位）</p>
+    <a className="dl-btn dl-btn-win" href="https://client-resource.octoparse.com/client/en-US/win-x64/Octoparse%20Setup%2010.0.0.exe">⬇ 立即下载</a>
+  </div>
+
+  <div className="dl-card">
+    <h3>🍎 Mac 客户端</h3>
+    <p>支持 macOS 10.14（Mojave）及以上版本</p>
+    <a className="dl-btn dl-btn-mac" href="https://www.bazhuayu.com/download">⬇ 立即下载</a>
+  </div>
+</div>
+
+<style>
+  {`
+                                  .dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+                                  @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
+                                  .dl-card { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+                                  .dark .dl-card { background: #1e1e1e; border-color: #374151; }
+                                  .dl-card h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
+                                  .dl-card p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
+                                  .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
+                                  .dl-btn-win { background-color: #0078D4; color: #fff !important; }
+                                  .dl-btn-win:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
+                                  .dl-btn-mac { background-color: #444; color: #fff !important; }
+                                  .dl-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
+                                `}
+</style>
+
+CUTFILEHERE\_END\_V2
+
+<CardGroup cols={3}>
+  <Card title="OpenAPI" color="#10B981" icon="webhook" href="/en/api-reference/intro">
+    八爪鱼 OpenAPI —— 程序化管理采集任务、执行云端抽取、获取采集数据。
+  </Card>
+
+  <Card title="MCP服务" icon="/assets/mcp-icon.svg" href="/en/mcp/intro">
+    将八爪鱼采集器能力连接到AI智能体上（ChatGPT、openclow、Claude、Cursor、coze、Dify等）
+  </Card>
+
+  <Card title="CLI" icon="terminal" href="/en/cli/intro">
+    八爪鱼 CLI —— 命令行方式管理采集任务、启动本地、云采集、导出采集数据，适合开发者集成与自动化场景。
+  </Card>
+</CardGroup>
+
+---
+
+## 联系我们
+
+<CardGroup cols={2}>
+  <Card title="业务咨询" icon="envelope">
+    [sales@skieer.com](mailto:sales@skieer.com)
+  </Card>
+
+  <Card title="联系电话" icon="phone">
+    0755-86702246
+
+    周一至周五 9:00–12:00 / 14:00–18:00
+  </Card>
+
+  <Card title="公司地址" icon="location-dot">
+    深圳市南山区西丽街道深圳国际创新谷1栋A座2001
+  </Card>
+
+  <Card title="联系帮助" icon="circle-question" href="https://www.bazhuayu.com/contactus">
+    [前往联系页面 →](https://www.bazhuayu.com/contactus)
+  </Card>
+</CardGroup>
+
+## 下载客户端
+
+<div className="dl-grid">
+  <div className="dl-card">
+    <h3>🪟 Windows 客户端</h3>
+    <p>当前最新版本：<strong>V10.0.0</strong>（2026年04月21日更新）<br />支持 Windows 10 / 11（64位）</p>
+    <a className="dl-btn dl-btn-win" href="https://client-resource.octoparse.com/client/en-US/win-x64/Octoparse%20Setup%2010.0.0.exe">⬇ 立即下载</a>
+  </div>
+
+  <div className="dl-card">
+    <h3>🍎 Mac 客户端</h3>
+    <p>支持 macOS 10.14（Mojave）及以上版本</p>
+    <a className="dl-btn dl-btn-mac" href="https://www.bazhuayu.com/download">⬇ 立即下载</a>
+  </div>
+</div>
+
+<style>
+  {`
+                                    .dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+                                    @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
+                                    .dl-card { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+                                    .dark .dl-card { background: #1e1e1e; border-color: #374151; }
+                                    .dl-card h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
+                                    .dl-card p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
+                                    .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
+                                    .dl-btn-win { background-color: #0078D4; color: #fff !important; }
+                                    .dl-btn-win:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
+                                    .dl-btn-mac { background-color: #444; color: #fff !important; }
+                                    .dl-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
+                                    `}
+</style>
+
+---
+
+## 联系我们
+
+<CardGroup cols={2}>
+  <Card title="业务咨询" icon="envelope">
+    [sales@skieer.com](mailto:sales@skieer.com)
+  </Card>
+
+  <Card title="联系电话" icon="phone">
+    0755-86702246
+
+    周一至周五 9:00–12:00 / 14:00–18:00
+  </Card>
+
+  <Card title="公司地址" icon="location-dot">
+    深圳市南山区西丽街道深圳国际创新谷1栋A座2001
+  </Card>
+
+  <Card title="联系帮助" icon="circle-question" href="https://www.bazhuayu.com/contactus">
+    [前往联系页面 →](https://www.bazhuayu.com/contactus)
+  </Card>
+</CardGroup>
+
+<div className="dl-grid">
+  <div className="dl-card">
+    <h3>🪟 Windows 客户端</h3>
+    <p>当前最新版本：<strong>V10.0.0</strong>（2026年04月21日更新）<br />支持 Windows 10 / 11（64位）</p>
+    <a className="dl-btn dl-btn-win" href="https://client-resource.octoparse.com/client/en-US/win-x64/Octoparse%20Setup%2010.0.0.exe">⬇ 立即下载</a>
+  </div>
+
+  <div className="dl-card">
+    <h3>🍎 Mac 客户端</h3>
+    <p>支持 macOS 10.14（Mojave）及以上版本</p>
+    <a className="dl-btn dl-btn-mac" href="https://www.bazhuayu.com/download">⬇ 立即下载</a>
+  </div>
+</div>
+
+<style>
+  {`
+                                        .dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+                                        @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
+                                        .dl-card { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+                                        .dark .dl-card { background: #1e1e1e; border-color: #374151; }
+                                        .dl-card h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
+                                        .dl-card p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
+                                        .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
+                                        .dl-btn-win { background-color: #0078D4; color: #fff !important; }
+                                        .dl-btn-win:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
+                                        .dl-btn-mac { background-color: #444; color: #fff !important; }
+                                        .dl-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
+                                        `}
 </style>
 
 ---
@@ -115,18 +315,18 @@ description: "无代码、云端运行、OpenAPI接入以及AI集成的实用化
 
 <style>
   {`
-                .dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-                @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
-                .dl-card { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
-                .dark .dl-card { background: #1e1e1e; border-color: #374151; }
-                .dl-card h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
-                .dl-card p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
-                .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
-                .dl-btn-win { background-color: #0078D4; color: #fff !important; }
-                .dl-btn-win:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
-                .dl-btn-mac { background-color: #444; color: #fff !important; }
-                .dl-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
-                `}
+                                                  .dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+                                                  @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
+                                                  .dl-card { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+                                                  .dark .dl-card { background: #1e1e1e; border-color: #374151; }
+                                                  .dl-card h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
+                                                  .dl-card p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
+                                                  .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
+                                                  .dl-btn-win { background-color: #0078D4; color: #fff !important; }
+                                                  .dl-btn-win:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
+                                                  .dl-btn-mac { background-color: #444; color: #fff !important; }
+                                                  .dl-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
+                                                  `}
 </style>
 
 ---
@@ -177,18 +377,18 @@ description: "无代码、云端运行、OpenAPI接入以及AI集成的实用化
 
 <style>
   {`
-                          .dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-                          @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
-                          .dl-card { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
-                          .dark .dl-card { background: #1e1e1e; border-color: #374151; }
-                          .dl-card h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
-                          .dl-card p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
-                          .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
-                          .dl-btn-win { background-color: #0078D4; color: #fff !important; }
-                          .dl-btn-win:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
-                          .dl-btn-mac { background-color: #444; color: #fff !important; }
-                          .dl-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
-                          `}
+                                                            .dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+                                                            @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
+                                                            .dl-card { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+                                                            .dark .dl-card { background: #1e1e1e; border-color: #374151; }
+                                                            .dl-card h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
+                                                            .dl-card p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
+                                                            .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
+                                                            .dl-btn-win { background-color: #0078D4; color: #fff !important; }
+                                                            .dl-btn-win:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
+                                                            .dl-btn-mac { background-color: #444; color: #fff !important; }
+                                                            .dl-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
+                                                            `}
 </style>
 
 ---
@@ -237,18 +437,18 @@ description: "无代码、云端运行、OpenAPI接入以及AI集成的实用化
 
 <style>
   {`
-                                      .download-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-                                      @media (max-width: 640px) { .download-cards-grid { grid-template-columns: 1fr; } }
-                                      .download-card-wrap { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #ffffff; }
-                                      .dark .download-card-wrap { background: #1e1e1e; border-color: #374151; }
-                                      .download-card-wrap h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
-                                      .download-card-wrap p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
-                                      .download-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
-                                      .download-btn-windows { background-color: #0078D4; color: #ffffff !important; }
-                                      .download-btn-windows:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
-                                      .download-btn-mac { background-color: #444444; color: #ffffff !important; }
-                                      .download-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
-                                      `}
+                                                                        .download-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+                                                                        @media (max-width: 640px) { .download-cards-grid { grid-template-columns: 1fr; } }
+                                                                        .download-card-wrap { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #ffffff; }
+                                                                        .dark .download-card-wrap { background: #1e1e1e; border-color: #374151; }
+                                                                        .download-card-wrap h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
+                                                                        .download-card-wrap p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
+                                                                        .download-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
+                                                                        .download-btn-windows { background-color: #0078D4; color: #ffffff !important; }
+                                                                        .download-btn-windows:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
+                                                                        .download-btn-mac { background-color: #444444; color: #ffffff !important; }
+                                                                        .download-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
+                                                                        `}
 </style>
 
 ---
@@ -313,18 +513,18 @@ JUNK\_B
 
 <style>
   {`
-                                                        .download-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-                                                        @media (max-width: 640px) { .download-cards-grid { grid-template-columns: 1fr; } }
-                                                        .download-card-wrap { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #ffffff; }
-                                                        .dark .download-card-wrap { background: #1e1e1e; border-color: #374151; }
-                                                        .download-card-wrap h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
-                                                        .download-card-wrap p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
-                                                        .download-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
-                                                        .download-btn-windows { background-color: #0078D4; color: #ffffff !important; }
-                                                        .download-btn-windows:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
-                                                        .download-btn-mac { background-color: #444444; color: #ffffff !important; }
-                                                        .download-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
-                                                        `}
+                                                                                          .download-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+                                                                                          @media (max-width: 640px) { .download-cards-grid { grid-template-columns: 1fr; } }
+                                                                                          .download-card-wrap { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #ffffff; }
+                                                                                          .dark .download-card-wrap { background: #1e1e1e; border-color: #374151; }
+                                                                                          .download-card-wrap h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
+                                                                                          .download-card-wrap p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
+                                                                                          .download-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
+                                                                                          .download-btn-windows { background-color: #0078D4; color: #ffffff !important; }
+                                                                                          .download-btn-windows:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
+                                                                                          .download-btn-mac { background-color: #444444; color: #ffffff !important; }
+                                                                                          .download-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
+                                                                                          `}
 </style>
 
 ---
@@ -337,85 +537,85 @@ JUNK\_B
 
 <style>
   {`
-                                                          .download-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-                                                          @media (max-width: 640px) { .download-cards-grid { grid-template-columns: 1fr; } }
-                                                          .download-card-wrap { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #ffffff; }
-                                                          .dark .download-card-wrap { background: #1e1e1e; border-color: #374151; }
-                                                          .download-card-wrap h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
-                                                          .download-card-wrap p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
-                                                          .download-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
-                                                          .download-btn-windows { background-color: #0078D4; color: #ffffff !important; }
-                                                          .download-btn-windows:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
-                                                          .download-btn-mac { background-color: #444444; color: #ffffff !important; }
-                                                          .download-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
-                                                          `}
+                                                                                            .download-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+                                                                                            @media (max-width: 640px) { .download-cards-grid { grid-template-columns: 1fr; } }
+                                                                                            .download-card-wrap { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #ffffff; }
+                                                                                            .dark .download-card-wrap { background: #1e1e1e; border-color: #374151; }
+                                                                                            .download-card-wrap h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
+                                                                                            .download-card-wrap p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
+                                                                                            .download-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
+                                                                                            .download-btn-windows { background-color: #0078D4; color: #ffffff !important; }
+                                                                                            .download-btn-windows:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
+                                                                                            .download-btn-mac { background-color: #444444; color: #ffffff !important; }
+                                                                                            .download-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
+                                                                                            `}
 </style>
 
 ---
 
 <style>
   {`
-                                                                              .download-cards-grid {
-                                                                                display: grid;
-                                                                                grid-template-columns: 1fr 1fr;
-                                                                                gap: 16px;
-                                                                                margin: 16px 0;
-                                                                              }
-                                                                              @media (max-width: 640px) {
-                                                                                .download-cards-grid { grid-template-columns: 1fr; }
-                                                                              }
-                                                                              .download-card-wrap {
-                                                                                display: flex;
-                                                                                flex-direction: column;
-                                                                                padding: 20px 24px;
-                                                                                border: 1px solid #e5e7eb;
-                                                                                border-radius: 12px;
-                                                                                background: #ffffff;
-                                                                              }
-                                                                              .dark .download-card-wrap {
-                                                                                background: #1e1e1e;
-                                                                                border-color: #374151;
-                                                                              }
-                                                                              .download-card-wrap h3 {
-                                                                                margin: 0 0 6px 0;
-                                                                                font-size: 1rem;
-                                                                                font-weight: 700;
-                                                                              }
-                                                                              .download-card-wrap p {
-                                                                                margin: 0 0 14px 0;
-                                                                                font-size: 0.875rem;
-                                                                                color: #6b7280;
-                                                                                flex: 1;
-                                                                              }
-                                                                              .download-btn {
-                                                                                display: inline-flex;
-                                                                                align-items: center;
-                                                                                justify-content: center;
-                                                                                padding: 10px 20px;
-                                                                                border-radius: 8px;
-                                                                                font-size: 0.9rem;
-                                                                                font-weight: 600;
-                                                                                text-decoration: none !important;
-                                                                                transition: background-color 0.2s ease, box-shadow 0.2s ease;
-                                                                                align-self: flex-start;
-                                                                              }
-                                                                              .download-btn-windows {
-                                                                                background-color: #0078D4;
-                                                                                color: #ffffff !important;
-                                                                              }
-                                                                              .download-btn-windows:hover {
-                                                                                background-color: #3399E0;
-                                                                                box-shadow: 0 4px 14px rgba(0,120,212,0.35);
-                                                                              }
-                                                                              .download-btn-mac {
-                                                                                background-color: #444444;
-                                                                                color: #ffffff !important;
-                                                                              }
-                                                                              .download-btn-mac:hover {
-                                                                                background-color: #686868;
-                                                                                box-shadow: 0 4px 14px rgba(80,80,80,0.35);
-                                                                              }
-                                                                              `}
+                                                                                                                .download-cards-grid {
+                                                                                                                  display: grid;
+                                                                                                                  grid-template-columns: 1fr 1fr;
+                                                                                                                  gap: 16px;
+                                                                                                                  margin: 16px 0;
+                                                                                                                }
+                                                                                                                @media (max-width: 640px) {
+                                                                                                                  .download-cards-grid { grid-template-columns: 1fr; }
+                                                                                                                }
+                                                                                                                .download-card-wrap {
+                                                                                                                  display: flex;
+                                                                                                                  flex-direction: column;
+                                                                                                                  padding: 20px 24px;
+                                                                                                                  border: 1px solid #e5e7eb;
+                                                                                                                  border-radius: 12px;
+                                                                                                                  background: #ffffff;
+                                                                                                                }
+                                                                                                                .dark .download-card-wrap {
+                                                                                                                  background: #1e1e1e;
+                                                                                                                  border-color: #374151;
+                                                                                                                }
+                                                                                                                .download-card-wrap h3 {
+                                                                                                                  margin: 0 0 6px 0;
+                                                                                                                  font-size: 1rem;
+                                                                                                                  font-weight: 700;
+                                                                                                                }
+                                                                                                                .download-card-wrap p {
+                                                                                                                  margin: 0 0 14px 0;
+                                                                                                                  font-size: 0.875rem;
+                                                                                                                  color: #6b7280;
+                                                                                                                  flex: 1;
+                                                                                                                }
+                                                                                                                .download-btn {
+                                                                                                                  display: inline-flex;
+                                                                                                                  align-items: center;
+                                                                                                                  justify-content: center;
+                                                                                                                  padding: 10px 20px;
+                                                                                                                  border-radius: 8px;
+                                                                                                                  font-size: 0.9rem;
+                                                                                                                  font-weight: 600;
+                                                                                                                  text-decoration: none !important;
+                                                                                                                  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+                                                                                                                  align-self: flex-start;
+                                                                                                                }
+                                                                                                                .download-btn-windows {
+                                                                                                                  background-color: #0078D4;
+                                                                                                                  color: #ffffff !important;
+                                                                                                                }
+                                                                                                                .download-btn-windows:hover {
+                                                                                                                  background-color: #3399E0;
+                                                                                                                  box-shadow: 0 4px 14px rgba(0,120,212,0.35);
+                                                                                                                }
+                                                                                                                .download-btn-mac {
+                                                                                                                  background-color: #444444;
+                                                                                                                  color: #ffffff !important;
+                                                                                                                }
+                                                                                                                .download-btn-mac:hover {
+                                                                                                                  background-color: #686868;
+                                                                                                                  box-shadow: 0 4px 14px rgba(80,80,80,0.35);
+                                                                                                                }
+                                                                                                                `}
 </style>
 
 ---
@@ -619,67 +819,67 @@ JUNK\_B
 
 <style>
   {`
-                                                                            .download-cards-grid {
-                                                                              display: grid;
-                                                                              grid-template-columns: 1fr 1fr;
-                                                                              gap: 16px;
-                                                                              margin: 16px 0;
-                                                                            }
-                                                                            @media (max-width: 640px) {
-                                                                              .download-cards-grid { grid-template-columns: 1fr; }
-                                                                            }
-                                                                            .download-card-wrap {
-                                                                              display: flex;
-                                                                              flex-direction: column;
-                                                                              padding: 20px 24px;
-                                                                              border: 1px solid #e5e7eb;
-                                                                              border-radius: 12px;
-                                                                              background: #ffffff;
-                                                                            }
-                                                                            .dark .download-card-wrap {
-                                                                              background: #1e1e1e;
-                                                                              border-color: #374151;
-                                                                            }
-                                                                            .download-card-wrap h3 {
-                                                                              margin: 0 0 6px 0;
-                                                                              font-size: 1rem;
-                                                                              font-weight: 700;
-                                                                            }
-                                                                            .download-card-wrap p {
-                                                                              margin: 0 0 14px 0;
-                                                                              font-size: 0.875rem;
-                                                                              color: #6b7280;
-                                                                              flex: 1;
-                                                                            }
-                                                                            .download-btn {
-                                                                              display: inline-flex;
-                                                                              align-items: center;
-                                                                              justify-content: center;
-                                                                              padding: 10px 20px;
-                                                                              border-radius: 8px;
-                                                                              font-size: 0.9rem;
-                                                                              font-weight: 600;
-                                                                              text-decoration: none !important;
-                                                                              transition: background-color 0.2s ease, box-shadow 0.2s ease;
-                                                                              align-self: flex-start;
-                                                                            }
-                                                                            .download-btn-windows {
-                                                                              background-color: #0078D4;
-                                                                              color: #ffffff !important;
-                                                                            }
-                                                                            .download-btn-windows:hover {
-                                                                              background-color: #3399E0;
-                                                                              box-shadow: 0 4px 14px rgba(0,120,212,0.35);
-                                                                            }
-                                                                            .download-btn-mac {
-                                                                              background-color: #444444;
-                                                                              color: #ffffff !important;
-                                                                            }
-                                                                            .download-btn-mac:hover {
-                                                                              background-color: #686868;
-                                                                              box-shadow: 0 4px 14px rgba(80,80,80,0.35);
-                                                                            }
-                                                                            `}
+                                                                                                              .download-cards-grid {
+                                                                                                                display: grid;
+                                                                                                                grid-template-columns: 1fr 1fr;
+                                                                                                                gap: 16px;
+                                                                                                                margin: 16px 0;
+                                                                                                              }
+                                                                                                              @media (max-width: 640px) {
+                                                                                                                .download-cards-grid { grid-template-columns: 1fr; }
+                                                                                                              }
+                                                                                                              .download-card-wrap {
+                                                                                                                display: flex;
+                                                                                                                flex-direction: column;
+                                                                                                                padding: 20px 24px;
+                                                                                                                border: 1px solid #e5e7eb;
+                                                                                                                border-radius: 12px;
+                                                                                                                background: #ffffff;
+                                                                                                              }
+                                                                                                              .dark .download-card-wrap {
+                                                                                                                background: #1e1e1e;
+                                                                                                                border-color: #374151;
+                                                                                                              }
+                                                                                                              .download-card-wrap h3 {
+                                                                                                                margin: 0 0 6px 0;
+                                                                                                                font-size: 1rem;
+                                                                                                                font-weight: 700;
+                                                                                                              }
+                                                                                                              .download-card-wrap p {
+                                                                                                                margin: 0 0 14px 0;
+                                                                                                                font-size: 0.875rem;
+                                                                                                                color: #6b7280;
+                                                                                                                flex: 1;
+                                                                                                              }
+                                                                                                              .download-btn {
+                                                                                                                display: inline-flex;
+                                                                                                                align-items: center;
+                                                                                                                justify-content: center;
+                                                                                                                padding: 10px 20px;
+                                                                                                                border-radius: 8px;
+                                                                                                                font-size: 0.9rem;
+                                                                                                                font-weight: 600;
+                                                                                                                text-decoration: none !important;
+                                                                                                                transition: background-color 0.2s ease, box-shadow 0.2s ease;
+                                                                                                                align-self: flex-start;
+                                                                                                              }
+                                                                                                              .download-btn-windows {
+                                                                                                                background-color: #0078D4;
+                                                                                                                color: #ffffff !important;
+                                                                                                              }
+                                                                                                              .download-btn-windows:hover {
+                                                                                                                background-color: #3399E0;
+                                                                                                                box-shadow: 0 4px 14px rgba(0,120,212,0.35);
+                                                                                                              }
+                                                                                                              .download-btn-mac {
+                                                                                                                background-color: #444444;
+                                                                                                                color: #ffffff !important;
+                                                                                                              }
+                                                                                                              .download-btn-mac:hover {
+                                                                                                                background-color: #686868;
+                                                                                                                box-shadow: 0 4px 14px rgba(80,80,80,0.35);
+                                                                                                              }
+                                                                                                              `}
 </style>
 
 ---
@@ -1091,63 +1291,63 @@ JUNK\_B
 
 <style>
   {`
-                                                                              .contact-section {
-                                                                                border: 1px solid #e5e7eb;
-                                                                                border-radius: 12px;
-                                                                                overflow: hidden;
-                                                                                margin: 16px 0;
-                                                                              }
-                                                                              .dark .contact-section {
-                                                                                border-color: #374151;
-                                                                              }
-                                                                              .contact-item {
-                                                                                display: flex;
-                                                                                align-items: flex-start;
-                                                                                gap: 16px;
-                                                                                padding: 20px 28px;
-                                                                                background: #ffffff;
-                                                                              }
-                                                                              .dark .contact-item {
-                                                                                background: #1e1e1e;
-                                                                              }
-                                                                              .contact-icon {
-                                                                                font-size: 1.4rem;
-                                                                                line-height: 1;
-                                                                                margin-top: 2px;
-                                                                                flex-shrink: 0;
-                                                                              }
-                                                                              .contact-label {
-                                                                                font-size: 0.75rem;
-                                                                                font-weight: 600;
-                                                                                color: #9ca3af;
-                                                                                text-transform: uppercase;
-                                                                                letter-spacing: 0.05em;
-                                                                                margin-bottom: 4px;
-                                                                              }
-                                                                              .contact-value {
-                                                                                font-size: 0.95rem;
-                                                                                font-weight: 500;
-                                                                                color: #111827;
-                                                                                text-decoration: none;
-                                                                              }
-                                                                              .dark .contact-value {
-                                                                                color: #f3f4f6;
-                                                                              }
-                                                                              a.contact-value:hover {
-                                                                                text-decoration: underline;
-                                                                              }
-                                                                              .contact-sub {
-                                                                                font-size: 0.8rem;
-                                                                                color: #6b7280;
-                                                                                margin-top: 3px;
-                                                                              }
-                                                                              .contact-divider {
-                                                                                height: 1px;
-                                                                                background: #e5e7eb;
-                                                                                margin: 0 28px;
-                                                                              }
-                                                                              .dark .contact-divider {
-                                                                                background: #374151;
-                                                                              }
-                                                                              `}
+                                                                                                                .contact-section {
+                                                                                                                  border: 1px solid #e5e7eb;
+                                                                                                                  border-radius: 12px;
+                                                                                                                  overflow: hidden;
+                                                                                                                  margin: 16px 0;
+                                                                                                                }
+                                                                                                                .dark .contact-section {
+                                                                                                                  border-color: #374151;
+                                                                                                                }
+                                                                                                                .contact-item {
+                                                                                                                  display: flex;
+                                                                                                                  align-items: flex-start;
+                                                                                                                  gap: 16px;
+                                                                                                                  padding: 20px 28px;
+                                                                                                                  background: #ffffff;
+                                                                                                                }
+                                                                                                                .dark .contact-item {
+                                                                                                                  background: #1e1e1e;
+                                                                                                                }
+                                                                                                                .contact-icon {
+                                                                                                                  font-size: 1.4rem;
+                                                                                                                  line-height: 1;
+                                                                                                                  margin-top: 2px;
+                                                                                                                  flex-shrink: 0;
+                                                                                                                }
+                                                                                                                .contact-label {
+                                                                                                                  font-size: 0.75rem;
+                                                                                                                  font-weight: 600;
+                                                                                                                  color: #9ca3af;
+                                                                                                                  text-transform: uppercase;
+                                                                                                                  letter-spacing: 0.05em;
+                                                                                                                  margin-bottom: 4px;
+                                                                                                                }
+                                                                                                                .contact-value {
+                                                                                                                  font-size: 0.95rem;
+                                                                                                                  font-weight: 500;
+                                                                                                                  color: #111827;
+                                                                                                                  text-decoration: none;
+                                                                                                                }
+                                                                                                                .dark .contact-value {
+                                                                                                                  color: #f3f4f6;
+                                                                                                                }
+                                                                                                                a.contact-value:hover {
+                                                                                                                  text-decoration: underline;
+                                                                                                                }
+                                                                                                                .contact-sub {
+                                                                                                                  font-size: 0.8rem;
+                                                                                                                  color: #6b7280;
+                                                                                                                  margin-top: 3px;
+                                                                                                                }
+                                                                                                                .contact-divider {
+                                                                                                                  height: 1px;
+                                                                                                                  background: #e5e7eb;
+                                                                                                                  margin: 0 28px;
+                                                                                                                }
+                                                                                                                .dark .contact-divider {
+                                                                                                                  background: #374151;
+                                                                                                                }
+                                                                                                                `}
 </style>
