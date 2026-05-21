@@ -1,20 +1,81 @@
----
-title: 八爪鱼采集器
-description: 无代码、云端运行、OpenAPI接入以及AI集成的实用化网络爬虫工具指南。
----
+## 什么是八爪鱼采集器
+
+**八爪鱼采集器**是一款功能强大的零代码网页数据提取平台，由深圳市矩阵数据科技有限公司打造。无需编程基础，任何人都能通过可视化操作快速搭建采集任务，将互联网上的公开数据轻松转化为结构化数据资产。
+
+- 🕸️ **零代码操作** — 点击即采集，无需写一行代码
+- ☁️ **云端 & 本地双模式** — 灵活选择本地运行或云端自动化调度
+- 🤖 **AI 智能识别** — 自动识别页面结构，快速生成采集流程
+- 🔌 **开放接口** — 支持 OpenAPI、MCP、CLI 等多种集成方式
+- 📊 **多格式导出** — 支持导出至 CSV、Excel、JSON、数据库、云存储等
 
 ## 从这里开始
 
 <CardGroup cols={3}>
-<Card title="OpenAPI" icon="webhook" color="#10B981" href="/en/api-reference/intro">
-  八爪鱼 OpenAPI —— 程序化管理采集任务、执行云端抽取、获取采集数据。
-</Card>
+  <Card title="OpenAPI" color="#10B981" icon="webhook" href="/en/api-reference/intro">
+    八爪鱼 OpenAPI —— 程序化管理采集任务、执行云端抽取、获取采集数据。
+  </Card>
 
-<Card title="MCP服务" icon="/assets/mcp-icon.svg" href="/en/mcp/intro">
-  将八爪鱼采集器能力连接到AI智能体上（ChatGPT、openclow、Claude、Cursor、coze、Dify等）
-</Card>
+  <Card title="MCP服务" icon="/assets/mcp-icon.svg" href="/en/mcp/intro">
+    将八爪鱼采集器能力连接到AI智能体上（ChatGPT、openclow、Claude、Cursor、coze、Dify等）
+  </Card>
 
-<Card title="CLI" icon="terminal" href="/en/cli/intro">
-  八爪鱼 CLI —— 命令行方式管理采集任务、启动本地、云采集、导出采集数据，适合开发者集成与自动化场景。
-</Card>
+  <Card title="CLI" icon="terminal" href="/en/cli/intro">
+    八爪鱼 CLI —— 命令行方式管理采集任务、启动本地、云采集、导出采集数据，适合开发者集成与自动化场景。
+  </Card>
+</CardGroup>
+
+## 下载客户端
+
+<div className="dl-grid">
+  <div className="dl-card">
+    <h3>🪟 Windows 客户端</h3>
+    <p>当前最新版本：<strong>V10.0.0</strong>（2026年04月21日更新）<br />支持 Windows 10 / 11（64位）</p>
+    <a className="dl-btn dl-btn-win" href="https://client-resource.octoparse.com/client/en-US/win-x64/Octoparse%20Setup%2010.0.0.exe">⬇ 立即下载</a>
+  </div>
+
+  <div className="dl-card">
+    <h3>🍎 Mac 客户端</h3>
+    <p>支持 macOS 10.14（Mojave）及以上版本</p>
+    <a className="dl-btn dl-btn-mac" href="https://www.bazhuayu.com/download">⬇ 立即下载</a>
+  </div>
+</div>
+
+<style>
+  {`
+    .dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
+    .dl-card { display: flex; flex-direction: column; padding: 20px 24px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; }
+    .dark .dl-card { background: #1e1e1e; border-color: #374151; }
+    .dl-card h3 { margin: 0 0 6px 0; font-size: 1rem; font-weight: 700; }
+    .dl-card p { margin: 0 0 14px 0; font-size: 0.875rem; color: #6b7280; flex: 1; }
+    .dl-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none !important; transition: background-color 0.2s ease, box-shadow 0.2s ease; align-self: flex-start; }
+    .dl-btn-win { background-color: #0078D4; color: #fff !important; }
+    .dl-btn-win:hover { background-color: #3399E0; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
+    .dl-btn-mac { background-color: #444; color: #fff !important; }
+    .dl-btn-mac:hover { background-color: #686868; box-shadow: 0 4px 14px rgba(80,80,80,0.35); }
+    `}
+</style>
+
+---
+
+## 联系我们
+
+<CardGroup cols={2}>
+  <Card title="业务咨询" icon="envelope">
+    [sales@skieer.com](mailto:sales@skieer.com)
+  </Card>
+
+  <Card title="联系电话" icon="phone">
+    0755-86702246
+
+    周一至周五 9:00–12:00 / 14:00–18:00
+  </Card>
+
+  <Card title="公司地址" icon="location-dot">
+    深圳市南山区西丽街道深圳国际创新谷1栋A座2001
+  </Card>
+
+  <Card title="联系帮助" icon="circle-question" href="https://www.bazhuayu.com/contactus">
+    [前往联系页面 →](https://www.bazhuayu.com/contactus)
+  </Card>
 </CardGroup>
