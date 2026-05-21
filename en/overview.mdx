@@ -13,23 +13,93 @@ description: "无代码、云端运行、OpenAPI接入以及AI集成的实用化
 - 🔌 **开放接口** — 支持 OpenAPI、MCP、CLI 等多种集成方式
 - 📊 **多格式导出** — 支持导出至 CSV、Excel、JSON、数据库、云存储等
 
-## 下载最新版客户端
+## 最新版本八爪鱼客户端
 
-<CardGroup cols={2}>
-  <Card title="Windows 客户端" color="#0078D4" icon="windows" href="https://client-resource.octoparse.com/client/en-US/win-x64/Octoparse%20Setup%2010.0.0.exe">
-    当前最新版本：**V10.0.0**（2026年04月21日更新）
+<div className="download-cards-grid">
+  <div className="download-card-wrap">
+    <h3>🪟 Windows 客户端</h3>
+    <p>当前最新版本：<strong>V10.0.0</strong>（2026年04月21日更新）<br />支持 Windows 10 / 11（64位）</p>
 
-    支持 Windows 10 / 11（64位）
+    <a className="download-btn download-btn-windows" href="https://client-resource.octoparse.com/client/en-US/win-x64/Octoparse%20Setup%2010.0.0.exe">
+      ⬇ 立即下载 .exe
+    </a>
+  </div>
 
-    [立即下载 →](https://client-resource.octoparse.com/client/en-US/win-x64/Octoparse%20Setup%2010.0.0.exe)
-  </Card>
+  <div className="download-card-wrap">
+    <h3>🍎 Mac 客户端</h3>
+    <p>支持 macOS 10.14（Mojave）及以上版本</p>
 
-  <Card title="Mac 客户端" color="#555555" icon="apple" href="https://www.bazhuayu.com/download">
-    支持 macOS 10.14（Mojave）及以上版本
+    <a className="download-btn download-btn-mac" href="https://www.bazhuayu.com/download">
+      ⬇ 前往官网下载
+    </a>
+  </div>
+</div>
 
-    [前往官网下载 →](https://www.bazhuayu.com/download)
-  </Card>
-</CardGroup>
+<style>
+  {`
+    .download-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 16px 0;
+    }
+    @media (max-width: 640px) {
+      .download-cards-grid { grid-template-columns: 1fr; }
+    }
+    .download-card-wrap {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 24px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #ffffff;
+    }
+    .dark .download-card-wrap {
+      background: #1e1e1e;
+      border-color: #374151;
+    }
+    .download-card-wrap h3 {
+      margin: 0 0 6px 0;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .download-card-wrap p {
+      margin: 0 0 14px 0;
+      font-size: 0.875rem;
+      color: #6b7280;
+      flex: 1;
+    }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+    .download-btn-windows {
+      background-color: #0078D4;
+      color: #ffffff !important;
+    }
+    .download-btn-windows:hover {
+      background-color: #3399E0;
+      box-shadow: 0 4px 14px rgba(0,120,212,0.35);
+    }
+    .download-btn-mac {
+      background-color: #444444;
+      color: #ffffff !important;
+    }
+    .download-btn-mac:hover {
+      background-color: #686868;
+      box-shadow: 0 4px 14px rgba(80,80,80,0.35);
+    }
+    `}
+</style>
 
 ## 从这里开始
 
