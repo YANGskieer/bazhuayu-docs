@@ -6,3 +6,91 @@ h2.m-0.font-normal button span::after {
   content: "本页目录";
   font-size: 0.875rem;
 }
+
+/* 首页 overview — 下载客户端左右分栏 */
+.dl-section {
+  margin: 16px 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fafafa;
+}
+.dark .dl-section {
+  background: #161616;
+  border-color: #374151;
+}
+.dl-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.dl-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 28px;
+  background: #fff;
+  min-height: 100%;
+}
+.dark .dl-card {
+  background: #1e1e1e;
+}
+.dl-card-win {
+  border-right: 1px solid #e5e7eb;
+}
+.dark .dl-card-win {
+  border-right-color: #374151;
+}
+.dl-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111827;
+}
+.dark .dl-card h3 {
+  color: #f3f4f6;
+}
+.dl-card p {
+  margin: 0 0 20px 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #6b7280;
+  flex: 1;
+}
+.dl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  align-self: flex-start;
+  background-color: #e8f4fd !important;
+  color: #1677ff !important;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.dl-btn:hover {
+  background-color: #bae0ff !important;
+  box-shadow: 0 2px 8px rgba(22, 119, 255, 0.15);
+}
+.dark .dl-btn {
+  background-color: #112a45 !important;
+  color: #69b1ff !important;
+}
+.dark .dl-btn:hover {
+  background-color: #15395b !important;
+  box-shadow: 0 2px 8px rgba(105, 177, 255, 0.2);
+}
+@media (max-width: 640px) {
+  .dl-grid {
+    grid-template-columns: 1fr;
+  }
+  .dl-card-win {
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .dark .dl-card-win {
+    border-bottom-color: #374151;
+  }
+}
