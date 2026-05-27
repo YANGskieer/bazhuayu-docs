@@ -1,5 +1,8 @@
 ---
 title: 获取全新 Token
+api: POST https://openapi.bazhuayu.com/token
+playground: interactive
+authMethod: none
 ---
 
 > **所需套餐：** 全部
@@ -92,3 +95,11 @@ POST https://openapi.bazhuayu.com/token
 }
 ```
 
+<ParamField header="Content-Type" type="string" default="application/json" required hidden>
+</ParamField>
+<ParamField body="username" type="string" required hidden>
+</ParamField>
+<ParamField body="password" type="string" required hidden>
+</ParamField>
+<ParamField body="grant_type" type="string" default="password" initialValue="password" required hidden>
+</ParamField>

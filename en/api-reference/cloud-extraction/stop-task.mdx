@@ -1,5 +1,8 @@
 ---
 title: 停止任务
+api: POST https://openapi.bazhuayu.com/cloudextraction/stop
+playground: interactive
+authMethod: bearer
 ---
 
 > **所需套餐：** 旗舰+、企业版、团队版
@@ -81,3 +84,9 @@ POST https://openapi.bazhuayu.com/cloudextraction/stop
 }
 ```
 
+<ParamField header="Authorization" type="string" required hidden>
+</ParamField>
+<ParamField header="Content-Type" type="string" default="application/json" required hidden>
+</ParamField>
+<ParamField body="taskId" type="string" required hidden>
+</ParamField>

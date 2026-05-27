@@ -94,3 +94,30 @@ h2.m-0.font-normal button span::after {
     border-bottom-color: #374151;
   }
 }
+
+/* API 文档页 — 正文显示在调试台上方（Mintlify data-current-path 常为 /，用 :has 匹配） */
+#content-area:has([id^="api-playground"]) {
+  display: flex;
+  flex-direction: column;
+}
+
+#content-area:has([id^="api-playground"]) > #header {
+  order: 0;
+}
+
+#content-area:has([id^="api-playground"]) > .mdx-content {
+  order: 1;
+}
+
+#content-area:has([id^="api-playground"]) > [id^="api-playground"] {
+  order: 2;
+}
+
+#content-area:has([id^="api-playground"]) > #pagination {
+  order: 3;
+}
+
+#content-area:has([id^="api-playground"]) > #footer {
+  order: 4;
+  margin-top: 2rem;
+}

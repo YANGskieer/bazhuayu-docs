@@ -1,5 +1,8 @@
 ---
 title: 搜索任务
+api: GET https://openapi.bazhuayu.com/task/search
+playground: interactive
+authMethod: bearer
 ---
 
 > **所需套餐：** 旗舰版、旗舰+、企业版、团队版
@@ -88,3 +91,7 @@ https://openapi.bazhuayu.com/task/search?taskGroupId=23894
 }
 ```
 
+<ParamField header="Authorization" type="string" required hidden>
+</ParamField>
+<ParamField query="taskGroupId" type="number" required hidden>
+</ParamField>

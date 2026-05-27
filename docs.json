@@ -13,7 +13,12 @@
     "dark": "/assets/logo.png"
   },
   "navigation": {
-    "tabs": [
+    "languages": [
+      {
+        "language": "cn",
+        "default": true,
+        "hidden": true,
+        "tabs": [
       {
         "tab": "首页",
         "pages": [
@@ -89,6 +94,12 @@
             ]
           },
           {
+            "group": "任务分析",
+            "pages": [
+              "en/api-reference/task-analytics/query-task-analytics"
+            ]
+          },
+          {
             "group": "数据",
             "pages": [
               "en/api-reference/data/get-non-exported-data",
@@ -99,9 +110,9 @@
             ]
           },
           {
-            "group": "示例代码",
+            "group": "参考",
             "pages": [
-              "en/code-examples/python"
+              "en/api-reference/reference"
             ]
           }
         ]
@@ -118,6 +129,8 @@
           "en/changelog/april-2026"
         ]
       }
+        ]
+      }
     ]
   },
   "footer": {
@@ -125,6 +138,34 @@
       "twitter": "https://twitter.com/octoparse",
       "github": "https://github.com/octoparse",
       "linkedin": "https://linkedin.com/company/octoparse"
+    }
+  },
+  "api": {
+    "openapi": "en/api-reference/task-analytics/openapi.json",
+    "mdx": {
+      "server": "https://openapi.bazhuayu.com"
+    },
+    "playground": {
+      "display": "interactive",
+      "proxy": true
+    },
+    "examples": {
+      "languages": [
+        "curl",
+        "python",
+        "javascript",
+        "typescript",
+        "go",
+        "java",
+        "php",
+        "ruby",
+        "csharp",
+        "kotlin",
+        "rust"
+      ],
+      "defaults": "all",
+      "prefill": true,
+      "autogenerate": true
     }
   },
   "styling": {

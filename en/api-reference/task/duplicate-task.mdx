@@ -1,5 +1,8 @@
 ---
 title: 复制任务
+api: POST https://openapi.bazhuayu.com/task/copy
+playground: interactive
+authMethod: bearer
 ---
 
 > **所需套餐：** 旗舰+、企业版、团队版
@@ -7,7 +10,7 @@ title: 复制任务
 ## 端点
 
 ```
-POST https://openapi.bazhuayu.com/task/copy
+POST https://openapi.bazhuayu.com/task/copy?taskId={taskId}&taskGroupId={taskGroupId}
 ```
 
 ## 描述
@@ -28,17 +31,17 @@ POST https://openapi.bazhuayu.com/task/copy
 }
 ```
 
-## 请求体
+## 查询参数
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `taskGroupId` | int | 是 | 任务组Id(不传则复制到当前任务的任务组) |
 | `taskId` | string | 是 | 任务Id |
+| `taskGroupId` | int | 否 | 任务组Id（不传则复制到当前任务的任务组） |
 
-**请求体示例**
+**请求示例**
 
-```json
-https://openapi.bazhuayu.com/task/copy?taskId=a2de44e9-092c-453c-bfe3-fe9e71dff12345&taskGroupId=100
+```
+POST https://openapi.bazhuayu.com/task/copy?taskId=a2de44e9-092c-453c-bfe3-fe9e71dff12345&taskGroupId=100
 ```
 
 ## 响应
@@ -82,3 +85,9 @@ https://openapi.bazhuayu.com/task/copy?taskId=a2de44e9-092c-453c-bfe3-fe9e71dff1
 }
 ```
 
+<ParamField header="Authorization" type="string" required hidden>
+</ParamField>
+<ParamField query="taskId" type="string" required hidden>
+</ParamField>
+<ParamField query="taskGroupId" type="number" hidden>
+</ParamField>

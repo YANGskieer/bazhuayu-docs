@@ -1,5 +1,8 @@
 ---
 title: 获取任务状态
+api: POST https://openapi.bazhuayu.com/cloudextraction/statuses
+playground: interactive
+authMethod: bearer
 ---
 
 > **所需套餐：** 旗舰+、企业版、团队版
@@ -98,3 +101,9 @@ POST https://openapi.bazhuayu.com/cloudextraction/statuses
 }
 ```
 
+<ParamField header="Authorization" type="string" required hidden>
+</ParamField>
+<ParamField header="Content-Type" type="string" default="application/json" required hidden>
+</ParamField>
+<ParamField body="taskIds" type="string[]" required hidden>
+</ParamField>

@@ -1,5 +1,8 @@
 ---
 title: 批量获取任务步骤信息
+api: POST https://openapi.bazhuayu.com/task/getActions
+playground: interactive
+authMethod: bearer
 ---
 
 > **所需套餐：** 旗舰+、企业版、团队版
@@ -34,8 +37,8 @@ POST https://openapi.bazhuayu.com/task/getActions
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `taskIds` | String[] | 是 | 任务Id列表 |
-| `actionTypes` | String[] | 是 | 步骤类型，目前支持：LoopAction(循环列表)、NavigateAction(打开网页)、EnterTextAction(输入文本) |
+| `taskIds` | String[] | 是 | 任务 Id 列表 |
+| `actionTypes` | String[] | 是 | 步骤类型列表，支持：LoopAction（循环列表）、NavigateAction（打开网页）、EnterTextAction（输入文本） |
 
 **请求体示例**
 
@@ -115,3 +118,11 @@ POST https://openapi.bazhuayu.com/task/getActions
 }
 ```
 
+<ParamField header="Authorization" type="string" required hidden>
+</ParamField>
+<ParamField header="Content-Type" type="string" default="application/json" required hidden>
+</ParamField>
+<ParamField body="taskIds" type="string[]" required hidden>
+</ParamField>
+<ParamField body="actionTypes" type="string[]" required hidden>
+</ParamField>

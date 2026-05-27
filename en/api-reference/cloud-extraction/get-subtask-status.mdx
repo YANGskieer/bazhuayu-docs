@@ -1,5 +1,8 @@
 ---
 title: 获取子任务状态
+api: GET https://openapi.bazhuayu.com/cloudextraction/task/subtasks
+playground: interactive
+authMethod: bearer
 ---
 
 > **所需套餐：** 旗舰+、企业版、团队版
@@ -30,18 +33,18 @@ GET https://openapi.bazhuayu.com/cloudextraction/task/subtasks
 }
 ```
 
-## 请求体
+## 查询参数
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `taskId` | String | 是 | 任务Id |
+| `taskId` | String | 是 | 任务 Id |
 | `page` | Int | 是 | 页数 |
 | `size` | Int | 是 | 每页条数 |
 
-**请求体示例**
+**请求示例**
 
-```json
-https://openapi.bazhuayu.com/cloudextraction/task/subtasks?taskId=11d18cb2-6209-4b35-9243-c33a07be45b0&page=1&size=20
+```
+GET https://openapi.bazhuayu.com/cloudextraction/task/subtasks?taskId=11d18cb2-6209-4b35-9243-c33a07be45b0&page=1&size=20
 ```
 
 ## 响应
@@ -88,3 +91,13 @@ https://openapi.bazhuayu.com/cloudextraction/task/subtasks?taskId=11d18cb2-6209-
 }
 ```
 
+<ParamField header="Authorization" type="string" required hidden>
+</ParamField>
+<ParamField header="Content-Type" type="string" default="application/json" required hidden>
+</ParamField>
+<ParamField query="taskId" type="string" required hidden>
+</ParamField>
+<ParamField query="page" type="number" required hidden>
+</ParamField>
+<ParamField query="size" type="number" required hidden>
+</ParamField>

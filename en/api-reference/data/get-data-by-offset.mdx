@@ -1,5 +1,8 @@
 ---
 title: 根据指定位置获取任务数据
+api: GET https://openapi.bazhuayu.com/data/all
+playground: interactive
+authMethod: bearer
 ---
 
 > **所需套餐：** 旗舰版、旗舰+、企业版、团队版
@@ -28,18 +31,18 @@ GET https://openapi.bazhuayu.com/data/all
 }
 ```
 
-## 请求体
+## 查询参数
 
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `taskId` | String | 是 | 任务Id |
-| `offset` | Number | 是 | 数据偏移量，当offset小等于0时，则从起始位置读取任务数据 |
+| `taskId` | String | 是 | 任务 Id |
+| `offset` | Number | 是 | 数据偏移量；当 offset ≤ 0 时从起始位置读取 |
 | `size` | Number | 是 | 获取的数据量，范围：1~1000 |
 
-**请求体示例**
+**请求示例**
 
-```json
-https://openapi.bazhuayu.com/data/all?taskId=a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f&offset=0&size=4
+```
+GET https://openapi.bazhuayu.com/data/all?taskId=a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8f&offset=0&size=4
 ```
 
 ## 响应
@@ -105,3 +108,11 @@ https://openapi.bazhuayu.com/data/all?taskId=a3b9bdf7-9aaa-22f6-9ccf-b32790f6df8
 }
 ```
 
+<ParamField header="Authorization" type="string" required hidden>
+</ParamField>
+<ParamField query="taskId" type="string" required hidden>
+</ParamField>
+<ParamField query="offset" type="number" required hidden>
+</ParamField>
+<ParamField query="size" type="number" required hidden>
+</ParamField>
