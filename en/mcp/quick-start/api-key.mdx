@@ -1,0 +1,92 @@
+---
+title: 获取 API Key
+description: 在八爪鱼账户中心创建 API Key，供 MCP 以 x-api-key 方式认证。
+---
+
+# 获取 API Key
+
+> 适用于 **Coze 自定义 MCP、Dify API Key 模式、QClaw、企业微信** 等需固定 Key 的对接场景。
+
+## 何时使用 API Key
+
+| 认证方式 | 适用场景 |
+| --- | --- |
+| **OAuth 2.1** | **Coze、Dify** 安装官方工具时，按平台引导浏览器登录八爪鱼 |
+| **API Key** | **Coze** 自定义 MCP、**Dify** API Key 模式、**QClaw**、**企业微信** |
+
+使用 API Key 时，请求头需携带：
+
+```text
+x-api-key: 你的APIKey
+```
+
+服务地址：
+
+```text
+https://mcp.bazhuayu.com
+```
+
+## 创建 API Key
+
+1. 登录八爪鱼账户（[八爪鱼官网](https://www.bazhuayu.com/) 或账户中心 API Keys 入口）。
+2. 进入 **账户中心 → API Keys**（或「开发者 / API 密钥」）。
+3. 点击 **创建 API Key**，按提示命名（如 `MCP-Coze`、`MCP-Dify`、`MCP-企微`）。
+4. **立即复制并妥善保存** Key；部分界面仅展示一次。
+5. 若 Key 泄露，请作废旧 Key 并新建。
+
+<Warning>
+  不要将 API Key 提交到 Git、飞书公开页、截图或群聊。仅在对应平台的 MCP / 工具配置中填写。
+</Warning>
+
+## 配置说明（通用）
+
+在平台提供的 MCP / HTTP 工具配置中填写：
+
+| 项 | 值 |
+| --- | --- |
+| URL | `https://mcp.bazhuayu.com` |
+| Header 名称 | `x-api-key` |
+| Header 值 | 你创建的 API Key |
+
+部分平台使用 JSON 形态，结构类似：
+
+```json
+{
+  "type": "http",
+  "url": "https://mcp.bazhuayu.com",
+  "headers": {
+    "x-api-key": "你的APIKey"
+  }
+}
+```
+
+具体表单项名称以 **Coze / Dify / QClaw / 企业微信** 当前界面为准，分平台步骤见：
+
+- [MCP 对接 Coze](/en/mcp/integrations/coze)
+- [MCP 对接 Dify](/en/mcp/integrations/dify)
+- [MCP 对接 QClaw](/en/mcp/integrations/qclaw)
+- [MCP 对接企业微信](/en/mcp/integrations/wecom)
+
+## 验证是否生效
+
+在已配置的平台对话中尝试：
+
+- 「用八爪鱼搜索一个采集新闻标题的模板」
+- 「列出我账户下的八爪鱼任务」
+
+若返回 `401` / `403`，请检查 Key 是否有效、Header 是否为 `x-api-key`，以及 URL 是否为 `https://mcp.bazhuayu.com`。
+
+## 飞书原文
+
+详细图文步骤见飞书文档：[MCP 教程 · API Key 介绍](https://skieer.feishu.cn/wiki/E9cswte6ZiFBqCkHrYWce4Xwnb6)。
+
+## 下一步
+
+<CardGroup cols={2}>
+  <Card title="工作流程示例" href="/en/mcp/workflow">
+    从搜模板到导出数据的完整示例。
+  </Card>
+  <Card title="故障排查" href="/en/mcp/troubleshooting">
+    授权失败、工具不可见等问题。
+  </Card>
+</CardGroup>

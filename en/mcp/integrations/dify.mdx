@@ -1,0 +1,74 @@
+---
+title: MCP 对接 Dify
+description: 在 Dify 中安装八爪鱼官方工具或自定义添加 MCP 服务。
+---
+
+# MCP 对接 Dify 流程
+
+> 在 Dify 控制台接入八爪鱼 MCP，支持官方工具一键安装或自定义 MCP 配置。
+
+## 前置准备
+
+- 已部署或可访问的 Dify 控制台
+- 八爪鱼账户
+- MCP 地址：`https://mcp.bazhuayu.com`
+- API Key 模式请先阅读 [获取 API Key](/en/mcp/quick-start/api-key)
+
+## 方式一：安装官方工具（推荐）
+
+1. 登录 **Dify 控制台**。
+2. 点击顶部 **工具（Tools）**。
+3. 搜索 **八爪鱼** 或 **Octoparse** 官方发布工具。
+4. 点击 **安装**，选择授权方式：
+   - **OAuth 授权**：按页面提示登录八爪鱼并授权
+   - **API Key 授权**：填入在八爪鱼账户中心创建的 API Key（获取方式见 [API Key 文档](/en/mcp/quick-start/api-key)）
+5. 安装完成后，在 **工作室** 创建应用，在 **工具** 节点中勾选八爪鱼 MCP 工具。
+
+## 方式二：自定义添加 MCP
+
+适用于自建 Dify 或需要手动维护 MCP 端点的团队。
+
+### 步骤 1：打开 MCP 工具配置
+
+1. 登录 Dify 控制台 → **工具（Tools）**。
+2. 选择 **MCP**（或 **添加工具 → MCP**）。
+
+### 步骤 2：添加八爪鱼 MCP 服务
+
+填写服务信息（具体字段名以你使用的 Dify 版本为准）：
+
+| 配置项 | 值 |
+| --- | --- |
+| 服务名称 | 八爪鱼采集器 |
+| 服务 URL | `https://mcp.bazhuayu.com` |
+| 认证 | OAuth 或 API Key（Header：`x-api-key`） |
+
+### 步骤 3：绑定到应用
+
+1. 进入 **工作室** → **创建空白应用**（Agent / 工作流均可）。
+2. 在编排界面添加 **工具** 节点，选择已配置的八爪鱼 MCP。
+3. 保存并 **发布** 应用，在预览对话中测试 `search_templates`、`execute_task` 等能力。
+
+## 使用建议
+
+- 首次联调先用「搜索模板」类指令，确认连通性后再执行 `execute_task`。
+- 云采集任务耗时较长，工作流中可增加「等待 / 轮询」或提示用户耐心等待。
+- 导出大量数据时注意账户套餐与 MCP 速率限制，见 [速率限制](/en/mcp/rate-limits)。
+
+## 常见问题
+
+| 现象 | 处理建议 |
+| --- | --- |
+| 安装官方工具后无 MCP 工具列表 | 刷新页面；确认 Dify 版本支持 MCP；重新授权 |
+| API Key 无效 | 检查 Header 名称是否为 `x-api-key`；Key 是否过期 |
+| `execute_task` 失败 | 确认模板支持云采集；检查账户云采集额度 |
+
+## 飞书原文
+
+[教程 | MCP 对接 Dify 流程](https://skieer.feishu.cn/wiki/R5ZywDPZliGTCtkrI5wc6qqLnFh)
+
+## 相关链接
+
+- [八爪鱼 MCP 概述](/en/mcp/index)
+- [获取 API Key](/en/mcp/quick-start/api-key)
+- [工作流程示例](/en/mcp/workflow)

@@ -1,0 +1,69 @@
+---
+title: MCP 对接 QClaw（小龙虾）
+description: 在腾讯 QClaw 客户端中添加八爪鱼 MCP 服务器。
+---
+
+# MCP 对接 QClaw（龙虾）流程
+
+> 在 QClaw（小龙虾 AI）客户端中接入八爪鱼 MCP 服务器。
+
+## 前置准备
+
+- 已安装 [QClaw 客户端](https://qclaw.qq.com/)（Windows / macOS）
+- 八爪鱼账户
+- MCP 地址：`https://mcp.bazhuayu.com`
+- 建议提前 [创建 API Key](/en/mcp/quick-start/api-key)（QClaw 通常使用 API Key 方式连接第三方 MCP）
+
+## 配置步骤
+
+<Steps>
+  <Step title="打开 MCP 设置">
+    启动 QClaw 电脑客户端 → 进入 **设置** → **MCP 服务器**（或「工具 / MCP」相关入口）。
+  </Step>
+  <Step title="添加服务器">
+    点击 **添加服务器** / **添加 MCP**，填写：
+    - **名称**：八爪鱼采集器（可自定义）
+    - **地址 / URL**：`https://mcp.bazhuayu.com`
+    - **API Key**：在八爪鱼账户中心创建的 Key（若界面支持 Header，使用 `x-api-key`）
+  </Step>
+  <Step title="测试连接">
+    点击 **测试连接** 或 **保存并刷新**。成功后应能在工具列表中看到 `search_templates`、`search_tasks` 等八爪鱼工具。
+  </Step>
+  <Step title="在对话中使用">
+    通过微信远程或本地对话，例如：「用八爪鱼帮我找一个采集招聘信息的模板并运行云采集」。
+  </Step>
+</Steps>
+
+## 配置示例（概念）
+
+若客户端支持 JSON 配置，可参考：
+
+```json
+{
+  "name": "octoparse",
+  "url": "https://mcp.bazhuayu.com",
+  "headers": {
+    "x-api-key": "你的APIKey"
+  }
+}
+```
+
+具体字段以 QClaw 当前版本界面为准。
+
+## 常见问题
+
+| 现象 | 处理建议 |
+| --- | --- |
+| 测试连接失败 | 检查网络、URL 是否为 `mcp.bazhuayu.com`、Key 是否正确 |
+| 工具列表为空 | 重启 QClaw；删除后重新添加 MCP |
+| 任务执行超时 | 云采集耗时较长，可分步：先搜模板，再单独执行与导出 |
+
+## 飞书原文
+
+[教程 | MCP 对接龙虾（QClaw）流程](https://skieer.feishu.cn/wiki/PGopwrMVGiZTgpkYX0Ncxdyqn6c)
+
+## 相关链接
+
+- [八爪鱼 MCP 概述](/en/mcp/index)
+- [获取 API Key](/en/mcp/quick-start/api-key)
+- [工作流程示例](/en/mcp/workflow)

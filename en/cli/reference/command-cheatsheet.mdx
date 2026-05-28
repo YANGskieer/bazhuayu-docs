@@ -1,0 +1,123 @@
+---
+title: 命令速查表
+description: 八爪鱼 CLI 常用命令快速参考。
+---
+
+# 命令速查表
+
+> 八爪鱼 CLI 常用命令一览。尖括号 `<taskId>`、`<apiKey>` 表示需替换为实际值。
+
+除特别说明外，功能命令均需先完成 `octoparse auth login`。支持 `--json` 的命令可输出机器可读 JSON。
+
+## 帮助与诊断
+
+```bash
+octoparse --help
+octoparse --version
+octoparse capabilities
+octoparse doctor
+octoparse browser doctor
+
+octoparse capabilities --json
+octoparse doctor --json
+```
+
+## 认证
+
+```bash
+octoparse auth login
+octoparse auth login <apiKey>
+octoparse auth login --stdin
+octoparse auth login --no-open
+octoparse auth status
+octoparse auth logout
+```
+
+## 任务
+
+```bash
+octoparse task list
+octoparse task list --page 2 --page-size 20
+octoparse task list --limit 10
+octoparse task list --keyword 关键词
+octoparse task inspect <taskId>
+octoparse task validate <taskId>
+```
+
+使用本地任务文件：
+
+```bash
+octoparse task inspect <taskId> --task-file <file.json|file.xml|file.otd>
+octoparse task validate <taskId> --task-file <file.json|file.xml|file.otd>
+```
+
+## 本地采集
+
+```bash
+octoparse run <taskId>
+octoparse run <taskId> --headless
+octoparse run <taskId> --max-rows 100
+octoparse run <taskId> --detach
+octoparse run <taskId> --output ./runs
+octoparse run <taskId> --chrome-path /path/to/chrome
+```
+
+## 云采集
+
+```bash
+octoparse cloud start <taskId>
+octoparse cloud stop <taskId>
+octoparse cloud status <taskId>
+octoparse cloud history <taskId>
+```
+
+## 本地运行控制
+
+```bash
+octoparse local status <taskId>
+octoparse local pause <taskId>
+octoparse local resume <taskId>
+octoparse local stop <taskId>
+octoparse local history <taskId>
+octoparse local export <taskId> --format xlsx
+octoparse local cleanup
+```
+
+## 数据历史与导出
+
+```bash
+octoparse data history <taskId> --source local
+octoparse data history <taskId> --source cloud
+octoparse data export <taskId> --source local --format xlsx
+octoparse data export <taskId> --source cloud --format csv
+```
+
+导出格式：`xlsx`、`csv`、`html`、`json`、`xml`。
+
+## 任务文件结构（参考）
+
+```json
+{
+  "taskId": "abc123",
+  "taskName": "示例任务",
+  "xml": "... OTD XML ...",
+  "xoml": "... BPMN XOML ...",
+  "fieldNames": ["title", "url"],
+  "workflowSetting": {},
+  "brokerSettings": {},
+  "userAgent": "Mozilla/5.0 ...",
+  "disableAD": false
+}
+```
+
+| 字段 | 含义 |
+| --- | --- |
+| `taskId` | 八爪鱼任务 ID |
+| `taskName` | 任务名称 |
+| `xml` | 原始 OTD XML 定义 |
+| `xoml` | 引擎使用的工作流定义 |
+| `fieldNames` | 输出字段名列表 |
+| `workflowSetting` | 工作流设置 |
+| `brokerSettings` | 运行时 / Broker 相关设置 |
+| `userAgent` | 采集时使用的 User-Agent |
+| `disableAD` | 是否禁用广告拦截 |

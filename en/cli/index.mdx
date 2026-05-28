@@ -1,0 +1,136 @@
+---
+title: 八爪鱼 CLI
+description: 在终端中运行、管理八爪鱼采集任务，适用于脚本化、CI/CD 与自动化数据流水线。
+---
+
+# 八爪鱼 CLI
+
+> 使用八爪鱼 CLI，在命令行中运行、管理八爪鱼采集任务并导出数据。
+
+八爪鱼 CLI（Octoparse CLI）是面向开发者与运维场景的命令行工具。与桌面客户端不同，它更适合**脚本化工作流**、**CI/CD 流水线**、**服务器环境**以及**自动化数据管道**。
+
+## 什么是八爪鱼 CLI？
+
+### 一个简单比喻
+
+日常使用八爪鱼时，你通过客户端或网页**点击按钮**来启动采集；这叫做图形界面，直观但重复操作多，难以批量自动化。
+
+**CLI 把「点击」变成「敲命令」：**
+
+| 方式 | 你怎么操作 | 八爪鱼如何响应 |
+| --- | --- | --- |
+| 图形界面（客户端 / 网页） | 手动点击 | 按界面操作执行 |
+| 命令行（CLI） | 在终端输入命令 | 按命令执行，可写脚本批量跑 |
+
+### 客户端 vs CLI 流程对比
+
+**客户端典型流程（约 7 步）：** 打开客户端 → 登录 → 进入「我的任务」→ 找到任务 → 点击「开始采集」→ 等待完成 → 导出数据。
+
+**CLI 典型流程（约 3 步）：** 打开终端 → 执行 `octoparse run <任务ID>` → 需要时用 `octoparse data export` 导出。
+
+## CLI 能做什么
+
+<CardGroup cols={2}>
+  <Card title="查找与查看任务" icon="list">
+    列出云端任务、按关键词搜索、按任务 ID 查看任务定义与字段信息。
+  </Card>
+  <Card title="本地运行任务" icon="play">
+    使用内置本地引擎与独立 Chrome 运行采集，无需打开 Electron 桌面客户端。
+  </Card>
+  <Card title="控制运行状态" icon="sliders">
+    启动 / 停止云采集；暂停、恢复、停止或清理本地运行状态。
+  </Card>
+  <Card title="导出数据" icon="download">
+    将本地或云端采集结果导出为 XLSX、CSV、HTML、JSON、XML 等格式。
+  </Card>
+</CardGroup>
+
+## 工作原理
+
+- **本地采集**：CLI 直接运行内置八爪鱼引擎，使用独立 Chrome，不依赖桌面客户端界面。
+- **云采集**：通过后端 API 控制云端任务启停与状态查询。
+- **状态说明**：本地运行状态由 CLI 自行维护，**不会**与桌面客户端中的运行状态同步。
+
+## 环境要求
+
+开始使用前，请确认：
+
+- **Node.js** 20 或更高版本（推荐 22 LTS）
+- **npm** 8 或更高版本
+- 有效的 **八爪鱼 API Key**
+- 对需要运行或导出的任务具备访问权限
+
+详细安装步骤见 [安装与验证](/en/cli/quick-start/installation)。
+
+<Note>
+  除 `--help`、`--version`、`doctor`、`browser doctor`、`capabilities`、`auth` 等诊断类命令外，**所有功能命令均需 API Key**，包括本地 `--task-file` / `.otd` 运行。请勿将 API Key 提交到 Git、脚本、文档截图或 CI 日志中。
+</Note>
+
+## 常见工作流
+
+<Steps>
+  <Step title="安装 CLI">
+    安装 Node.js 后，通过 npm 全局安装八爪鱼 CLI。
+  </Step>
+  <Step title="登录认证">
+    使用 API Key 执行 `octoparse auth login`，或配置环境变量。
+  </Step>
+  <Step title="查找任务">
+    使用 `octoparse task list` 获取任务 ID。
+  </Step>
+  <Step title="运行或控制">
+    本地运行、启动 / 停止云采集，或查看运行状态。
+  </Step>
+  <Step title="导出数据">
+    从本地或云端结果导出结构化数据。
+  </Step>
+</Steps>
+
+## 快速命令示例
+
+将 `<taskId>` 替换为实际任务 ID；若不知道 ID，先执行 `octoparse task list`。
+
+```bash
+octoparse --help
+octoparse doctor
+octoparse auth login
+octoparse task list
+octoparse task inspect <taskId>
+octoparse run <taskId>
+octoparse cloud start <taskId>
+octoparse local status <taskId>
+octoparse data export <taskId> --source local --format xlsx
+```
+
+## CLI、MCP 与桌面客户端怎么选？
+
+| 场景 | 推荐方式 |
+| --- | --- |
+| 在 Coze、Dify、QClaw、企业微信里用自然语言操作八爪鱼 | [MCP 服务端](/en/mcp/index) |
+| 写脚本、定时任务、服务器 / CI 自动化 | **八爪鱼 CLI**（本模块） |
+| 可视化搭建流程、日常交互式采集 | 八爪鱼桌面客户端 |
+
+CLI 与 MCP 可配合使用：例如在 AI 中通过 MCP 找到任务 ID，再在终端用 CLI 做批量运行与导出。
+
+## 当前限制（v1）
+
+八爪鱼 CLI v1 **不支持**内核浏览器（Kernel browser）及旧版工作流（Legacy workflow）。
+
+若任务不兼容，请在当前版八爪鱼桌面客户端中更新任务定义后，再使用 CLI 运行。
+
+## 下一步
+
+<CardGroup cols={2}>
+  <Card title="安装与验证" icon="download" href="/en/cli/quick-start/installation">
+    安装 Node.js、npm 全局安装 CLI，并用 `doctor` 检查环境。
+  </Card>
+  <Card title="获取 API Key 并登录" icon="key" href="/en/cli/quick-start/get-api-key-and-log-in">
+    在账户中心创建 Key，完成 `octoparse auth login`。
+  </Card>
+  <Card title="运行第一个任务" icon="rocket" href="/en/cli/quick-start/run-your-first-task">
+    列出任务、本地运行、查看状态并导出数据。
+  </Card>
+  <Card title="命令速查表" icon="book" href="/en/cli/reference/command-cheatsheet">
+    任务、本地运行、云采集、认证与导出命令一览。
+  </Card>
+</CardGroup>

@@ -1,0 +1,115 @@
+---
+title: 获取 API Key 并登录
+description: 在八爪鱼账户中心创建 API Key，并完成八爪鱼 CLI 认证。
+---
+
+# 获取 API Key 并登录
+
+> 创建八爪鱼 API Key，供 CLI 访问你的任务与数据。
+
+## 认证说明
+
+大多数八爪鱼 CLI 命令需要 **API Key**。Key 用于标识账户并授权 CLI 访问任务列表、运行采集与导出数据。
+
+**需要 Key 的操作**包括：列出任务、本地 / 云运行、`--task-file` 或 `.otd` 本地运行、数据导出等。
+
+**无需 Key 即可运行的命令**（安装与诊断）：
+
+```bash
+octoparse --help
+octoparse --version
+octoparse capabilities
+octoparse doctor
+octoparse browser doctor
+octoparse auth
+```
+
+## 创建 API Key
+
+1. 登录 [八爪鱼账户中心 - API Keys](https://www.octoparse.com/console/account-center/api-keys)。
+2. 创建新 Key，复制并妥善保存（仅显示一次时请立即备份）。
+
+<Warning>
+  请勿将 API Key 写入 Git 仓库、公开脚本、文档截图、共享日志或 CI 输出。
+</Warning>
+
+## 登录方式
+
+### 交互式登录（推荐）
+
+```bash
+octoparse auth login
+```
+
+在可能的情况下会打开 API Key 页面；粘贴 Key 后 CLI 会校验并保存到本地凭据文件。
+
+### 直接传入 Key
+
+```bash
+octoparse auth login <你的APIKey>
+```
+
+### 从标准输入读取（适合 CI / 密钥管理）
+
+```bash
+echo <你的APIKey> | octoparse auth login --stdin
+```
+
+### 不自动打开浏览器
+
+```bash
+octoparse auth login --no-open
+```
+
+手动打开账户中心页面复制 Key 后再粘贴。
+
+### 使用环境变量（临时或 CI）
+
+```bash
+# Windows PowerShell
+$env:OCTO_ENGINE_API_KEY="你的APIKey"
+octoparse task list --json
+
+# Linux / macOS
+OCTO_ENGINE_API_KEY=你的APIKey octoparse task list --json
+```
+
+可选：覆盖 API 基址（一般无需修改）：
+
+```bash
+OCTO_ENGINE_API_BASE_URL=https://example.com OCTO_ENGINE_API_KEY=你的APIKey octoparse task list
+```
+
+## 凭据优先级
+
+CLI 按以下顺序读取认证信息：
+
+```text
+1. 环境变量 OCTO_ENGINE_API_KEY
+2. 本地凭据文件 ~/.octoparse/credentials.json
+```
+
+`octoparse auth login` 会自动创建凭据文件。默认路径：
+
+| 系统 | 路径 |
+| --- | --- |
+| Windows | `%USERPROFILE%\.octoparse\credentials.json` |
+| macOS / Linux | `~/.octoparse/credentials.json` |
+
+## 查看与退出登录
+
+```bash
+octoparse auth status
+octoparse auth logout
+```
+
+## 下一步
+
+<CardGroup cols={2}>
+  <Card title="运行第一个任务" href="/en/cli/quick-start/run-your-first-task">
+    列出任务、本地运行、查看状态并导出。
+  </Card>
+  <Card title="命令速查表" href="/en/cli/reference/command-cheatsheet">
+    浏览全部常用命令。
+  </Card>
+</CardGroup>

@@ -1,0 +1,84 @@
+---
+title: 2026 年 5 月更新日志
+description: 2026 年 5 月八爪鱼文档的更新与改进（OpenAPI、MCP、CLI）。
+---
+
+# 2026 年 5 月发布说明
+
+> **更新日期：** 2026 年 5 月 25 日  
+> OpenAPI 交互式 Playground 全面上线；MCP、CLI 文档模块重构；任务分析接口与参考章节新增。
+
+## 新功能
+
+### OpenAPI — 交互式 Playground
+
+OpenAPI 参考文档现已支持 **试一试** 交互调试：
+
+- 覆盖接口调用凭证、任务组、任务、云采集、数据等分组下的主要端点
+- 支持 Bearer 授权、`Authorization` / `Content-Type` 等请求头配置
+- 右侧同步展示 cURL、Python 等多语言示例代码
+- 请求体示例对选填字段使用空值（`""`、`[]`、`null`），避免 `<string>`、`123` 等误导性占位符
+
+### OpenAPI — 任务分析
+
+新增 **任务分析** 分组及接口文档：
+
+- `POST /taskanalytics/queries` — 查询任务采集与执行分析
+- 支持按日 / 周 / 月粒度查询采集量、执行次数、成功率及资源消耗等指标
+- 提供独立 OpenAPI 规范与 Playground 示例（含完整请求体字段与请求头）
+
+### OpenAPI — 参考
+
+新增 **参考** 页面，集中说明：
+
+- 常见 HTTP 状态码与业务错误码（如 `MemberNotAllowed`、`TaskNotFound` 等）
+- 循环步骤、提取步骤等步骤属性及是否支持通过 API 更新
+
+### MCP 服务端 — 文档模块重构
+
+MCP 文档按产品能力重新编排，结构对齐官方文档站点：
+
+- **概述** — 新增 [八爪鱼 MCP 服务端](/en/mcp/index)（服务地址 `https://mcp.bazhuayu.com`、能力范围、认证方式、工具列表）
+- **快速入门** — [获取 API Key](/en/mcp/quick-start/api-key)、[工作流程示例](/en/mcp/workflow)
+- **平台对接** — 分平台教程（附飞书原文链接）：
+  - [Coze（扣子）](/en/mcp/integrations/coze)
+  - [Dify](/en/mcp/integrations/dify)
+  - [QClaw（小龙虾）](/en/mcp/integrations/qclaw)
+  - [企业微信](/en/mcp/integrations/wecom)
+- **工具参考** — `search_templates`、`search_tasks`、`execute_task`、`export_data`、`start_or_stop_task`、`redeem_coupon_code` 等页面保留并更新站内链接
+- **参考** — 补充速率限制响应头（`X-RateLimit-*`）与故障排查说明
+
+MCP 对接范围明确为 **Coze、Dify、QClaw、企业微信** 四个平台；旧路径 `/en/mcp/intro` 重定向至 `/en/mcp/index`。
+
+### CLI — 文档模块重构
+
+CLI 文档按「概述 → 快速入门 → 参考」分组上线：
+
+- [八爪鱼 CLI 概述](/en/cli/index) — 能力说明、与 MCP / 桌面客户端的选型对比
+- **快速入门** — [安装](/en/cli/quick-start/installation)、[获取 API Key 并登录](/en/cli/quick-start/get-api-key-and-log-in)、[运行第一个任务](/en/cli/quick-start/run-your-first-task)
+- **参考** — [命令速查表](/en/cli/reference/command-cheatsheet)、[输出与退出码](/en/cli/reference/output-and-exit-codes)
+
+## 改进
+
+- **首页** — MCP 卡片文案与链接更新为新版 MCP 概述页
+- **MCP** — 统一使用 `https://mcp.bazhuayu.com`；OAuth / API Key 说明与各平台教程交叉引用
+- **CLI** — 侧栏移除旧 `intro` 页，入口改为 `index`；`overview` 中 CLI / MCP 跳转链接同步更新
+- **更新采集 URLs** 文档与 Playground 支持 `multipart/form-data` 文件上传
+- 补全 **批量获取任务状态** 等页面的请求 / 响应说明与 Playground 参数
+- 优化 API 页面布局：文档正文与 Playground 分区展示（`style.css`）
+- `docs.json` 中配置 Playground 代理与示例语言列表；MCP / CLI 导航改为分组结构
+- 新增维护脚本 `scripts/apply-api-playground.mjs`、`scripts/add-authorization-param.mjs`，便于批量更新 MDX 接口页
+
+## 移除
+
+- 侧栏 **示例代码** 分组及 **Python 代码示例** 页面（示例已整合至各接口页的 Playground 与代码块中）
+- MCP 旧版 **intro** 页面（由 `index` 替代并重定向）
+- MCP **客户端配置** 分组（原 ChatGPT、Claude、Cursor 等通用客户端说明，已由四平台对接教程覆盖）
+- CLI 旧版 **intro** 页面（由 `index` 与快速入门分组替代）
+
+## Bug 修复
+
+- 修复部分接口页 Playground 缺少 `Authorization`、`Content-Type` 请求头的问题
+- 修复任务分析等页面请求体示例使用自动生成占位符的问题
+
+如有问题或反馈，请联系 [help@skieer.com](mailto:help@skieer.com)。

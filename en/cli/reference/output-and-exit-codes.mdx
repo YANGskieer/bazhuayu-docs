@@ -1,0 +1,100 @@
+---
+title: 输出与退出码
+description: 八爪鱼 CLI 的 JSON / JSONL 输出、stdout / stderr 与退出码，便于脚本与 CI 集成。
+---
+
+# 输出与退出码
+
+> 在脚本、Agent 或 CI 中调用八爪鱼 CLI 时，理解结构化输出与退出码。
+
+CLI 同时支持**人类可读**的终端输出与**机器可读**的 JSON / JSONL，便于自动化集成。
+
+## JSON 输出（`--json`）
+
+需要单次、完整的结构化响应时使用：
+
+```bash
+octoparse task list --json
+octoparse auth status --json
+octoparse local status <taskId> --json
+```
+
+成功时通常返回 `ok: true` 与 `data` 字段，例如：
+
+```json
+{
+  "ok": true,
+  "data": {
+    "items": [
+      {
+        "taskId": "abc123",
+        "taskName": "示例任务",
+        "status": "Idle"
+      }
+    ],
+    "page": 1,
+    "pageSize": 20,
+    "total": 1
+  }
+}
+```
+
+失败时返回 `ok: false` 与 `error`：
+
+```json
+{
+  "ok": false,
+  "error": {
+    "code": "AUTH_REQUIRED",
+    "message": "API key is required for this command."
+  }
+}
+```
+
+各命令的 `data` 结构不同，编写脚本时请以具体命令输出为准。
+
+## JSONL 事件流（`--jsonl`）
+
+长时间本地运行时可使用：
+
+```bash
+octoparse run <taskId> --jsonl
+```
+
+每行一个 JSON 对象，便于流式处理进度，例如：
+
+```jsonl
+{"type":"run.started","taskId":"abc123","timestamp":"2026-01-01T10:00:00.000Z"}
+{"type":"row.saved","taskId":"abc123","count":1}
+{"type":"run.completed","taskId":"abc123","savedRows":1}
+```
+
+事件字段可能随版本调整，解析时请容忍未知字段。
+
+## stdout 与 stderr
+
+| 模式 | stdout | stderr |
+| --- | --- | --- |
+| 人类可读模式 | 命令结果 | 诊断、警告、错误 |
+| `--json` / `--jsonl` | 结构化数据 | 仍可能输出诊断信息或 JSON 错误包 |
+
+管道处理时建议只解析 stdout 中的业务数据，单独保留 stderr 便于排错。
+
+## 退出码
+
+| 退出码 | 含义 | 常见原因 |
+| --- | --- | --- |
+| `0` | 成功 | 命令按预期完成 |
+| `1` | 操作失败 | 认证失败、任务不存在、导出错误等 |
+| `2` | 运行环境失败 | Node 版本不符、Chrome 不可用、引擎初始化失败 |
+| `3` | 任务定义不支持 | 使用内核浏览器或 Legacy 工作流（CLI v1 不支持） |
+
+非零退出码表示自动化步骤应视为失败。
+
+## 自动化建议
+
+- 单次查询类命令使用 `--json`。
+- 长时间本地运行使用 `--jsonl` 跟踪进度。
+- 在 CI 中根据退出码判断步骤成败。
+- 单独收集 stderr 便于排查。
+- 切勿在日志中打印 API Key。

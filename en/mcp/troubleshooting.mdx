@@ -11,74 +11,119 @@ description: 针对常见连接、授权及任务相关问题的修复方案。
 
 ### MCP 服务端无法访问
 
-**症状：** 调用 MCP 工具时出现 `ECONNREFUSED` 或 `ETIMEDOUT`。
+**症状：** `ECONNREFUSED`、`ETIMEDOUT` 或客户端显示 MCP 离线。
 
 **修复方案：**
-- 确认服务器地址正确：`https://mcp.octoparse.com`
-- 检查你的网络连接和防火墙规则
-- 确认 MCP 服务端未发生故障
+
+- 确认 MCP 地址为 **`https://mcp.bazhuayu.com`**
+- 检查公司代理 / 防火墙是否拦截 HTTPS 出站
+- URL 末尾不要多余斜杠；协议必须为 `https`
+
+### 工具列表为空
+
+**症状：** MCP 显示已连接，但无 `search_templates` 等工具。
+
+**修复方案：**
+
+- 断开 MCP 后重新连接并完成授权
+- API Key 模式确认 Header 为 **`x-api-key`**
+- 在 Coze / Dify / QClaw / 企业微信中重新保存配置，或按平台要求重启应用后重试
 
 ### 响应时间过慢
 
-**症状：** 工具调用超过 30 秒才返回。
+**症状：** 单次调用超过 30 秒。
 
 **修复方案：**
-- 大批量任务提取需要时间；适当增加超时设置
-- 检查你到 MCP 服务端的网络延迟
-- 考虑将大型提取任务拆分为更小的批次
+
+- 云采集任务本身耗时较长，可增大 `execute_task` 的 `timeout`
+- 大任务拆步：先 `execute_task`，完成后再 `export_data`
+- 检查网络到 MCP 节点的延迟
 
 ## 授权问题
 
 ### API Key 无效
 
-**症状：** `401 Unauthorized` 或 `403 Forbidden` 响应。
+**症状：** `401 Unauthorized` 或 `403 Forbidden`。
 
 **修复方案：**
-- 确认你的 API Key 正确且处于激活状态
-- 在 [Octoparse 账户中心](https://www.octoparse.com/console/account-center/api-keys) 重新生成 Key
-- 确认 Key 未过期
 
-### OAuth 未连接
+- 在 [获取 API Key](/en/mcp/quick-start/api-key) 页面核对创建与配置步骤
+- 在八爪鱼 / Octoparse 账户中心重新生成 Key 并更新客户端
+- 确认 Key 未泄露后被作废
 
-**症状：** OAuth 认证提示失败或循环。
+### OAuth 循环或失败
+
+**症状：** 浏览器反复跳转登录、无法完成授权。
 
 **修复方案：**
-- 确认你已登录正确的 Octoparse 账户
+
+- 确认登录的是正确的八爪鱼账户
 - 清除浏览器 Cookie 后重新授权
-- 在无头环境下尝试使用 API Key 认证替代
+- 在 **Coze / Dify** 可改用 **API Key** 模式；**QClaw、企业微信** 请使用 API Key
 
 ## 任务执行问题
 
 ### 任务未找到
 
-**症状：** 调用 `start_or_stop_task` 时返回 `Task not found`。
+**症状：** `start_or_stop_task` 返回 Task not found。
 
 **修复方案：**
-- 确认任务 ID 正确
-- 确认该任务存在于你的 Octoparse 账户中
-- 检查任务是否设置为云端提取（而非仅本地）
 
-### 无数据返回
+- 用 `search_tasks` 确认 `taskId`
+- 任务须为**云采集**（MCP 不支持仅本地任务）
 
-**症状：** `execute_task` 完成但返回空数据。
+### 无数据或导出为空
 
-**修复方案：**
-- 任务可能仍在运行中；稍等后重试
-- 在 Octoparse 控制面板中确认任务已成功完成
-- 确认目标网站可从 Octoparse 云端服务器访问
-
-### 导出格式不支持
-
-**症状：** 调用 `export_data` 指定特定格式时出错。
+**症状：** `execute_task` 完成但无数据，或 `export_data` 为空。
 
 **修复方案：**
-- 支持的格式为 `json` 和 `csv`
-- 确认格式参数为小写
-- 在调用导出前确认任务有数据可供导出
+
+- 任务可能仍在运行，稍后重试或提高 `waitForCompletion` / `timeout`
+- 在八爪鱼控制台确认任务已成功且有数据
+- 确认目标站可从云端访问；部分模板仅支持本地，需换云模板
+
+### 模板无法通过 MCP 运行
+
+**症状：** 能 `search_templates`，但 `execute_task` 失败。
+
+**修复方案：**
+
+- 选择标注支持**云采集**的模板
+- 本地专用模板请在八爪鱼桌面客户端运行
+
+### 429 速率限制
+
+**症状：** `429 Too Many Requests`。
+
+**修复方案：**
+
+- 见 [速率限制](/en/mcp/rate-limits) 中的响应头与退避示例
+- 避免在短时间内重复调用 `search_templates`
+
+### 导出格式错误
+
+**症状：** `export_data` 报错。
+
+**修复方案：**
+
+- 仅支持 **`json`**、**`csv`**（小写）
+- 确认任务已有可导出的完成运行
+
+## 平台相关
+
+| 平台 | 文档 |
+| --- | --- |
+| Coze | [MCP 对接 Coze](/en/mcp/integrations/coze) |
+| Dify | [MCP 对接 Dify](/en/mcp/integrations/dify) |
+| QClaw | [MCP 对接 QClaw](/en/mcp/integrations/qclaw) |
+| 企业微信 | [MCP 对接企业微信](/en/mcp/integrations/wecom) |
 
 ## 获取帮助
 
-如果问题持续存在，请联系 [Octoparse 支持团队](mailto:support@octoparse.com)，并提供：
-- 失败的 MCP 工具名称
-- 完整的错误信息和请求 ID
-- 你的 Octoparse 账户邮箱
+若问题仍未解决，请联系 [Octoparse 支持](mailto:support@octoparse.com) 或八爪鱼官方客服，并提供：
+
+- 失败的 MCP 工具名称与参数（脱敏）
+- 完整错误信息或请求 ID
+- 对接平台（Coze / Dify / QClaw / 企业微信）与认证方式（OAuth / API Key）
+
+另请参阅：[MCP 概览](/en/mcp/index)、[速率限制](/en/mcp/rate-limits)

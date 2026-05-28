@@ -28,17 +28,47 @@
       },
       {
         "tab": "MCP 服务端",
-        "pages": [
-          "en/mcp/intro",
-          "en/mcp/workflow",
-          "en/mcp/rate-limits",
-          "en/mcp/troubleshooting",
-          "en/mcp/search-templates",
-          "en/mcp/search-tasks",
-          "en/mcp/execute-task",
-          "en/mcp/export-data",
-          "en/mcp/start-or-stop-task",
-          "en/mcp/redeem-coupon"
+        "groups": [
+          {
+            "group": "概述",
+            "pages": [
+              "en/mcp/index"
+            ]
+          },
+          {
+            "group": "快速入门",
+            "pages": [
+              "en/mcp/quick-start/api-key",
+              "en/mcp/workflow"
+            ]
+          },
+          {
+            "group": "平台对接",
+            "pages": [
+              "en/mcp/integrations/coze",
+              "en/mcp/integrations/dify",
+              "en/mcp/integrations/qclaw",
+              "en/mcp/integrations/wecom"
+            ]
+          },
+          {
+            "group": "工具参考",
+            "pages": [
+              "en/mcp/search-templates",
+              "en/mcp/search-tasks",
+              "en/mcp/execute-task",
+              "en/mcp/export-data",
+              "en/mcp/start-or-stop-task",
+              "en/mcp/redeem-coupon"
+            ]
+          },
+          {
+            "group": "参考",
+            "pages": [
+              "en/mcp/rate-limits",
+              "en/mcp/troubleshooting"
+            ]
+          }
         ]
       },
       {
@@ -119,13 +149,34 @@
       },
       {
         "tab": "CLI",
-        "pages": [
-          "en/cli/intro"
+        "groups": [
+          {
+            "group": "概述",
+            "pages": [
+              "en/cli/index"
+            ]
+          },
+          {
+            "group": "快速入门",
+            "pages": [
+              "en/cli/quick-start/installation",
+              "en/cli/quick-start/get-api-key-and-log-in",
+              "en/cli/quick-start/run-your-first-task"
+            ]
+          },
+          {
+            "group": "参考",
+            "pages": [
+              "en/cli/reference/command-cheatsheet",
+              "en/cli/reference/output-and-exit-codes"
+            ]
+          }
         ]
       },
       {
         "tab": "更新日志",
         "pages": [
+          "en/changelog/may-2026",
           "en/changelog/april-2026"
         ]
       }
@@ -133,6 +184,12 @@
       }
     ]
   },
+  "redirects": [
+    {
+      "source": "/en/mcp/intro",
+      "destination": "/en/mcp/index"
+    }
+  ],
   "footer": {
     "socials": {
       "twitter": "https://twitter.com/octoparse",

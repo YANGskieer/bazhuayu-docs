@@ -1,0 +1,65 @@
+---
+title: MCP 对接企业微信
+description: 通过企业微信智能机器人接入八爪鱼 MCP。
+---
+
+# MCP 对接企业微信流程
+
+> 在企业微信工作台创建智能机器人，并配置八爪鱼 MCP 服务地址与 API Key。
+
+## 前置准备
+
+- 企业微信管理员或具备「应用 / 智能机器人」管理权限的成员
+- 八爪鱼账户
+- MCP 地址：`https://mcp.bazhuayu.com`
+- 已 [创建 API Key](/en/mcp/quick-start/api-key)（企业微信侧通常使用 API Key 认证）
+
+## 配置步骤
+
+<Steps>
+  <Step title="进入智能机器人">
+    企业微信管理员登录 [企业微信管理后台](https://work.weixin.qq.com/) → **工作台** → **智能机器人**。
+  </Step>
+  <Step title="创建机器人">
+    点击 **创建智能机器人** → 选择 **手动创建**（按企业实际入口名称可能略有差异）。
+  </Step>
+  <Step title="填写基础信息">
+    设置机器人名称、头像、可见范围等，保存进入高级配置。
+  </Step>
+  <Step title="配置 MCP / 外部工具">
+    在机器人能力配置中找到 **MCP**、**自定义工具** 或 **HTTP 工具** 相关项（以企业微信当前产品界面为准），填写：
+    - **服务 URL**：`https://mcp.bazhuayu.com`
+    - **认证**：API Key，Header 名称 `x-api-key`
+  </Step>
+  <Step title="发布并测试">
+    保存并发布机器人。在企微会话 @ 机器人，发送测试指令，例如：「搜索八爪鱼里采集公众号文章的模板」。
+  </Step>
+</Steps>
+
+<Note>
+  企业微信智能机器人与 MCP 的字段名称可能随版本更新而变化。若界面无「MCP」字样，请查找「自定义插件」「外部 API」「Agent 工具」等同类入口，并填入相同的 URL 与 `x-api-key`。
+</Note>
+
+## 使用建议
+
+- 限制机器人可见范围，避免 API Key 被非授权成员间接使用。
+- 在群聊中提醒用户：云采集任务可能需要数分钟，请勿重复触发相同任务。
+- 敏感数据导出请遵守公司数据合规政策。
+
+## 常见问题
+
+| 现象 | 处理建议 |
+| --- | --- |
+| 机器人无响应 | 检查机器人是否已发布、成员是否在可见范围 |
+| 401 / 鉴权失败 | 核对 `x-api-key`；在八爪鱼账户中心轮换 Key 后更新配置 |
+| 只能搜索不能运行 | 确认模板支持云采集；见 [故障排查](/en/mcp/troubleshooting) |
+
+## 飞书原文
+
+[教程 | MCP 对接企业微信流程](https://skieer.feishu.cn/wiki/XRFtwdjlki634GkqglncvAKbnnf)
+
+## 相关链接
+
+- [八爪鱼 MCP 概述](/en/mcp/index)
+- [获取 API Key](/en/mcp/quick-start/api-key)
+- [速率限制](/en/mcp/rate-limits)

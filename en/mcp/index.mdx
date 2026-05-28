@@ -1,0 +1,129 @@
+---
+title: 八爪鱼 MCP 服务端
+description: 将八爪鱼采集能力接入 Coze、Dify、QClaw、企业微信等平台。
+---
+
+# 八爪鱼 MCP 服务端
+
+> 通过 MCP 协议，用自然语言搜索模板、运行云采集任务并导出数据。
+
+八爪鱼 MCP 是面向 AI 智能体的**标准化数据连接器**。在对话中即可搜索预置模板、触发云端采集、导出 JSON / CSV 结果，无需手写爬虫代码。
+
+## 前置条件
+
+- **八爪鱼账户** — 免费版也可连接；免费 / 基础版用户每周可通过 MCP 获得 **2,000 条**免费采集额度
+- **支持的平台** — 仅支持在 **Coze（扣子）**、**Dify**、**QClaw（小龙虾）**、**企业微信智能机器人** 中对接使用
+
+## 服务地址
+
+MCP 服务地址：
+
+```text
+https://mcp.bazhuayu.com
+```
+
+各平台对接教程均使用该地址。
+
+## 能力范围
+
+<CardGroup cols={2}>
+  <Card title="✅ 支持" icon="check">
+    - 搜索预置采集模板（`search_templates`）
+    - 触发并监控云采集任务
+    - 导出 JSON / CSV 数据
+    - 列出 / 搜索已有任务
+    - 启动或停止云端任务
+    - 兑换优惠码
+  </Card>
+  <Card title="❌ 不支持" icon="x">
+    - 仅支持本地运行的任务（需桌面客户端）
+    - 创建或编辑任务配置
+    - 上传自定义模板
+    - 访问账户设置或账单
+    - 无预置模板时的任意网页抓取
+  </Card>
+</CardGroup>
+
+## 认证方式
+
+<CardGroup cols={2}>
+  <Card title="OAuth 2.1" icon="key">
+    浏览器登录八爪鱼账户。适用于 **Coze、Dify** 安装官方工具时的授权流程。
+  </Card>
+  <Card title="API Key" icon="lock">
+    请求头 `x-api-key`。适用于 **Coze 自定义 MCP、Dify API Key 模式、QClaw、企业微信** 等场景。详见 [获取 API Key](/en/mcp/quick-start/api-key)。
+  </Card>
+</CardGroup>
+
+<Warning>
+  请勿将 API Key 写入公开仓库、截图或群聊。泄露后请立即在账户中心作废并重新创建。
+</Warning>
+
+## 可用 MCP 工具
+
+| 工具 | 说明 |
+| --- | --- |
+| `search_templates` | 按关键词搜索预置采集模板 |
+| `search_tasks` | 列出并搜索账户下已有任务 |
+| `start_or_stop_task` | 按任务 ID 启动或停止云采集 |
+| `execute_task` | 运行模板并获取采集结果 |
+| `export_data` | 导出已完成任务数据（JSON / CSV） |
+| `redeem_coupon_code` | 兑换促销或资源优惠码 |
+
+各工具参数见侧栏 **工具参考** 分组。
+
+## 快速开始
+
+<Steps>
+  <Step title="选择对接平台">
+    在 [Coze](/en/mcp/integrations/coze)、[Dify](/en/mcp/integrations/dify)、[QClaw](/en/mcp/integrations/qclaw) 或 [企业微信](/en/mcp/integrations/wecom) 中任选其一，按教程完成配置。
+  </Step>
+  <Step title="填写服务地址">
+    MCP URL 填写 `https://mcp.bazhuayu.com`。
+  </Step>
+  <Step title="完成认证">
+    按平台要求选择 OAuth，或配置 [API Key](/en/mcp/quick-start/api-key)。
+  </Step>
+  <Step title="在对话中试用">
+    例如：「帮我找一个采集电商商品列表的八爪鱼模板」。
+  </Step>
+</Steps>
+
+## 示例工作流
+
+完整三步示例见 [工作流程示例](/en/mcp/workflow)：
+
+1. `search_templates` — 发现模板  
+2. `execute_task` — 运行云采集  
+3. `export_data` — 导出 CSV / JSON  
+
+## 平台对接
+
+<CardGroup cols={2}>
+  <Card title="Coze（扣子）" href="/en/mcp/integrations/coze">
+    官方插件或自定义 MCP 接入扣子编程。
+  </Card>
+  <Card title="Dify" href="/en/mcp/integrations/dify">
+    安装官方工具或自定义添加 MCP 服务。
+  </Card>
+  <Card title="QClaw（小龙虾）" href="/en/mcp/integrations/qclaw">
+    在 QClaw 客户端中添加 MCP 服务器。
+  </Card>
+  <Card title="企业微信" href="/en/mcp/integrations/wecom">
+    通过智能机器人接入八爪鱼 MCP。
+  </Card>
+</CardGroup>
+
+## 下一步
+
+<CardGroup cols={2}>
+  <Card title="获取 API Key" href="/en/mcp/quick-start/api-key">
+    API Key 创建与 `x-api-key` 配置说明。
+  </Card>
+  <Card title="速率限制" href="/en/mcp/rate-limits">
+    请求配额与 429 重试建议。
+  </Card>
+  <Card title="故障排查" href="/en/mcp/troubleshooting">
+    连接、授权与任务执行常见问题。
+  </Card>
+</CardGroup>
