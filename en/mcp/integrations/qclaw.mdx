@@ -5,7 +5,7 @@ description: 在腾讯 QClaw 客户端中添加八爪鱼 MCP 服务器。
 
 # MCP 对接 QClaw（龙虾）流程
 
-> 在 QClaw（小龙虾 AI）客户端中接入八爪鱼 MCP 服务器。
+> QClaw（小龙虾 AI）基于 OpenClaw 生态，支持在客户端中接入标准 MCP 服务器，包括八爪鱼。
 
 ## 前置准备
 
@@ -49,6 +49,10 @@ description: 在腾讯 QClaw 客户端中添加八爪鱼 MCP 服务器。
 ```
 
 具体字段以 QClaw 当前版本界面为准。
+
+## 与 OpenClaw 的关系
+
+QClaw 继承 OpenClaw 的 MCP 客户端能力。若你同时使用原生 OpenClaw，也可在 OpenClaw 中注册出站 MCP（`openclaw mcp` 相关命令），将 `https://mcp.bazhuayu.com` 作为外部数据服务接入。详见 [客户端配置指南 — OpenClaw](/en/mcp/guides/clients#openclaw)。QClaw 用户一般**无需命令行**，在图形界面完成上述步骤即可。
 
 ## 常见问题
 

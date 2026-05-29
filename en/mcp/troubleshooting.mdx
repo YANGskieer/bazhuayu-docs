@@ -15,7 +15,7 @@ description: 针对常见连接、授权及任务相关问题的修复方案。
 
 **修复方案：**
 
-- 确认 MCP 地址为 **`https://mcp.bazhuayu.com`**
+- 八爪鱼环境确认地址为 **`https://mcp.bazhuayu.com`**；国际 Octoparse 环境为 `https://mcp.octoparse.com`
 - 检查公司代理 / 防火墙是否拦截 HTTPS 出站
 - URL 末尾不要多余斜杠；协议必须为 `https`
 
@@ -27,7 +27,7 @@ description: 针对常见连接、授权及任务相关问题的修复方案。
 
 - 断开 MCP 后重新连接并完成授权
 - API Key 模式确认 Header 为 **`x-api-key`**
-- 在 Coze / Dify / QClaw / 企业微信中重新保存配置，或按平台要求重启应用后重试
+- 重启客户端（Cursor、Claude Code 等需重启后加载 `mcp.json`）；Coze / Dify / QClaw / 企业微信请按平台要求重新保存或重启
 
 ### 响应时间过慢
 
@@ -59,7 +59,7 @@ description: 针对常见连接、授权及任务相关问题的修复方案。
 
 - 确认登录的是正确的八爪鱼账户
 - 清除浏览器 Cookie 后重新授权
-- 在 **Coze / Dify** 可改用 **API Key** 模式；**QClaw、企业微信** 请使用 API Key
+- 在无界面环境或 OAuth 失败时改用 **API Key**（见 [客户端配置指南](/en/mcp/guides/clients)）
 
 ## 任务执行问题
 
@@ -111,12 +111,14 @@ description: 针对常见连接、授权及任务相关问题的修复方案。
 
 ## 平台相关
 
-| 平台 | 文档 |
+| 平台 / 客户端 | 文档 |
 | --- | --- |
+| ChatGPT、Claude、Cursor、Gemini 等 | [客户端配置指南](/en/mcp/guides/clients) |
 | Coze | [MCP 对接 Coze](/en/mcp/integrations/coze) |
 | Dify | [MCP 对接 Dify](/en/mcp/integrations/dify) |
 | QClaw | [MCP 对接 QClaw](/en/mcp/integrations/qclaw) |
 | 企业微信 | [MCP 对接企业微信](/en/mcp/integrations/wecom) |
+| OpenClaw | [客户端配置指南 — OpenClaw](/en/mcp/guides/clients#openclaw) |
 
 ## 获取帮助
 
@@ -124,6 +126,6 @@ description: 针对常见连接、授权及任务相关问题的修复方案。
 
 - 失败的 MCP 工具名称与参数（脱敏）
 - 完整错误信息或请求 ID
-- 对接平台（Coze / Dify / QClaw / 企业微信）与认证方式（OAuth / API Key）
+- 使用的 MCP URL 与认证方式（OAuth / API Key）
 
 另请参阅：[MCP 概览](/en/mcp/index)、[速率限制](/en/mcp/rate-limits)

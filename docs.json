@@ -52,6 +52,12 @@
             ]
           },
           {
+            "group": "客户端配置",
+            "pages": [
+              "en/mcp/guides/clients"
+            ]
+          },
+          {
             "group": "工具参考",
             "pages": [
               "en/mcp/search-templates",
