@@ -1,27 +1,20 @@
 ---
 title: 安装与验证
-description: 使用 npm 安装八爪鱼 CLI，并验证 Node.js 环境与本地运行时。
+description: 安装 bazhuayu-cli@0.1.22，并验证 octopus 命令、Node.js 环境与本地采集运行时。
 ---
 
-> 通过 npm 安装八爪鱼 CLI，并确认 `octopus` 命令与本地运行环境可用。
+> 通过 npm 安装八爪鱼 CLI，并确认 `octopus` 命令、浏览器依赖与本地运行环境可用。
 
-八爪鱼 CLI 以 npm 包形式发布，需要在 **Node.js 20+** 环境中运行。
-
-## 先确认你的系统
-
-| 你的电脑 | 建议阅读章节 |
-| --- | --- |
-| Windows 10 / 11 | 安装 Node.js → 安装 CLI → 验证 |
-| macOS | 安装 Node.js → 安装 CLI → 验证 |
-| Linux / 服务器 | 安装 Node.js → 安装 CLI → 验证 |
+八爪鱼 CLI 以 npm 包形式发布。CLI 国内 v0.1.22 新增网页识别建任务、URL 直接采集与 Linux x64 支持。
 
 ## 环境要求
 
-安装 CLI 前，请确认：
+安装前请确认：
 
 - Node.js **20 或更高**（推荐 22 LTS）
 - npm **8 或更高**
-- 可用的终端（PowerShell、CMD、macOS 终端、Linux Shell）
+- 可用终端：PowerShell、CMD、macOS 终端或 Linux Shell
+- 本地采集、`recognize` 与 `run-url` 需要可用 Chrome 环境
 
 检查版本：
 
@@ -30,39 +23,56 @@ node -v
 npm -v
 ```
 
-若 Node.js 低于 20，请先升级；若未安装 npm，请重新安装 Node.js（npm 通常随 Node 一并安装）。
+## 平台支持
+
+| 平台 | 本地采集 | 云端采集 | 备注 |
+| --- | :---: | :---: | --- |
+| Windows x64 | 支持 | 支持 | Windows 10 / 11 |
+| macOS x64 | 支持 | 支持 | 需 Node.js 20+ |
+| macOS arm64 | 支持 | 支持 | 需 Node.js 20+ |
+| Linux x64 | 支持 | 支持 | v0.1.22 新增 |
+| Linux arm64 | 暂不支持 | 支持 | Chrome for Testing 暂无 Linux arm64 浏览器包 |
 
 ## 安装 Node.js
 
 ### Windows
 
-1. 打开浏览器，访问 [Node.js 官网](https://nodejs.org/) 下载 **LTS** 安装包。
-2. 双击安装包，一路「下一步」，使用默认选项即可。
-3. 按 `Win + R`，输入 `cmd` 回车，在黑窗口中执行：
+1. 访问 [Node.js 官网](https://nodejs.org/) 下载 LTS 安装包。
+2. 使用默认选项安装，并确认勾选加入 `PATH`。
+3. 打开 PowerShell 或 CMD，执行：
 
 ```bash
 node --version
 npm --version
 ```
 
-若分别显示类似 `v22.x.x` 与 `10.x.x`，说明安装成功。若提示「不是内部或外部命令」，请重新安装并勾选加入 PATH。
-
 ### macOS
 
-1. 从 [Node.js 官网](https://nodejs.org/) 下载 macOS 安装包，或执行 `brew install node`。
-2. 打开「终端」（应用程序 → 实用工具 → 终端）。
-3. 执行 `node --version`、`npm --version` 确认成功。
+可从 [Node.js 官网](https://nodejs.org/) 下载 macOS 安装包，或使用 Homebrew：
+
+```bash
+brew install node
+node --version
+npm --version
+```
 
 ### Linux / 服务器
 
-可使用发行版包管理器或 [nvm](https://github.com/nvm-sh/nvm) 安装 Node.js 20+，安装后同样执行 `node -v`、`npm -v` 验证。
+推荐使用 [nvm](https://github.com/nvm-sh/nvm) 安装 Node.js 20+：
+
+```bash
+node -v
+npm -v
+```
+
+Linux x64 从 CLI v0.1.22 起支持本地采集；Linux arm64 目前仅建议使用云采集相关能力。
 
 ## 安装八爪鱼 CLI
 
-全局安装：
+安装或更新到 v0.1.22：
 
 ```bash
-npm install -g @octoparse-cli/octoparse-cli
+npm install -g bazhuayu-cli@0.1.22
 ```
 
 安装完成后，命令名为：
@@ -71,79 +81,63 @@ npm install -g @octoparse-cli/octoparse-cli
 octopus
 ```
 
-## 验证安装
-
-### 查看版本与帮助
+查看版本与帮助：
 
 ```bash
 octopus --version
 octopus --help
 ```
 
-`--help` 会列出所有子命令、选项、认证规则与退出码说明。
+v0.1.22 应能看到 `recognize` 与 `run-url` 相关命令：
 
-### 运行环境诊断
+```bash
+octopus recognize --help
+octopus run-url --help
+```
+
+## 运行环境诊断
 
 ```bash
 octopus doctor
-```
-
-`doctor` 会检查 Node.js、内置引擎、Chrome 可用性及浏览器模式等。成功时返回 `"ok": true`，例如：
-
-```json
-{
-  "ok": true,
-  "checks": [
-    { "name": "node", "ok": true, "message": "v22.16.0" },
-    { "name": "electron-client", "ok": true, "message": "not required" },
-    { "name": "browser-mode", "ok": true, "message": "independent Chrome only" }
-  ]
-}
-```
-
-说明：
-
-- `electron-client: not required` — 无需安装桌面客户端即可使用 CLI 本地采集。
-- `independent Chrome only` — 本地采集使用独立 Chrome，而非客户端内嵌浏览器。
-
-### 浏览器专项诊断
-
-```bash
 octopus browser doctor
 ```
 
+`doctor` 会检查 Node.js、内置引擎、Chrome 可用性及浏览器模式。成功时通常返回 `"ok": true`。
+
 ## 更新与卸载
 
-**更新到最新版：**
+更新到指定版本：
 
 ```bash
-npm install -g @octoparse-cli/octoparse-cli
+npm install -g bazhuayu-cli@0.1.22
 octopus --version
 ```
 
-**卸载：**
+卸载：
 
 ```bash
-npm uninstall -g @octoparse-cli/octoparse-cli
+npm uninstall -g bazhuayu-cli
 ```
 
 ## 常见问题
 
 | 现象 | 处理建议 |
 | --- | --- |
-| `octopus: command not found` | 将 npm 全局 bin 目录加入系统 `PATH` |
-| 安装时权限错误 | 使用 nvm 管理 Node，或参考 npm 官方 EACCES 权限说明 |
-| Node 版本过低 | 升级到 Node.js 20+ |
-| `npm install` 超时 | 检查网络、代理、VPN 或防火墙；国内可配置 npm 镜像源 |
+| `octopus: command not found` | 将 Node.js 目录和 npm 全局 bin 目录加入系统 `PATH` |
+| PowerShell 中文参数被拆开 | 给中文参数加双引号，例如 `--goal "提取电影名称、评分"` |
+| PowerShell 多行命令报错 | 使用反引号 `` ` `` 续行，或优先写成单行 |
+| URL 无法打开 | 检查是否写完整协议，例如 `https://example.com` |
+| `--output task.json` 写到意外目录 | 先 `cd` 到工作目录，或使用绝对路径 |
+| `npm install -g ...@latest` 卡住或被终止 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.22` |
 | `doctor` 某项失败 | 根据 `ok: false` 的检查项修复 Chrome、引擎文件或浏览器依赖 |
 
 ## 下一步
 
 <CardGroup cols={2}>
   <Card title="获取 API Key 并登录" href="/zh/cli/quick-start/get-api-key-and-log-in">
-    [创建 Key](/zh/mcp/quick-start/api-key) 并完成 CLI 认证。
+    创建 Key，或使用 OAuth / 环境变量完成 CLI 认证。
   </Card>
   <Card title="运行第一个任务" href="/zh/cli/quick-start/run-your-first-task">
-    列出任务、运行并导出数据。
+    从新 URL 直接采集，或运行已有任务并导出数据。
   </Card>
 </CardGroup>

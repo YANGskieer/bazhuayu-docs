@@ -1,17 +1,15 @@
 ---
 title: 获取 API Key 并登录
-description: 在八爪鱼账户中心创建 API Key，并完成八爪鱼 CLI 认证。
+description: 创建八爪鱼 API Key，并通过 API Key、OAuth、stdin 或环境变量完成八爪鱼 CLI 认证。
 ---
 
-> [创建八爪鱼 API Key](/zh/mcp/quick-start/api-key)，供 CLI 访问你的任务与数据。
+> CLI 功能命令通常需要先完成认证。你可以使用 API Key、OAuth、stdin 或环境变量登录。
 
 ## 认证说明
 
-大多数八爪鱼 CLI 命令需要 **API Key**。Key 用于标识账户并授权 CLI 访问任务列表、运行采集与导出数据。
+需要认证的操作包括：列出任务、本地 / 云端运行、`recognize`、`run-url`、`--task-file` 本地运行、数据历史与导出等。
 
-**需要 Key 的操作**包括：列出任务、本地 / 云运行、`--task-file` 或 `.otd` 本地运行、数据导出等。
-
-**无需 Key 即可运行的命令**（安装与诊断）：
+无需认证即可运行的诊断命令包括：
 
 ```bash
 octopus --help
@@ -22,9 +20,9 @@ octopus browser doctor
 octopus auth
 ```
 
-## [创建 API Key](/zh/mcp/quick-start/api-key)
+## 创建 API Key
 
-在八爪鱼账户中心 [创建 API Key](/zh/mcp/quick-start/api-key)，复制并妥善保存（仅显示一次时请立即备份）。分步说明与截图见 [获取 API Key](/zh/mcp/quick-start/api-key)。
+在八爪鱼账户中心 [创建 API Key](/zh/mcp/quick-start/api-key)，复制并妥善保存。Key 通常只显示一次。
 
 <Warning>
   请勿将 API Key 写入 Git 仓库、公开脚本、文档截图、共享日志或 CI 输出。
@@ -32,21 +30,31 @@ octopus auth
 
 ## 登录方式
 
-### 交互式登录（推荐）
+### 交互式登录
 
 ```bash
 octopus auth login
 ```
 
-在可能的情况下会打开 API Key 页面；粘贴 Key 后 CLI 会校验并保存到本地凭据文件。
+交互式登录会引导你选择 OAuth 或 API Key 登录方式。
 
-### 直接传入 Key
+### OAuth 登录
+
+```bash
+octopus auth login --oauth
+```
+
+适合可打开浏览器的桌面环境。
+
+### 直接传入 API Key
 
 ```bash
 octopus auth login <你的APIKey>
 ```
 
-### 从标准输入读取（适合 CI / 密钥管理）
+### 从 stdin 读取
+
+适合 CI/CD 或密钥管理系统：
 
 ```bash
 echo <你的APIKey> | octopus auth login --stdin
@@ -58,35 +66,41 @@ echo <你的APIKey> | octopus auth login --stdin
 octopus auth login --no-open
 ```
 
-手动打开 [账户中心创建 API Key](/zh/mcp/quick-start/api-key) 页面复制 Key 后再粘贴。
+适合无 GUI 服务器或需要手动复制授权地址的环境。
 
-### 使用环境变量（临时或 CI）
+### 环境变量
 
 ```bash
 # Windows PowerShell
-$env:OCTO_ENGINE_API_KEY="你的APIKey"
+$env:OCTOPUS_API_KEY="你的APIKey"
 octopus task list --json
 
 # Linux / macOS
-OCTO_ENGINE_API_KEY=你的APIKey octopus task list --json
+OCTOPUS_API_KEY=你的APIKey octopus task list --json
 ```
 
-可选：覆盖 API 基址（一般无需修改）：
+如果你使用 Access Token：
 
 ```bash
-OCTO_ENGINE_API_BASE_URL=https://example.com OCTO_ENGINE_API_KEY=你的APIKey octopus task list
+OCTOPUS_ACCESS_TOKEN=你的AccessToken octopus task list --json
+```
+
+私有化或代理环境可覆盖 API 地址：
+
+```bash
+octopus task list --api-base-url https://example.com --json
 ```
 
 ## 凭据优先级
 
-CLI 按以下顺序读取认证信息：
+CLI 会优先读取环境变量，其次读取本地凭据文件：
 
 ```text
-1. 环境变量 OCTO_ENGINE_API_KEY
+1. OCTOPUS_ACCESS_TOKEN / OCTOPUS_API_KEY
 2. 本地凭据文件 ~/.octoparse/credentials.json
 ```
 
-`octopus auth login` 会自动创建凭据文件。默认路径：
+`octopus auth login` 会自动创建本地凭据文件。默认路径：
 
 | 系统 | 路径 |
 | --- | --- |
@@ -97,6 +111,7 @@ CLI 按以下顺序读取认证信息：
 
 ```bash
 octopus auth status
+octopus auth status --json
 octopus auth logout
 ```
 
@@ -104,7 +119,7 @@ octopus auth logout
 
 <CardGroup cols={2}>
   <Card title="运行第一个任务" href="/zh/cli/quick-start/run-your-first-task">
-    列出任务、本地运行、查看状态并导出。
+    从新 URL 快速采集，或运行已有任务。
   </Card>
   <Card title="命令速查表" href="/zh/cli/reference/command-cheatsheet">
     浏览全部常用命令。

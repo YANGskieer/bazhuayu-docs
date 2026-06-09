@@ -1,342 +1,124 @@
 ---
 title: 八爪鱼 CLI
-description: 在终端中运行、管理八爪鱼采集任务，适用于脚本化、CI/CD 与自动化数据流水线。
+description: 在终端中识别网页、生成任务、运行采集并导出数据，适用于脚本化、CI/CD、服务器与 Agent 自动化场景。
 ---
 
-> 使用八爪鱼 CLI，在命令行中运行、管理八爪鱼采集任务并导出数据。
+> 使用八爪鱼 CLI，在命令行中完成网页识别、URL 直接采集、已有任务运行、云采集控制和数据导出。
 
-八爪鱼 CLI 是面向开发者与运维场景的命令行工具。与桌面客户端不同，它更适合**脚本化工作流**、**CI/CD 流水线**、**服务器环境**以及**自动化数据管道**。
-
-## 什么是八爪鱼 CLI？
-
-### 一个简单比喻
-
-日常使用八爪鱼时，你通过客户端或网页**点击按钮**来启动采集；这叫做图形界面，直观但重复操作多，难以批量自动化。
-
-**CLI 把「点击」变成「敲命令」：**
-
-| 方式 | 你怎么操作 | 八爪鱼如何响应 |
-| --- | --- | --- |
-| 图形界面（客户端 / 网页） | 手动点击 | 按界面操作执行 |
-| 命令行（CLI） | 在终端输入命令 | 按命令执行，可写脚本批量跑 |
-
-### 客户端 vs CLI 流程对比
-
-<div className="cli-compare-section">
-  <div className="cli-compare-grid">
-    <div className="cli-compare-card">
-      <div className="cli-compare-step-count">7 步</div>
-      <div className="cli-compare-header">
-        <span className="cli-compare-icon" aria-hidden="true">🖥️</span>
-        <div>
-          <h3>桌面客户端</h3>
-          <p className="cli-compare-meta">约 7 步 · 图形界面 · 适合日常交互</p>
-        </div>
-        <span className="cli-compare-badge">GUI</span>
-      </div>
-      <ol className="cli-compare-steps">
-        <li>打开客户端</li>
-        <li>登录账号</li>
-        <li>进入「我的任务」</li>
-        <li>找到目标任务</li>
-        <li>点击「开始采集」</li>
-        <li>等待采集完成</li>
-        <li>导出数据</li>
-      </ol>
-    </div>
-
-    <div className="cli-compare-vs" aria-label="对比">
-      <span className="cli-compare-vs-badge">VS</span>
-    </div>
-
-    <div className="cli-compare-card cli-compare-card-highlight">
-      <div className="cli-compare-step-count cli-compare-step-count-accent">3 步</div>
-      <div className="cli-compare-header">
-        <span className="cli-compare-icon" aria-hidden="true">⌨️</span>
-        <div>
-          <h3>八爪鱼 CLI</h3>
-          <p className="cli-compare-meta">约 3 步 · 命令行 · 适合脚本与自动化</p>
-        </div>
-        <span className="cli-compare-badge cli-compare-badge-accent">CLI</span>
-      </div>
-      <ol className="cli-compare-steps">
-        <li>打开终端</li>
-        <li>
-          执行 <code>octopus run &lt;任务ID&gt;</code>
-        </li>
-        <li>
-          需要时执行 <code>octopus data export</code> 导出
-        </li>
-      </ol>
-      <p className="cli-compare-footnote">同一任务，步骤更少，可直接写入脚本、定时任务或 CI/CD。</p>
-    </div>
-  </div>
-</div>
+八爪鱼 CLI 是面向开发者、数据团队、运维和 AI Agent 场景的命令行工具。CLI 国内 v0.1.22 新增网页识别建任务、URL 直接采集和 Linux x64 支持。
 
 ## CLI 能做什么
 
 <CardGroup cols={2}>
-  <Card title="查找与查看任务" icon="list">
-    列出云端任务、按关键词搜索、按任务 ID 查看任务定义与字段信息。
+  <Card title="从 URL 直接采集" icon="wand-magic-sparkles" href="/zh/cli/core-commands/run-url">
+    使用 `octopus run-url URL --auto` 自动识别网页结构并直接采集，无需预制任务模板。
   </Card>
-  <Card title="本地运行任务" icon="play">
-    使用内置本地引擎与独立 Chrome 运行采集，无需打开 Electron 桌面客户端。
+  <Card title="网页识别建任务" icon="sparkles" href="/zh/cli/core-commands/recognize">
+    使用 `octopus recognize` 识别列表页、详情页与分页逻辑，并生成可复用本地任务文件。
   </Card>
-  <Card title="控制运行状态" icon="sliders">
-    启动 / 停止云采集；暂停、恢复、停止或清理本地运行状态。
+  <Card title="运行已有任务" icon="play" href="/zh/cli/core-commands/run-tasks">
+    使用 `octopus run <taskId>` 本地运行，或用 `octopus cloud start <taskId>` 在云端运行。
   </Card>
-  <Card title="导出数据" icon="download">
-    将本地或云端采集结果导出为 XLSX、CSV、HTML、JSON、XML 等格式。
+  <Card title="导出采集数据" icon="download" href="/zh/cli/core-commands/export-data">
+    通过 `octopus data history/export` 查看历史批次并导出 XLSX、CSV、HTML、JSON、XML。
   </Card>
 </CardGroup>
 
-## 工作原理
+## 安装
 
-- **本地采集**：CLI 直接运行内置八爪鱼引擎，使用独立 Chrome，不依赖桌面客户端界面。
-- **云采集**：通过后端 API 控制云端任务启停与状态查询。
-- **状态说明**：本地运行状态由 CLI 自行维护，**不会**与桌面客户端中的运行状态同步。
+```bash
+npm install -g bazhuayu-cli@0.1.22
+octopus --version
+```
 
-## 环境要求
+环境要求：
 
-开始使用前，请确认：
+- Node.js 20 或更高版本（推荐 22 LTS）
+- npm 8 或更高版本
+- Windows x64、macOS x64 / arm64、Linux x64
+- 本地采集、`recognize` 与 `run-url` 需要可用 Chrome 环境
 
-- **Node.js** 20 或更高版本（推荐 22 LTS）
-- **npm** 8 或更高版本
-- 有效的 [**八爪鱼 API Key**](/zh/mcp/quick-start/api-key)（[创建 API Key](/zh/mcp/quick-start/api-key)）
-- 对需要运行或导出的任务具备访问权限
-
-详细安装步骤见 [安装与验证](/zh/cli/quick-start/installation)。
-
-<Note>
-  除 `--help`、`--version`、`doctor`、`browser doctor`、`capabilities`、`auth` 等诊断类命令外，**所有功能命令均需 API Key**，包括本地 `--task-file` / `.otd` 运行。请勿将 API Key 提交到 Git、脚本、文档截图或 CI 日志中。
-</Note>
+Linux x64 从 v0.1.22 起支持本地采集；Linux arm64 暂不支持本地执行，可使用云采集。
 
 ## 常见工作流
 
 <Steps>
   <Step title="安装 CLI">
-    安装 Node.js 后，通过 npm 全局安装八爪鱼 CLI。
+    使用 `npm install -g bazhuayu-cli@0.1.22` 安装，并运行 `octopus doctor` 检查环境。
   </Step>
   <Step title="登录认证">
-    [创建 API Key](/zh/mcp/quick-start/api-key) 后，使用 API Key 执行 `octopus auth login`，或配置环境变量。
+    通过 `octopus auth login`、`--oauth`、`--stdin` 或环境变量完成认证。
   </Step>
-  <Step title="查找任务">
-    使用 `octopus task list` 获取任务 ID。
+  <Step title="选择采集路径">
+    新 URL 用 `run-url --auto`，需要任务文件用 `recognize --output task.json`，已有任务用 `run <taskId>`。
   </Step>
-  <Step title="运行或控制">
-    本地运行、启动 / 停止云采集，或查看运行状态。
+  <Step title="运行与监控">
+    本地运行可使用 `--detach` 后台执行，并用 `octopus local status` 查看进度。
   </Step>
   <Step title="导出数据">
-    从本地或云端结果导出结构化数据。
+    使用 `octopus data export` 导出 Excel、CSV、JSON 等格式。
   </Step>
 </Steps>
 
 ## 快速命令示例
 
-将 `<taskId>` 替换为实际任务 ID；若不知道 ID，先执行 `octopus task list`。
-
 ```bash
 octopus --help
 octopus doctor
 octopus auth login
+octopus run-url https://example.com --auto --goal "提取列表数据" --max-rows 20
+octopus recognize https://example.com --auto --output task.json
+octopus task validate --task-file task.json
+octopus run --task-file task.json --max-rows 20
 octopus task list
-octopus task inspect <taskId>
-octopus run <taskId>
-octopus cloud start <taskId>
-octopus local status <taskId>
-octopus data export <taskId> --source local --format xlsx
+octopus run <taskId> --detach
+octopus data export <taskId> --format xlsx --file result.xlsx
 ```
 
-## CLI、MCP/客户端功能对比
+## CLI、MCP / 客户端功能对比
 
-<div className="cli-feature-matrix">
-  <div className="cli-feature-matrix-legend">
-    <span className="cli-feat-yes">✓ 可以</span>
-    <span className="cli-feat-no">✗ 不可以</span>
-    <span className="cli-feature-matrix-legend-note">差异项已高亮显示</span>
-  </div>
+| 功能 | MCP / 客户端 | CLI |
+| --- | --- | --- |
+| 浏览和搜索采集模板 | 可以 | 不可以 |
+| 从 URL 新建采集任务 | 客户端可以 | 可以，使用 `octopus recognize` |
+| 从 URL 直接采集 | 客户端可以 | 可以，使用 `octopus run-url` |
+| 修改复杂采集规则 | 客户端更适合 | 部分支持，复杂规则建议客户端调整 |
+| 运行已有任务 | 可以 | 可以 |
+| 停止正在运行的任务 | 可以 | 可以 |
+| 查看任务状态 | 可以 | 可以 |
+| 导出采集数据 | 可以 | 可以 |
+| 写成脚本自动执行 | 不适合 | 可以 |
+| 接入 AI Agent | MCP 更自然 | 可以，通过 JSON / JSONL 与 Agent 模式 |
 
-  <div className="cli-feature-matrix-head">
-    <div className="cli-feature-matrix-cell cli-feature-matrix-feature">功能</div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-product">八爪鱼 MCP / 客户端</div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-product cli-feature-matrix-product-cli">八爪鱼 CLI</div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-note">说明</div>
-  </div>
-
-  <div className="cli-feature-matrix-row cli-feature-matrix-row-diff">
-    <div className="cli-feature-matrix-cell cli-feature-matrix-feature">浏览和搜索采集模板</div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-no">✗ 不可以</span></div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-note">模板市场只在客户端有（MCP 可查询）</div>
-  </div>
-
-  <div className="cli-feature-matrix-row cli-feature-matrix-row-diff">
-    <div className="cli-feature-matrix-cell cli-feature-matrix-feature">新建采集任务</div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-no">✗ 不可以</span></div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-note">创建任务需要图形界面配置（MCP 可建模板任务）</div>
-  </div>
-
-  <div className="cli-feature-matrix-row cli-feature-matrix-row-diff">
-    <div className="cli-feature-matrix-cell cli-feature-matrix-feature">修改采集规则</div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-no">✗ 不可以</span></div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-note">修改规则需在客户端 / MCP 调用执行</div>
-  </div>
-
-  <div className="cli-feature-matrix-row">
-    <div className="cli-feature-matrix-cell cli-feature-matrix-feature">运行已有任务</div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-note">两个都能跑任务</div>
-  </div>
-
-  <div className="cli-feature-matrix-row">
-    <div className="cli-feature-matrix-cell cli-feature-matrix-feature">停止正在运行的任务</div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-note">两个都能停任务</div>
-  </div>
-
-  <div className="cli-feature-matrix-row">
-    <div className="cli-feature-matrix-cell cli-feature-matrix-feature">查看任务状态</div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-note">两个都能查状态</div>
-  </div>
-
-  <div className="cli-feature-matrix-row">
-    <div className="cli-feature-matrix-cell cli-feature-matrix-feature">导出采集的数据</div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-note">两个都能导出</div>
-  </div>
-
-  <div className="cli-feature-matrix-row cli-feature-matrix-row-diff cli-feature-matrix-row-cli-only">
-    <div className="cli-feature-matrix-cell cli-feature-matrix-feature">写成脚本自动执行</div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-no">✗ 不可以</span></div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes cli-feat-yes-strong">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-note"><strong>CLI 独有优势</strong></div>
-  </div>
-
-  <div className="cli-feature-matrix-row cli-feature-matrix-row-diff cli-feature-matrix-row-cli-only">
-    <div className="cli-feature-matrix-cell cli-feature-matrix-feature">接入自动化工具</div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-no">✗ 不可以</span></div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes cli-feat-yes-strong">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-note"><strong>CLI 独有优势</strong></div>
-  </div>
-
-  <div className="cli-feature-matrix-row">
-    <div className="cli-feature-matrix-cell cli-feature-matrix-feature">让 AI 助手帮你操作</div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell"><span className="cli-feat-yes">✓ 可以</span></div>
-    <div className="cli-feature-matrix-cell cli-feature-matrix-note">本身就是结合 AI 设计的</div>
-  </div>
-</div>
-
-## CLI、MCP 与桌面客户端怎么选？
+## CLI、MCP 与桌面客户端怎么选
 
 | 场景 | 推荐方式 |
 | --- | --- |
-| 在 Cursor、ChatGPT、Claude、Gemini 等 AI 里用自然语言操作八爪鱼 | [MCP 服务](/zh/mcp/index) |
-| 写脚本、定时任务、服务器 / CI 自动化 | **八爪鱼 CLI**（本模块） |
-| 可视化搭建流程、日常交互式采集 | 八爪鱼桌面客户端 |
+| 在 ChatGPT、Claude、Cursor、Gemini、QClaw 等 AI 中用自然语言操作 | [MCP 服务](/zh/mcp/index) |
+| 新 URL 快速试采、命令行自动化、服务器 / CI 定时采集 | 八爪鱼 CLI |
+| 可视化搭建复杂规则、精细调整流程 | 八爪鱼桌面客户端 |
 
-CLI 与 MCP 可配合使用：例如在 AI 中通过 MCP 找到任务 ID，再在终端用 CLI 做批量运行与导出。
+CLI 与 MCP 可配合使用：例如在 AI 中通过 MCP 找到任务或生成需求，再在终端用 CLI 做批量运行、导出或 Agent 流程。
 
-## CLI适用人群
+## 当前限制
 
-<div className="cli-audience-section">
-  <div className="cli-audience-grid">
-    <div className="cli-audience-card">
-      <div className="cli-audience-header">
-        <span className="cli-audience-icon" aria-hidden="true">🤖</span>
-        <div>
-          <h3>人群一：AI Agent 开发者</h3>
-          <p className="cli-audience-tagline">你是开发人员，想让自己的 AI 助手（比如 ChatGPT、Claude，或者企业里的 AI 系统）能够自动采集数据。</p>
-        </div>
-      </div>
-      <p className="cli-audience-subtitle">八爪鱼 CLI 能帮你做什么？</p>
-      <ul className="cli-audience-list">
-        <li>把八爪鱼 CLI 封装成一个「工具」，挂在 AI 助手下面</li>
-        <li>用户只要说一句话（比如「帮我采集小红书上关于 AI 工具的笔记」），AI 就会自动调用 CLI 执行采集</li>
-        <li>用户不需要懂任何命令，也不需要打开网页</li>
-      </ul>
-      <p className="cli-audience-value"><strong>价值：</strong>让你的 AI 助手拥有「数据采集」能力。</p>
-    </div>
-
-    <div className="cli-audience-card">
-      <div className="cli-audience-header">
-        <span className="cli-audience-icon" aria-hidden="true">📊</span>
-        <div>
-          <h3>人群二：数据工程师</h3>
-          <p className="cli-audience-tagline">你是做数据的，经常需要采集大量数据，或者需要定期采集更新数据。</p>
-        </div>
-      </div>
-      <p className="cli-audience-subtitle">八爪鱼 CLI 能帮你做什么？</p>
-      <ul className="cli-audience-list">
-        <li>写一个简单的脚本，一次性跑 10 个、100 个采集任务</li>
-        <li>配合定时任务（Linux 的 cron、Windows 的任务计划程序），让电脑每天自动采集</li>
-        <li>采集完自动导出数据，自动发给相关人员</li>
-      </ul>
-      <p className="cli-audience-value"><strong>价值：</strong>把每天手动点按钮的重复工作，变成全自动。</p>
-    </div>
-
-    <div className="cli-audience-card">
-      <div className="cli-audience-header">
-        <span className="cli-audience-icon" aria-hidden="true">📋</span>
-        <div>
-          <h3>人群三：运营人员</h3>
-          <p className="cli-audience-tagline">你不懂技术，但工作需要定期采集某些平台的数据（比如每天查看竞品在小红书上的笔记）。</p>
-        </div>
-      </div>
-      <p className="cli-audience-subtitle">八爪鱼 CLI 能帮你做什么？</p>
-      <ul className="cli-audience-list">
-        <li>Windows 用户在「任务计划程序」里配置一次，之后每天自动跑</li>
-        <li>或者，偶尔需要数据时，让懂技术的同事帮你配置好，你只要双击一个文件就能运行</li>
-      </ul>
-      <p className="cli-audience-value"><strong>价值：</strong>比网页版快，比写代码简单。</p>
-    </div>
-
-    <div className="cli-audience-card">
-      <div className="cli-audience-header">
-        <span className="cli-audience-icon" aria-hidden="true">🖧</span>
-        <div>
-          <h3>人群四：企业 IT / 运维人员</h3>
-          <p className="cli-audience-tagline">你在公司负责服务器和维护，老板让你「搞一个自动采集数据的系统」。</p>
-        </div>
-      </div>
-      <p className="cli-audience-subtitle">八爪鱼 CLI 能帮你做什么？</p>
-      <ul className="cli-audience-list">
-        <li>在公司的云服务器（Linux）上安装八爪鱼 CLI</li>
-        <li>配置定时任务，每天自动采集</li>
-        <li>数据自动导出到指定文件夹</li>
-        <li>可以配合 Docker，快速部署到多台服务器</li>
-      </ul>
-      <p className="cli-audience-value"><strong>价值：</strong>稳定、可监控、好维护。</p>
-    </div>
-  </div>
-</div>
-
-## 当前限制（v1）
-
-八爪鱼 CLI v1 **不支持**内核浏览器（Kernel browser）及旧版工作流（Legacy workflow）。
-
-若任务不兼容，请在当前版八爪鱼桌面客户端中更新任务定义后，再使用 CLI 运行。
+- CLI v1 不支持内核浏览器（Kernel browser）及旧版工作流（Legacy workflow）。
+- Linux arm64 暂不支持本地执行。
+- `recognize` 与 `run-url` 依赖浏览器环境；网页结构复杂、登录墙或强风控页面可能需要在客户端中进一步调整规则。
 
 ## 下一步
 
 <CardGroup cols={2}>
   <Card title="安装与验证" icon="download" href="/zh/cli/quick-start/installation">
-    安装 Node.js、npm 全局安装 CLI，并用 `doctor` 检查环境。
-  </Card>
-  <Card title="获取 API Key 并登录" icon="key" href="/zh/cli/quick-start/get-api-key-and-log-in">
-    在[账户中心创建 Key](/zh/mcp/quick-start/api-key)，完成 `octopus auth login`。
+    安装 CLI、检查 Node.js / Chrome 环境与平台支持。
   </Card>
   <Card title="运行第一个任务" icon="rocket" href="/zh/cli/quick-start/run-your-first-task">
-    列出任务、本地运行、查看状态并导出数据。
+    新 URL 直接采集，或运行已有任务并导出数据。
+  </Card>
+  <Card title="网页识别建任务" icon="sparkles" href="/zh/cli/core-commands/recognize">
+    从 URL 生成可复用任务文件。
   </Card>
   <Card title="命令速查表" icon="book" href="/zh/cli/reference/command-cheatsheet">
-    任务、本地运行、云采集、认证与导出命令一览。
+    认证、识别、运行、导出命令一览。
   </Card>
 </CardGroup>

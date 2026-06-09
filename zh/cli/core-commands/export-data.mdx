@@ -1,63 +1,69 @@
 ---
 title: 导出数据
-description: 使用 octopus data export 将八爪鱼 CLI 采集结果导出为 Excel、CSV、JSON 等格式。
+description: 使用 octopus data history 与 octopus data export 查看采集历史并导出 Excel、CSV、JSON 等格式。
 ---
 
-> 采集完成后，把结果导出成 Excel、CSV 等文件。
+> 采集完成后，通过统一的 `data` 命令查看历史批次并导出结果。
 
-## `octopus data export`（把采集到的数据导出成文件）
-
-**命令描述**
-
-采集完成后，数据保存在 CLI 的本地或云端结果中。此命令将其导出为 Excel、CSV 等文件，方便查看与后续处理。
-
-**基本用法：**
+## `octopus data history`（查看采集历史）
 
 ```bash
-# 导出本地运行结果为 Excel
-octopus data export <taskId> --source local --format xlsx
-
-# 导出云端运行结果为 CSV
-octopus data export <taskId> --source cloud --format csv
-
-# 指定输出文件路径
-octopus data export <taskId> --source local --format csv --file ./result.csv
+octopus data history <taskId>
+octopus data history <taskId> --local
+octopus data history <taskId> --cloud
 ```
 
-若本地运行时使用了 `--output ./runs`，导出时需保持一致：
+如果本地运行时使用了 `--output ./runs`，查看历史时保持相同路径：
+
+```bash
+octopus data history <taskId> --local --output ./runs
+```
+
+## `octopus data export`（导出采集结果）
+
+```bash
+# 导出为 Excel
+octopus data export <taskId> --format xlsx --file result.xlsx
+
+# 导出本地结果为 CSV
+octopus data export <taskId> --local --format csv --file result.csv
+
+# 按批次导出 JSON
+octopus data export <taskId> --lot-id <lotId> --format json
+```
+
+导出本地指定目录的结果：
 
 ```bash
 octopus run <taskId> --output ./runs
-octopus data export <taskId> --source local --output ./runs --format xlsx
+octopus data export <taskId> --local --output ./runs --format xlsx --file result.xlsx
 ```
 
-## 如何导出为不同格式？
+## 支持格式
 
 ```bash
-octopus data export <taskId> --source local --format xlsx   # Excel（默认，最常用）
-octopus data export <taskId> --source local --format csv    # CSV
-octopus data export <taskId> --source local --format json   # JSON（适合程序处理）
-octopus data export <taskId> --source local --format html   # HTML（浏览器直接打开）
-octopus data export <taskId> --source local --format xml    # XML
+octopus data export <taskId> --format xlsx
+octopus data export <taskId> --format csv
+octopus data export <taskId> --format json
+octopus data export <taskId> --format html
+octopus data export <taskId> --format xml
 ```
 
-## 各种格式怎么选？
-
-| 格式 | 适合谁 | 优点 | 缺点 |
-| --- | --- | --- | --- |
-| xlsx（Excel） | 所有人 | 能用 Excel 打开，带格式，最直观 | 文件稍大 |
-| csv | 数据分析人员 | 体积最小，各软件通用 | 无格式（粗体、颜色等） |
-| json | 开发者 / 脚本 | 结构化，便于程序解析 | 需用编辑器或代码查看 |
-| html | 快速预览 | 浏览器直接打开 | 不适合大规模二次处理 |
-| xml | 对接老系统 | 通用交换格式 | 文件较大 |
+| 格式 | 适合场景 |
+| --- | --- |
+| `xlsx` | Excel 查看、业务交付 |
+| `csv` | 数据分析、导入表格或数据库 |
+| `json` | 程序处理、API / Agent 流程 |
+| `html` | 浏览器快速预览 |
+| `xml` | 对接老系统或 XML 工作流 |
 
 ## 下一步
 
 <CardGroup cols={2}>
-  <Card title="环境诊断" icon="stethoscope" href="/zh/cli/core-commands/diagnostics">
-    检查运行环境与登录状态。
+  <Card title="输出与退出码" icon="terminal" href="/zh/cli/reference/output-and-exit-codes">
+    在脚本与 CI 中处理 `--json` / `--jsonl`。
   </Card>
-  <Card title="任务管理" icon="list" href="/zh/cli/core-commands/task-management">
-    返回任务管理命令说明。
+  <Card title="运行采集任务" icon="play" href="/zh/cli/core-commands/run-tasks">
+    返回运行命令说明。
   </Card>
 </CardGroup>

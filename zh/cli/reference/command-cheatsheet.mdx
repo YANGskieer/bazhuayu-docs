@@ -1,11 +1,11 @@
-﻿---
+---
 title: 命令速查表
-description: 八爪鱼 CLI 常用命令快速参考。
+description: 八爪鱼 CLI v0.1.22 常用命令快速参考。
 ---
 
-> 八爪鱼 CLI 常用命令一览。尖括号 `<taskId>`、`<apiKey>` 表示需替换为实际值。
+> 八爪鱼 CLI 常用命令一览。尖括号 `<taskId>`、`<apiKey>`、`<url>` 表示需替换为实际值。
 
-除特别说明外，功能命令均需先完成 `octopus auth login`。支持 `--json` 的命令可输出机器可读 JSON。
+除特别说明外，功能命令均需先完成 `octopus auth login`。脚本、CI、Codex 或 Agent 调用时优先使用 `--json` / `--jsonl`。
 
 ## 帮助与诊断
 
@@ -24,11 +24,53 @@ octopus doctor --json
 
 ```bash
 octopus auth login
+octopus auth login --oauth
 octopus auth login <apiKey>
 octopus auth login --stdin
 octopus auth login --no-open
 octopus auth status
+octopus auth status --json
 octopus auth logout
+```
+
+环境变量：
+
+```bash
+OCTOPUS_API_KEY=<apiKey> octopus task list --json
+OCTOPUS_ACCESS_TOKEN=<accessToken> octopus task list --json
+octopus task list --api-base-url https://example.com --json
+```
+
+## URL 直接采集
+
+```bash
+octopus run-url <url> --auto
+octopus run-url <url> --auto --goal "提取商品名称、价格、链接"
+octopus run-url <url> --auto --max-rows 20
+octopus run-url <url> --select candidate_001
+octopus run-url <url> --auto --input keyword=烤面包机
+octopus run-url <url> --auto --json
+octopus run-url <url> --auto --jsonl
+```
+
+## 网页识别建任务
+
+```bash
+octopus recognize <url> --auto
+octopus recognize <url> --manual
+octopus recognize <url> --auto --goal "提取商品评论"
+octopus recognize <url> --auto --goal "提取商品信息" --llm-rank
+octopus recognize <url> --auto --no-dismiss-popups
+octopus recognize <url> --auto --output task.json
+octopus recognize <url> --select protected_smart_1 --output task.json
+```
+
+Agent 模式：
+
+```bash
+octopus recognize <url> --prepare-agent --json --goal "提取用户评论" --output context.json
+octopus recognize --preview-agent-plan plan.json --agent-context context.json --json
+octopus recognize --apply-agent-plan plan.json --agent-context context.json --output task.json
 ```
 
 ## 任务
@@ -46,7 +88,7 @@ octopus task validate <taskId>
 
 ```bash
 octopus task inspect <taskId> --task-file <file.json|file.xml|file.otd>
-octopus task validate <taskId> --task-file <file.json|file.xml|file.otd>
+octopus task validate --task-file <file.json|file.xml|file.otd>
 ```
 
 ## 本地采集
@@ -58,6 +100,9 @@ octopus run <taskId> --max-rows 100
 octopus run <taskId> --detach
 octopus run <taskId> --output ./runs
 octopus run <taskId> --chrome-path /path/to/chrome
+
+octopus run --task-file ./task.json --output ./results/
+octopus run --task-file ./task.json --detach --max-rows 100
 ```
 
 ## 云采集
@@ -73,21 +118,24 @@ octopus cloud history <taskId>
 
 ```bash
 octopus local status <taskId>
+octopus local status <taskId> --output ./runs
 octopus local pause <taskId>
 octopus local resume <taskId>
 octopus local stop <taskId>
 octopus local history <taskId>
-octopus local export <taskId> --format xlsx
 octopus local cleanup
 ```
 
 ## 数据历史与导出
 
 ```bash
-octopus data history <taskId> --source local
-octopus data history <taskId> --source cloud
-octopus data export <taskId> --source local --format xlsx
-octopus data export <taskId> --source cloud --format csv
+octopus data history <taskId>
+octopus data history <taskId> --local
+octopus data history <taskId> --cloud
+
+octopus data export <taskId> --format xlsx --file result.xlsx
+octopus data export <taskId> --local --format csv --file result.csv
+octopus data export <taskId> --lot-id <lotId> --format json
 ```
 
 导出格式：`xlsx`、`csv`、`html`、`json`、`xml`。
@@ -107,15 +155,3 @@ octopus data export <taskId> --source cloud --format csv
   "disableAD": false
 }
 ```
-
-| 字段 | 含义 |
-| --- | --- |
-| `taskId` | 八爪鱼任务 ID |
-| `taskName` | 任务名称 |
-| `xml` | 原始 OTD XML 定义 |
-| `xoml` | 引擎使用的工作流定义 |
-| `fieldNames` | 输出字段名列表 |
-| `workflowSetting` | 工作流设置 |
-| `brokerSettings` | 运行时 / Broker 相关设置 |
-| `userAgent` | 采集时使用的 User-Agent |
-| `disableAD` | 是否禁用广告拦截 |

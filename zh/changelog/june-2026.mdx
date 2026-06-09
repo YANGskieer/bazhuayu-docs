@@ -1,0 +1,47 @@
+---
+title: 2026 年 6 月更新日志
+description: 2026 年 6 月八爪鱼文档更新，包含 CLI 国内 v0.1.22、网页识别建任务、URL 直接采集与 Linux x64 支持。
+---
+
+> CLI 国内版本更新至 v0.1.22，新增从网页 URL 识别并生成本地任务、直接采集新 URL，以及 Linux x64 平台支持。
+
+## CLI 国内更新 v0.1.22
+
+本次更新从 `0.1.14` 升级到 `0.1.22`。安装或更新：
+
+```bash
+npm install -g bazhuayu-cli@0.1.22
+```
+
+新增能力：
+
+- [`octopus recognize`](/zh/cli/core-commands/recognize)：从网页 URL 识别结构并生成任务文件
+- [`octopus run-url`](/zh/cli/core-commands/run-url)：无需预制任务，直接从 URL 自动识别并采集
+- 支持列表页、详情页、列表 + 详情页任务与分页识别
+- 新增 Agent 模式上下文准备与计划应用流程
+- 新增 Linux x64 平台本地采集支持
+
+## 命令增强
+
+- `octopus run` 支持 `--task-file`、`--detach`、`--max-rows`、`--headless`
+- `octopus task validate` 支持校验模板任务与本地任务文件
+- `octopus data history/export` 作为本地与云端数据访问的统一入口
+- 认证支持 API Key、OAuth、stdin、环境变量与自定义 API 地址
+
+## 文档同步
+
+本次文档同步更新：
+
+- [八爪鱼 CLI 概述](/zh/cli/index)
+- [安装与验证](/zh/cli/quick-start/installation)
+- [获取 API Key 并登录](/zh/cli/quick-start/get-api-key-and-log-in)
+- [运行第一个任务](/zh/cli/quick-start/run-your-first-task)
+- [网页识别建任务](/zh/cli/core-commands/recognize)
+- [URL 直接采集](/zh/cli/core-commands/run-url)
+- [命令速查表](/zh/cli/reference/command-cheatsheet)
+
+## 注意事项
+
+- `recognize` 与 `run-url` 仍需可用 Chrome 环境。
+- Linux arm64 暂不支持本地执行，可使用云采集能力。
+- PowerShell 中中文 `--goal` 参数请使用双引号包裹。

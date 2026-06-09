@@ -1,0 +1,104 @@
+---
+title: 网页识别建任务
+description: 使用 octopus recognize 从网页 URL 识别页面结构，并生成可运行的本地采集任务文件。
+---
+
+> `octopus recognize` 用于输入 URL、识别页面结构并生成采集任务。适合需要把新页面沉淀为可复用本地任务文件的场景。
+
+## `octopus recognize`（AI 智能识别网页）
+
+**命令描述**
+
+CLI 会打开目标 URL，分析网页结构，识别可采集字段，并返回候选区域。识别能力覆盖列表页、详情页、列表 + 详情页任务和分页逻辑。
+
+## 自动识别
+
+```bash
+octopus recognize https://detail.tmall.com/item.htm?id=710033201461 --auto
+```
+
+带目标说明可以提高识别方向的一致性：
+
+```bash
+octopus recognize https://movie.douban.com/explore --auto --goal "提取电影列表，包括电影名称、评分、简介、导演、年份"
+```
+
+输出为任务文件：
+
+```bash
+octopus recognize URL --auto --goal "提取商品评论" --output task.json
+```
+
+## 提高识别质量
+
+```bash
+# 使用 LLM 辅助候选排序
+octopus recognize URL --auto --goal "提取商品信息" --llm-rank
+
+# 不自动关闭弹窗，适合弹窗里包含关键信息的页面
+octopus recognize URL --auto --no-dismiss-popups
+```
+
+识别结果会返回多个候选区域，例如 `protected_smart_1`、`protected_smart_2`。候选信息通常包含匹配度、置信度、翻页检测和样例数据。
+
+选择候选并生成任务文件：
+
+```bash
+octopus recognize URL --select protected_smart_1 --output task.json
+```
+
+## 手动辅助识别
+
+```bash
+octopus recognize URL --manual
+```
+
+当自动识别结果不稳定，或需要人工确认列表、详情页、分页行为时使用。
+
+## Agent 模式
+
+Agent 模式用于把网页识别能力接入 Codex、QClaw 或其他自动化系统。
+
+```bash
+# 准备 Agent 上下文
+octopus recognize URL --prepare-agent --json --goal "提取用户评论" --output context.json
+
+# 预览 Agent 计划
+octopus recognize --preview-agent-plan plan.json --agent-context context.json --json
+
+# 应用 Agent 计划并生成任务文件
+octopus recognize --apply-agent-plan plan.json --agent-context context.json --output task.json
+```
+
+<Note>
+  若你看到旧示例中提到单独的 Agent 参数，请优先使用本页列出的 `--prepare-agent`、`--preview-agent-plan` 与 `--apply-agent-plan` 流程。
+</Note>
+
+## 识别后的下一步
+
+建议先校验任务文件，再运行：
+
+```bash
+octopus task validate --task-file task.json
+octopus run recognized_example --task-file task.json --max-rows 20
+```
+
+## 适用场景
+
+| 场景 | 建议 |
+| --- | --- |
+| 快速试采新 URL | 使用 [`octopus run-url`](/zh/cli/core-commands/run-url) |
+| 需要生成可复用任务文件 | 使用 `octopus recognize --auto --output task.json` |
+| 自动候选不准确 | 增加 `--goal`，或使用 `--manual` |
+| 接入 Agent | 使用 `--prepare-agent` 生成上下文 |
+
+## 下一步
+
+<CardGroup cols={2}>
+  <Card title="URL 直接采集" icon="wand-magic-sparkles" href="/zh/cli/core-commands/run-url">
+    不生成任务文件，直接从 URL 识别并采集。
+  </Card>
+  <Card title="运行采集任务" icon="play" href="/zh/cli/core-commands/run-tasks">
+    使用 `run --task-file` 运行识别生成的任务文件。
+  </Card>
+</CardGroup>

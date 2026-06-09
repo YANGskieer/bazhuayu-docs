@@ -178,6 +178,8 @@
             "group": "CLI核心命令详解",
             "pages": [
               "zh/cli/core-commands/task-management",
+              "zh/cli/core-commands/recognize",
+              "zh/cli/core-commands/run-url",
               "zh/cli/core-commands/run-tasks",
               "zh/cli/core-commands/export-data",
               "zh/cli/core-commands/diagnostics"
@@ -195,6 +197,7 @@
       {
         "tab": "更新日志",
         "pages": [
+          "zh/changelog/june-2026",
           "zh/changelog/may-2026",
           "zh/changelog/april-2026"
         ]

@@ -1,11 +1,11 @@
-﻿---
+---
 title: 输出与退出码
-description: 八爪鱼 CLI 的 JSON / JSONL 输出、stdout / stderr 与退出码，便于脚本与 CI 集成。
+description: 八爪鱼 CLI 的 JSON / JSONL 输出、stdout / stderr 与退出码，便于脚本、CI 与 Agent 集成。
 ---
 
-> 在脚本、Agent 或 CI 中调用八爪鱼 CLI 时，理解结构化输出与退出码。
+> 在脚本、Agent、Codex 或 CI 中调用八爪鱼 CLI 时，优先使用结构化输出与退出码判断结果。
 
-CLI 同时支持**人类可读**的终端输出与**机器可读**的 JSON / JSONL，便于自动化集成。
+CLI 同时支持人类可读终端输出与机器可读 JSON / JSONL。
 
 ## JSON 输出（`--json`）
 
@@ -15,9 +15,11 @@ CLI 同时支持**人类可读**的终端输出与**机器可读**的 JSON / JSO
 octopus task list --json
 octopus auth status --json
 octopus local status <taskId> --json
+octopus recognize URL --prepare-agent --json --goal "提取用户评论"
+octopus run-url URL --auto --json
 ```
 
-成功时通常返回 `ok: true` 与 `data` 字段，例如：
+成功时通常返回 `ok: true` 与 `data` 字段：
 
 ```json
 {
@@ -29,37 +31,23 @@ octopus local status <taskId> --json
         "taskName": "示例任务",
         "status": "Idle"
       }
-    ],
-    "page": 1,
-    "pageSize": 20,
-    "total": 1
+    ]
   }
 }
 ```
 
-失败时返回 `ok: false` 与 `error`：
-
-```json
-{
-  "ok": false,
-  "error": {
-    "code": "AUTH_REQUIRED",
-    "message": "API key is required for this command."
-  }
-}
-```
-
-各命令的 `data` 结构不同，编写脚本时请以具体命令输出为准。
+失败时通常返回 `ok: false` 与 `error`。各命令的 `data` 结构不同，编写脚本时请以具体命令输出为准，并容忍新增字段。
 
 ## JSONL 事件流（`--jsonl`）
 
-长时间本地运行时可使用：
+长时间运行或管道处理时使用：
 
 ```bash
 octopus run <taskId> --jsonl
+octopus run-url URL --auto --jsonl
 ```
 
-每行一个 JSON 对象，便于流式处理进度，例如：
+每行一个 JSON 对象，便于流式处理进度：
 
 ```jsonl
 {"type":"run.started","taskId":"abc123","timestamp":"2026-01-01T10:00:00.000Z"}
@@ -74,7 +62,7 @@ octopus run <taskId> --jsonl
 | 模式 | stdout | stderr |
 | --- | --- | --- |
 | 人类可读模式 | 命令结果 | 诊断、警告、错误 |
-| `--json` / `--jsonl` | 结构化数据 | 仍可能输出诊断信息或 JSON 错误包 |
+| `--json` / `--jsonl` | 结构化数据 | 仍可能输出诊断信息 |
 
 管道处理时建议只解析 stdout 中的业务数据，单独保留 stderr 便于排错。
 
@@ -91,8 +79,8 @@ octopus run <taskId> --jsonl
 
 ## 自动化建议
 
-- 单次查询类命令使用 `--json`。
-- 长时间本地运行使用 `--jsonl` 跟踪进度。
+- 单次查询、识别上下文、状态检查使用 `--json`。
+- 长时间本地运行或 `run-url` 直接采集使用 `--jsonl` 跟踪进度。
 - 在 CI 中根据退出码判断步骤成败。
 - 单独收集 stderr 便于排查。
-- 切勿在日志中打印 API Key。
+- 切勿在日志中打印 API Key、Access Token 或完整凭据文件。
