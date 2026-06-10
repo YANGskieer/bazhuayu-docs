@@ -108,7 +108,7 @@ Open http://localhost:3333
 - **Website**: https://www.bazhuayu.com
 
 ## Deployment
-- **Production URL**: https://yyfyyds.mintlify.app
+- **Production URL**: https://bazhuayu.mintlify.dev
 - **GitHub Repo**: https://github.com/yyfyydshh/my-docs
 - **Branch**: `skieer_yang_521` (your working branch)
 - **Auto-deploy**: Push to `master` triggers Mintlify deployment
