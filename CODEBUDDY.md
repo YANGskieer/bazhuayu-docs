@@ -12,7 +12,7 @@
 | **名称** | 八爪鱼采集器 文档站点 |
 | **类型** | Mintlify 文档站点（MDX 格式） |
 | **语言** | 简体中文（`/zh/`） |
-| **在线地址** | https://yyfyyds.mintlify.app |
+| **在线地址** | https://bazhuayu.mintlify.dev |
 | **GitHub** | https://github.com/yyfyydshh/bazhuayu-docs |
 | **本地路径** | `C:\Users\16934\.qclaw\workspace-54nuktoh8cd83kjj\my-docs` |
 
@@ -360,8 +360,9 @@ git push origin yangyifan
 ### 9.1 自动部署
 - **触发方式**：推送到 GitHub `master` 分支
 - **部署目标**：Mintlify（在 Dashboard 连接了 GitHub 仓库）
-- **默认域名**：https://yyfyyds.mintlify.app
-- **自定义域名**：`docs.bazhuayu.com`（DNS 配置中 — CNAME 指向 `yyfyyds.mintlify.app`）
+- **默认域名**：https://bazhuayu.mintlify.dev（Mintlify 子域名，Dashboard 中需将 deployment 标识改为 `bazhuayu`）
+- **备用域名**：https://bazhuayu.mintlify.app
+- **自定义域名**：`www.bazhuayu.com` 或 `docs.bazhuayu.com`（CNAME 指向 Mintlify 提供的地址）
 
 ### 9.2 触发重建
 ```bash

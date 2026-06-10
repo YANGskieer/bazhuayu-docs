@@ -1,0 +1,48 @@
+---
+title: 2026 年 6 月更新日志
+description: 2026 年 6 月八爪鱼文档的更新与改进（MCP AI 客户端教程、站点路由）。
+---
+
+# 2026 年 6 月发布说明
+
+> **更新日期：** 2026 年 6 月 10 日  
+> MCP 五大 AI 客户端完整中文对接教程上线；站点根路径与更新日志入口路由优化。
+
+## 新功能
+
+### MCP 服务 — AI 客户端完整对接教程
+
+ChatGPT、Claude、Cursor、VS Code、Gemini 五个平台的 MCP 对接页由外部跳转改为 **站内完整中文分步指南**，每篇均含：
+
+- 前置条件、MCP 服务地址（`https://mcp.bazhuayu.com`）与 OAuth 认证说明
+- 分步操作截图（安装插件 / 添加 MCP 服务器 / 登录授权等）
+- 配置示例（如 Cursor / VS Code 的 `settings.json`、Gemini CLI 的 OAuth `clientId` 等）
+- 接入后可用的能力说明与常见问题
+
+| 平台 | 文档 |
+| --- | --- |
+| ChatGPT | [MCP 对接 ChatGPT](/zh/mcp/integrations/chatgpt) |
+| Claude | [MCP 对接 Claude](/zh/mcp/integrations/claude) |
+| Cursor | [MCP 对接 Cursor](/zh/mcp/integrations/cursor) |
+| VS Code | [MCP 对接 VS Code](/zh/mcp/integrations/vscode) |
+| Gemini | [MCP 对接 Gemini](/zh/mcp/integrations/gemini) |
+
+各教程统一说明：导出格式为 **EXCEL / CSV / JSON / 数据库**；云采集可能消耗八爪鱼账户余额，具体取决于所用模板。
+
+## 改进
+
+### 站点路由
+
+- 根路径 **`/`** 自动跳转至 [概述](/zh/overview)
+- **`/zh/changelog`** 自动跳转至最新月份更新日志
+
+### 文档内容规范
+
+- MCP 对接教程统一使用八爪鱼品牌表述，移除 Octoparse 相关外链与重复说明
+- 各 AI 客户端页采用与 Coze / QClaw 一致的分步教程版式
+
+## Bug 修复
+
+- 修复 ChatGPT、Gemini 等对接页缺少分步截图、仅跳转外部帮助中心的问题
+
+如有问题或反馈，请联系 [help@skieer.com](mailto:help@skieer.com)。

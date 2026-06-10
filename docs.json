@@ -195,6 +195,7 @@
       {
         "tab": "更新日志",
         "pages": [
+          "zh/changelog/june-2026",
           "zh/changelog/may-2026",
           "zh/changelog/april-2026"
         ]
@@ -204,6 +205,14 @@
     ]
   },
   "redirects": [
+    {
+      "source": "/",
+      "destination": "/zh/overview"
+    },
+    {
+      "source": "/zh/changelog",
+      "destination": "/zh/changelog/june-2026"
+    },
     {
       "source": "/favicons/:path*",
       "destination": "/assets/favicons/:path*"
@@ -262,8 +271,8 @@
   },
   "seo": {
     "metatags": {
-      "og:image": "https://yyfyyds.mintlify.app/assets/og-image.png",
-      "twitter:image": "https://yyfyyds.mintlify.app/assets/og-image.png",
+      "og:image": "https://bazhuayu.mintlify.dev/assets/og-image.png",
+      "twitter:image": "https://bazhuayu.mintlify.dev/assets/og-image.png",
       "twitter:card": "summary_large_image",
       "apple-mobile-web-app-title": "八爪鱼文档"
     },
