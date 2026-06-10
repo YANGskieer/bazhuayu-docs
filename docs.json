@@ -212,6 +212,14 @@
       "destination": "/zh/overview"
     },
     {
+      "source": "/docs",
+      "destination": "/zh/overview"
+    },
+    {
+      "source": "/docs/:path*",
+      "destination": "/:path*"
+    },
+    {
       "source": "/zh/changelog",
       "destination": "/zh/changelog/june-2026"
     },
@@ -273,8 +281,8 @@
   },
   "seo": {
     "metatags": {
-      "og:image": "https://bazhuayu.mintlify.dev/assets/og-image.png",
-      "twitter:image": "https://bazhuayu.mintlify.dev/assets/og-image.png",
+      "og:image": "https://bazhuayu.mintlify.app/assets/og-image.png",
+      "twitter:image": "https://bazhuayu.mintlify.app/assets/og-image.png",
       "twitter:card": "summary_large_image",
       "apple-mobile-web-app-title": "八爪鱼文档"
     },
