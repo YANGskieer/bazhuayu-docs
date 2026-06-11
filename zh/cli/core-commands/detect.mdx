@@ -1,0 +1,111 @@
+---
+title: 网页检测与任务生成
+description: 使用 octopus detect 检测网页结构、选择采集区域，并生成可校验和运行的本地任务文件。
+---
+
+> `octopus detect` 是 v0.1.23 的网页检测入口。它可以检测列表页、详情页和分页逻辑，并生成本地任务文件；生成任务后仍需使用 `octopus run` 执行采集。
+
+## 自动模式
+
+自动模式会选择最匹配的候选区域并生成任务文件：
+
+```bash
+octopus detect https://movie.douban.com/explore --auto --goal "提取电影名称、评分、简介、导演和年份" --task-id douban-movies --output task.json
+```
+
+如果省略 `--output`，CLI 会在当前目录自动创建 `detected_<host>.json`。带有 `&`、`?` 等 shell 特殊字符的 URL 应使用引号包裹。
+
+```bash
+octopus detect "https://example.com/page?a=1&b=2" --auto --output task.json
+```
+
+## 提高检测质量
+
+```bash
+# 使用 LLM 辅助候选排序
+octopus detect URL --auto --goal "提取商品信息" --llm-rank --output task.json
+
+# 不自动关闭登录、Cookie 或广告弹窗
+octopus detect URL --auto --no-dismiss-popups --output task.json
+```
+
+检测结果包含候选区域、字段、样例数据、匹配度以及分页信息。需要人工指定候选区域时，先运行检测查看候选 ID，再使用 `--select`：
+
+```bash
+octopus detect URL
+octopus detect URL --select protected_smart_1 --output task.json
+```
+
+## 手动模式
+
+```bash
+octopus detect URL --manual --goal "提取商品详情" --output task.json
+```
+
+手动模式会打开可交互浏览器，用于登录、处理验证、选择高亮的数据区域、配置详情页采集方式和保存会话。v0.1.23 修复了手动检测详情页时部分采集方式不显示的问题。
+
+在无图形界面的 Linux 服务器上，非手动检测可在安装 Xvfb 后自动使用虚拟显示；手动模式需要桌面或 VNC 环境。
+
+## 搜索后检测
+
+对搜索入口页，可以先填写关键词，再检测结果页：
+
+```bash
+octopus detect https://www.example.com --auto --query "关键词" --output task.json
+octopus detect https://www.example.com --auto --input keyword=关键词 --output task.json
+```
+
+生成的任务会保留搜索输入框和提交动作。遇到登录、验证码或付费墙时，改用手动模式完成操作，并按需使用 `--save-session` 与 `--session-name` 保存同站点 Cookie 会话。
+
+## Agent 模式
+
+CLI 提供一键 Agent 包装模式，也保留可审计的分步流程。Agent 工作流会默认生成全页截图。
+
+```bash
+# 一键调用可信的本地 Agent 命令
+octopus detect URL --agent --agent-command "node make-plan.mjs" --goal "提取用户评论" --output task.json
+
+# 准备 Agent 上下文
+octopus detect URL --prepare-agent --json --goal "提取用户评论" --output context.json
+
+# 预览并应用 Agent 计划
+octopus detect --preview-agent-plan plan.json --agent-context context.json --json
+octopus detect --apply-agent-plan plan.json --agent-context context.json --output task.json --json
+```
+
+Agent 在创建任务前应先运行 `octopus capabilities --json`，并采用其中的 `createTaskFromUrlWithAgent` 工作流。`--agent-command` 会执行本地命令，只能传入可信的 Agent 运行器。
+
+## 校验并运行
+
+`detect` 负责生成任务，不会直接执行采集。推荐流程：
+
+```bash
+octopus detect URL --auto --goal "提取标题和链接" --task-id <taskId> --output task.json
+octopus task validate <taskId> --task-file task.json
+octopus run <taskId> --task-file task.json --max-rows 20
+octopus data export <taskId> --source local --lot-id <lotId> --format xlsx --file result.xlsx
+```
+
+## 从旧命令迁移
+
+<Warning>
+  v0.1.23 不再提供 `octopus recognize`，请改用 `octopus detect`。`octopus run-url` 仍作为隐藏兼容入口存在，但不在顶层帮助中展示，新文档和新脚本不应继续依赖它。
+</Warning>
+
+| 旧用法 | v0.1.23 推荐用法 |
+| --- | --- |
+| `octopus recognize URL --auto` | `octopus detect URL --auto` |
+| `octopus recognize URL --manual` | `octopus detect URL --manual` |
+| `octopus recognize URL --prepare-agent` | `octopus detect URL --prepare-agent` |
+| `octopus run-url URL --auto --max-rows 20` | 先 `detect --task-id <taskId> --output task.json`，再 `run <taskId> --task-file task.json --max-rows 20` |
+
+## 下一步
+
+<CardGroup cols={2}>
+  <Card title="运行采集任务" icon="play" href="/zh/cli/core-commands/run-tasks">
+    校验并运行 `detect` 生成的任务文件。
+  </Card>
+  <Card title="输出与退出码" icon="terminal" href="/zh/cli/reference/output-and-exit-codes">
+    在脚本、CI 和 Agent 中使用结构化输出。
+  </Card>
+</CardGroup>

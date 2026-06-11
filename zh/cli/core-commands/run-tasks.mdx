@@ -3,7 +3,7 @@ title: 运行采集任务
 description: 使用 octopus run 运行已有任务或本地任务文件，使用 octopus cloud start 在云端运行任务。
 ---
 
-> 运行方式取决于任务来源：新 URL 可用 `run-url`，已有任务可用 `run`，大批量稳定采集可用云端运行。
+> 运行方式取决于任务来源：新 URL 先用 `detect` 生成任务文件，已有任务可用 `run`，大批量稳定采集可用云端运行。
 
 ## `octopus run`（本地运行已有任务）
 
@@ -26,11 +26,11 @@ octopus run <taskId> --output ./runs
 
 ## 运行本地任务文件
 
-`recognize` 生成的 `.json` 任务文件可直接用于本地运行：
+`detect` 生成的 `.json` 任务文件可直接用于本地运行：
 
 ```bash
-octopus run --task-file ./task.json --output ./results/
-octopus run --task-file ./task.json --detach --max-rows 100
+octopus run <taskId> --task-file ./task.json --output ./results/
+octopus run <taskId> --task-file ./task.json --detach --max-rows 100
 ```
 
 如果命令需要任务标识，可使用任务文件中的 `taskId`，或按 CLI 输出提示传入。
@@ -68,8 +68,8 @@ octopus cloud stop <taskId>
 
 | 场景 | 推荐方式 | 原因 |
 | --- | --- | --- |
-| 新 URL，没配过任务 | `octopus run-url URL --auto` | 自动识别并直接采集 |
-| 需要保存识别结果 | `octopus recognize --output task.json` 后 `octopus run --task-file` | 可复用、可校验 |
+| 新 URL，没配过任务 | `octopus detect URL --auto --task-id <taskId> --output task.json` 后 `octopus run <taskId> --task-file task.json` | 先生成并校验任务，再执行采集 |
+| 需要人工选择采集区域 | `octopus detect URL --manual --output task.json` | 可交互选择详情页、列表和分页方式 |
 | 已有任务，调试或小批量 | `octopus run <taskId>` | 能看到本地浏览器，便于排查 |
 | 已有任务，大批量或定期运行 | `octopus cloud start <taskId>` | 交给云端资源执行 |
 
@@ -80,8 +80,8 @@ octopus cloud stop <taskId>
 ## 下一步
 
 <CardGroup cols={2}>
-  <Card title="URL 直接采集" icon="wand-magic-sparkles" href="/zh/cli/core-commands/run-url">
-    从网页 URL 直接识别并采集。
+  <Card title="网页检测与任务生成" icon="sparkles" href="/zh/cli/core-commands/detect">
+    从网页 URL 检测结构并生成任务文件。
   </Card>
   <Card title="导出数据" icon="download" href="/zh/cli/core-commands/export-data">
     将采集结果导出为文件。
