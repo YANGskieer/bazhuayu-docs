@@ -1,16 +1,73 @@
 ---
 title: 2026 年 6 月更新日志
-description: 2026 年 6 月八爪鱼文档更新，包含 CLI 国内 v0.1.22、MCP AI 客户端教程与站点路由优化。
+description: 2026 年 6 月八爪鱼文档更新，包含 CLI v0.1.24 Agent 视觉审查与样品采集、v0.1.23 网页检测更新，以及 MCP AI 客户端教程。
 ---
 
 # 2026 年 6 月发布说明
 
-> **更新日期：** 2026 年 6 月 10 日  
-> CLI 国内版本更新至 v0.1.22；MCP 五大 AI 客户端完整中文对接教程上线；站点根路径与更新日志入口路由优化。
+> **更新日期：** 2026 年 6 月 15 日
+> CLI 当前版本更新至 v0.1.24；Agent 创建任务新增强制视觉审查与生成后的样品采集能力，并保留 v0.1.23、v0.1.22 历史记录。
+
+## CLI 更新 v0.1.24
+
+安装或更新：
+
+```bash
+npm install -g bazhuayu-cli@0.1.24
+```
+
+本次更新：
+
+- LLM / Agent 创建任务时，推荐使用 `detect --agent` 工作流；用户直接操作 CLI 时仍可使用 `--auto`
+- 新增 `--run-sample <正整数>`，可在任务生成后立即执行少量本地采集
+- 可用 `--run-output <dir>` 指定样品产物目录，使用 `--keep-agent-files` 保留 Agent 上下文和计划文件
+- Agent plan 必须提供 `visualReview` 与 `selection`，并记录截图路径、候选 ID 和视觉证据
+- Agent 上下文新增标注截图、候选区裁剪图与数据质量判断策略
+
+推荐的 Agent 最短路径：
+
+```bash
+octopus detect URL --agent --agent-command "node make-plan.mjs" --goal "提取标题、价格和链接" --task-id <taskId> --output task.json --yes --run-sample 3 --json
+```
+
+<Warning>
+  `--agent-command` 是会在本机执行的 shell 命令，只能传入可信的本地运行器；自然语言采集目标应传给 `--goal`。样品采集失败时任务文件仍可能已经生成，自动化程序应单独检查 `sampleRun.exitCode`。
+</Warning>
+
+Agent 写入计划前必须打开标注截图或全页截图，并核对候选区裁剪图。`visualReview` 至少要包含 `reviewed: true`、截图路径、候选 ID 和一条 `evidence`；缺少证据或候选 ID 与 `selection` 不一致会使计划预览失败。
+
+少量广告、推荐卡或异构行缺少可选字段可能属于正常的部分数据。只有主区域、核心字段、搜索或分页结构出现系统性错误时，才需要重建任务。
+
+## CLI 更新 v0.1.23（历史）
+
+安装或更新：
+
+```bash
+npm install -g bazhuayu-cli@0.1.23
+```
+
+本次更新：
+
+- 网页识别命令由 `octopus recognize` 正式更名为 [`octopus detect`](/zh/cli/core-commands/detect)
+- 修复手动检测详情页时部分采集方式不显示的问题
+- 优化列表页字段识别、详情页检测、分页逻辑检测和候选区排序
+- 继续支持 `--auto`、`--manual`、`--llm-rank` 和 Agent 计划流程
+
+推荐工作流：
+
+```bash
+octopus detect URL --auto --goal "提取标题和链接" --task-id <taskId> --output task.json
+octopus task validate <taskId> --task-file task.json
+octopus run <taskId> --task-file task.json --max-rows 20
+```
+
+<Warning>
+  `detect --auto` 负责检测网页并生成任务，不会直接执行采集。`octopus recognize` 已不可用；`octopus run-url` 仅作为隐藏兼容入口保留，新脚本请使用上面的 `detect` → `validate` → `run` 流程。
+</Warning>
 
 ## 新功能
 
-### CLI 国内更新 v0.1.22
+### CLI 国内更新 v0.1.22（历史）
 
 本次 CLI 从 `0.1.14` 升级到 `0.1.22`。安装或更新：
 
@@ -20,8 +77,8 @@ npm install -g bazhuayu-cli@0.1.22
 
 新增能力：
 
-- [`octopus recognize`](/zh/cli/core-commands/recognize) — 从网页 URL 识别结构并生成任务文件
-- [`octopus run-url`](/zh/cli/core-commands/run-url) — 无需预制任务，直接从 URL 自动识别并采集
+- `octopus recognize` — 当时用于从网页 URL 识别结构并生成任务文件，v0.1.23 已更名为 `detect`
+- `octopus run-url` — 当时用于无需预制任务的 URL 直接采集，v0.1.23 起仅作为兼容入口保留
 - 支持列表页、详情页、列表 + 详情页任务与分页识别
 - 新增 Agent 模式上下文准备与计划应用流程
 - 新增 Linux x64 平台本地采集支持
@@ -67,7 +124,7 @@ ChatGPT、Claude、Cursor、VS Code、Gemini 五个平台的 MCP 对接页由外
 
 ## 注意事项
 
-- `recognize` 与 `run-url` 仍需可用 Chrome 环境
+- 当前 `detect` 与本地 `run` 需要可用 Chrome 环境
 - Linux arm64 暂不支持本地执行，可使用云采集能力
 - PowerShell 中中文 `--goal` 参数请使用双引号包裹
 

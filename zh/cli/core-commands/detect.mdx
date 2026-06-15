@@ -1,0 +1,162 @@
+---
+title: 网页检测与任务生成
+description: 使用 octopus detect 检测网页结构、选择采集区域，并生成可校验和运行的本地任务文件。
+---
+
+> `octopus detect` 是网页检测与任务生成入口。v0.1.24 强化了 Agent 工作流：Agent 必须结合截图完成视觉审查，并可在生成任务后立即采集少量样品数据。
+
+## Agent 最短路径
+
+LLM 或 Agent 创建任务时，应先运行 `octopus capabilities --json`，再使用可信的本地 Agent 运行器：
+
+```bash
+octopus detect https://movie.douban.com/explore --agent --agent-command "node make-plan.mjs" --goal "提取电影名称、评分、导演和年份" --task-id douban-movies --output task.json --yes --run-sample 3 --json
+```
+
+<Warning>
+  `--agent-command` 会执行本地 shell 命令，参数值必须是可信的 Agent 运行器，例如 `node make-plan.mjs`。采集目标应传给 `--goal`，不能把自然语言目标直接写进 `--agent-command`。
+</Warning>
+
+`--run-sample <n>` 只支持 `--agent`，且 `n` 必须是正整数。它会使用生成的任务执行一次 `--max-rows <n>` 本地采集。可用 `--run-output <dir>` 指定样品产物目录，用 `--headless` 控制样品采集的浏览器模式。
+
+```bash
+octopus detect URL --agent --agent-command "node make-plan.mjs" --goal "提取商品信息" --yes --run-sample 5 --run-output ./sample-runs --keep-agent-files --json
+```
+
+结构化结果保持为单个 JSON envelope，其中可能包含：
+
+- `generatedTask`：任务文件、任务 ID、字段和候选区
+- `preview`：Agent plan 风险预览
+- `agentFiles`：使用 `--keep-agent-files` 时保留的上下文和计划文件
+- `sampleRun`：样品采集的退出码、运行结果和质量摘要
+
+`sampleRun.summary` 会提供 `sampledRows`、`fieldFillRates`、`missingFieldsByRow` 和 `judgment`。即使样品采集失败，任务文件仍可能已经成功生成，因此自动化程序应分别检查顶层 `ok` 和 `sampleRun.exitCode`。
+
+## Agent 审计路径
+
+需要保留完整上下文和人工审查记录时，使用分步流程：
+
+```bash
+octopus detect URL --prepare-agent --json --goal "提取用户评论" --output context.json
+octopus detect --preview-agent-plan plan.json --agent-context context.json --json
+octopus detect --apply-agent-plan plan.json --agent-context context.json --output task.json --json
+octopus task validate <taskId> --task-file task.json --json
+```
+
+上下文可能包含全页截图、标注候选区的截图和候选区裁剪图，路径位于 `context.screenshot`、`context.visualArtifacts` 和 `context.decisionSummary`。Agent 写 `plan.json` 前必须：
+
+1. 打开标注截图或全页截图。
+2. 检查所选候选区的裁剪图。
+3. 核对主数据区域、字段、详情链接和分页控件。
+4. 在 `visualReview` 中记录视觉证据。
+
+最小计划结构：
+
+```json
+{
+  "schemaVersion": "octopus.detect.agent-plan.v1",
+  "contextFile": "context.json",
+  "visualReview": {
+    "reviewed": true,
+    "screenshotPath": "<context.screenshot.path>",
+    "selectedCandidateId": "protected_smart_1",
+    "evidence": [
+      "候选区对应页面主列表，未包含侧栏和广告"
+    ],
+    "checks": {
+      "mainRegionVerified": true,
+      "fieldsVerified": true,
+      "paginationVerified": true,
+      "detailLinksVerified": false,
+      "excludedRegions": ["侧栏", "导航", "广告"]
+    }
+  },
+  "selection": {
+    "candidateId": "protected_smart_1",
+    "fields": ["标题", "链接"],
+    "pagination": null
+  }
+}
+```
+
+`visualReview` 与 `selection` 均为必需对象。`visualReview` 至少需要 `reviewed: true`、`screenshotPath`、`selectedCandidateId` 和一条 `evidence`。缺少视觉证据、截图路径错误或候选 ID 不一致时，`--preview-agent-plan` 会判定计划不通过。
+
+样品数据出现少量空字段不一定表示任务错误。广告、推荐卡、专题块或异构记录可能天然缺少可选字段；只有主数据区域选错、核心字段在多数代表性行中缺失、搜索或分页结构错误时，才应重新生成任务。
+
+## 自动模式
+
+`--auto` 适合用户直接操作 CLI，由确定性检测结果自动选择最佳候选区。它不是 LLM/Agent 创建任务的默认路径。
+
+```bash
+octopus detect https://movie.douban.com/explore --auto --goal "提取电影名称、评分、简介、导演和年份" --task-id douban-movies --output task.json
+```
+
+如果省略 `--output`，CLI 会在当前目录自动创建 `detected_<host>.json`。带有 `&`、`?` 等 shell 特殊字符的 URL 应使用引号包裹。
+
+```bash
+octopus detect "https://example.com/page?a=1&b=2" --auto --output task.json
+```
+
+提高检测质量：
+
+```bash
+# 使用 LLM 辅助候选排序
+octopus detect URL --auto --goal "提取商品信息" --llm-rank --output task.json
+
+# 不自动关闭登录、Cookie 或广告弹窗
+octopus detect URL --auto --no-dismiss-popups --output task.json
+```
+
+检测结果包含候选区域、字段、样例数据、匹配度以及分页信息。需要人工指定候选区域时：
+
+```bash
+octopus detect URL
+octopus detect URL --select protected_smart_1 --output task.json
+```
+
+## 手动与搜索模式
+
+```bash
+octopus detect URL --manual --goal "提取商品详情" --output task.json
+octopus detect https://www.example.com --auto --query "关键词" --output task.json
+octopus detect https://www.example.com --auto --input keyword=关键词 --output task.json
+```
+
+手动模式用于登录、处理验证、选择高亮区域、配置详情页采集方式和保存会话。搜索模式生成的任务会保留输入框与提交动作。遇到登录、验证码或付费墙时，改用手动模式，并按需使用 `--save-session` 与 `--session-name`。
+
+在无图形界面的 Linux 服务器上，非手动检测可在安装 Xvfb 后自动使用虚拟显示；手动模式需要桌面或 VNC 环境。
+
+## 校验并运行
+
+`detect` 负责生成任务，不会直接执行采集。推荐流程：
+
+```bash
+octopus detect URL --auto --goal "提取标题和链接" --task-id <taskId> --output task.json
+octopus task validate <taskId> --task-file task.json
+octopus run <taskId> --task-file task.json --max-rows 20
+octopus data export <taskId> --source local --lot-id <lotId> --format xlsx --file result.xlsx
+```
+
+## 从旧命令迁移
+
+<Warning>
+  v0.1.23 起不再提供 `octopus recognize`，请改用 `octopus detect`。`octopus run-url` 仍作为隐藏兼容入口存在，但不在顶层帮助中展示，新文档和新脚本不应继续依赖它。
+</Warning>
+
+| 旧用法 | 当前推荐用法 |
+| --- | --- |
+| `octopus recognize URL --auto` | `octopus detect URL --auto` |
+| `octopus recognize URL --manual` | `octopus detect URL --manual` |
+| `octopus recognize URL --prepare-agent` | `octopus detect URL --prepare-agent` |
+| `octopus run-url URL --auto --max-rows 20` | 先 `detect --task-id <taskId> --output task.json`，再 `run <taskId> --task-file task.json --max-rows 20` |
+
+## 下一步
+
+<CardGroup cols={2}>
+  <Card title="运行采集任务" icon="play" href="/zh/cli/core-commands/run-tasks">
+    校验并运行 `detect` 生成的任务文件。
+  </Card>
+  <Card title="输出与退出码" icon="terminal" href="/zh/cli/reference/output-and-exit-codes">
+    在脚本、CI 和 Agent 中使用结构化输出。
+  </Card>
+</CardGroup>
