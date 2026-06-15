@@ -178,8 +178,7 @@
             "group": "CLI核心命令详解",
             "pages": [
               "zh/cli/core-commands/task-management",
-              "zh/cli/core-commands/recognize",
-              "zh/cli/core-commands/run-url",
+              "zh/cli/core-commands/detect",
               "zh/cli/core-commands/run-tasks",
               "zh/cli/core-commands/export-data",
               "zh/cli/core-commands/diagnostics"
@@ -212,6 +211,14 @@
       "destination": "/zh/overview"
     },
     {
+      "source": "/docs",
+      "destination": "/zh/overview"
+    },
+    {
+      "source": "/docs/:path*",
+      "destination": "/:path*"
+    },
+    {
       "source": "/zh/changelog",
       "destination": "/zh/changelog/june-2026"
     },
@@ -238,6 +245,14 @@
     {
       "source": "/zh/cli/core-commands",
       "destination": "/zh/cli/core-commands/task-management"
+    },
+    {
+      "source": "/zh/cli/core-commands/recognize",
+      "destination": "/zh/cli/core-commands/detect"
+    },
+    {
+      "source": "/zh/cli/core-commands/run-url",
+      "destination": "/zh/cli/core-commands/detect"
     }
   ],
   "api": {
@@ -273,8 +288,8 @@
   },
   "seo": {
     "metatags": {
-      "og:image": "https://bazhuayu.mintlify.dev/assets/og-image.png",
-      "twitter:image": "https://bazhuayu.mintlify.dev/assets/og-image.png",
+      "og:image": "https://bazhuayu.mintlify.app/assets/og-image.png",
+      "twitter:image": "https://bazhuayu.mintlify.app/assets/og-image.png",
       "twitter:card": "summary_large_image",
       "apple-mobile-web-app-title": "八爪鱼文档"
     },

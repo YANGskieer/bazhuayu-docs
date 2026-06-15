@@ -20,7 +20,7 @@ octopus doctor --json
 octopus browser doctor
 ```
 
-`recognize`、`run-url` 和本地 `run` 都依赖可用浏览器环境。若网页无法打开、扩展注册失败或 Chrome 不可用，优先运行此命令。
+`detect` 和本地 `run` 都依赖可用浏览器环境。若网页无法打开、扩展注册失败或 Chrome 不可用，优先运行此命令。
 
 ## `octopus auth status`（查看登录状态）
 
@@ -40,7 +40,11 @@ octopus auth status --json
 | PowerShell 多行命令报错 | 使用反引号 `` ` `` 续行，或写成单行 |
 | URL 导航失败 | 检查 `https://`、域名和路径是否完整 |
 | `--output` 文件位置不对 | 先切换到工作目录，或传绝对路径 |
-| 安装 `@latest` 卡住 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.22` |
+| `octopus recognize` 报未知命令 | v0.1.23 已更名为 `octopus detect` |
+| `--run-sample` 报参数错误 | 仅在 `detect --agent` 中使用，并传入正整数 |
+| Agent plan preview 不通过 | 打开上下文中的截图和候选区裁剪图，补全 `visualReview`，并确保候选 ID 与 `selection` 一致 |
+| Agent 任务已生成但样品采集失败 | 检查 JSON 中的 `sampleRun.exitCode`、`sampleRun.summary` 和样品输出目录 |
+| 安装 `@latest` 卡住 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.24` |
 
 ## 下一步
 

@@ -1,6 +1,6 @@
 ---
 title: 命令速查表
-description: 八爪鱼 CLI v0.1.22 常用命令快速参考。
+description: 八爪鱼 CLI v0.1.24 常用命令快速参考。
 ---
 
 > 八爪鱼 CLI 常用命令一览。尖括号 `<taskId>`、`<apiKey>`、`<url>` 表示需替换为实际值。
@@ -41,37 +41,36 @@ OCTOPUS_ACCESS_TOKEN=<accessToken> octopus task list --json
 octopus task list --api-base-url https://example.com --json
 ```
 
-## URL 直接采集
+## 网页检测与任务生成
 
 ```bash
-octopus run-url <url> --auto
-octopus run-url <url> --auto --goal "提取商品名称、价格、链接"
-octopus run-url <url> --auto --max-rows 20
-octopus run-url <url> --select candidate_001
-octopus run-url <url> --auto --input keyword=烤面包机
-octopus run-url <url> --auto --json
-octopus run-url <url> --auto --jsonl
+octopus detect <url>
+octopus detect <url> --agent --agent-command "node make-plan.mjs" --goal "提取商品信息" --yes --run-sample 5 --json
+octopus detect <url> --agent --agent-command "node make-plan.mjs" --goal "提取商品信息" --yes --run-sample 5 --run-output ./sample-runs --keep-agent-files --json
 ```
 
-## 网页识别建任务
+Agent 审计流程：
 
 ```bash
-octopus recognize <url> --auto
-octopus recognize <url> --manual
-octopus recognize <url> --auto --goal "提取商品评论"
-octopus recognize <url> --auto --goal "提取商品信息" --llm-rank
-octopus recognize <url> --auto --no-dismiss-popups
-octopus recognize <url> --auto --output task.json
-octopus recognize <url> --select protected_smart_1 --output task.json
+octopus detect <url> --prepare-agent --json --goal "提取用户评论" --output context.json
+octopus detect --preview-agent-plan plan.json --agent-context context.json --json
+octopus detect --apply-agent-plan plan.json --agent-context context.json --output task.json --json
 ```
 
-Agent 模式：
+用户直接操作 CLI：
 
 ```bash
-octopus recognize <url> --prepare-agent --json --goal "提取用户评论" --output context.json
-octopus recognize --preview-agent-plan plan.json --agent-context context.json --json
-octopus recognize --apply-agent-plan plan.json --agent-context context.json --output task.json
+octopus detect <url> --auto --output task.json
+octopus detect <url> --manual --output task.json
+octopus detect <url> --auto --goal "提取商品评论" --output task.json
+octopus detect <url> --auto --goal "提取商品信息" --llm-rank --output task.json
+octopus detect <url> --auto --no-dismiss-popups --output task.json
+octopus detect <url> --select protected_smart_1 --output task.json
+octopus detect <url> --auto --query "烤面包机" --output task.json
+octopus detect <url> --manual --save-session --session-name shop --output task.json
 ```
+
+`--agent-command` 必须是可信的本地 shell 命令；自然语言目标使用 `--goal`。`--run-sample` 只支持 `--agent`，且参数必须是正整数。
 
 ## 任务
 
@@ -88,7 +87,7 @@ octopus task validate <taskId>
 
 ```bash
 octopus task inspect <taskId> --task-file <file.json|file.xml|file.otd>
-octopus task validate --task-file <file.json|file.xml|file.otd>
+octopus task validate <taskId> --task-file <file.json|file.xml|file.otd>
 ```
 
 ## 本地采集
@@ -101,8 +100,8 @@ octopus run <taskId> --detach
 octopus run <taskId> --output ./runs
 octopus run <taskId> --chrome-path /path/to/chrome
 
-octopus run --task-file ./task.json --output ./results/
-octopus run --task-file ./task.json --detach --max-rows 100
+octopus run <taskId> --task-file ./task.json --output ./results/
+octopus run <taskId> --task-file ./task.json --detach --max-rows 100
 ```
 
 ## 云采集
