@@ -1,11 +1,11 @@
 ---
 title: 安装与验证
-description: 安装 bazhuayu-cli@0.1.23，并验证 octopus 命令、Node.js 环境与本地采集运行时。
+description: 安装 bazhuayu-cli@0.1.24，并验证 octopus 命令、Node.js 环境与本地采集运行时。
 ---
 
 > 通过 npm 安装八爪鱼 CLI，并确认 `octopus` 命令、浏览器依赖与本地运行环境可用。
 
-八爪鱼 CLI 以 npm 包形式发布。v0.1.23 使用 `octopus detect` 作为网页检测与任务生成入口。
+八爪鱼 CLI 以 npm 包形式发布。v0.1.24 增强了 `octopus detect` 的 Agent 视觉审查与样品采集流程。
 
 ## 环境要求
 
@@ -69,10 +69,10 @@ Linux x64 从 CLI v0.1.22 起支持本地采集；Linux arm64 目前仅建议使
 
 ## 安装八爪鱼 CLI
 
-安装或更新到 v0.1.23：
+安装或更新到 v0.1.24：
 
 ```bash
-npm install -g bazhuayu-cli@0.1.23
+npm install -g bazhuayu-cli@0.1.24
 ```
 
 安装完成后，命令名为：
@@ -88,7 +88,7 @@ octopus --version
 octopus --help
 ```
 
-v0.1.23 应能看到 `detect` 命令：
+v0.1.24 应能看到 `detect` 命令：
 
 ```bash
 octopus detect --help
@@ -108,7 +108,7 @@ octopus browser doctor
 更新到指定版本：
 
 ```bash
-npm install -g bazhuayu-cli@0.1.23
+npm install -g bazhuayu-cli@0.1.24
 octopus --version
 ```
 
@@ -127,7 +127,7 @@ npm uninstall -g bazhuayu-cli
 | PowerShell 多行命令报错 | 使用反引号 `` ` `` 续行，或优先写成单行 |
 | URL 无法打开 | 检查是否写完整协议，例如 `https://example.com` |
 | `--output task.json` 写到意外目录 | 先 `cd` 到工作目录，或使用绝对路径 |
-| `npm install -g ...@latest` 卡住或被终止 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.23` |
+| `npm install -g ...@latest` 卡住或被终止 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.24` |
 | `doctor` 某项失败 | 根据 `ok: false` 的检查项修复 Chrome、引擎文件或浏览器依赖 |
 
 ## 下一步

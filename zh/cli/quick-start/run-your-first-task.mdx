@@ -7,7 +7,17 @@ description: 使用 detect 从新 URL 生成任务，校验并运行任务文件
 
 开始前请已完成 [安装](/zh/cli/quick-start/installation) 与 [登录](/zh/cli/quick-start/get-api-key-and-log-in)。
 
-## 路径一：从新 URL 生成并运行任务
+## 路径一：让 Agent 生成并试采任务
+
+LLM 或 Agent 创建任务时，推荐使用可信的本地 Agent 运行器，并立即采集少量样品验证质量：
+
+```bash
+octopus detect https://movie.douban.com/explore --agent --agent-command "node make-plan.mjs" --goal "提取电影名称、评分、导演和年份" --task-id douban-movies --output task.json --yes --run-sample 3 --json
+```
+
+`--agent-command` 是本地 shell 命令，不是自然语言提示。`--run-sample` 只支持 `--agent` 且必须为正整数。命令返回单个 JSON envelope；任务生成结果与样品采集结果应分别检查，尤其是 `sampleRun.exitCode` 和 `sampleRun.summary`。
+
+## 路径二：直接操作 CLI 生成并运行任务
 
 如果没有现成任务，先检测网页并生成任务文件：
 
@@ -17,7 +27,7 @@ octopus task validate douban-movies --task-file task.json
 octopus run douban-movies --task-file task.json --max-rows 20
 ```
 
-`detect` 会分析列表页、详情页与分页逻辑，但不会直接执行采集。常用检测方式：
+`--auto` 适合用户直接操作 CLI。`detect` 会分析列表页、详情页与分页逻辑，但不会直接执行采集。常用检测方式：
 
 ```bash
 octopus detect URL --auto --goal "提取商品名称、价格和链接" --task-id <taskId> --output task.json
@@ -33,7 +43,7 @@ octopus detect URL
 octopus detect URL --select protected_smart_1 --output task.json
 ```
 
-## 路径二：运行已有任务
+## 路径三：运行已有任务
 
 先列出任务：
 

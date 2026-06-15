@@ -1,6 +1,6 @@
 ---
 title: 命令速查表
-description: 八爪鱼 CLI v0.1.23 常用命令快速参考。
+description: 八爪鱼 CLI v0.1.24 常用命令快速参考。
 ---
 
 > 八爪鱼 CLI 常用命令一览。尖括号 `<taskId>`、`<apiKey>`、`<url>` 表示需替换为实际值。
@@ -45,6 +45,21 @@ octopus task list --api-base-url https://example.com --json
 
 ```bash
 octopus detect <url>
+octopus detect <url> --agent --agent-command "node make-plan.mjs" --goal "提取商品信息" --yes --run-sample 5 --json
+octopus detect <url> --agent --agent-command "node make-plan.mjs" --goal "提取商品信息" --yes --run-sample 5 --run-output ./sample-runs --keep-agent-files --json
+```
+
+Agent 审计流程：
+
+```bash
+octopus detect <url> --prepare-agent --json --goal "提取用户评论" --output context.json
+octopus detect --preview-agent-plan plan.json --agent-context context.json --json
+octopus detect --apply-agent-plan plan.json --agent-context context.json --output task.json --json
+```
+
+用户直接操作 CLI：
+
+```bash
 octopus detect <url> --auto --output task.json
 octopus detect <url> --manual --output task.json
 octopus detect <url> --auto --goal "提取商品评论" --output task.json
@@ -55,14 +70,7 @@ octopus detect <url> --auto --query "烤面包机" --output task.json
 octopus detect <url> --manual --save-session --session-name shop --output task.json
 ```
 
-Agent 模式：
-
-```bash
-octopus detect <url> --agent --agent-command "node make-plan.mjs" --output task.json
-octopus detect <url> --prepare-agent --json --goal "提取用户评论" --output context.json
-octopus detect --preview-agent-plan plan.json --agent-context context.json --json
-octopus detect --apply-agent-plan plan.json --agent-context context.json --output task.json --json
-```
+`--agent-command` 必须是可信的本地 shell 命令；自然语言目标使用 `--goal`。`--run-sample` 只支持 `--agent`，且参数必须是正整数。
 
 ## 任务
 
