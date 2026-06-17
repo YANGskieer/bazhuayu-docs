@@ -40,7 +40,7 @@
 ```bash
 node --version   # v22.16.0
 ```
-Node 位于 `D:\workapp\QClaw\v0.2.24.540\resources\node\node.exe`（随 QClaw 分发）。
+Node 位于 `D:\workapp\QClaw\v0.2.27.560\resources\node\node.exe`（随 QClaw 分发，版本号随 QClaw 升级变化）。
 
 ### 3.2 安装依赖
 ```bash
@@ -129,15 +129,16 @@ my-docs/
     │   ├── quick-start/    # API Key 获取指南
     │   ├── guides/         # 客户端配置指南
     │   └── integrations/   # 平台对接（Coze/Dify/QClaw/ChatGPT/Claude...）
-    ├── cli/                # CLI 命令行工具文档
+    ├── cli/                # CLI 命令行工具文档（当前 v0.1.25）
     │   ├── index.mdx       # CLI 总览
     │   ├── quick-start/    # 安装、登录、首次运行
-    │   ├── core-commands/  # 任务管理、运行、导出、诊断
+    │   ├── core-commands/  # detect、任务管理、运行、导出、诊断
     │   └── reference/      # 命令速查、退出码
     ├── academy/            # 教程学院（~35 篇网页采集教程）
     └── changelog/          # 更新日志
         ├── april-2026.mdx
-        └── may-2026.mdx
+        ├── may-2026.mdx
+        └── june-2026.mdx
 ```
 
 ---
@@ -440,3 +441,4 @@ be8945e docs(mcp): restore AI client guides
 7. **页脚已隐藏**：`#footer { display: none !important }`
 8. **仓库不要用 HTTPS remote**：公司网络下推送大文件时 HTTP 会断
 9. **GitHub 仓库原名 `my-docs`**：已更名 `bazhuayu-docs`，旧 URL 自动重定向
+10. **QClaw 版本目录变化**：QClaw 升级后版本号目录会变（如 `v0.2.26.557` → `v0.2.27.560`），Profile 中 PATH 需同步更新

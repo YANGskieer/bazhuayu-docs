@@ -50,7 +50,7 @@ my-docs/
 ```mdx
 <Steps>
   <Step title="Install CLI">
-    Run: `npm install -g @octoparse/cli`
+    Run: `npm install -g bazhuayu-cli@0.1.25`
   </Step>
 </Steps>
 ```
@@ -109,8 +109,8 @@ Open http://localhost:3333
 
 ## Deployment
 - **Production URL**: https://bazhuayu.mintlify.dev
-- **GitHub Repo**: https://github.com/yyfyydshh/my-docs
-- **Branch**: `skieer_yang_521` (your working branch)
+- **GitHub Repo**: https://github.com/YANGskieer/bazhuayu-docs
+- **Branch**: `yangyifan` (your working branch)
 - **Auto-deploy**: Push to `master` triggers Mintlify deployment
 
 ## Tips for AI Assistance

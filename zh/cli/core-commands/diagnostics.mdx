@@ -44,7 +44,8 @@ octopus auth status --json
 | `--run-sample` 报参数错误 | 仅在 `detect --agent` 中使用，并传入正整数 |
 | Agent plan preview 不通过 | 打开上下文中的截图和候选区裁剪图，补全 `visualReview`，并确保候选 ID 与 `selection` 一致 |
 | Agent 任务已生成但样品采集失败 | 检查 JSON 中的 `sampleRun.exitCode`、`sampleRun.summary` 和样品输出目录 |
-| 安装 `@latest` 卡住 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.24` |
+| 安装 `@latest` 卡住 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.25` |
+| QClaw 升级后 `octopus` 命令找不到 | QClaw 版本号目录变化导致 node 路径失效，更新 PATH 中的 QClaw 版本目录 |
 
 ## 下一步
 
