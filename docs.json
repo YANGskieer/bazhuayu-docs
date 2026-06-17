@@ -76,13 +76,7 @@
                   {
                     "group": "规则排错与优化",
                     "pages": [
-                      "zh/academy/troubleshooting/index",
-                      {
-                        "group": "本地排错",
-                        "pages": [
-                          "zh/academy/troubleshooting/local-debug"
-                        ]
-                      },
+                      "zh/academy/troubleshooting/local-debug",
                       {
                         "group": "流程优化",
                         "pages": [

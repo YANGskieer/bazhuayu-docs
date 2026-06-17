@@ -1,12 +1,12 @@
 ---
 title: 2026 年 6 月更新日志
-description: 2026 年 6 月八爪鱼文档更新，包含 CLI v0.1.25 detector 重构与任务同步客户端、v0.1.24 Agent 视觉审查与样品采集，以及 MCP AI 客户端教程。
+description: 2026 年 6 月八爪鱼文档更新，包含 CLI v0.1.25 detector 重构与任务同步客户端、采集学院新增规则排错与优化栏目（7 篇文章从帮助中心迁入），以及 MCP AI 客户端教程。
 ---
 
 # 2026 年 6 月发布说明
 
 > **更新日期：** 2026 年 6 月 17 日
-> CLI 当前版本更新至 v0.1.25；detector 模块重构、候选区排序与分页识别改进、detect 任务同步客户端、弹窗筛选优化。保留 v0.1.24、v0.1.23、v0.1.22 历史记录。
+> CLI 当前版本更新至 v0.1.25；detector 模块重构、候选区排序与分页识别改进、detect 任务同步客户端、弹窗筛选优化。采集学院新增「规则排错与优化」栏目，从帮助中心迁入 7 篇排错与流程优化文章。保留 v0.1.24、v0.1.23、v0.1.22 历史记录。
 
 ## CLI 更新 v0.1.25
 
@@ -134,6 +134,22 @@ ChatGPT、Claude、Cursor、VS Code、Gemini 五个平台的 MCP 对接页由外
 | Gemini | [MCP 对接 Gemini](/zh/mcp/integrations/gemini) |
 
 各教程统一说明：导出格式为 **EXCEL / CSV / JSON / 数据库**；云采集可能消耗八爪鱼账户余额，具体取决于所用模板。
+
+### 采集学院 — 规则排错与优化栏目
+
+从八爪鱼帮助中心（Helplook）迁入 7 篇排错与流程优化文章，统一整理到采集学院 → 操作指南 → **规则排错与优化** 栏目下。文章内容、图片、视频与原文完全一致，并适配 Mintlify 文档站版式。
+
+| 文章 | 说明 |
+| --- | --- |
+| [本地采集排错](/zh/academy/troubleshooting/local-debug) | 手动执行规则排查，本地采集常见问题（无数据、速度慢、数据重复/错位/漏采）的解决方法 |
+| [规则优化](/zh/academy/troubleshooting/rule-optimization) | 执行前等待、Ajax 超时设置、页面滚动配置 |
+| [Ajax 网页采集方法](/zh/academy/troubleshooting/ajax-web-scraping) | 判断 Ajax 网页、设置 Ajax 点击与超时 |
+| [新标签页处理](/zh/academy/troubleshooting/new-tab) | 识别和配置新标签页采集 |
+| [自动重试](/zh/academy/troubleshooting/auto-retry) | 重试条件、切换代理 IP、切换浏览器版本 |
+| [常见防采集套路及解决方法](/zh/academy/troubleshooting/anti-scraping) | 验证码、登录验证、数据加密、虚假数据、IP 封锁等防采套路的识别与应对 |
+| [云采集排错](/zh/academy/troubleshooting/cloud-debug) | 本地有数据但云采集无数据的排查方法 |
+
+栏目导航采用扁平结构，分为「直接文章」和「流程优化」子分组两部分，方便按场景快速定位。
 
 ## 改进
 
