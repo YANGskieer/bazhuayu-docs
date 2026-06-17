@@ -19,188 +19,240 @@
         "default": true,
         "hidden": true,
         "tabs": [
-      {
-        "tab": "首页",
-        "pages": [
-          "zh/overview"
-        ]
-      },
-      {
-        "tab": "MCP 服务",
-        "groups": [
           {
-            "group": "概述",
+            "tab": "首页",
             "pages": [
-              "zh/mcp/index"
+              "zh/overview"
             ]
           },
           {
-            "group": "快速入门",
-            "pages": [
-              "zh/mcp/quick-start/api-key",
-              "zh/mcp/workflow"
+            "tab": "采集学院",
+            "groups": [
+              {
+                "group": "概述",
+                "pages": [
+                  "zh/academy/index"
+                ]
+              },
+              {
+                "group": "操作指南",
+                "pages": [
+                  {
+                    "group": "基本采集",
+                    "pages": [
+                      {
+                        "group": "初级采集",
+                        "pages": [
+                          "zh/academy/basic-collection/beginner/custom-collection",
+                          "zh/academy/basic-collection/beginner/list-collection",
+                          "zh/academy/basic-collection/beginner/list-to-detail",
+                          "zh/academy/basic-collection/beginner/table-collection",
+                          "zh/academy/basic-collection/beginner/click-to-jump",
+                          "zh/academy/basic-collection/beginner/login-verification",
+                          "zh/academy/basic-collection/beginner/collection-logic",
+                          "zh/academy/basic-collection/beginner/local-collection"
+                        ]
+                      },
+                      {
+                        "group": "翻页采集多页数据",
+                        "pages": [
+                          "zh/academy/basic-collection/pagination/next-page-button",
+                          "zh/academy/basic-collection/pagination/scroll-loading-pagination",
+                          "zh/academy/basic-collection/pagination/load-more-button-pagination",
+                          "zh/academy/basic-collection/pagination/scroll-and-collect",
+                          "zh/academy/basic-collection/pagination/click-load-more-and-collect",
+                          "zh/academy/basic-collection/pagination/number-pagination"
+                        ]
+                      },
+                      {
+                        "group": "多关键词多网址采集",
+                        "pages": [
+                          "zh/academy/basic-collection/bulk-input/text-loop-keywords",
+                          "zh/academy/basic-collection/bulk-input/url-loop-similar-pages"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {
-            "group": "客户端配置",
-            "pages": [
-              "zh/mcp/guides/clients"
+            "tab": "MCP 服务",
+            "groups": [
+              {
+                "group": "概述",
+                "pages": [
+                  "zh/mcp/index"
+                ]
+              },
+              {
+                "group": "快速入门",
+                "pages": [
+                  "zh/mcp/quick-start/api-key",
+                  "zh/mcp/workflow"
+                ]
+              },
+              {
+                "group": "客户端配置",
+                "pages": [
+                  "zh/mcp/guides/clients"
+                ]
+              },
+              {
+                "group": "平台对接",
+                "pages": [
+                  "zh/mcp/integrations/coze",
+                  "zh/mcp/integrations/dify",
+                  "zh/mcp/integrations/qclaw",
+                  "zh/mcp/integrations/chatgpt",
+                  "zh/mcp/integrations/claude",
+                  "zh/mcp/integrations/openclaw",
+                  "zh/mcp/integrations/cursor",
+                  "zh/mcp/integrations/vscode",
+                  "zh/mcp/integrations/gemini"
+                ]
+              },
+              {
+                "group": "工具参考",
+                "pages": [
+                  "zh/mcp/search-templates",
+                  "zh/mcp/search-tasks",
+                  "zh/mcp/execute-task",
+                  "zh/mcp/export-data",
+                  "zh/mcp/start-or-stop-task",
+                  "zh/mcp/redeem-coupon"
+                ]
+              },
+              {
+                "group": "参考",
+                "pages": [
+                  "zh/mcp/rate-limits",
+                  "zh/mcp/troubleshooting"
+                ]
+              }
             ]
           },
           {
-            "group": "平台对接",
-            "pages": [
-              "zh/mcp/integrations/coze",
-              "zh/mcp/integrations/dify",
-              "zh/mcp/integrations/qclaw",
-              "zh/mcp/integrations/chatgpt",
-              "zh/mcp/integrations/claude",
-              "zh/mcp/integrations/openclaw",
-              "zh/mcp/integrations/cursor",
-              "zh/mcp/integrations/vscode",
-              "zh/mcp/integrations/gemini"
+            "tab": "OpenAPI",
+            "groups": [
+              {
+                "group": "综述",
+                "pages": [
+                  "zh/api-reference/intro"
+                ]
+              },
+              {
+                "group": "接口调用凭证",
+                "pages": [
+                  "zh/api-reference/access-token/obtain-a-new-token",
+                  "zh/api-reference/access-token/refresh-token"
+                ]
+              },
+              {
+                "group": "任务组",
+                "pages": [
+                  "zh/api-reference/task-group/get-task-group-information",
+                  "zh/api-reference/task-group/delete-groups"
+                ]
+              },
+              {
+                "group": "任务",
+                "pages": [
+                  "zh/api-reference/task/search-task",
+                  "zh/api-reference/task/duplicate-task",
+                  "zh/api-reference/task/copy-tasks",
+                  "zh/api-reference/task/move-task",
+                  "zh/api-reference/task/delete-tasks",
+                  "zh/api-reference/task/get-actions",
+                  "zh/api-reference/task/update-task-parameters",
+                  "zh/api-reference/task/update-loop-items",
+                  "zh/api-reference/task/update-action-properties",
+                  "zh/api-reference/task/update-task-urls"
+                ]
+              },
+              {
+                "group": "云采集",
+                "pages": [
+                  "zh/api-reference/cloud-extraction/start-task",
+                  "zh/api-reference/cloud-extraction/stop-task",
+                  "zh/api-reference/cloud-extraction/start-subtasks",
+                  "zh/api-reference/cloud-extraction/stop-subtasks",
+                  "zh/api-reference/cloud-extraction/get-task-stats",
+                  "zh/api-reference/cloud-extraction/get-task-status",
+                  "zh/api-reference/cloud-extraction/get-statuses",
+                  "zh/api-reference/cloud-extraction/get-statuses-v2",
+                  "zh/api-reference/cloud-extraction/get-subtask-status"
+                ]
+              },
+              {
+                "group": "任务分析",
+                "pages": [
+                  "zh/api-reference/task-analytics/query-task-analytics"
+                ]
+              },
+              {
+                "group": "数据",
+                "pages": [
+                  "zh/api-reference/data/get-non-exported-data",
+                  "zh/api-reference/data/mark-data-as-exported",
+                  "zh/api-reference/data/get-data-by-offset",
+                  "zh/api-reference/data/remove-data",
+                  "zh/api-reference/data/get-batch-data"
+                ]
+              },
+              {
+                "group": "参考",
+                "pages": [
+                  "zh/api-reference/reference"
+                ]
+              }
             ]
           },
           {
-            "group": "工具参考",
-            "pages": [
-              "zh/mcp/search-templates",
-              "zh/mcp/search-tasks",
-              "zh/mcp/execute-task",
-              "zh/mcp/export-data",
-              "zh/mcp/start-or-stop-task",
-              "zh/mcp/redeem-coupon"
+            "tab": "CLI",
+            "groups": [
+              {
+                "group": "概述",
+                "pages": [
+                  "zh/cli/index"
+                ]
+              },
+              {
+                "group": "快速入门",
+                "pages": [
+                  "zh/cli/quick-start/installation",
+                  "zh/cli/quick-start/get-api-key-and-log-in",
+                  "zh/cli/quick-start/run-your-first-task"
+                ]
+              },
+              {
+                "group": "CLI核心命令详解",
+                "pages": [
+                  "zh/cli/core-commands/detect",
+                  "zh/cli/core-commands/task-management",
+                  "zh/cli/core-commands/run-tasks",
+                  "zh/cli/core-commands/export-data",
+                  "zh/cli/core-commands/diagnostics"
+                ]
+              },
+              {
+                "group": "参考",
+                "pages": [
+                  "zh/cli/reference/command-cheatsheet",
+                  "zh/cli/reference/output-and-exit-codes"
+                ]
+              }
             ]
           },
           {
-            "group": "参考",
+            "tab": "更新日志",
             "pages": [
-              "zh/mcp/rate-limits",
-              "zh/mcp/troubleshooting"
+              "zh/changelog/june-2026",
+              "zh/changelog/may-2026",
+              "zh/changelog/april-2026"
             ]
           }
-        ]
-      },
-      {
-        "tab": "OpenAPI",
-        "groups": [
-          {
-            "group": "综述",
-            "pages": [
-              "zh/api-reference/intro"
-            ]
-          },
-          {
-            "group": "接口调用凭证",
-            "pages": [
-              "zh/api-reference/access-token/obtain-a-new-token",
-              "zh/api-reference/access-token/refresh-token"
-            ]
-          },
-          {
-            "group": "任务组",
-            "pages": [
-              "zh/api-reference/task-group/get-task-group-information",
-              "zh/api-reference/task-group/delete-groups"
-            ]
-          },
-          {
-            "group": "任务",
-            "pages": [
-              "zh/api-reference/task/search-task",
-              "zh/api-reference/task/duplicate-task",
-              "zh/api-reference/task/copy-tasks",
-              "zh/api-reference/task/move-task",
-              "zh/api-reference/task/delete-tasks",
-              "zh/api-reference/task/get-actions",
-              "zh/api-reference/task/update-task-parameters",
-              "zh/api-reference/task/update-loop-items",
-              "zh/api-reference/task/update-action-properties",
-              "zh/api-reference/task/update-task-urls"
-            ]
-          },
-          {
-            "group": "云采集",
-            "pages": [
-              "zh/api-reference/cloud-extraction/start-task",
-              "zh/api-reference/cloud-extraction/stop-task",
-              "zh/api-reference/cloud-extraction/start-subtasks",
-              "zh/api-reference/cloud-extraction/stop-subtasks",
-              "zh/api-reference/cloud-extraction/get-task-stats",
-              "zh/api-reference/cloud-extraction/get-task-status",
-              "zh/api-reference/cloud-extraction/get-statuses",
-              "zh/api-reference/cloud-extraction/get-statuses-v2",
-              "zh/api-reference/cloud-extraction/get-subtask-status"
-            ]
-          },
-          {
-            "group": "任务分析",
-            "pages": [
-              "zh/api-reference/task-analytics/query-task-analytics"
-            ]
-          },
-          {
-            "group": "数据",
-            "pages": [
-              "zh/api-reference/data/get-non-exported-data",
-              "zh/api-reference/data/mark-data-as-exported",
-              "zh/api-reference/data/get-data-by-offset",
-              "zh/api-reference/data/remove-data",
-              "zh/api-reference/data/get-batch-data"
-            ]
-          },
-          {
-            "group": "参考",
-            "pages": [
-              "zh/api-reference/reference"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "CLI",
-        "groups": [
-          {
-            "group": "概述",
-            "pages": [
-              "zh/cli/index"
-            ]
-          },
-          {
-            "group": "快速入门",
-            "pages": [
-              "zh/cli/quick-start/installation",
-              "zh/cli/quick-start/get-api-key-and-log-in",
-              "zh/cli/quick-start/run-your-first-task"
-            ]
-          },
-          {
-            "group": "CLI核心命令详解",
-            "pages": [
-              "zh/cli/core-commands/detect",
-              "zh/cli/core-commands/task-management",
-              "zh/cli/core-commands/run-tasks",
-              "zh/cli/core-commands/export-data",
-              "zh/cli/core-commands/diagnostics"
-            ]
-          },
-          {
-            "group": "参考",
-            "pages": [
-              "zh/cli/reference/command-cheatsheet",
-              "zh/cli/reference/output-and-exit-codes"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "更新日志",
-        "pages": [
-          "zh/changelog/june-2026",
-          "zh/changelog/may-2026",
-          "zh/changelog/april-2026"
-        ]
-      }
         ]
       }
     ]

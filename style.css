@@ -813,3 +813,12 @@ h2.m-0.font-normal button span::after {
 #footer {
   display: none !important;
 }
+
+.academy-inline-icon {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: 2.25em !important;
+  max-height: 1.65em !important;
+  margin: 0 0.2em !important;
+  vertical-align: -0.35em !important;
+}
