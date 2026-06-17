@@ -1,6 +1,6 @@
 ---
 title: 命令速查表
-description: 八爪鱼 CLI v0.1.24 常用命令快速参考。
+description: 八爪鱼 CLI v0.1.25 常用命令快速参考。
 ---
 
 > 八爪鱼 CLI 常用命令一览。尖括号 `<taskId>`、`<apiKey>`、`<url>` 表示需替换为实际值。
@@ -70,7 +70,7 @@ octopus detect <url> --auto --query "烤面包机" --output task.json
 octopus detect <url> --manual --save-session --session-name shop --output task.json
 ```
 
-`--agent-command` 必须是可信的本地 shell 命令；自然语言目标使用 `--goal`。`--run-sample` 只支持 `--agent`，且参数必须是正整数。
+`--agent-command` 必须是可信的本地 shell 命令；自然语言目标使用 `--goal`。`--run-sample` 只支持 `--agent`，且参数必须是正整数。v0.1.25 起，detect 生成的任务会自动同步到客户端任务列表。
 
 ## 任务
 

@@ -27,7 +27,22 @@ octopus task validate douban-movies --task-file task.json
 octopus run douban-movies --task-file task.json --max-rows 20
 ```
 
-`--auto` 适合用户直接操作 CLI。`detect` 会分析列表页、详情页与分页逻辑，但不会直接执行采集。常用检测方式：
+`--auto` 适合用户直接操作 CLI。`detect` 会分析列表页、详情页与分页逻辑，但不会直接执行采集。v0.1.25 起，detect 生成的任务还会自动同步到八爪鱼桌面客户端任务列表，你可以在客户端中查看和编辑后再运行。
+
+### detect → 客户端编辑 → 采集
+
+```bash
+# 1. CLI AI 识别并生成任务（自动同步到客户端）
+octopus detect https://movie.douban.com/explore --auto --goal "提取电影名称、评分、导演、年份"
+
+# 2. 在八爪鱼桌面客户端查看和编辑任务
+#    客户端 → 任务列表 → 找到 detected_movie.douban.com
+
+# 3. 编辑完从 CLI 或客户端运行
+octopus run detected_movie.douban.com --max-rows 20 --jsonl
+```
+
+常用检测方式：
 
 ```bash
 octopus detect URL --auto --goal "提取商品名称、价格和链接" --task-id <taskId> --output task.json

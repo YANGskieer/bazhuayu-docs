@@ -177,8 +177,8 @@
           {
             "group": "CLI核心命令详解",
             "pages": [
-              "zh/cli/core-commands/task-management",
               "zh/cli/core-commands/detect",
+              "zh/cli/core-commands/task-management",
               "zh/cli/core-commands/run-tasks",
               "zh/cli/core-commands/export-data",
               "zh/cli/core-commands/diagnostics"
