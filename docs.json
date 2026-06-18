@@ -106,6 +106,39 @@
                       },
                       "zh/academy/data-export/auto-export-local"
                     ]
+                  },
+                  {
+                    "group": "XPath学习与案例",
+                    "pages": [
+                      {
+                        "group": "Xpath入门",
+                        "pages": [
+                          "zh/academy/xpath/getting-started/why-use-xpath",
+                          "zh/academy/xpath/getting-started/what-is-html-xpath",
+                          "zh/academy/xpath/getting-started/get-xpath",
+                          "zh/academy/xpath/getting-started/xpath-functions"
+                        ]
+                      },
+                      "zh/academy/xpath/relative-absolute-xpath",
+                      {
+                        "group": "修改Xpath元素",
+                        "pages": [
+                          "zh/academy/xpath/modify-element/locate-element",
+                          "zh/academy/xpath/modify-element/modify-loop-list",
+                          "zh/academy/xpath/modify-element/modify-loop-pagination"
+                        ]
+                      },
+                      {
+                        "group": "xpath案例",
+                        "pages": [
+                          "zh/academy/xpath/cases/missing-or-misaligned-fields",
+                          "zh/academy/xpath/cases/duplicate-pages",
+                          "zh/academy/xpath/cases/duplicate-last-page",
+                          "zh/academy/xpath/cases/loop-add-more-items",
+                          "zh/academy/xpath/cases/loop-filter-items"
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
