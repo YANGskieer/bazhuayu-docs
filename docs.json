@@ -89,6 +89,23 @@
                       "zh/academy/troubleshooting/anti-scraping",
                       "zh/academy/troubleshooting/cloud-debug"
                     ]
+                  },
+                  {
+                    "group": "数据导出",
+                    "pages": [
+                      "zh/academy/data-export/start-and-export",
+                      "zh/academy/data-export/file-download",
+                      {
+                        "group": "导出到数据库",
+                        "pages": [
+                          "zh/academy/data-export/export-to-database/export-to-mysql",
+                          "zh/academy/data-export/export-to-database/export-to-sqlserver",
+                          "zh/academy/data-export/export-to-database/export-to-oracle",
+                          "zh/academy/data-export/export-to-database/export-to-database-faq"
+                        ]
+                      },
+                      "zh/academy/data-export/auto-export-local"
+                    ]
                   }
                 ]
               }
