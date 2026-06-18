@@ -27,7 +27,7 @@ octopus task validate douban-movies --task-file task.json
 octopus run douban-movies --task-file task.json --max-rows 20
 ```
 
-`--auto` 适合用户直接操作 CLI。`detect` 会分析列表页、详情页与分页逻辑，但不会直接执行采集。v0.1.25 起，detect 生成的任务还会自动同步到八爪鱼桌面客户端任务列表，你可以在客户端中查看和编辑后再运行。
+`--auto` 适合用户直接操作 CLI。`detect` 会分析列表页、详情页与分页逻辑，但不会直接执行采集。v0.1.25 起，detect 生成的任务还会自动同步到八爪鱼桌面客户端任务列表，你可以在客户端中查看和编辑后再运行。v0.1.26 进一步优化了候选区排序，`--auto` 返回的第一个候选大概率就是目标。
 
 ### detect → 客户端编辑 → 采集
 
