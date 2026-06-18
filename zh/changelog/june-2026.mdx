@@ -1,12 +1,12 @@
 ---
 title: 2026 年 6 月更新日志
-description: 2026 年 6 月八爪鱼文档更新，包含 CLI v0.1.25 detector 重构与任务同步客户端、采集学院新增规则排错与优化栏目（7 篇文章从帮助中心迁入）、数据导出栏目（7 篇文章从帮助中心迁入），以及 MCP AI 客户端教程。
+description: 2026 年 6 月八爪鱼文档更新，包含 CLI v0.1.25 detector 重构与任务同步客户端、采集学院新增规则排错与优化栏目（7 篇文章从帮助中心迁入）、数据导出栏目（7 篇文章从帮助中心迁入）、XPath学习与案例栏目（13 篇文章从帮助中心迁入），以及 MCP AI 客户端教程。
 ---
 
 # 2026 年 6 月发布说明
 
 > **更新日期：** 2026 年 6 月 18 日
-> 新增「数据导出」栏目，从帮助中心迁入 7 篇数据导出文章。保留之前所有更新内容。
+> 新增「数据导出」栏目（7 篇）和「XPath学习与案例」栏目（13 篇），从帮助中心迁入。保留之前所有更新内容。
 
 ## CLI 更新 v0.1.25
 
@@ -166,6 +166,28 @@ ChatGPT、Claude、Cursor、VS Code、Gemini 五个平台的 MCP 对接页由外
 | [自动导出到本地](/zh/academy/data-export/auto-export-local) | 团队版及以上专享功能，支持将采集数据自动保存为 Excel、CSV、HTML、JSON、XML 到本地 |
 
 栏目导航采用分组结构，包含 3 个直属页面和「**导出到数据库**」子分组（4 篇文章），层级清晰便于查找。
+
+### 采集学院 — XPath学习与案例栏目
+
+从八爪鱼帮助中心（Helplook）迁入 13 篇 XPath 学习与案例文章，统一整理到采集学院 → 操作指南 → **XPath学习与案例** 栏目下。文章内容、图片、视频与原文完全一致，并适配 Mintlify 文档站版式。
+
+| 文章 | 说明 |
+| --- | --- |
+| [为什么要用xpath？](/zh/academy/xpath/getting-started/why-use-xpath) | 通过百度搜索采集案例说明学习 XPath 的重要性及 XPath 在采集流程中的作用 |
+| [什么是html和xpath？](/zh/academy/xpath/getting-started/what-is-html-xpath) | HTML 基本结构与常用标签，XPath 概念与表达式写法入门 |
+| [xpath获取方法](/zh/academy/xpath/getting-started/get-xpath) | 通过浏览器开发者工具查看网页源码、定位元素、获取和验证 XPath |
+| [xpath函数](/zh/academy/xpath/getting-started/xpath-functions) | text、contains、position、last、following-sibling 等常用 XPath 函数及实战演练 |
+| [相对xpath、绝对XPath](/zh/academy/xpath/relative-absolute-xpath) | 绝对 XPath 与相对 XPath 的概念、循环框 XPath 与相对 XPath 的关系及修改实例 |
+| [定位某一元素Xpath](/zh/academy/xpath/modify-element/locate-element) | 通过详情页和列表页实例修改字段定位 XPath，解决字段提取不到、错位等问题 |
+| [修改循环列表xpath](/zh/academy/xpath/modify-element/modify-loop-list) | 修改循环列表 XPath 解决漏采、只采集到部分列表等问题 |
+| [修改循环翻页xpath](/zh/academy/xpath/modify-element/modify-loop-pagination) | 观察翻页确定问题并修改循环翻页 XPath，解决一二页重复循环 |
+| [数据字段缺失或错位](/zh/academy/xpath/cases/missing-or-misaligned-fields) | 同一字段在不同页面位置不同时，通过设置备用位置和修改 XPath 解决字段缺失或错位 |
+| [重复采集某几页数据](/zh/academy/xpath/cases/duplicate-pages) | 分析翻页 XPath 在第二页同时定位到上一页和下一页导致重复采集的原因及解决办法 |
+| [重复采集最后一页数据](/zh/academy/xpath/cases/duplicate-last-page) | 采集到最后一页后不停止、一直循环采集的原因分析及 XPath 修改方案 |
+| [循环列表-添加更多的项](/zh/academy/xpath/cases/loop-add-more-items) | 手动修改 XPath 让循环列表定位到全部所需数据项 |
+| [循环列表-过滤多余的项](/zh/academy/xpath/cases/loop-filter-items) | 两种过滤循环列表多余项的方法：修改 XPath 筛选和分支判断丢弃 |
+
+栏目导航采用分组结构，包含「**Xpath入门**」（4 篇）、「**修改Xpath元素**」（3 篇）、「**xpath案例**」（5 篇）三个子分组，以及「相对xpath、绝对XPath」1 篇直属页面，层级与原帮助中心完全一致。
 
 ## 改进
 
