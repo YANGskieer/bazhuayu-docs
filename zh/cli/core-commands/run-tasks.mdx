@@ -68,7 +68,8 @@ octopus cloud stop <taskId>
 
 | 场景 | 推荐方式 | 原因 |
 | --- | --- | --- |
-| LLM / Agent 从新 URL 创建任务 | `octopus detect URL --agent --agent-command "<可信本地运行器>" --goal "采集目标" --yes --run-sample 3 --json` | 同时保留视觉审查、任务生成和少量样品质量信息 |
+| LLM / Agent 从新 URL 创建任务 | `octopus detect URL --agent --agent-command "<可信本地运行器>" --goal "采集目标" --run-sample 3 --json` | 同时保留视觉审查、任务生成和少量样品质量信息 |
+| API 支撑的列表页 | `octopus detect URL --auto --output task.json` 或 Agent 选择 `apiCandidates` 后 `octopus run <taskId> --task-file task.json` | DOM 候选弱时可生成 `api_list` 本地任务；当前不自动同步云端 |
 | 用户直接从新 URL 创建任务 | `octopus detect URL --auto --task-id <taskId> --output task.json` 后 `octopus run <taskId> --task-file task.json` | 自动选择候选区，生成并校验任务后再执行采集 |
 | CLI 生成任务 → 客户端微调 → 再运行 | `octopus detect URL --auto` → 客户端编辑 → `octopus run <taskId>` | v0.1.25 起 detect 任务自动同步到客户端，方便团队协作 |
 | 需要人工选择采集区域 | `octopus detect URL --manual --output task.json` | 可交互选择详情页、列表和分页方式 |

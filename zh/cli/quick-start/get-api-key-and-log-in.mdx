@@ -88,7 +88,8 @@ OCTOPUS_ACCESS_TOKEN=你的AccessToken octopus task list --json
 私有化或代理环境可覆盖 API 地址：
 
 ```bash
-octopus task list --api-base-url https://example.com --json
+OCTOPUS_API_BASE_URL=https://example.com octopus task list --json
+octopus auth status --api-base-url https://example.com --json
 ```
 
 ## 凭据优先级

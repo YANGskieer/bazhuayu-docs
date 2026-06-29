@@ -1,14 +1,61 @@
 ---
 title: 2026 年 6 月更新日志
-description: 2026 年 6 月八爪鱼文档更新，包含 CLI v0.1.26 候选排序优化、Windows 任务名修复与 Agent 截图标注增大，采集学院新增规则排错与优化栏目（7 篇文章从帮助中心迁入）、数据导出栏目（7 篇文章从帮助中心迁入）、XPath学习与案例栏目（13 篇文章从帮助中心迁入），以及 MCP AI 客户端教程。
+description: 2026 年 6 月八爪鱼文档更新，包含 CLI v0.1.27 Agent 任务修正、API 列表候选、可见 DOM 字段选择与字段名规范化，以及采集学院、数据导出、XPath 学习与案例栏目更新。
 ---
 
 # 2026 年 6 月发布说明
 
-> **更新日期：** 2026 年 6 月 18 日
-> CLI 升级至 v0.1.26（候选排序优化、Windows 任务名修复、Agent 截图标注增大、detect 模块拆分）。新增「数据导出」栏目（7 篇）和「XPath学习与案例」栏目（13 篇），从帮助中心迁入。保留之前所有更新内容。
+> **更新日期：** 2026 年 6 月 26 日
+> CLI 升级至 v0.1.27（Agent 任务修正、API 列表候选、可见 DOM 字段选择、自定义候选区、字段名规范化、doctor 诊断增强）。保留 v0.1.26 以及之前所有更新内容。
 
-## CLI 更新 v0.1.26
+## CLI 更新 v0.1.27
+
+安装或更新：
+
+```bash
+npm install -g bazhuayu-cli@0.1.27
+```
+
+本次更新：
+
+- 🧠 **Agent 任务修正能力**：`--preview-agent-plan` 会返回风险、修复建议和 `repairInstruction`，可修改 plan 后重新 `--apply-agent-plan`
+- 🔄 **API 列表候选**：DOM 候选弱、页面数据来自 JSON/XHR 或已知 API 搜索模式时，可生成 `api_list` 本地任务
+- 👁️ **Agent 视觉规划增强**：Agent context 新增 `visualElements` 与 `pageVisualElements`，可按可见 DOM 元素选择字段
+- 🧩 **自定义候选区**：候选区不覆盖目标时，可用 `selection.customCandidate` 基于 `pageVisualElements` 构造合成候选
+- 🐞 **字段名规范化**：自动规范化部分不适合运行的字段名，减少特殊字符导致的运行失败
+- 🩺 **doctor 诊断增强**：`octopus doctor` 新增 `--output <dir>` 和 `--api-base-url <url>`
+
+推荐的 Agent 最短路径：
+
+```bash
+octopus detect URL --agent --agent-command "node make-plan.mjs" --goal "提取标题、日期和作者" --output task.json --run-sample 5 --json
+```
+
+<Note>
+  `--agent-command` 是可信本地 shell 命令，不是自然语言提示；采集目标应传给 `--goal`。v0.1.27 不再需要 `--yes`，但 CLI 仍接受它以兼容旧脚本。
+</Note>
+
+Agent 审计与修正流程：
+
+```bash
+octopus detect URL --prepare-agent --json --goal "提取商品标题、价格和链接" --output context.json
+octopus detect --preview-agent-plan plan.json --agent-context context.json --json
+octopus detect --apply-agent-plan plan.json --agent-context context.json --output task.json --json
+```
+
+Agent 写 plan 前应综合用户目标、页面标题、首屏、当前导航/Tab、语义目的和主内容显著性判断主目标，不能默认选择详情区或最大列表。当 `context.candidates` 没有覆盖目标时，使用 `context.pageVisualElements` 与 `selection.customCandidate`；当 `context.apiCandidates` 明确对应主列表且 DOM 候选弱时，可以选择 API 候选生成 `api_list` 本地任务。
+
+诊断示例：
+
+```bash
+octopus doctor --output ./runs --api-base-url https://api.example.com --json
+```
+
+<Warning>
+  `api_list` 任务会标记 `localOnly: true`，请使用 `octopus run <taskId> --task-file task.json` 本地运行；当前不自动同步云端任务。
+</Warning>
+
+## CLI 更新 v0.1.26（历史）
 
 安装或更新：
 
@@ -85,7 +132,7 @@ npm install -g bazhuayu-cli@0.1.24
 推荐的 Agent 最短路径：
 
 ```bash
-octopus detect URL --agent --agent-command "node make-plan.mjs" --goal "提取标题、价格和链接" --task-id <taskId> --output task.json --yes --run-sample 3 --json
+octopus detect URL --agent --agent-command "node make-plan.mjs" --goal "提取标题、价格和链接" --task-id <taskId> --output task.json --run-sample 3 --json
 ```
 
 <Warning>

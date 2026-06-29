@@ -12,10 +12,10 @@ description: 使用 detect 从新 URL 生成任务，校验并运行任务文件
 LLM 或 Agent 创建任务时，推荐使用可信的本地 Agent 运行器，并立即采集少量样品验证质量：
 
 ```bash
-octopus detect https://movie.douban.com/explore --agent --agent-command "node make-plan.mjs" --goal "提取电影名称、评分、导演和年份" --task-id douban-movies --output task.json --yes --run-sample 3 --json
+octopus detect https://movie.douban.com/explore --agent --agent-command "node make-plan.mjs" --goal "提取电影名称、评分、导演和年份" --task-id douban-movies --output task.json --run-sample 3 --json
 ```
 
-`--agent-command` 是本地 shell 命令，不是自然语言提示。`--run-sample` 只支持 `--agent` 且必须为正整数。命令返回单个 JSON envelope；任务生成结果与样品采集结果应分别检查，尤其是 `sampleRun.exitCode` 和 `sampleRun.summary`。
+`--agent-command` 是本地 shell 命令，不是自然语言提示。v0.1.27 不再需要 `--yes`；旧脚本传入时仍会被兼容。`--run-sample` 只支持 `--agent` 且必须为正整数。命令返回单个 JSON envelope；任务生成结果与样品采集结果应分别检查，尤其是 `sampleRun.exitCode` 和 `sampleRun.summary`。
 
 ## 路径二：直接操作 CLI 生成并运行任务
 
@@ -27,7 +27,7 @@ octopus task validate douban-movies --task-file task.json
 octopus run douban-movies --task-file task.json --max-rows 20
 ```
 
-`--auto` 适合用户直接操作 CLI。`detect` 会分析列表页、详情页与分页逻辑，但不会直接执行采集。v0.1.25 起，detect 生成的任务还会自动同步到八爪鱼桌面客户端任务列表，你可以在客户端中查看和编辑后再运行。v0.1.26 进一步优化了候选区排序，`--auto` 返回的第一个候选大概率就是目标。
+`--auto` 适合用户直接操作 CLI。`detect` 会分析列表页、详情页与分页逻辑，但不会直接执行采集。v0.1.25 起，detect 生成的普通任务还会自动同步到八爪鱼桌面客户端任务列表，你可以在客户端中查看和编辑后再运行。v0.1.27 对 DOM 候选弱的 API 支撑列表页会优先生成 `api_list` 本地任务，这类任务当前不自动同步云端。
 
 ### detect → 客户端编辑 → 采集
 

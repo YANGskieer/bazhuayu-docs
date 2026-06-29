@@ -1,6 +1,6 @@
 ---
 title: 命令速查表
-description: 八爪鱼 CLI v0.1.26 常用命令快速参考。
+description: 八爪鱼 CLI v0.1.27 常用命令快速参考。
 ---
 
 > 八爪鱼 CLI 常用命令一览。尖括号 `<taskId>`、`<apiKey>`、`<url>` 表示需替换为实际值。
@@ -18,6 +18,7 @@ octopus browser doctor
 
 octopus capabilities --json
 octopus doctor --json
+octopus doctor --output ./runs --api-base-url https://api.example.com --json
 ```
 
 ## 认证
@@ -38,15 +39,16 @@ octopus auth logout
 ```bash
 OCTOPUS_API_KEY=<apiKey> octopus task list --json
 OCTOPUS_ACCESS_TOKEN=<accessToken> octopus task list --json
-octopus task list --api-base-url https://example.com --json
+OCTOPUS_API_BASE_URL=https://example.com octopus task list --json
+octopus auth status --api-base-url https://example.com --json
 ```
 
 ## 网页检测与任务生成
 
 ```bash
 octopus detect <url>
-octopus detect <url> --agent --agent-command "node make-plan.mjs" --goal "提取商品信息" --yes --run-sample 5 --json
-octopus detect <url> --agent --agent-command "node make-plan.mjs" --goal "提取商品信息" --yes --run-sample 5 --run-output ./sample-runs --keep-agent-files --json
+octopus detect <url> --agent --agent-command "node make-plan.mjs" --goal "提取商品信息" --run-sample 5 --json
+octopus detect <url> --agent --agent-command "node make-plan.mjs" --goal "提取商品信息" --run-sample 5 --run-output ./sample-runs --keep-agent-files --json
 ```
 
 Agent 审计流程：
@@ -70,7 +72,7 @@ octopus detect <url> --auto --query "烤面包机" --output task.json
 octopus detect <url> --manual --save-session --session-name shop --output task.json
 ```
 
-`--agent-command` 必须是可信的本地 shell 命令；自然语言目标使用 `--goal`。`--run-sample` 只支持 `--agent`，且参数必须是正整数。v0.1.25 起，detect 生成的任务会自动同步到客户端任务列表。
+`--agent-command` 必须是可信的本地 shell 命令；自然语言目标使用 `--goal`。`--run-sample` 只支持 `--agent`，且参数必须是正整数。v0.1.27 不再需要 `--yes`；该参数仍为旧脚本兼容保留。v0.1.25 起，detect 生成的普通任务会自动同步到客户端任务列表；API 列表任务当前仅支持本地运行。
 
 ## 任务
 

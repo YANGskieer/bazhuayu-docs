@@ -10,9 +10,10 @@ description: 使用 octopus doctor、browser doctor 与 auth status 检查八爪
 ```bash
 octopus doctor
 octopus doctor --json
+octopus doctor --output ./runs --api-base-url https://api.example.com --json
 ```
 
-`doctor` 会检查 Node.js、CLI 运行时、浏览器依赖等。若某项为 `ok: false`，按提示修复后再运行采集任务。
+`doctor` 会检查 Node.js、CLI 运行时、浏览器依赖、认证/API 连通性和本地运行目录可写性。v0.1.27 起可用 `--output <dir>` 指定运行目录检查位置，用 `--api-base-url <url>` 指定 API 诊断地址。若某项为 `ok: false`，按提示修复后再运行采集任务。
 
 ## `octopus browser doctor`（检查浏览器环境）
 
@@ -44,7 +45,9 @@ octopus auth status --json
 | `--run-sample` 报参数错误 | 仅在 `detect --agent` 中使用，并传入正整数 |
 | Agent plan preview 不通过 | 打开上下文中的截图和候选区裁剪图，补全 `visualReview`，并确保候选 ID 与 `selection` 一致 |
 | Agent 任务已生成但样品采集失败 | 检查 JSON 中的 `sampleRun.exitCode`、`sampleRun.summary` 和样品输出目录 |
-| 安装 `@latest` 卡住 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.26` |
+| `detect --agent --yes` 仍在旧脚本里 | v0.1.27 不再需要 `--yes`，但仍接受该参数以兼容旧脚本；新脚本请省略 |
+| API 列表任务无法同步到云端 | API 列表任务当前 `localOnly: true`，使用 `octopus run <taskId> --task-file task.json` 本地运行 |
+| 安装 `@latest` 卡住 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.27` |
 | QClaw 升级后 `octopus` 命令找不到 | QClaw 版本号目录变化导致 node 路径失效，更新 PATH 中的 QClaw 版本目录 |
 
 ## 下一步
