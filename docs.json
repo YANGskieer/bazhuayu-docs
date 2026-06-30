@@ -21,8 +21,34 @@
         "tabs": [
           {
             "tab": "首页",
-            "pages": [
-              "zh/overview"
+            "groups": [
+              {
+                "group": "概述",
+                "pages": [
+                  "zh/overview"
+                ]
+              },
+              {
+                "group": "产品介绍",
+                "pages": [
+                  "zh/product/intro/what-is-octoparse",
+                  "zh/product/intro/features",
+                  "zh/product/intro/octoparse-vs-rpa",
+                  "zh/product/intro/usage-notice"
+                ]
+              },
+              {
+                "group": "产品计费",
+                "pages": [
+                  "zh/product/pricing/overview",
+                  "zh/product/pricing/plans",
+                  "zh/product/pricing/template",
+                  "zh/product/pricing/captcha",
+                  "zh/product/pricing/proxy-ip",
+                  "zh/product/pricing/remote-service",
+                  "zh/product/pricing/custom-service"
+                ]
+              }
             ]
           },
           {
@@ -32,6 +58,32 @@
                 "group": "概述",
                 "pages": [
                   "zh/academy/index"
+                ]
+              },
+              {
+                "group": "快速入门",
+                "pages": [
+                  {
+                    "group": "注册安装",
+                    "pages": [
+                      "zh/academy/quick-start/registration-installation/windows-client-installation",
+                      "zh/academy/quick-start/registration-installation/mac-client-installation",
+                      "zh/academy/quick-start/registration-installation/free-account-registration"
+                    ]
+                  },
+                  {
+                    "group": "3分钟快速上手",
+                    "pages": [
+                      "zh/academy/quick-start/three-minute-quick-start/client-overview",
+                      "zh/academy/quick-start/three-minute-quick-start/collection-interface",
+                      "zh/academy/quick-start/three-minute-quick-start/beginner-guide",
+                      "zh/academy/quick-start/three-minute-quick-start/template-collection",
+                      "zh/academy/quick-start/three-minute-quick-start/auto-recognize-collection",
+                      "zh/academy/quick-start/three-minute-quick-start/build-first-rule-task",
+                      "zh/academy/quick-start/three-minute-quick-start/official-promo-benefits",
+                      "zh/academy/quick-start/three-minute-quick-start/beginner-faq-official"
+                    ]
+                  }
                 ]
               },
               {
@@ -138,6 +190,199 @@
                           "zh/academy/xpath/cases/loop-filter-items"
                         ]
                       }
+                    ]
+                  },
+                  {
+                    "group": "进阶功能",
+                    "pages": [
+                      {
+                        "group": "数据处理（格式化）",
+                        "pages": [
+                          "zh/academy/advanced-features/data-processing/field-formatting",
+                          "zh/academy/advanced-features/data-processing/field-merge",
+                          "zh/academy/advanced-features/data-processing/add-special-fields",
+                          "zh/academy/advanced-features/data-processing/custom-extraction-method",
+                          "zh/academy/advanced-features/data-processing/missing-field-handling",
+                          "zh/academy/advanced-features/data-processing/backup-location",
+                          "zh/academy/advanced-features/data-processing/deduplicate-data",
+                          "zh/academy/advanced-features/data-processing/regular-expression"
+                        ]
+                      },
+                      {
+                        "group": "特殊流程步骤介绍",
+                        "pages": [
+                          "zh/academy/advanced-features/special-steps/return-to-previous-page",
+                          "zh/academy/advanced-features/special-steps/hover-to-load-data",
+                          "zh/academy/advanced-features/special-steps/loop-dropdown-options",
+                          "zh/academy/advanced-features/special-steps/conditions"
+                        ]
+                      },
+                      {
+                        "group": "流程设置",
+                        "pages": [
+                          "zh/academy/advanced-features/workflow-settings/browser-user-agent",
+                          "zh/academy/advanced-features/workflow-settings/trigger",
+                          "zh/academy/advanced-features/workflow-settings/bulk-url-input-extra",
+                          "zh/academy/advanced-features/workflow-settings/incremental-collection",
+                          "zh/academy/advanced-features/workflow-settings/iframe-page-handling",
+                          "zh/academy/advanced-features/workflow-settings/json-collection"
+                        ]
+                      },
+                      {
+                        "group": "技巧操作",
+                        "pages": [
+                          "zh/academy/advanced-features/tips/click-expand-full-text-weibo",
+                          "zh/academy/advanced-features/tips/resume-interrupted-collection",
+                          "zh/academy/advanced-features/tips/ajax-detail-return-list",
+                          {
+                            "group": "RPA相关",
+                            "pages": [
+                              "zh/academy/advanced-features/tips/rpa/import-data-to-feishu-rpa",
+                              "zh/academy/advanced-features/tips/rpa/batch-export-excel-rpa"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "高版本功能",
+                    "pages": [
+                      {
+                        "group": "付费功能",
+                        "pages": [
+                          "zh/academy/premium-features/paid-features/local-acceleration-multi-task",
+                          "zh/academy/premium-features/paid-features/proxy-ip",
+                          "zh/academy/premium-features/paid-features/collect-new-data",
+                          "zh/academy/premium-features/paid-features/scheduled-tasks",
+                          "zh/academy/premium-features/paid-features/auto-captcha",
+                          "zh/academy/premium-features/paid-features/cloudflare-verification"
+                        ]
+                      },
+                      {
+                        "group": "云采集",
+                        "pages": [
+                          "zh/academy/premium-features/cloud-extraction/cloud-extraction-intro",
+                          "zh/academy/premium-features/cloud-extraction/scheduled-cloud-extraction",
+                          "zh/academy/premium-features/cloud-extraction/cloud-extraction-principles",
+                          "zh/academy/premium-features/cloud-extraction/cloud-extraction-logs",
+                          "zh/academy/premium-features/cloud-extraction/cloud-extraction-history"
+                        ]
+                      },
+                      {
+                        "group": "企业版管理",
+                        "pages": [
+                          "zh/academy/premium-features/enterprise-management/enterprise-plan-intro",
+                          "zh/academy/premium-features/enterprise-management/enterprise-admin",
+                          "zh/academy/premium-features/enterprise-management/enterprise-member-accounts",
+                          "zh/academy/premium-features/enterprise-management/cloud-task-launch-optimization",
+                          "zh/academy/premium-features/enterprise-management/cloud-monitoring-alerts"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "实战案例",
+                "pages": [
+                  {
+                    "group": "电商",
+                    "pages": [
+                      "zh/academy/case-studies/ecommerce/jd-product-list",
+                      "zh/academy/case-studies/ecommerce/jd-product-reviews",
+                      "zh/academy/case-studies/ecommerce/jd-product-detail",
+                      "zh/academy/case-studies/ecommerce/jd-product-list-alt",
+                      "zh/academy/case-studies/ecommerce/jd-scenarios-overview",
+                      "zh/academy/case-studies/ecommerce/jd-carousel-download",
+                      "zh/academy/case-studies/ecommerce/taobao-product-list",
+                      "zh/academy/case-studies/ecommerce/amazon-product-reviews",
+                      "zh/academy/case-studies/ecommerce/amazon-product-list",
+                      "zh/academy/case-studies/ecommerce/amazon-product-detail",
+                      "zh/academy/case-studies/ecommerce/aliexpress-keyword-products",
+                      "zh/academy/case-studies/ecommerce/baidu-aigou-suppliers",
+                      "zh/academy/case-studies/ecommerce/baidu-aigou-products",
+                      "zh/academy/case-studies/ecommerce/aliexpress-product-reviews"
+                    ]
+                  },
+                  {
+                    "group": "社交媒体",
+                    "pages": [
+                      "zh/academy/case-studies/social-media/weibo-first-level-comments",
+                      "zh/academy/case-studies/social-media/weibo-keyword-search",
+                      "zh/academy/case-studies/social-media/weibo-author-posts",
+                      "zh/academy/case-studies/social-media/sogou-wechat-keyword-search",
+                      "zh/academy/case-studies/social-media/sogou-wechat-list-and-detail",
+                      "zh/academy/case-studies/social-media/zhihu-keyword-search",
+                      "zh/academy/case-studies/social-media/zhihu-hot-ranking",
+                      "zh/academy/case-studies/social-media/bilibili-video-collection",
+                      "zh/academy/case-studies/social-media/bilibili-up-videos",
+                      "zh/academy/case-studies/social-media/bilibili-video-detail",
+                      "zh/academy/case-studies/social-media/bilibili-category-videos",
+                      "zh/academy/case-studies/social-media/douban-hot-movies",
+                      "zh/academy/case-studies/social-media/douban-book-reviews",
+                      "zh/academy/case-studies/social-media/douban-movie-short-reviews",
+                      "zh/academy/case-studies/social-media/xiaohongshu-first-level-comments",
+                      "zh/academy/case-studies/social-media/xiaohongshu-author-notes",
+                      "zh/academy/case-studies/social-media/xiaohongshu-keyword-search",
+                      "zh/academy/case-studies/social-media/xiaohongshu-detail",
+                      "zh/academy/case-studies/social-media/kuaishou-keyword-videos",
+                      "zh/academy/case-studies/social-media/kuaishou-account-videos",
+                      "zh/academy/case-studies/social-media/wechat-articles-anti-crawl"
+                    ]
+                  },
+                  {
+                    "group": "新闻资讯",
+                    "pages": [
+                      "zh/academy/case-studies/news/toutiao-author-articles",
+                      "zh/academy/case-studies/news/public-resources-trigger-bids",
+                      "zh/academy/case-studies/news/toutiao-home-news",
+                      "zh/academy/case-studies/news/sohu-politics-news",
+                      "zh/academy/case-studies/news/jiemian-keyword-list-detail",
+                      "zh/academy/case-studies/news/thepaper-ordered-article-content",
+                      "zh/academy/case-studies/news/tencent-news-video-export",
+                      "zh/academy/case-studies/news/gov-article-and-attachments",
+                      "zh/academy/case-studies/news/cqvip-keyword-papers",
+                      "zh/academy/case-studies/news/people-home-news",
+                      "zh/academy/case-studies/news/xinhuanet-keyword-search",
+                      "zh/academy/case-studies/news/cctv-keyword-list"
+                    ]
+                  },
+                  {
+                    "group": "房产",
+                    "pages": [
+                      "zh/academy/case-studies/real-estate/baixing-short-rental-listings",
+                      "zh/academy/case-studies/real-estate/fang-home-listings",
+                      "zh/academy/case-studies/real-estate/58-short-rental-listings",
+                      "zh/academy/case-studies/real-estate/huanghekou-home-listings",
+                      "zh/academy/case-studies/real-estate/fang-second-hand-housing"
+                    ]
+                  },
+                  {
+                    "group": "生活服务",
+                    "pages": [
+                      "zh/academy/case-studies/life-services/baidu-images-export",
+                      "zh/academy/case-studies/life-services/baidu-map-list",
+                      "zh/academy/case-studies/life-services/58-job-listings",
+                      "zh/academy/case-studies/life-services/weather-china-data",
+                      "zh/academy/case-studies/life-services/tianyancha-company-info",
+                      "zh/academy/case-studies/life-services/ctrip-attraction-reviews",
+                      "zh/academy/case-studies/life-services/ctrip-travel-guides",
+                      "zh/academy/case-studies/life-services/zhaopin-job-listings",
+                      "zh/academy/case-studies/life-services/iguopin-job-listings",
+                      "zh/academy/case-studies/life-services/baidu-search-results"
+                    ]
+                  },
+                  {
+                    "group": "金融",
+                    "pages": [
+                      "zh/academy/case-studies/finance/eastmoney-private-placement",
+                      "zh/academy/case-studies/finance/10jqka-fund-nav",
+                      "zh/academy/case-studies/finance/cbirc-policy-announcements",
+                      "zh/academy/case-studies/finance/xueqiu-hot-post-comments",
+                      "zh/academy/case-studies/finance/guba-stock-comments",
+                      "zh/academy/case-studies/finance/cls-finance-briefs",
+                      "zh/academy/case-studies/finance/stats-monthly-indicators"
                     ]
                   }
                 ]

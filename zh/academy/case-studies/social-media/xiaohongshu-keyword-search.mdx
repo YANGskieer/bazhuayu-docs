@@ -1,0 +1,178 @@
+---
+title: "【小红书】搜索关键词采集"
+source: "https://www.bazhuayu.com/helpcenter/docs/xiao-hong-shu-sou-suo-guan-jian-ci-cai-ji"
+---
+**采集场景**
+
+采集小红书搜索关键词下的数据，示例：
+
+[https://www.xiaohongshu.com/](https://www.xiaohongshu.com/)
+
+[![【小红书】搜索关键词采集](/assets/academy/case-studies/xiaohongshu-keyword-search/01-6892d5a77b24f.png)](https://www.xiaohongshu.com/)
+
+**采集字段**
+
+标题 、博主名称 、点赞数、详情页链接
+
+**采集结果**
+
+采集结果可导出为Excel，CSV，HTML，数据库等多种格式。导出为Excel示例：
+
+![【小红书】搜索关键词采集](/assets/academy/case-studies/xiaohongshu-keyword-search/02-6892d64fd54af.png)
+
+ 
+
+ 
+
+**教程说明**
+
+八爪鱼版本：V8.7.7
+
+如果因网页改版造成网址或步骤无效，无法采集到目标数据，请联系官方客服，我们将及时修正。
+
+ 
+
+**采集步骤**
+
+步骤一、打开网页及设置cookie
+
+步骤二、输入关键词
+
+步骤三、配置【循环列表】提取数据
+
+步骤四、设置滚动加载步骤
+
+步骤五、规则优化
+
+步骤六、启动采集
+
+ 
+
+**以下为具体步骤：**
+
+ 
+
+### 步骤一、打开网页及设置cookie
+
+1、在新建【自定义任务】中输入目标网址，示例：
+
+[https://www.xiaohongshu.com/](https://www.xiaohongshu.com/)
+
+点击【开始采集】，八爪鱼自动打开网页进入配置界面。
+
+<video controls src="http://1251101074.vod2.myqcloud.com/8cc84bf5vodgzp1251101074/c55e47b35145403694177644888/LPXT5uAtfMYA.mp4" width="100%"></video>
+
+ 
+
+网页打开后出现登录验证，需要开启浏览模式手动登录，并设置获取cookie
+
+<video controls src="http://1251101074.vod2.myqcloud.com/8cc84bf5vodgzp1251101074/93c8be875145403694173741279/AWjDIqV8QxwA.mp4" width="100%"></video>
+
+ 
+
+ 
+
+### 步骤二、批量输入关键词
+
+ 1、点击页面上的搜索输入框
+
+ 2、点击操作提示内：【批量输入文本】
+
+ 3、**隔行**输入文本，即一行一个关键词，如（可根据实际需要修改输入的文本）：
+
+           大数据
+
+           爬虫
+
+ 4、勾选【输入回车键Enter】，并点击确定
+
+ <video controls src="http://1251101074.vod2.myqcloud.com/8cc84bf5vodgzp1251101074/29423cf75145403695205412514/Aa9sNfIFF7sA.mp4" width="100%"></video>
+
+\
+
+> 说明：
+>
+> 输入多个关键词进行采集，详细教程学习【[文本循环：批量输入关键词](/zh/academy/basic-collection/bulk-input/text-loop-keywords)】
+>
+>  
+
+### 步骤三、配置【循环列表】提取数据
+
+1、**创建【循环列表】提取帖子数据并编辑字段命名**
+
+ <video controls src="http://1251101074.vod2.myqcloud.com/fbbb38d8vodcq1251101074/d4f51c825145403694174221946/D7eRU9RZeHwA.mp4" width="100%"></video>
+
+\
+\
+
+### 步骤四、设置滚动加载步骤
+
+1、为采集更多数据，配置滚动步骤，当前页面属于全局滚动模式，滚动模式设置为：全局。
+
+2、根据页面情况设置滚动方式：滚动到底部或向下滚动一屏。
+
+3、可根据实际需要进行调整，设置合适的循环滚动次数。
+
+<video controls src="http://1251101074.vod2.myqcloud.com/fbbb38d8vodcq1251101074/9dec98c45145403694180965423/MWaduxU1tqwA.mp4" width="100%"></video>
+
+> 说明：
+>
+> 小红书列表页数据属于瀑布流加载形式，一次只展示20+数据，需要配置相应的滚动步骤加载更多数据。
+>
+> 详细教程参考：[边滚动边采集数据的方法](/zh/academy/basic-collection/pagination/scroll-and-collect)
+
+ 
+
+### 步骤五、规则优化
+
+配置好任务后，因为小红书有反爬，为了采集效果更稳定一些，根据页面加载情况，对任务步骤设置等待时间进行优化
+
+<video controls src="http://1251101074.vod2.myqcloud.com/fbbb38d8vodcq1251101074/7f9a5a4f5145403694176975851/ItA6unVRnBkA.mp4" width="100%"></video>
+
+> 说明：规则优化设置，参考教程：[规则优化](https://www.bazhuayu.com/helpcenter/docs/gui-ze-you-hua?search=1)
+
+**步骤六 、启动采集**
+
+1、单击【保存】，【采集】并选择【普通模式】。启动后八爪鱼开始自动采集数据。
+
+建议启动采集后**立即**点击“显示网页”，从而及时发现网站是否出现验证码，需要先【暂停采集】自己手动完成验证码点击，然后再继续采集，**如果出现验证，请及时验证通过后才能采集，*如果验证无法通过，则无法正常采集数据！***
+
+ <video controls src="http://1251101074.vod2.myqcloud.com/fbbb38d8vodcq1251101074/7f9a5a4f5145403694176975851/ItA6unVRnBkA.mp4" width="100%"></video>
+
+ 
+
+> 特别说明：
+>
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> - a. 【本地采集】是使用自己的电脑进行采集，【云采集】是使用八爪鱼提供的云服务器采集，点击查看 [本地采集与云采集详解](https://www.bazhuayu.com/helpcenter/docs/2xF5Mz)。
+> - b.   【登录步骤】采集需要登录账号的网页，采集任务中应设置相应的登录流程，详细步骤请参考以下链接中教程。，点击查看 [登录验证采集](/zh/academy/basic-collection/beginner/login-verification)
+
+2、采集完成后，选择合适的导出方式导出数据。支持导出为Excel、CSV、HTML、数据库等。
+
+ 
+
+ ![【小红书】搜索关键词采集](/assets/academy/case-studies/xiaohongshu-keyword-search/03-689302cabe3b3.png)
+
+ 
+
+示例数据：
+
+ ![【小红书】搜索关键词采集](/assets/academy/case-studies/xiaohongshu-keyword-search/04-6892d64fd54af.png)
+
+ 
+
+ 
+
+> 说明：若是网站改版导致无法采集，或者遇到其他问题，可扫码加群咨询反馈\
+> ![【小红书】搜索关键词采集](/assets/academy/case-studies/xiaohongshu-keyword-search/05-6892fcc99f341.png)
+
+ 作者：Leon
+
+ 编辑：Leon
