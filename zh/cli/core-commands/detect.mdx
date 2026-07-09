@@ -3,9 +3,20 @@ title: 网页检测与任务生成
 description: 使用 octopus detect 检测网页结构、选择采集区域，并生成可校验和运行的本地任务文件。
 ---
 
-> `octopus detect` 是网页检测与任务生成入口。v0.1.27 强化了 Agent 任务修正、API 列表候选、可见 DOM 字段选择和自定义候选区能力；v0.1.26 的候选排序优化、v0.1.25 的任务同步客户端，以及 v0.1.24 的 Agent 视觉审查与样品采集流程继续适用。
+> `octopus detect` 是网页检测与任务生成入口。v0.1.28 保持 detect / Agent 接口兼容；v0.1.27 强化的 Agent 任务修正、API 列表候选、可见 DOM 字段选择和自定义候选区能力继续适用。
 
-## v0.1.27 更新要点
+## v0.1.28 兼容说明
+
+v0.1.28 的主要新增能力集中在任务管理、任务组、模板任务、云定时和数据检查命令，`detect`、Agent 计划、`--run-sample`、API 列表任务和本地 `run` 语法保持兼容。新建任务仍推荐：
+
+```bash
+octopus detect URL --agent --agent-command "node make-plan.mjs" --goal "采集目标" --run-sample 3 --json
+octopus detect URL --auto --goal "采集目标" --task-id <taskId> --output task.json
+octopus task validate <taskId> --task-file task.json
+octopus run <taskId> --task-file task.json --max-rows 20
+```
+
+## v0.1.27 更新要点（历史）
 
 | 变更项 | 说明 |
 |--------|------|

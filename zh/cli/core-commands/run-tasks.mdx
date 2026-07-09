@@ -64,6 +64,16 @@ octopus cloud stop <taskId>
 
 云端运行适合稳定任务、大数据量任务和不希望本地 Chrome 长时间运行的场景。
 
+v0.1.28 起，可以用 `schedule cloud` 管理云定时；本地定时仍在桌面客户端中设置：
+
+```bash
+octopus schedule cloud get <taskId> --json
+octopus schedule cloud update <taskId> --type daily --date 1 --time 09:00 --yes --json
+octopus schedule cloud start <taskId> --yes --json
+octopus schedule cloud stop <taskId> --yes --json
+octopus schedule cloud next --type daily --date 1 --time 09:00 --json
+```
+
 ## 怎么选运行方式
 
 | 场景 | 推荐方式 | 原因 |
