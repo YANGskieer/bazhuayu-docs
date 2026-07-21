@@ -2,9 +2,80 @@
 
 本文供研发、运维直接执行。目标是在现有 Mintlify 文档站的“问题解答”页面中启用 DeepSeek 智能问答，同时保证 API Key 不进入浏览器、Git 仓库、静态构建产物或业务日志。
 
+## 0. 研发先看：远端现状与本次任务
+
+### 0.1 审计基线
+
+本文已按 2026-07-21 的远端状态重新核对：
+
+```text
+仓库：git@github.com:YANGskieer/bazhuayu-docs.git
+分支：master、yangyifan
+提交：403419822eff3681c6932477ebf6db0979112e10
+```
+
+两个分支当前指向同一提交。该提交已经包含前端问答界面、可信知识索引、Agent Node 服务、DeepSeek 调用代码、MCP 双重校验和测试。研发不需要重新设计页面，也不需要重新实现一套 RAG 或 Agent。
+
+已完成：
+
+- “问题解答”前端页面及接口调用、异常降级交互。
+- 541 篇 FAQ 的审核结果；412 篇已确认，129 篇已停用。
+- 采集学院、产品文档、MCP、CLI、OpenAPI 与人工确认 FAQ 的可信索引。
+- `POST /v1/ask`、`POST /v1/feedback`、`GET /health`。
+- `deepseek-v4-flash` 调用、复杂问题思考模式、结构化 JSON 输出。
+- MCP 协议资料与八爪鱼 MCP 产品资料的两次模型校验。
+- CORS、请求大小限制、单进程限流、超时和前端降级。
+
+研发需要完成的只有以下生产接入工作：
+
+1. 在 DeepSeek 控制台新建生产 API Key，并通过服务器密钥系统注入。
+2. 准备 Node.js 20+ 运行环境，部署仓库中现有的 `services/kb-agent/server.mjs`。
+3. 创建 `docs-api.bazhuayu.com` DNS、HTTPS 证书和 Nginx/网关反向代理。
+4. 按本文配置生产环境变量和精确 CORS Origin。
+5. 执行知识库校验、Agent 测试、生产接口联调和安全验收。
+6. 配置进程守护、日志脱敏、监控、告警、费用预算和回滚开关。
+7. 后端验收完成后确认前端开关为 `enabled: true`。
+
+不得实施：
+
+- 不得让浏览器或 Mintlify 直接请求 DeepSeek。
+- 不得将 API Key 写入 Git、前端配置、构建变量、Nginx 配置或日志。
+- 不得把未经审核 FAQ 正文加入模型上下文。
+- 不得删掉当前可信检索和 MCP 双重校验，改成普通模型聊天。
+
+### 0.2 当前仍未完成的生产基础设施
+
+截至上述审计时间：
+
+- 远端公开配置已经是 `enabled: true`。
+- 公开接口地址已经写为 `https://docs-api.bazhuayu.com/v1/ask`。
+- `docs-api.bazhuayu.com` 尚未解析到有效 DNS，`/health` 尚不可访问。
+- 仓库中没有真实 API Key，符合安全要求。
+
+`docs-api.bazhuayu.com` 是本方案为文档 Agent 建议预留的公司侧服务域名，不是 DeepSeek 提供的域名，也不是当前已经存在的线上服务。研发可以选择以下任一方式：
+
+1. 使用该建议域名：由运维创建 DNS、证书和反向代理。
+2. 接入公司现有 API 网关：使用研发指定的 HTTPS 地址替换该域名。
+
+无论选择哪种方式，浏览器都只能请求公司侧 Agent 服务，不能直接请求 DeepSeek。若更换域名，必须修改 `scripts/build-knowledge-index.mjs` 中生成 `endpoint` 和 `feedbackEndpoint` 的地址，再运行 `npm run kb:build`；只修改生成后的 `agent-config.json.txt` 会在下次构建时被覆盖。
+
+所以“代码已上传”不等于“模型已经接通”。当前用户页面会尝试请求尚不存在的接口，然后降级到本地可信教程检索。若后端短期内不部署，应先把公开配置改为 `enabled: false` 并重新发布文档站；若研发立即部署后端，可保持当前 `enabled: true`，但必须在正式流量进入前完成本指南的全部验收。
+
+### 0.3 研发完成后的交付物
+
+研发需要向产品/文档负责人提供：
+
+- 可访问的 `https://docs-api.bazhuayu.com/health`。
+- 一份不含密钥的生产环境变量名称清单。
+- Systemd、容器或 Kubernetes 的实际部署配置。
+- Nginx/Ingress 配置和 CORS Origin 清单。
+- 生产冒烟测试结果及 100 个真实问题验收结果。
+- 监控面板、告警规则、DeepSeek 用量预算和负责人。
+- Key 轮换流程、停服回滚流程和联系人。
+
 ## 1. 当前状态与目标
 
-当前文档站可以先按无模型模式上线：前端使用本地可信索引推荐相关教程，不进行模型推理。
+当前文档站可以先按无模型模式上线：前端使用本地可信索引推荐相关教程，不进行模型推理。注意，远端提交中的开关当前为 `enabled: true`；若要先以纯无模型模式上线，必须显式改为 `false` 后重新发布。
 
 完整模式的请求链路如下：
 
@@ -18,7 +89,7 @@
   -> 结构化答案返回前端
 ```
 
-生产环境必须先部署 Agent 后端并完成验收，再将前端公开配置中的 `enabled` 切换为 `true`。后端未就绪时保持 `enabled: false`，避免用户先等待接口失败再进入降级检索。
+标准发布流程必须先部署 Agent 后端并完成验收，再让前端以 `enabled: true` 接受正式流量。后端未就绪时应保持 `enabled: false`，避免用户先等待接口失败再进入降级检索。
 
 ## 2. 已有代码与数据
 
@@ -126,6 +197,7 @@ KB_AGENT_RATE_LIMIT_PER_DAY=1000
 注意：
 
 - `KB_AGENT_ALLOWED_ORIGINS` 只能填写真实文档站 Origin，即协议、域名和端口，不带路径，不带末尾 `/`。
+- 当前正式文档 URL 是 `https://www.bazhuayu.com/docs/...`，它的 Origin 是 `https://www.bazhuayu.com`，不能填写成带 `/docs` 的地址。
 - Mintlify 预览域名如需联调，应逐个加入，不要使用 `*`。
 - 只有 Agent 前面确实存在受信任的反向代理时才设置 `KB_AGENT_TRUST_PROXY=true`。
 - 可选变量 `KB_AGENT_INDEX_PATH` 和 `KB_AGENT_INTENT_INDEX_PATH` 可用于指定绝对索引路径；默认读取仓库内的文件。
@@ -224,7 +296,7 @@ server {
     location = /health {
         proxy_pass http://127.0.0.1:8787/health;
         proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-For $remote_addr;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_connect_timeout 5s;
         proxy_read_timeout 10s;
@@ -234,7 +306,7 @@ server {
         proxy_pass http://127.0.0.1:8787;
         proxy_http_version 1.1;
         proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-For $remote_addr;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_connect_timeout 5s;
         proxy_send_timeout 60s;
@@ -252,7 +324,7 @@ sudo systemctl reload nginx
 curl --fail https://docs-api.bazhuayu.com/health
 ```
 
-若前面还有 CDN 或云负载均衡，需要确保真实客户端 IP 按可信链路写入 `X-Forwarded-For`，并由网关限制只有受信任代理可以连接 Agent 所在主机。
+直接面向公网的 Nginx 应覆盖客户端传入的 `X-Forwarded-For`，不要使用未经清洗的第一个 XFF 值，否则攻击者可以伪造 IP 绕过限流。若前面还有 CDN 或云负载均衡，先通过 Nginx `real_ip_header` 和受信任的 `set_real_ip_from` 网段恢复真实 IP，再将清洗后的 `$remote_addr` 传给 Agent；同时限制只有受信任代理可以连接 Agent 所在主机。
 
 ## 9. 前端开关
 
@@ -286,6 +358,8 @@ curl --fail https://docs-api.bazhuayu.com/health
 ```
 
 该文件是公开配置，只能放开关和服务地址。切换后需要重新发布静态文档站，使浏览器获得新配置。
+
+当前远端文件已经是 `enabled: true`。研发部署后端时不需要再开发前端，只需确认线上实际发布的该文件与目标接口一致。若产品选择先上线无模型版，则由文档发布负责人把此开关改成 `false`；执行 `npm run kb:build` 可能重新生成公开配置，发布前必须再次检查最终产物。
 
 正确发布顺序：
 
@@ -406,6 +480,8 @@ Origin: https://www.bazhuayu.com
 
 前端遇到任何非 2xx 响应时应切换到本地可信教程检索，不显示空白页。
 
+当前限流器保存在单个 Node 进程内存中，进程重启会清零，多实例之间也不共享。如果生产只部署一个实例，可直接使用当前实现；如果部署多个实例，研发必须把限流放到统一 API 网关或 Redis 中，并设置全站共享日预算，不能误认为代码中的 `1000/天` 是多实例全局限制。
+
 ## 11. 联调命令
 
 ### 11.1 模型和密钥
@@ -464,6 +540,7 @@ curl --fail https://docs-api.bazhuayu.com/v1/ask \
 - [ ] MCP 回答区分协议能力与八爪鱼产品能力。
 - [ ] 反馈接口可写入，日志目录权限正确。
 - [ ] 限流生效，不同真实客户端 IP 可正确区分。
+- [ ] 如果部署多个 Agent 实例，限流和每日预算已迁移到共享网关或 Redis。
 - [ ] 日志不记录请求正文、完整对话、API Key、Authorization 头或模型思维内容。
 - [ ] 记录请求状态、耗时、错误类别和汇总 token 用量。
 
@@ -504,6 +581,8 @@ git push
 - 用户 `unhelpful` 反馈比例。
 
 日志只记录请求 ID、时间、耗时、状态码、错误类型、来源数量、置信等级和 token 汇总，不记录原始问题和完整答案。
+
+当前反馈默认写入 `services/kb-agent/data/feedback-YYYY-MM-DD.jsonl`。容器或不可变发布必须为该目录挂载持久卷，或者由研发改接现有日志/数据平台；否则重新发布容器会丢失反馈文件。
 
 ## 15. 回滚
 
