@@ -1,5 +1,7 @@
 # Knowledge Agent Service
 
+Production integration and operations handoff: [INTEGRATION-GUIDE.md](./INTEGRATION-GUIDE.md)
+
 This service is the only component that reads `DEEPSEEK_API_KEY`. Keep the key in the server environment, never in this repository or the Mintlify site.
 
 1. Run `npm run kb:build` after documentation or FAQ-review changes.
