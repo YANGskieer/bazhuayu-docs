@@ -1,14 +1,64 @@
 ---
 title: 2026 年 7 月更新日志
-description: 2026 年 7 月八爪鱼文档更新，包含 CLI v0.1.28 任务管理、任务组、模板任务、云定时与数据预览能力。
+description: 2026 年 7 月八爪鱼文档更新，包含 CLI v0.1.30 用户浏览器模式及 v0.1.28 任务管理、模板、云定时与数据能力。
 ---
+
+# 知识库审核台（本地）
+
+- 新增隐藏 FAQ 知识库迁移流程：历史常见问题可完整保存在文档仓库中，图片同步到本地资源目录。
+- 本地“知识审核台”改为完整答案审核：运行 `npm run kb:review` 可直接编辑、预览并确认历史 FAQ，保存后自动重建客户问答索引，同时保留草稿、停用、稍后处理和撤销能力。
+- 新增“问题解答”入口：只展示采集学院、产品文档和人工确认的答案；未经确认、暂缓或停用的历史 FAQ 不会直接面向客户显示。
+- “问题解答”升级为受控知识 Agent：通过服务端使用 `deepseek-v4-flash` 生成结论、步骤、注意事项和站内引用；原始思维链与 API Key 不会进入前端。
+- 新增可信文档分段索引、服务端限流与来源校验；模型服务不可用时自动回退到本地可信教程。
+- MCP 问答新增正式协议 `2025-11-25` 基线，并将官方协议语义与八爪鱼产品能力分池检索；回答会经过第二次事实复核，未通过复核的初稿不会对外展示。
 
 # 2026 年 7 月发布说明
 
-> **更新日期：** 2026 年 7 月 9 日
-> CLI 升级至 v0.1.28，补齐远端任务管理、任务组、模板任务、云定时和数据检查命令。Agent / detect 工作流保持兼容。
+> **更新日期：** 2026 年 7 月 21 日
+> CLI 当前版本升级至 v0.1.30，新增用户浏览器模式并升级本地浏览器运行时；v0.1.28 的远端任务管理、模板、云定时和数据检查能力继续保留。
+
+## CLI 更新 v0.1.30
+
+安装或更新：
+
+```bash
+npm install -g bazhuayu-cli@0.1.30
+```
+
+本次更新：
+
+- **用户浏览器模式**：新增 `octopus browser` 命令族，可复用 Windows / macOS 上 Chrome 或 Edge 用户 Profile 的 Cookie 与登录状态
+- **浏览器选择**：`detect` 与本地 `run` 新增 `--browser independent|user`、`--browser-id chrome|edge`、`--profile <name>` 和可选的 `--force-close-browser`
+- **扩展与 Profile 管理**：支持查看状态、列出 Profile、安装扩展、关闭浏览器，以及保存 `detect` / `run` 共用的默认模式
+- **Agent 与识别增强**：优化自动建任务、截图和样品运行流程，并继续提升详情页、列表、Feed 分页与 XPath 识别准确率
+- **运行时升级**：本地引擎升级为 `@octopus/browser-runtime`，默认独立模式仍使用 Chrome for Testing
+- **修复与校验**：修复登录会话、Cookie 安全和复杂嵌套列表问题，并增强模板任务参数校验
+
+用户浏览器首次设置必须按顺序完成：
+
+```bash
+octopus browser status --browser-id chrome --json
+octopus browser profiles --browser-id chrome --json
+octopus browser install --browser-id chrome --profile "Default" --force-close --json
+# 重新打开 Chrome，确认八爪鱼扩展已启用
+octopus browser status --browser-id chrome --profile "Default" --json
+octopus browser use user --browser-id chrome --profile "Default" --json
+```
+
+只有 `browser status --json` 返回 `readyForUserBrowserRun: true` 后才应保存用户模式。安装扩展时浏览器必须关闭；正常 detect/run 可复用已打开的浏览器，不需要每次强制关闭。
+
+```bash
+octopus detect "https://example.com/account" --auto --browser user --browser-id chrome --profile "Default" --goal "提取账户数据" --output task.json
+octopus run <taskId> --task-file task.json --browser user --browser-id chrome --profile "Default" --max-rows 20
+```
+
+<Warning>
+  用户浏览器模式仅支持 Windows 和 macOS，并且不支持 `--headless`。Linux 继续使用独立浏览器模式。`--agent-command` 仍必须是可信的本地 shell 命令，自然语言采集目标应通过 `--goal` 传入。
+</Warning>
 
 ## CLI 更新 v0.1.28
+
+> **历史版本日期：** 2026 年 7 月 9 日
 
 安装或更新：
 
@@ -66,6 +116,7 @@ octopus data export <taskId> --source cloud --unexported --format csv --file une
 - [CLI 概述](/zh/cli/index)
 - [安装与验证](/zh/cli/quick-start/installation)
 - [运行第一个任务](/zh/cli/quick-start/run-your-first-task)
+- [浏览器管理](/zh/cli/core-commands/browser-management)
 - [任务管理](/zh/cli/core-commands/task-management)
 - [导出数据](/zh/cli/core-commands/export-data)
 - [环境诊断](/zh/cli/core-commands/diagnostics)

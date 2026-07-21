@@ -15,6 +15,7 @@ CLI 同时支持人类可读终端输出与机器可读 JSON / JSONL。
 octopus task list --json
 octopus task show <taskId> --json
 octopus task-group list --json
+octopus browser status --browser-id chrome --json
 octopus data preview <taskId> --source cloud --limit 20 --json
 octopus auth status --json
 octopus local status <taskId> --json
@@ -43,6 +44,27 @@ octopus detect URL --auto --json --output task.json
 失败时通常返回 `ok: false` 与 `error`。各命令的 `data` 结构不同，编写脚本时请以具体命令输出为准，并容忍新增字段。
 
 v0.1.28 新增的 `task-group`、`template`、`template-task`、`schedule cloud`、`data count` 和 `data preview` 均支持 `--json`。会修改远端状态的命令缺少 `--yes` 时会返回失败 envelope，脚本应把它当作需要人工确认或补齐确认参数处理。
+
+### 用户浏览器状态
+
+`browser status --json` 会返回浏览器安装情况、Profile、扩展状态、`readyForUserBrowserRun` 和 `nextActions`。自动化程序应逐步执行 `nextActions`，并且只在 `readyForUserBrowserRun` 为 `true` 后调用 `browser use user`。
+
+```json
+{
+  "ok": true,
+  "data": {
+    "supported": true,
+    "readyForUserBrowserRun": false,
+    "selectedProfileName": "Default",
+    "nextActions": [
+      {
+        "action": "install_extension",
+        "command": "octopus browser install --browser-id chrome --profile \"Default\" --json"
+      }
+    ]
+  }
+}
+```
 
 ### Agent 生成与样品采集
 
@@ -104,12 +126,12 @@ octopus run <taskId> --task-file task.json --jsonl
 每行一个 JSON 对象，便于流式处理进度：
 
 ```jsonl
-{"type":"run.started","taskId":"abc123","timestamp":"2026-01-01T10:00:00.000Z"}
-{"type":"row.saved","taskId":"abc123","count":1}
-{"type":"run.completed","taskId":"abc123","savedRows":1}
+{"event":"run.started","taskId":"abc123","runId":"run-001"}
+{"event":"row","taskId":"abc123","total":1,"data":{"title":"示例"}}
+{"event":"run.stopped","taskId":"abc123","runId":"run-001","total":1}
 ```
 
-事件字段可能随版本调整，解析时请容忍未知字段。
+`event` 字段是稳定判别字段。当前事件包括 `warning`、`billing.warning`、`billing.error`、`run.started`、`row`、`log`、`captcha`、`proxy`、下载事件以及运行暂停、恢复、停止和失败事件；解析时仍应容忍新增事件和未知字段。
 
 ## stdout 与 stderr
 

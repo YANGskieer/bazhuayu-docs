@@ -12,3 +12,10 @@ USER.md
 skills/
 node_modules/
 .next/
+.kb-review/
+services/kb-agent/.env
+services/kb-agent/data/
+.kb-review-local*.log
+.mintlify-local*.log
+assets/knowledge-base/*.tmp
+scripts/data/*.tmp

@@ -1,11 +1,11 @@
 ---
 title: 安装与验证
-description: 安装 bazhuayu-cli@0.1.28，并验证 octopus 命令、Node.js 环境与本地采集运行时。
+description: 安装 bazhuayu-cli@0.1.30，并验证 octopus 命令、Node.js 环境与本地采集运行时。
 ---
 
 > 通过 npm 安装八爪鱼 CLI，并确认 `octopus` 命令、浏览器依赖与本地运行环境可用。
 
-八爪鱼 CLI 以 npm 包形式发布。v0.1.28 新增任务组、模板任务、云定时、数据计数与预览等远端管理能力；v0.1.27 的 Agent 视觉规划、API 列表候选和字段名规范化能力继续适用。
+八爪鱼 CLI 以 npm 包形式发布。v0.1.30 新增用户浏览器模式，并将本地运行时升级为 `@octopus/browser-runtime`；既有 Agent、任务管理、云定时和数据检查接口保持兼容。
 
 ## 环境要求
 
@@ -14,7 +14,7 @@ description: 安装 bazhuayu-cli@0.1.28，并验证 octopus 命令、Node.js 环
 - Node.js **20 或更高**（推荐 22 LTS）
 - npm **8 或更高**
 - 可用终端：PowerShell、CMD、macOS 终端或 Linux Shell
-- 网页 `detect` 与本地 `run` 需要可用 Chrome 环境
+- 默认独立模式由 CLI 管理 Chrome for Testing；用户模式需要系统已安装 Chrome 或 Edge
 
 检查版本：
 
@@ -25,13 +25,13 @@ npm -v
 
 ## 平台支持
 
-| 平台 | 本地采集 | 云端采集 | 备注 |
-| --- | :---: | :---: | --- |
-| Windows x64 | 支持 | 支持 | Windows 10 / 11 |
-| macOS x64 | 支持 | 支持 | 需 Node.js 20+ |
-| macOS arm64 | 支持 | 支持 | 需 Node.js 20+ |
-| Linux x64 | 支持 | 支持 | v0.1.22 新增 |
-| Linux arm64 | 暂不支持 | 支持 | Chrome for Testing 暂无 Linux arm64 浏览器包 |
+| 平台 | 独立浏览器本地采集 | 用户浏览器模式 | 云端采集 | 备注 |
+| --- | :---: | :---: | :---: | --- |
+| Windows x64 | 支持 | 支持 Chrome / Edge | 支持 | Windows 10 / 11 |
+| macOS x64 | 支持 | 支持 Chrome / Edge | 支持 | 需 Node.js 20+ |
+| macOS arm64 | 支持 | 支持 Chrome / Edge | 支持 | 需 Node.js 20+ |
+| Linux x64 | 支持 | 不支持 | 支持 | 用户模式依赖桌面系统扩展安装能力 |
+| Linux arm64 | 暂不支持 | 不支持 | 支持 | Chrome for Testing 暂无 Linux arm64 浏览器包 |
 
 ## 安装 Node.js
 
@@ -69,10 +69,10 @@ Linux x64 从 CLI v0.1.22 起支持本地采集；Linux arm64 目前仅建议使
 
 ## 安装八爪鱼 CLI
 
-安装或更新到 v0.1.28：
+安装或更新到 v0.1.30：
 
 ```bash
-npm install -g bazhuayu-cli@0.1.28
+npm install -g bazhuayu-cli@0.1.30
 ```
 
 安装完成后，命令名为：
@@ -88,9 +88,10 @@ octopus --version
 octopus --help
 ```
 
-v0.1.28 应能看到 `detect`、`task-group`、`template`、`schedule` 和 `data preview` 等命令：
+v0.1.30 应能看到 `browser`、`detect`、`task-group`、`template`、`schedule` 和 `data preview` 等命令：
 
 ```bash
+octopus browser --help
 octopus detect --help
 octopus task-group --help
 octopus data preview --help
@@ -100,17 +101,17 @@ octopus data preview --help
 
 ```bash
 octopus doctor
-octopus browser doctor
+octopus browser status --browser-id chrome --json
 ```
 
-`doctor` 会检查 Node.js、内置引擎、Chrome 可用性及浏览器模式。成功时通常返回 `"ok": true`。
+`doctor` 会检查 Node.js、本地运行时、Chrome for Testing 和认证/API 环境，并在 Windows / macOS 上报告可选用户浏览器的扩展状态。`browser status --json` 用于检查 Chrome / Edge、Profile 与扩展是否达到 `readyForUserBrowserRun: true`。
 
 ## 更新与卸载
 
 更新到指定版本：
 
 ```bash
-npm install -g bazhuayu-cli@0.1.28
+npm install -g bazhuayu-cli@0.1.30
 octopus --version
 ```
 
@@ -129,8 +130,9 @@ npm uninstall -g bazhuayu-cli
 | PowerShell 多行命令报错 | 使用反引号 `` ` `` 续行，或优先写成单行 |
 | URL 无法打开 | 检查是否写完整协议，例如 `https://example.com` |
 | `--output task.json` 写到意外目录 | 先 `cd` 到工作目录，或使用绝对路径 |
-| `npm install -g ...@latest` 卡住或被终止 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.28` |
-| `doctor` 某项失败 | 根据 `ok: false` 的检查项修复 Chrome、引擎文件或浏览器依赖 |
+| `npm install -g ...@latest` 卡住或被终止 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.30` |
+| `doctor` 某项失败 | 根据 `ok: false` 的检查项修复 Node.js、本地运行时或浏览器依赖 |
+| 用户浏览器扩展未就绪 | 按 [`browser` 首次配置流程](/zh/cli/core-commands/browser-management) 安装扩展、重开浏览器并再次检查状态 |
 
 ## 下一步
 
@@ -140,5 +142,8 @@ npm uninstall -g bazhuayu-cli
   </Card>
   <Card title="运行第一个任务" href="/zh/cli/quick-start/run-your-first-task">
     从新 URL 生成任务并运行，或运行已有任务并导出数据。
+  </Card>
+  <Card title="浏览器管理" href="/zh/cli/core-commands/browser-management">
+    配置 Chrome / Edge 用户 Profile 和登录状态复用。
   </Card>
 </CardGroup>

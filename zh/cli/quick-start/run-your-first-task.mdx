@@ -7,6 +7,8 @@ description: 使用 detect 从新 URL 生成任务，校验并运行任务文件
 
 开始前请已完成 [安装](/zh/cli/quick-start/installation) 与 [登录](/zh/cli/quick-start/get-api-key-and-log-in)。
 
+采集需要登录的网站时，还需先完成 [用户浏览器配置](/zh/cli/core-commands/browser-management)，并确认 `browser status --json` 返回 `readyForUserBrowserRun: true`。
+
 ## 路径一：让 Agent 生成并试采任务
 
 LLM 或 Agent 创建任务时，推荐使用可信的本地 Agent 运行器，并立即采集少量样品验证质量：
@@ -28,6 +30,18 @@ octopus run douban-movies --task-file task.json --max-rows 20
 ```
 
 `--auto` 适合用户直接操作 CLI。`detect` 会分析列表页、详情页与分页逻辑，但不会直接执行采集。v0.1.25 起，detect 生成的普通任务还会自动同步到八爪鱼桌面客户端任务列表，你可以在客户端中查看和编辑后再运行。v0.1.27 对 DOM 候选弱的 API 支撑列表页会优先生成 `api_list` 本地任务，这类任务当前不自动同步云端。
+
+### 采集需要登录的页面
+
+v0.1.30 可复用 Chrome / Edge 用户 Profile。首次安装扩展并启用用户模式后，为依赖登录状态的 detect 和 run 指定同一个浏览器与 Profile：
+
+```bash
+octopus detect "https://example.com/account/orders" --auto --browser user --browser-id chrome --profile "Default" --goal "提取订单号、金额和时间" --task-id account-orders --output task.json
+octopus task validate account-orders --task-file task.json
+octopus run account-orders --task-file task.json --browser user --browser-id chrome --profile "Default" --max-rows 20
+```
+
+如果已通过 `octopus browser use user` 保存默认模式，可以省略这些浏览器参数。用户模式不支持 `--headless`。
 
 ### detect → 客户端编辑 → 采集
 
@@ -139,5 +153,8 @@ octopus data export <taskId> --source cloud --unexported --format csv --file une
   </Card>
   <Card title="运行采集任务" href="/zh/cli/core-commands/run-tasks">
     本地或云端运行已有任务和任务文件。
+  </Card>
+  <Card title="浏览器管理" href="/zh/cli/core-commands/browser-management">
+    配置登录状态复用和多 Profile 切换。
   </Card>
 </CardGroup>

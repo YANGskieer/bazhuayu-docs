@@ -50,7 +50,7 @@ my-docs/
 ```mdx
 <Steps>
   <Step title="Install CLI">
-    Run: `npm install -g bazhuayu-cli@0.1.25`
+    Run: `npm install -g bazhuayu-cli@0.1.30`
   </Step>
 </Steps>
 ```

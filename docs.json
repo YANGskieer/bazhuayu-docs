@@ -542,6 +542,7 @@
                 "group": "CLI核心命令详解",
                 "pages": [
                   "zh/cli/core-commands/detect",
+                  "zh/cli/core-commands/browser-management",
                   "zh/cli/core-commands/task-management",
                   "zh/cli/core-commands/run-tasks",
                   "zh/cli/core-commands/export-data",
@@ -555,6 +556,12 @@
                   "zh/cli/reference/output-and-exit-codes"
                 ]
               }
+            ]
+          },
+          {
+            "tab": "问题解答",
+            "pages": [
+              "zh/help/index"
             ]
           },
           {

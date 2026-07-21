@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-
 export const ExternalLinkRedirect = ({ url, platform }) => {
   useEffect(() => {
     if (!url) return

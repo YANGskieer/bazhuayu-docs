@@ -3,11 +3,25 @@ title: 网页检测与任务生成
 description: 使用 octopus detect 检测网页结构、选择采集区域，并生成可校验和运行的本地任务文件。
 ---
 
-> `octopus detect` 是网页检测与任务生成入口。v0.1.28 保持 detect / Agent 接口兼容；v0.1.27 强化的 Agent 任务修正、API 列表候选、可见 DOM 字段选择和自定义候选区能力继续适用。
+> `octopus detect` 是网页检测与任务生成入口。v0.1.30 支持使用系统 Chrome / Edge 用户 Profile 检测登录后的页面，并继续兼容既有 Agent 计划、API 列表候选、可见 DOM 字段选择和自定义候选区能力。
 
-## v0.1.28 兼容说明
+## v0.1.30 用户浏览器模式
 
-v0.1.28 的主要新增能力集中在任务管理、任务组、模板任务、云定时和数据检查命令，`detect`、Agent 计划、`--run-sample`、API 列表任务和本地 `run` 语法保持兼容。新建任务仍推荐：
+默认 `independent` 模式使用临时 Chrome for Testing Profile。需要检测后台、会员页或其他登录后页面时，可使用 v0.1.30 新增的 `user` 模式复用 Chrome / Edge 登录状态：
+
+```bash
+octopus detect "https://example.com/account" --auto --browser user --browser-id chrome --profile "Default" --goal "提取账户数据" --output task.json
+octopus detect "https://example.com/account" --manual --browser user --browser-id edge --profile "Profile 1" --output task.json
+octopus detect "https://example.com/account" --agent --agent-command "node make-plan.mjs" --browser user --browser-id chrome --profile "Default" --goal "提取账户数据" --run-sample 3 --json
+```
+
+首次使用前必须通过 [`octopus browser`](/zh/cli/core-commands/browser-management) 安装扩展，并确认 `browser status --json` 的 `readyForUserBrowserRun` 为 `true`。用户模式仅支持 Windows 和 macOS，不支持 `--headless`。日常 detect 会复用已打开的浏览器并创建专用会话窗口；只有 `browser install` 要求浏览器完全关闭。
+
+浏览器选择优先级为 `--browser` 参数、`OCTOPUS_BROWSER` 环境变量、`browser use` 保存的默认设置、`independent`。`--force-close-browser` 仅用于多开或 Profile 锁定等故障恢复，通常无需传入。
+
+## v0.1.28 更新要点（历史）
+
+v0.1.28 的主要新增能力集中在任务管理、任务组、模板任务、云定时和数据检查命令。新建任务的推荐流程保持为：
 
 ```bash
 octopus detect URL --agent --agent-command "node make-plan.mjs" --goal "采集目标" --run-sample 3 --json
@@ -65,7 +79,7 @@ octopus detect https://movie.douban.com/explore --agent --agent-command "node ma
   `--agent-command` 会执行本地 shell 命令，参数值必须是可信的 Agent 运行器，例如 `node make-plan.mjs`。采集目标应传给 `--goal`，不能把自然语言目标直接写进 `--agent-command`。
 </Warning>
 
-`--run-sample <n>` 只支持 `--agent`，且 `n` 必须是正整数。它会使用生成的任务执行一次 `--max-rows <n>` 本地采集。可用 `--run-output <dir>` 指定样品产物目录，用 `--headless` 控制样品采集的浏览器模式。
+`--run-sample <n>` 只支持 `--agent`，且 `n` 必须是正整数。它会使用生成的任务执行一次 `--max-rows <n>` 本地采集。可用 `--run-output <dir>` 指定样品产物目录。独立模式可用 `--headless` 控制样品采集；用户浏览器模式不支持无头运行。
 
 ```bash
 octopus detect URL --agent --agent-command "node make-plan.mjs" --goal "提取商品信息" --run-sample 5 --run-output ./sample-runs --keep-agent-files --json
@@ -220,6 +234,7 @@ octopus detect URL --select protected_smart_1 --output task.json
 octopus detect URL --manual --goal "提取商品详情" --output task.json
 octopus detect https://www.example.com --auto --query "关键词" --output task.json
 octopus detect https://www.example.com --auto --input keyword=关键词 --output task.json
+octopus detect URL --manual --browser user --browser-id chrome --profile "Default" --output task.json
 ```
 
 手动模式用于登录、处理验证、选择高亮区域、配置详情页采集方式和保存会话。搜索模式生成的任务会保留输入框与提交动作。遇到登录、验证码或付费墙时，改用手动模式，并按需使用 `--save-session` 与 `--session-name`。
@@ -275,6 +290,9 @@ octopus data export <taskId> --source local --lot-id <lotId> --format xlsx --fil
 <CardGroup cols={2}>
   <Card title="运行采集任务" icon="play" href="/zh/cli/core-commands/run-tasks">
     校验并运行 `detect` 生成的任务文件。
+  </Card>
+  <Card title="浏览器管理" icon="browser" href="/zh/cli/core-commands/browser-management">
+    配置用户 Profile、扩展和浏览器默认模式。
   </Card>
   <Card title="输出与退出码" icon="terminal" href="/zh/cli/reference/output-and-exit-codes">
     在脚本、CI 和 Agent 中使用结构化输出。

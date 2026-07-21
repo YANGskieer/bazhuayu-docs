@@ -9,7 +9,7 @@ description: 使用 octopus run 运行已有任务或本地任务文件，使用
 
 **命令描述**
 
-在你自己的电脑上启动本地采集。CLI 会使用独立 Chrome 执行采集，你可以实时看到浏览器窗口，除非使用 `--headless`。
+在你自己的电脑上启动本地采集。默认使用 CLI 管理的独立 Chrome for Testing；也可以使用 v0.1.30 的用户浏览器模式复用 Chrome / Edge 登录状态。独立模式下可以用 `--headless` 隐藏浏览器窗口。
 
 ```bash
 octopus run <taskId>
@@ -23,6 +23,24 @@ octopus run <taskId> --max-rows 100
 octopus run <taskId> --detach
 octopus run <taskId> --output ./runs
 ```
+
+## 选择浏览器模式
+
+```bash
+# 单次使用独立浏览器
+octopus run <taskId> --browser independent --headless
+
+# 单次复用 Chrome 用户 Profile
+octopus run <taskId> --browser user --browser-id chrome --profile "Default" --max-rows 100
+
+# 保存后续 detect/run 的默认模式
+octopus browser use user --browser-id chrome --profile "Default"
+
+# 切回独立浏览器
+octopus browser use independent
+```
+
+用户模式仅支持 Windows 和 macOS，且不支持 `--headless`。首次使用前按 [浏览器管理](/zh/cli/core-commands/browser-management) 页面安装扩展并验证状态。浏览器选择优先级为命令参数、环境变量、保存的默认设置、独立模式。
 
 ## 运行本地任务文件
 
@@ -84,10 +102,11 @@ octopus schedule cloud next --type daily --date 1 --time 09:00 --json
 | CLI 生成任务 → 客户端微调 → 再运行 | `octopus detect URL --auto` → 客户端编辑 → `octopus run <taskId>` | v0.1.25 起 detect 任务自动同步到客户端，方便团队协作 |
 | 需要人工选择采集区域 | `octopus detect URL --manual --output task.json` | 可交互选择详情页、列表和分页方式 |
 | 已有任务，调试或小批量 | `octopus run <taskId>` | 能看到本地浏览器，便于排查 |
+| 已有任务，需要复用登录状态 | `octopus run <taskId> --browser user --browser-id chrome --profile "Default"` | 复用已验证的 Chrome / Edge Profile 与 Cookie |
 | 已有任务，大批量或定期运行 | `octopus cloud start <taskId>` | 交给云端资源执行 |
 
 <Warning>
-  若出现 `runtime.extension.not_registered Extension did not register within 15000ms`，请先运行 `octopus doctor` 和 `octopus browser doctor`，根据失败项修复 Chrome、引擎文件或浏览器依赖。
+  若出现扩展注册或浏览器启动错误，请先运行 `octopus doctor --json`；用户模式再运行 `octopus browser status --browser-id chrome --profile "Default" --json`，并按 `nextActions` 修复扩展或 Profile 状态。
 </Warning>
 
 ## 下一步
@@ -98,5 +117,8 @@ octopus schedule cloud next --type daily --date 1 --time 09:00 --json
   </Card>
   <Card title="导出数据" icon="download" href="/zh/cli/core-commands/export-data">
     将采集结果导出为文件。
+  </Card>
+  <Card title="浏览器管理" icon="browser" href="/zh/cli/core-commands/browser-management">
+    配置独立模式或 Chrome / Edge 用户 Profile。
   </Card>
 </CardGroup>

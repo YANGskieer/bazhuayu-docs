@@ -1,6 +1,6 @@
 ---
 title: 环境诊断
-description: 使用 octopus doctor、browser doctor 与 auth status 检查八爪鱼 CLI 环境、浏览器依赖与登录状态。
+description: 使用 octopus doctor、browser status 与 auth status 检查八爪鱼 CLI 环境、浏览器依赖与登录状态。
 ---
 
 > 跑不起来、登录异常或网页识别失败时，先用这些命令排查环境。
@@ -13,15 +13,16 @@ octopus doctor --json
 octopus doctor --output ./runs --api-base-url https://api.example.com --json
 ```
 
-`doctor` 会检查 Node.js、CLI 运行时、浏览器依赖、认证/API 连通性和本地运行目录可写性。v0.1.27 起可用 `--output <dir>` 指定运行目录检查位置，用 `--api-base-url <url>` 指定 API 诊断地址；v0.1.28 的新增任务组、模板、云定时和数据命令仍复用同一认证与 API 诊断。若某项为 `ok: false`，按提示修复后再运行采集任务。
+`doctor` 会检查 Node.js、CLI 运行时、Chrome for Testing、认证/API 连通性和本地运行目录可写性，并在 Windows / macOS 上报告可选用户浏览器扩展状态。可用 `--output <dir>` 指定运行目录检查位置，用 `--api-base-url <url>` 指定 API 诊断地址。若某项为 `ok: false`，按提示修复后再运行采集任务。
 
-## `octopus browser doctor`（检查浏览器环境）
+## `octopus browser status`（检查用户浏览器）
 
 ```bash
-octopus browser doctor
+octopus browser status --browser-id chrome --json
+octopus browser profiles --browser-id chrome --json
 ```
 
-`detect` 和本地 `run` 都依赖可用浏览器环境。若网页无法打开、扩展注册失败或 Chrome 不可用，优先运行此命令。
+`browser status --json` 会报告浏览器路径、Profile、扩展安装情况、`readyForUserBrowserRun` 和后续 `nextActions`。使用 Edge 时把 `chrome` 改为 `edge`。独立浏览器环境由 `doctor` 检查。
 
 ## `octopus auth status`（查看登录状态）
 
@@ -46,10 +47,15 @@ octopus auth status --json
 | Agent plan preview 不通过 | 打开上下文中的截图和候选区裁剪图，补全 `visualReview`，并确保候选 ID 与 `selection` 一致 |
 | Agent 任务已生成但样品采集失败 | 检查 JSON 中的 `sampleRun.exitCode`、`sampleRun.summary` 和样品输出目录 |
 | `detect --agent --yes` 仍在旧脚本里 | `detect --agent` 不需要 `--yes`，但仍接受该参数以兼容旧脚本；新脚本请省略 |
+| `PROFILE_NOT_FOUND` | 使用 `browser profiles --json` 返回的准确 `profileName`，名称区分大小写 |
+| `EXTENSION_NOT_READY` | 重新打开浏览器并确认扩展启用，直到 `readyForUserBrowserRun` 为 `true` |
+| `BROWSER_RUNNING` / `PROFILE_RUNNING` | 安装扩展前关闭浏览器，或给 `browser install` 添加 `--force-close` |
+| `USER_BROWSER_HEADLESS_UNSUPPORTED` | 用户浏览器不支持 `--headless`；移除该参数或切换到 `--browser independent` |
+| Linux 上 `--browser user` 不可用 | 用户模式仅支持 Windows 和 macOS；Linux 使用独立模式 |
 | `task rename/move/delete` 或 `schedule cloud update/start/stop` 报缺少确认 | 远端状态修改命令必须显式传入 `--yes` |
 | `data preview --unexported` 没有标记数据为已导出 | 这是预期行为；`--unexported` 只读取云端未导出数据，不改变导出状态 |
 | API 列表任务无法同步到云端 | API 列表任务当前 `localOnly: true`，使用 `octopus run <taskId> --task-file task.json` 本地运行 |
-| 安装 `@latest` 卡住 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.28` |
+| 安装 `@latest` 卡住 | 使用固定版本：`npm install -g bazhuayu-cli@0.1.30` |
 
 ## 下一步
 
@@ -59,5 +65,8 @@ octopus auth status --json
   </Card>
   <Card title="输出与退出码" icon="terminal" href="/zh/cli/reference/output-and-exit-codes">
     在脚本与 CI 中使用 `--json` / `--jsonl`。
+  </Card>
+  <Card title="浏览器管理" icon="browser" href="/zh/cli/core-commands/browser-management">
+    查看完整的用户浏览器安装、验证与切换流程。
   </Card>
 </CardGroup>

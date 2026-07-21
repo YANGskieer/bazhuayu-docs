@@ -1,6 +1,6 @@
 ---
 title: 命令速查表
-description: 八爪鱼 CLI v0.1.28 常用命令快速参考。
+description: 八爪鱼 CLI v0.1.30 常用命令快速参考。
 ---
 
 > 八爪鱼 CLI 常用命令一览。尖括号 `<taskId>`、`<apiKey>`、`<url>` 表示需替换为实际值。
@@ -14,12 +14,26 @@ octopus --help
 octopus --version
 octopus capabilities
 octopus doctor
-octopus browser doctor
+octopus browser status --browser-id chrome --json
 
 octopus capabilities --json
 octopus doctor --json
 octopus doctor --output ./runs --api-base-url https://api.example.com --json
 ```
+
+## 浏览器管理
+
+```bash
+octopus browser status --browser-id chrome --json
+octopus browser profiles --browser-id chrome --json
+octopus browser install --browser-id chrome --profile "Default" --force-close --json
+octopus browser use user --browser-id chrome --profile "Default" --json
+octopus browser use status --json
+octopus browser use independent --json
+octopus browser close --browser-id chrome --profile "Default" --json
+```
+
+用户浏览器模式仅支持 Windows 和 macOS，且不支持 `--headless`。安装扩展后需重新打开浏览器并确认 `browser status --json` 返回 `readyForUserBrowserRun: true`。
 
 ## 认证
 
@@ -70,6 +84,7 @@ octopus detect <url> --auto --no-dismiss-popups --output task.json
 octopus detect <url> --select protected_smart_1 --output task.json
 octopus detect <url> --auto --query "烤面包机" --output task.json
 octopus detect <url> --manual --save-session --session-name shop --output task.json
+octopus detect <url> --auto --browser user --browser-id chrome --profile "Default" --output task.json
 ```
 
 `--agent-command` 必须是可信的本地 shell 命令；自然语言目标使用 `--goal`。`--run-sample` 只支持 `--agent`，且参数必须是正整数。`detect --agent` 不需要 `--yes`；该参数仍为旧脚本兼容保留。
@@ -133,10 +148,14 @@ octopus run <taskId> --max-rows 100
 octopus run <taskId> --detach
 octopus run <taskId> --output ./runs
 octopus run <taskId> --chrome-path /path/to/chrome
+octopus run <taskId> --browser independent --headless
+octopus run <taskId> --browser user --browser-id chrome --profile "Default"
 
 octopus run <taskId> --task-file ./task.json --output ./results/
 octopus run <taskId> --task-file ./task.json --detach --max-rows 100
 ```
+
+浏览器选择优先级：`--browser` > `OCTOPUS_BROWSER` > `octopus browser use` > `independent`。用户模式下不要传 `--headless`；`--force-close-browser` 仅用于浏览器或 Profile 冲突时的故障恢复。
 
 ## 云采集与云定时
 
