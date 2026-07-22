@@ -11,6 +11,14 @@ https://mcp.bazhuayu.com
 
 认证方式：**OAuth 2.1**（推荐）或 **API Key**（Header：`x-api-key`）。API Key 创建见 [获取 API Key](/zh/mcp/quick-start/api-key)。
 
+## Agent 对话安装
+
+WorkBuddy、QClaw、豆包专业版等能够自行管理工具配置的 Agent，可直接通过对话添加八爪鱼 MCP。推荐使用[获取 API Key](/zh/mcp/quick-start/api-key)页面提供的完整提示词，让 Agent 写入 `x-api-key` 请求头、刷新工具列表并完成连接测试。
+
+<Note>
+  对这类 Agent，应明确要求本次接入仅使用 API Key，不要把 Key 配置成 OAuth 凭据或 `Authorization: Bearer`。不支持自主配置的客户端，请继续按下方平台步骤手动操作。
+</Note>
+
 ## ChatGPT
 
 1. 打开 ChatGPT → **Settings** → **Connectors**（或「连接器」）。
