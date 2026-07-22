@@ -1,0 +1,44 @@
+---
+title: list_platforms
+description: 查看八爪鱼数据中心内容搜索当前支持的平台和域名。
+---
+
+列出 [`search_platform_content`](/zh/mcp/search-platform-content) 当前可使用的平台和域名。该工具无输入参数，是适合用于连接验证的只读调用。
+
+## 数据中心覆盖范围
+
+八爪鱼数据中心通过对接各大平台的数据接口与公开内容源，提前持续采集并整理可直接查询的存量数据。目前能力材料显示其覆盖量级为**数百个国内外网站、20+ 语种**，平台范围仍在持续扩充。
+
+| 类别 | 代表性网站或平台 |
+| --- | --- |
+| 社交与社区 | X（Twitter）、Facebook、微信公众号、微信视频号、知乎、豆瓣、哔哩哔哩、百度贴吧、虎扑、NGA、TapTap、小米社区、CSDN |
+| 新闻资讯 | 人民网、新华网、央视网、澎湃新闻、界面新闻、36氪、IT之家、腾讯新闻、网易新闻、搜狐新闻、凤凰网 |
+| 财经证券 | 东方财富、股吧、雪球、同花顺、财联社、新浪财经、华尔街见闻、Bloomberg、Reuters、Financial Times |
+| 汽车垂类 | 懂车帝、汽车之家、易车、新出行、百度有驾 |
+| 消费维权 | 黑猫投诉、消费保、全国 12315 平台 |
+| 招投标 | 千里马、剑鱼标讯、采招网、中国政府采购网、各省公共资源交易平台 |
+| 海外媒体 | AP、The Guardian、Yahoo! JAPAN、日经、朝日新闻、Naver、联合早报、Times of India、detik 等 |
+
+<Note>
+  上表用于说明覆盖的广度与代表性来源，不是固定白名单，也不表示每个平台的全部历史内容都可查询。平台接入、可检索时间范围和字段可能调整，应以 `list_platforms` 的实时返回及实际搜索结果为准。
+</Note>
+
+## 参数
+
+无需参数：
+
+```json
+{}
+```
+
+## 响应
+
+返回 `success`、`code`、`message`、`data` 和 `timestamp`。平台条目至少包含用于识别来源的 `platform` 与 `domain`，服务还可能返回 `platformCode`、`platformName`、`sortOrder` 或总数等扩展字段。
+
+<Note>
+  当前服务声明的 Schema 与部分实时响应包装形式存在差异。集成时应以 `data` 中实际返回的平台条目为准，不要依赖固定的额外包装层或扩展字段。
+</Note>
+
+平台清单可能随数据中心能力变化。需要限制内容搜索范围时，把返回的域名传给 `search_platform_content` 的 `include` 或 `exclude`。
+
+另请参阅：[MCP 概览](/zh/mcp/index)、[`search_platform_content`](/zh/mcp/search-platform-content)

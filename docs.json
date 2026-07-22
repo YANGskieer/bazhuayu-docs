@@ -426,7 +426,7 @@
                 ]
               },
               {
-                "group": "工具参考",
+                "group": "通用采集工具",
                 "pages": [
                   "zh/mcp/search-templates",
                   "zh/mcp/search-tasks",
@@ -434,6 +434,15 @@
                   "zh/mcp/export-data",
                   "zh/mcp/start-or-stop-task",
                   "zh/mcp/redeem-coupon"
+                ]
+              },
+              {
+                "group": "数据中心与电商数据",
+                "pages": [
+                  "zh/mcp/search-platform-content",
+                  "zh/mcp/list-platforms",
+                  "zh/mcp/ecommerce-data-task",
+                  "zh/mcp/query-collected-reviews"
                 ]
               },
               {

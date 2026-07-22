@@ -1,22 +1,30 @@
 ---
 title: redeem_coupon_code
-description: 兑换促销或资源优惠码。
+description: 为当前八爪鱼账户兑换促销码、优惠券或资源码。
 ---
 
-通过 MCP 接口兑换促销或资源优惠码。
+当用户已经提供兑换码并明确要求领取权益时调用。本工具会修改当前账户权益，不应用于连通性测试。
 
 ## 参数
 
-| 参数 | 类型 | 说明 |
-|---|---|---|
-| `code` | string | 优惠码或促销代码 |
+| 参数 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| `code` | string | 是 | 长度 `1-100`，仅支持字母、数字、下划线和连字符 |
+
+```json
+{
+  "code": "<兑换码>"
+}
+```
 
 ## 响应
 
-返回兑换状态及已应用额度或权益。
+可能返回 `couponCode`、`status`、`userCode`、`grantTargetType`、`resourceType`、`resourceCount`、`rewardExpireTime`、`isSuccess`、`message` 和 `displayMessage`。
 
-<Note>
-  通过 MCP 兑换优惠码适用于所有 八爪鱼 账户类型。优惠码资格取决于具体活动。
-</Note>
+向用户反馈时，应原样展示服务返回的 `displayMessage`，避免自行推断兑换权益或有效期。
+
+<Warning>
+  兑换结果取决于具体活动、账户资格、兑换码状态和有效期。不要使用真实兑换码进行测试。
+</Warning>
 
 另请参阅：[MCP 概览](/zh/mcp/index)

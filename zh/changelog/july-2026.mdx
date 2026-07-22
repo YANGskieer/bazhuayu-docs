@@ -1,7 +1,25 @@
 ---
 title: 2026 年 7 月更新日志
-description: 2026 年 7 月八爪鱼文档更新，包含 CLI v0.1.30 用户浏览器模式及 v0.1.28 任务管理、模板、云定时与数据能力。
+description: 2026 年 7 月八爪鱼文档更新，包含 MCP 数据中心与电商数据工具，以及 CLI v0.1.30 用户浏览器模式。
 ---
+
+# MCP 服务能力同步
+
+> **核验日期：** 2026 年 7 月 22 日
+> 本次文档依据 MCP 端点实际工具发现结果更新；核验时服务版本为 `0.8.3.3-85ef7c4b`，协议版本为 `2025-11-25`。
+
+当前服务公开 10 个工具。本次新增文档：
+
+- `search_platform_content`：按关键词、时间范围与域名搜索数据中心的网页、图片和视频存量内容
+- `list_platforms`：查询数据中心支持的平台和域名
+- `ecommerce_data_task`：提交 Temu 或 TikTok Shop 商品与评论采集任务
+- `query_collected_reviews`：查询已采集的电商评论
+
+现有采集工作流同步升级：`search_templates` 支持关键词和精确查询；`execute_task` 新增 `validateOnly` 参数预检与 MCP Tasks；`export_data` 支持进度轮询、数据预览和更多导出类型；`search_tasks` 更新分页与状态筛选参数。
+
+服务还公开 `octoparse://workflow` 工作流 Resource，以及模板搜索、任务搜索和导出预览 Widget。Widget 是否渲染取决于 MCP 客户端实现。
+
+数据中心通过对接各大平台的数据接口与公开内容源，提前采集、清洗并索引存量内容；覆盖量级为数百个国内外网站、20+ 语种，平台范围持续扩充。相关文档：[MCP 概览](/zh/mcp/index)、[标准工作流程](/zh/mcp/workflow)、[数据中心内容搜索](/zh/mcp/search-platform-content)、[电商数据任务](/zh/mcp/ecommerce-data-task)
 
 # 知识库审核台（本地）
 
