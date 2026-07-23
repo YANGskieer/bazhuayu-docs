@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-22T07:43:29.017Z",
+  "generatedAt": "2026-07-23T06:43:27.601Z",
   "counts": {
     "faqIntents": 412,
-    "publicAnswers": 664
+    "publicAnswers": 660
   },
   "aliases": [],
   "intents": [
@@ -5144,38 +5144,6 @@
         "a. 在【高级搜索】中选择什么条件，在得到的网址中就有一个对应参数，请注意观察筛选条件跟网址参数的对应关系，选择自己需要的。"
       ],
       "route": "/zh/academy/case-studies/social-media/weibo-keyword-search",
-      "sourceType": "采集学院"
-    },
-    "doc:/zh/academy/case-studies/social-media/xiaohongshu-author-notes": {
-      "title": "【小红书】博主页主页笔记采集",
-      "summary": "一、采集场景 采集网页端小红书博主主页下的笔记内容，示例网址： https://www.xiaohongshu.com/user/profile/63a7aa280000000026010408?xsec\\token=ABdg3bdPJIF7w6sgzWXZoHrwioXIuaUR\\LjeO-SbfwGn0=\\&xsec\\source=pc\\note htt…",
-      "steps": [
-        "a. 【本地采集】是使用自己的电脑进行采集，【云采集】是使用八爪鱼提供的云服务器采集，点击查看 本地采集与云采集详解。"
-      ],
-      "route": "/zh/academy/case-studies/social-media/xiaohongshu-author-notes",
-      "sourceType": "采集学院"
-    },
-    "doc:/zh/academy/case-studies/social-media/xiaohongshu-detail": {
-      "title": "【小红书】详情页采集",
-      "summary": "采集场景 采集小红书详情页链接下的数据，示例： https://www.xiaohongshu.com/searchresult/66f52308000000001a0219b2?xsectoken=AB9cgffdvkFvShjLlEAjoKU4KVzgssUmiywI4ToN8vHs=&xsecsource= https://www.…",
-      "steps": [],
-      "route": "/zh/academy/case-studies/social-media/xiaohongshu-detail",
-      "sourceType": "采集学院"
-    },
-    "doc:/zh/academy/case-studies/social-media/xiaohongshu-first-level-comments": {
-      "title": "【小红书】一级评论采集",
-      "summary": "一、采集场景 采集网页端小红书评论页面的一级评论数据，示例网址： https://www.xiaohongshu.com/explore/68030bf5000000000f031b23?xsectoken=ABPTI7A7WCxkUQwb4LqbauL8fEfbBxTKF40uLFRL0Ya2Q=&xsecsource=pcsearch&source=we…",
-      "steps": [
-        "a. 【本地采集】是使用自己的电脑进行采集，【云采集】是使用八爪鱼提供的云服务器采集，点击查看 本地采集与云采集详解。"
-      ],
-      "route": "/zh/academy/case-studies/social-media/xiaohongshu-first-level-comments",
-      "sourceType": "采集学院"
-    },
-    "doc:/zh/academy/case-studies/social-media/xiaohongshu-keyword-search": {
-      "title": "【小红书】搜索关键词采集",
-      "summary": "采集场景 采集小红书搜索关键词下的数据，示例： https://www.xiaohongshu.com/ 【小红书】搜索关键词采集 采集字段 标题 、博主名称 、点赞数、详情页链接 采集结果 采集结果可导出为Excel，CSV，HTML，数据库等多种格式。导出为Excel示例： 【小红书】搜索关键词采集 教程说明 八爪鱼版本：V8.7.…",
-      "steps": [],
-      "route": "/zh/academy/case-studies/social-media/xiaohongshu-keyword-search",
       "sourceType": "采集学院"
     },
     "doc:/zh/academy/case-studies/social-media/zhihu-hot-ranking": {
